@@ -8,8 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-    "private": true,
-   "dependencies": {
+  "private": true,
+  "dependencies": {
     "@angular/animations": "^17.2.0",
     "@angular/cdk": "^17.2.0",
     "@angular/common": "^17.2.0",
@@ -20,14 +20,11 @@
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/router": "^17.2.0",
     "@angular/localize": "^17.2.0",
-    "@ng-bootstrap/ng-bootstrap": "^17.2.0",
-  
-},
-"devDependencies": {
+    "@ng-bootstrap/ng-bootstrap": "^17.2.0"
+  },
+  "devDependencies": {
     "@angular-devkit/build-angular": "^17.2.0",
     "@angular/cli": "^17.2.0",
-    "@angular/compiler-cli": "^17.2.0",
-  
-}
-
+    "@angular/compiler-cli": "^17.2.0"
+  }
 }
