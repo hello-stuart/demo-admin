@@ -21,13 +21,13 @@
     "@angular/router": "^17.2.0",
     "@angular/localize": "^17.2.0",
     "@ng-bootstrap/ng-bootstrap": "^17.2.0",
-    ...
+  
 },
 "devDependencies": {
     "@angular-devkit/build-angular": "^17.2.0",
     "@angular/cli": "^17.2.0",
     "@angular/compiler-cli": "^17.2.0",
-    ...
+  
 }
 
 }
