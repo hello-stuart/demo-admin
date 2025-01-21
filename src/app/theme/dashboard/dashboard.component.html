@@ -1,0 +1,70 @@
+<div>
+  <div class="row row5">
+    <div class="col-6 col-md-3">
+      <div class="card mini-stats-wid">
+        <div class="card-body">
+          <p class="text-muted">Total Balance</p>
+          <h4>{{ agentBalance?.availableBalance | number : "1.0-2" }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card mini-stats-wid">
+        <div class="card-body">
+          <p class="text-muted">Exposure</p>
+          <h4>({{ agentBalance?.exposure | number : "1.0-2" }})</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card mini-stats-wid">
+        <div class="card-body">
+          <p class="text-muted">Available Balance</p>
+          <h4>
+            {{
+              agentBalance?.totalBalance - agentBalance?.exposure
+                | number : "1.0-2"
+            }}
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card mini-stats-wid">
+        <div class="card-body">
+          <p class="text-muted">Balance</p>
+          <h4>{{ agentBalance?.availableBalance | number : "1.0-2" }}</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="card mini-stats-wid">
+        <div class="card-body">
+          <p class="text-muted">Total Available Balance</p>
+          <h4>
+            {{
+              agentBalance?.availableBalance + agentBalance?.totalBalance
+                | number : "1.0-2"
+            }}
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card mini-stats-wid">
+        <div class="card-body">
+          <p class="text-muted">Upline Profit/Loss</p>
+          <h4>
+            {{
+              agentBalance?.totalBalance +
+                agentBalance?.availableBalance -
+                agentBalance?.creditReference | number : "1.0-2"
+            }}
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-casino-games></app-casino-games>
+</div>

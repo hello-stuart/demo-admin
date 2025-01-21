@@ -1,0 +1,12 @@
+<ng-container *ngIf="sportObj?.sportId==4">
+  <app-cricket [sportObj]="sportObj" [isMuted]="isMuted"></app-cricket>
+</ng-container>
+
+<ng-container *ngIf="sportObj?.sportId == 1">
+  <app-soccer [sportObj]="sportObj" [isMuted]="isMuted"></app-soccer>
+</ng-container>
+
+
+<ng-container *ngIf="sportObj?.sportId == 2">
+  <app-tennis [sportObj]="sportObj" [isMuted]="isMuted"></app-tennis>
+</ng-container>

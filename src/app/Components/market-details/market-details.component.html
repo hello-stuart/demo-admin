@@ -1,0 +1,1251 @@
+<div class="detail-page-container">
+    <div class="center-main-container">
+        <div class="center-content">
+            <div class="game-header sport4">
+                <span class="game-header-name">{{matchOddsData[0]?.eventName?
+                    matchOddsData[0]?.eventName :
+                    ''}}</span>
+                <span *ngIf="!matchOddsData[0]?.oddsData?.inPlay">
+                    <!-- <span>{{getLocalDateTime(matchOddsData[0]?.eventTime | date : 'dd-MM-YYYY hh:mm:ss a')}}</span> -->
+                    <span *ngIf="matchOddsData[0]?.eventTime">
+                        {{getLocalDateTime(convertToDate(matchOddsData[0]?.eventTime)) | date : 'dd/MM/yyyy hh:mm:ss'}}
+                    </span>
+
+                </span>
+            </div>
+            <!-- DESKTOP CHANGES -->
+
+            <!-- Score Card Area  -->
+            <div class="card-body banner-card-con p-0 mb-1 mobile-stream time" *ngIf="!isScore ">
+                <!-- && selectedTab !== 'WATCHLIVE'  -->
+                <!-- Time Market -->
+                <!-- <ng-container *ngIf="!isScoreAvailable  && !isLiveStream "> -->
+                <ng-container *ngIf="matchOddsData && matchOddsData?.length >0 ">
+                    <!-- [ngClass]="{'time-cricket-banner' : sportId == '4','time-soccer-banner' : sportId == '1'
+                    ,'time-tennis-banner' : sportId == '2','time-horse-banner' : sportId == '7'}" -->
+                    <div class="container-main-time">
+                        <div class="banner">
+                            <app-events-banner [isDesktop]="isDesktop" [isTabDesk]="isTabDesk" and
+                                [sportId]="sportId"></app-events-banner>
+                        </div>
+
+                        <div style="height: 100px;"
+                            class="d-flex banner-content flex-column justify-content-between  align-items-center p-3 pt-2">
+                            <div class="d-flex  justify-content-between w-100">
+                                <div class="gameStatus">
+                                    {{ matchOddsData[0]?.oddsData?.status }}
+                                </div>
+                                <div class="gameRemainingTime">
+                                    <span class="betStart" style="color: var( --market-details-betStart-color);"> Game
+                                        time </span>
+                                    {{ (matchOddsData[0]?.eventTime | date : 'dd-MM-YYYY hh:mm:ss a') }}
+                                </div>
+                            </div>
+                            <div class="d-flex  justify-content-center align-items-center "
+                                [ngClass]="{'flex-column':(sportId != '7' &&  sportId != '4339' )}">
+                                <!-- <div class="gameStatus">
+                             {{ betfairData[0]?.oddsData?.status }}
+                            </div> -->
+
+                                <div class="gameRemainingTime"
+                                    *ngIf="matchOddsData?.length > 0 && (matchOddsData[0]?.eventTime | countdownBetStart) != '0'">
+                                    <span class="betStart" style="color: rgb(255, 255, 255);"> Time Remaining </span>
+                                    &nbsp;
+                                </div>
+                                <div class="gameRemainingTime in_play_betStarted"
+                                    *ngIf="matchOddsData?.length > 0 && (matchOddsData[0]?.eventTime | countdownBetStart) != '0'">
+                                    {{
+                                    (matchOddsData[0]?.eventTime |
+                                    countdown)
+                                    }}</div>
+
+                                <span class="betStart in_play_betStarted"
+                                    *ngIf="(matchOddsData[0]?.eventTime | countdownBetStart) == '0'"
+                                    style="color: rgb(255, 255, 255);font-weight: bold;">
+                                    Bet Started </span>
+                            </div>
+                            <div class="d-flex justify-content-center w-100"
+                                *ngIf="(sportId == '7' || sportId == '4339' ) && ((matchOddsData[0]?.eventTime | countdownBetStart) != '0') ">
+                                <div class="gameRemainingTime">
+                                    <span class="betStart" style="color:#ff0;"> Bet Start in </span> &nbsp;
+                                    <span>{{ (matchOddsData[0]?.eventTime | countdownBetStart) }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <section class="LiveSection d-none-mbl">
+                <div class="LiveSection__content eventPageFixLiveSection LiveSection__content-withStats"
+                    *ngIf="matchOddsData?.length > 0 && (matchOddsData[0]?.eventTime | countdownBetStart) == '0' && isScore">
+
+                    <div class="">
+                        <div class="cricket-match-stats">
+                            <div class="cricket-match-stats-slides scorecard-slide">
+                                <app-scorecards></app-scorecards>
+                            </div>
+                        </div>
+                        <!-- VIDEO WORK IF STREAM & TOKEN AVAILABLE  -->
+                        <!-- <div class="d-flex" *ngIf="watchLiveAndScoreCard ">
+                            <div class="LiveSection__content__video">
+                                <ng-container>
+                                    <app-video-player [isScore]="isScore" [eventId]="event_id"
+                                        (dataEmitter)="hasStream($event)"></app-video-player>
+                                </ng-container>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Score Card Area Ended  -->
+            <div style="height: 23px;"></div>
+
+            <div class="market-container">
+                <div class="market-4" *ngIf="AllMarketList?.length>0">
+                    <div class="bet-table" *ngIf="matchOddsData.length > 0">
+                        <div *ngFor="let market of matchOddsDataUpdated ; let i = index; trackBy: trackByFn">
+                            <div style="margin-bottom: 6px;">
+                                <div class="bet-table-header">
+                                    <div data-bs-toggle="collapse" [attr.data-bs-target]="'#' + generateUniqueId(i)"
+                                        aria-expanded="true" [attr.aria-controls]="generateUniqueId(i)"
+                                        aria-controls="matchOdds" class="nation-name max-375">
+                                        <span class="mobile-nation-name d-flex align-items-center">
+                                            <a title="">
+                                                <img src="https://g1ver.sprintstaticdata.com/v32/static/admin/img/arrow-down.svg"
+                                                    class="me-1">
+                                            </a>
+                                            <span>{{market?.marketName}}</span>
+                                        </span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-end overflow-hidden w-50"><a
+                                            class="btn btn-back me-1 text-nowrap">Bet Lock</a> <a
+                                            class="btn btn-back text-nowrap">User
+                                            Book</a></div>
+                                </div>
+
+                                <div [id]="generateUniqueId(i)" class="bet-table-body collapse show">
+                                    <div class="text-end nation-name show-in-mbl">
+                                        <span class="max-bet"><span title="Max : 25K">{{(market?.max) |
+                                                shortNumber}}</span>
+                                        </span>
+                                    </div>
+                                    <ng-container
+                                        *ngFor="let runner of market?.oddsData?.runners; trackBy: trackByFn;index as i">
+                                        <div class="bet-table-row bet-table-row-top"
+                                            style="padding-top: 5px !important; " *ngIf="i===0">
+                                            <div class="bet-table-mobile-row show-in-mbl">
+                                                <div class="bet-table-mobile-team-name padding-0">
+                                                    <span>{{market.runnersData[runner.selectionId]}}</span> <span
+                                                        style="color: rgb(153, 153, 153);">0</span> <span
+                                                        class="d-none">0</span>
+                                                </div>
+                                            </div>
+                                            <div class="text-end nation-name show-in-desktop">
+                                                <span class="max-bet"><span title="Max : 25K">{{(market?.max) |
+                                                        shortNumber}}</span>
+                                                </span>
+                                            </div>
+                                            <div class="back bl-title show-in-desktop">Back</div>
+                                            <div class="lay bl-title show-in-desktop">Lay</div>
+                                        </div>
+                                    </ng-container>
+
+                                    <div
+                                        *ngFor="let runner of market?.oddsData?.runners; trackBy: trackByFn;index as i">
+                                        <div class="bet-table-row" *ngIf="i===0">
+                                            <div class="nation-name show-in-desktop">
+                                                <p>{{market.runnersData[runner.selectionId]}}</p>
+                                                <p class="mb-0 float-left"
+                                                    style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">
+                                                    <span class="d-flex">
+
+                                                        <!-- 123123 -->
+                                                        <span class=" matchodds" *ngIf="!cbsPL[market?.exMarketId]">
+                                                            <!-- <i class="fa fa-arrow-right">
+
+                                                            </i> 0.00 -->
+                                                        </span>
+                                                        <span *ngIf="cbsPL[market?.exMarketId]">
+                                                            <!-- {FOR Simple VALUE } -->
+                                                            <ng-container
+                                                                *ngIf="!hasProfitAndLoss(cbsPL[market?.exMarketId][runner?.selectionId])">
+                                                                <span class="float-left profit matchodds"
+                                                                    [ngClass]="[cbsPL[market?.exMarketId][runner?.selectionId] > 0  ? 'minus-book' : 'plus-book']">
+                                                                    <i class="fa fa-arrow-right"></i>
+                                                                    {{absValue(
+                                                                    cbsPL[market?.exMarketId][runner?.selectionId]) |
+                                                                    number :'1.0-2'}}
+                                                                </span>
+                                                            </ng-container>
+                                                            <!-- {FOR PROFIT LOSS OBJECT} -->
+                                                            <ng-container
+                                                                *ngIf="hasProfitAndLoss(cbsPL[market?.exMarketId][runner?.selectionId])">
+                                                                <span class="d-flex align-items-center matchodds"
+                                                                    [ngClass]="[cbsPL[market?.exMarketId][runner?.selectionId].PROFIT > 0  ? 'minus-book' : 'plus-book']"
+                                                                    *ngIf=" cbsPL[market?.exMarketId]"
+                                                                    style="margin-left: 0px;">
+                                                                    &nbsp;<i class="fa fa-arrow-right 1111111"
+                                                                        style="position: relative;top: 2px; margin-right: 2px;"></i>
+
+                                                                    {{
+                                                                    absValue(cbsPL[market?.exMarketId][runner?.selectionId].PROFIT)
+                                                                    |number :'1.2-2'}}
+
+                                                                    <span
+                                                                        *ngIf="cbsPL[market?.exMarketId][runner?.selectionId].LOSS !== 0"
+                                                                        [ngClass]="[cbsPL[market?.exMarketId][runner?.selectionId].LOSS > 0  ? 'minus-book' : 'plus-book']">
+                                                                        ({{
+                                                                        absValue(cbsPL[market?.exMarketId][runner?.selectionId].LOSS)
+                                                                        | number
+                                                                        :'1.2-2'}})</span>
+                                                                </span>
+                                                            </ng-container>
+                                                        </span>
+                                                    </span>
+                                                </p>
+
+                                            </div>
+
+                                            <div class="bl-box-container" [ngClass]="  (runner.status == 'REMOVED' && runner.removalDate && runner.adjustmentFactor) ?  'suspendedNonRunner table-rowforJokey': (runner?.status == 'SUSPENDED' || runner?.status == 'CLOSED' ||
+                                                runner?.status == 'REMOVED'  || market?.oddsData?.status == 'SUSPENDED' || 
+                                                 market?.oddsData?.status == 'CLOSED' ||  market?.oddsData?.status == 'BALLRUN') ? 
+                                             'suspendedtext  table-rowforJokey' :  
+                                             (sportId == '7' || sportId == '4339' ) ? 
+                                             'table-rowforJokey' : '' " [attr.data-title]="( (market?.oddsData?.status == 'SUSPENDED' || market?.oddsData?.status == 'CLOSED' ||  market?.oddsData?.status == 'BALLRUN') && (runner.status=='ACTIVE' || runner.status=='ONLINE')) ? market?.oddsData?.status : 
+                                               (runner.status == 'REMOVED' && runner.removalDate && runner.adjustmentFactor)
+                                               ? 'Non Runner '+ (runner.adjustmentFactor | number : '1.1-1')+'%  '+ (runner.removalDate | date : 'dd-MM-YYYY h:mm')
+                                               : runner.status">
+                                                <div class="bl-box back back2 position-relative" appRatehighlight>
+                                                    <span class="d-block odds">{{(runner.price.back[2].price)|
+                                                        number}}</span>
+                                                    <span class="d-block odds-size"
+                                                        style="font-size: 14px; font-weight:normal;">{{(runner.price.back[2].size
+                                                        |shortNumber)}}</span>
+                                                </div>
+                                                <div class="bl-box back back1 position-relative" appRatehighlight>
+                                                    <span class="d-block odds">{{(runner.price.back[1].price)|
+                                                        number}}</span>
+                                                    <span class="d-block odds-size"
+                                                        style="font-size: 14px; font-weight:normal;">{{(runner.price.back[1].size
+                                                        |shortNumber)}}</span>
+                                                </div>
+                                                <div class="bl-box back back position-relative" appRatehighlight>
+                                                    <span class="d-block odds">{{(runner.price.back[0].price)|
+                                                        number}}</span>
+                                                    <span class="d-block odds-size"
+                                                        style="font-size: 14px; font-weight:normal;">{{(runner.price.back[0].size
+                                                        |shortNumber)}}</span>
+                                                </div>
+                                                <div class="bl-box lay lay position-relative" appRatehighlight>
+                                                    <span class="d-block odds">{{(runner.price.lay[0].price)|
+                                                        number}}</span>
+                                                    <span class="d-block odds-size"
+                                                        style="font-size: 14px; font-weight:normal;">{{(runner.price.lay[0].size)
+                                                        |shortNumber}}</span>
+                                                </div>
+                                                <div class="bl-box lay lay1 position-relative" appRatehighlight>
+                                                    <span class="d-block odds">{{(runner.price.lay[1].price)|
+                                                        number}}</span>
+                                                    <span class="d-block odds-size"
+                                                        style="font-size: 14px; font-weight:normal;">{{(runner.price.lay[1].size)|
+                                                        shortNumber}}</span>
+                                                </div>
+                                                <div class="bl-box lay lay2 position-relative" appRatehighlight>
+                                                    <span class="d-block odds">{{(runner.price.lay[2].price)|
+                                                        number}}</span>
+                                                    <span class="d-block odds-size"
+                                                        style="font-size: 14px; font-weight:normal;">{{(runner.price.lay[2].size)|
+                                                        shortNumber}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ng-container
+                                        *ngFor="let runner of market?.oddsData?.runners; trackBy: trackByFn;index as i">
+                                        <div class="bet-table-row bet-table-row-top show-in-mbl"
+                                            style="margin-top: -3px;" *ngIf="i===1">
+                                            <div class="bet-table-mobile-team-name padding-0">
+                                                <span>{{market.runnersData[runner.selectionId]}}</span> <span
+                                                    style="color: rgb(153, 153, 153);">0</span>
+                                                <span class="d-none">0</span>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                    <div
+                                        *ngFor="let runner of market?.oddsData?.runners; trackBy: trackByFn;index as i">
+                                        <div class="bet-table-row" *ngIf="i===1">
+                                            <div class="nation-name show-in-desktop">
+                                                <p>{{market.runnersData[runner.selectionId]}}</p>
+                                                <p class="mb-0 float-left"
+                                                    style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">
+                                                    <span class="d-flex">
+
+                                                        <!-- 123123 -->
+                                                        <span class=" matchodds" *ngIf="!cbsPL[market?.exMarketId]">
+                                                            <!-- <i class="fa fa-arrow-right">
+
+                                                        </i> 0.00 -->
+                                                        </span>
+                                                        <span *ngIf="cbsPL[market?.exMarketId]">
+                                                            <!-- {FOR Simple VALUE } -->
+                                                            <ng-container
+                                                                *ngIf="!hasProfitAndLoss(cbsPL[market?.exMarketId][runner?.selectionId])">
+                                                                <span class="float-left profit matchodds"
+                                                                    [ngClass]="[cbsPL[market?.exMarketId][runner?.selectionId] > 0  ? 'minus-book' : 'plus-book']">
+                                                                    <i class="fa fa-arrow-right"></i>
+                                                                    {{absValue(
+                                                                    cbsPL[market?.exMarketId][runner?.selectionId]) |
+                                                                    number :'1.0-2'}}
+                                                                </span>
+                                                            </ng-container>
+                                                            <!-- {FOR PROFIT LOSS OBJECT} -->
+                                                            <ng-container
+                                                                *ngIf="hasProfitAndLoss(cbsPL[market?.exMarketId][runner?.selectionId])">
+                                                                <span class="d-flex align-items-center matchodds"
+                                                                    [ngClass]="[cbsPL[market?.exMarketId][runner?.selectionId].PROFIT > 0  ? 'minus-book' : 'plus-book']"
+                                                                    *ngIf=" cbsPL[market?.exMarketId]"
+                                                                    style="margin-left: 0px;">
+                                                                    &nbsp;<i class="fa fa-arrow-right 1111111"
+                                                                        style="position: relative;top: 2px; margin-right: 2px;"></i>
+
+                                                                    {{
+                                                                    absValue(cbsPL[market?.exMarketId][runner?.selectionId].PROFIT)
+                                                                    |number :'1.2-2'}}
+
+                                                                    <span
+                                                                        *ngIf="cbsPL[market?.exMarketId][runner?.selectionId].LOSS !== 0"
+                                                                        [ngClass]="[cbsPL[market?.exMarketId][runner?.selectionId].LOSS > 0  ? 'minus-book' : 'plus-book']">
+                                                                        ({{
+                                                                        absValue(cbsPL[market?.exMarketId][runner?.selectionId].LOSS)
+                                                                        | number
+                                                                        :'1.2-2'}})</span>
+                                                                </span>
+                                                            </ng-container>
+                                                        </span>
+                                                    </span>
+                                                </p>
+
+                                            </div>
+
+                                            <div class="bl-box-container" [ngClass]="  (runner.status == 'REMOVED' && runner.removalDate && runner.adjustmentFactor) ?  'suspendedNonRunner table-rowforJokey': (runner?.status == 'SUSPENDED' || runner?.status == 'CLOSED' ||
+                                            runner?.status == 'REMOVED'  || market?.oddsData?.status == 'SUSPENDED' || 
+                                             market?.oddsData?.status == 'CLOSED' ||  market?.oddsData?.status == 'BALLRUN') ? 
+                                         'suspendedtext  table-rowforJokey' :  
+                                         (sportId == '7' || sportId == '4339' ) ? 
+                                         'table-rowforJokey' : '' " [attr.data-title]="( (market?.oddsData?.status == 'SUSPENDED' || market?.oddsData?.status == 'CLOSED' ||  market?.oddsData?.status == 'BALLRUN') && (runner.status=='ACTIVE' || runner.status=='ONLINE')) ? market?.oddsData?.status : 
+                                           (runner.status == 'REMOVED' && runner.removalDate && runner.adjustmentFactor)
+                                           ? 'Non Runner '+ (runner.adjustmentFactor | number : '1.1-1')+'%  '+ (runner.removalDate | date : 'dd-MM-YYYY h:mm')
+                                           : runner.status">
+                                                <div class="bl-box back back2 position-relative" appRatehighlight>
+                                                    <span class="d-block odds">{{(runner.price.back[2].price)|
+                                                        number}}</span>
+                                                    <span class="d-block odds-size"
+                                                        style="font-size: 14px; font-weight:normal;">{{(runner.price.back[2].size
+                                                        |shortNumber)}}</span>
+                                                </div>
+                                                <div class="bl-box back back1 position-relative" appRatehighlight>
+                                                    <span class="d-block odds">{{(runner.price.back[1].price)|
+                                                        number}}</span>
+                                                    <span class="d-block odds-size"
+                                                        style="font-size: 14px; font-weight:normal;">{{(runner.price.back[1].size
+                                                        |shortNumber)}}</span>
+                                                </div>
+                                                <div class="bl-box back back position-relative" appRatehighlight>
+                                                    <span class="d-block odds">{{(runner.price.back[0].price)|
+                                                        number}}</span>
+                                                    <span class="d-block odds-size"
+                                                        style="font-size: 14px; font-weight:normal;">{{(runner.price.back[0].size
+                                                        |shortNumber)}}</span>
+                                                </div>
+                                                <div class="bl-box lay lay position-relative" appRatehighlight>
+                                                    <span class="d-block odds">{{(runner.price.lay[0].price)|
+                                                        number}}</span>
+                                                    <span class="d-block odds-size"
+                                                        style="font-size: 14px; font-weight:normal;">{{(runner.price.lay[0].size)
+                                                        |shortNumber}}</span>
+                                                </div>
+                                                <div class="bl-box lay lay1 position-relative" appRatehighlight>
+                                                    <span class="d-block odds">{{(runner.price.lay[1].price)|
+                                                        number}}</span>
+                                                    <span class="d-block odds-size"
+                                                        style="font-size: 14px; font-weight:normal;">{{(runner.price.lay[1].size)|
+                                                        shortNumber}}</span>
+                                                </div>
+                                                <div class="bl-box lay lay2 position-relative" appRatehighlight>
+                                                    <span class="d-block odds">{{(runner.price.lay[2].price)|
+                                                        number}}</span>
+                                                    <span class="d-block odds-size"
+                                                        style="font-size: 14px; font-weight:normal;">{{(runner.price.lay[2].size)|
+                                                        shortNumber}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="bet-table-mobile-row show-in-mbl">
+                                        <div class="bet-table-mobile-team-name"><span>The Draw</span> <span
+                                                style="color: rgb(153, 153, 153);">0</span> <span
+                                                class="d-none">0</span>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div data-title="ACTIVE" class="bet-table-row">
+                                        <div class="nation-name show-in-desktop">
+                                            <p>The Draw</p>
+                                            <p class="mb-0 float-left" style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;" >0</p>
+                                            <p class="mb-0 float-end d-none">0</p>
+                                        </div>
+                                        <div class="bl-box back back2">
+                                            <span class="d-block odds">4.1</span>
+                                            <span class="d-block odds-size" style="font-size: 14px; font-weight:normal;">950.36</span>
+                                        </div>
+                                        <div class="bl-box back back1">
+                                            <span class="d-block odds">4.2</span>
+                                             <span class="d-block odds-size" style="font-size: 14px; font-weight:normal;">1.1K</span>
+                                        </div>
+                                        <div class="bl-box back back">
+                                            <span class="d-block odds">4.3</span>
+                                             <span class="d-block odds-size" style="font-size: 14px; font-weight:normal;">704.67</span>
+                                        </div>
+                                        <div class="bl-box lay lay">
+                                            <span class="d-block odds">4.4</span>
+                                             <span class="d-block odds-size" style="font-size: 14px; font-weight:normal;">61.35</span>
+                                        </div>
+                                        <div class="bl-box lay lay1">
+                                            <span class="d-block odds">4.5</span>
+                                            <span class="d-block odds-size" style="font-size: 14px; font-weight:normal;">463.62</span>
+                                        </div>
+                                        <div class="bl-box lay lay2">
+                                            <span class="d-block odds">4.6</span>
+                                            <span class="d-block odds-size" style="font-size: 14px; font-weight:normal;">91.87</span>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if (AllFancyMarkets.length!==0) {
+                <div class="market-6">
+                    <div class="bet-table">
+                        <div class="bet-table-header">
+                            <div data-bs-toggle="collapse" data-bs-target="#Normal" aria-expanded="true"
+                                class="nation-name">
+                                <span title="Normal" class="d-flex align-items-center"
+                                    style="font-size: 14px; font-weight: 500;">
+                                    <a title="">
+                                        <img src="https://g1ver.sprintstaticdata.com/v32/static/admin/img/arrow-down.svg"
+                                            class="me-1 ">
+                                    </a>
+                                    <span>Normal</span>
+                                </span>
+                            </div>
+                            <div class="float-end"><a class="btn btn-back ">Bet Lock</a>
+                            </div>
+                        </div>
+                        <div id="Normal" data-title="OPEN" class="bet-table-body collapse show">
+                            <div class="bet-table-row justify-content-start">
+                                <div class="text-end nation-name"></div>
+                                <div class="lay bl-title show-in-desktop">No</div>
+                                <div class="back bl-title show-in-desktop">Yes</div>
+                            </div>
+                            <div *ngFor="let market of AllFancyMarkets ; let i = index; trackBy: trackByFn">
+                                <div class="fancy-tripple" [ngClass]="{'border-none': i === 0}">
+                                    <div class="bet-table-mobile-row show-in-mbl">
+                                        <div class="bet-table-mobile-team-name"><span>{{market.marketName}}</span>
+                                            <span style="color: rgb(153, 153, 153);">0</span>
+                                        </div>
+                                    </div>
+                                    <div data-title="" class="bet-table-row justify-content-start"
+                                        [ngClass]="{'border-none': i === 0}">
+                                        <div class="nation-name show-in-desktop">
+                                            <p>{{market.marketName}}</p>
+                                            <p class="mb-0"
+                                                style="color: rgb(153, 153, 153); font-size: 14px; font-weight:normal;">
+                                                0</p>
+                                        </div>
+                                        <div class="bl-box-container"
+                                            [ngClass]="{'suspendedtext  table-rowforJokey':(market.oddsData.status!=='ONLINE')}"
+                                            [attr.data-title]="( (market?.oddsData?.status == 'SUSPENDED' || market?.oddsData?.status == 'CLOSED' ||  market?.oddsData?.status == 'BALLRUN')) ? market?.oddsData?.status:''">
+                                            <div class="bl-box lay position-relative " appRatehighlight><span
+                                                    class="d-block odds">{{market.oddsData?.runners[0].price.lay[0].price}}</span>
+                                                <span class="d-block odds-size"
+                                                    style="font-size: 14px; font-weight:normal;">{{market.oddsData?.runners[0].price.lay[0].size}}</span>
+                                            </div>
+                                            <div class="bl-box back position-relative " appRatehighlight><span
+                                                    class="d-block odds">{{market.oddsData?.runners[0].price.back[0].price}}</span>
+                                                <span class="d-block odds-size"
+                                                    style="font-size: 14px; font-weight:normal;">{{market.oddsData?.runners[0].price.back[0].size}}</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="fancy-min-max">
+                                            Min:<span>{{(market?.min) |
+                                                shortNumber}}</span>
+                                            Max:<span>{{(market?.max) | shortNumber}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="fancy-tripple">
+                                    <div class="bet-table-mobile-row show-in-mbl">
+                                        <div class="bet-table-mobile-team-name"><span>67 over run SL</span> <span
+                                                style="color: rgb(153, 153, 153);">0</span></div>
+                                    </div>
+                                    <div data-title="" class="bet-table-row">
+                                        <div class="nation-name show-in-desktop">
+                                            <p>67 over run SL</p>
+                                            <p class="mb-0" style="color: rgb(153, 153, 153);">0</p>
+                                        </div>
+                                        <div class="bl-box lay"><span class="d-block odds">207</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">100</span></div>
+                                        <div class="bl-box back"><span class="d-block odds">208</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">100</span></div>
+                                        <div class="fancy-min-max">
+                                            Min:<span>100</span> Max:<span>200K</span></div>
+                                    </div>
+                                </div>
+                                <div class="fancy-tripple">
+                                    <div class="bet-table-mobile-row show-in-mbl">
+                                        <div class="bet-table-mobile-team-name"><span>1st innings run bhav SL</span> <span
+                                                style="color: rgb(153, 153, 153);">0</span></div>
+                                    </div>
+                                    <div data-title="" class="bet-table-row">
+                                        <div class="nation-name show-in-desktop">
+                                            <p>1st innings run bhav SL</p>
+                                            <p class="mb-0" style="color: rgb(153, 153, 153);">0</p>
+                                        </div>
+                                        <div class="bl-box lay"><span class="d-block odds">461</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">110</span></div>
+                                        <div class="bl-box back"><span class="d-block odds">461</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">90</span></div>
+                                        <div class="fancy-min-max">
+                                            Min:<span>100</span> Max:<span>50K</span></div>
+                                    </div>
+                                </div>
+                                <div class="fancy-tripple">
+                                    <div class="bet-table-mobile-row show-in-mbl">
+                                        <div class="bet-table-mobile-team-name"><span>Fall of 3rd wkt SL</span> <span
+                                                style="color: rgb(153, 153, 153);">0</span></div>
+                                    </div>
+                                    <div data-title="" class="bet-table-row">
+                                        <div class="nation-name show-in-desktop">
+                                            <p>Fall of 3rd wkt SL</p>
+                                            <p class="mb-0" style="color: rgb(153, 153, 153);">0</p>
+                                        </div>
+                                        <div class="bl-box lay"><span class="d-block odds">241</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">100</span></div>
+                                        <div class="bl-box back"><span class="d-block odds">241</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">80</span></div>
+                                        <div class="fancy-min-max">
+                                            Min:<span>100</span> Max:<span>200K</span></div>
+                                    </div>
+                                </div>
+                                <div class="fancy-tripple">
+                                    <div class="bet-table-mobile-row show-in-mbl">
+                                        <div class="bet-table-mobile-team-name"><span>D Chandimal run</span> <span
+                                                style="color: rgb(153, 153, 153);">0</span></div>
+                                    </div>
+                                    <div data-title="" class="bet-table-row">
+                                        <div class="nation-name show-in-desktop">
+                                            <p>D Chandimal run</p>
+                                            <p class="mb-0" style="color: rgb(153, 153, 153);">0</p>
+                                        </div>
+                                        <div class="bl-box lay"><span class="d-block odds">145</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">110</span></div>
+                                        <div class="bl-box back"><span class="d-block odds">145</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">90</span></div>
+                                        <div class="fancy-min-max">
+                                            Min:<span>100</span> Max:<span>200K</span></div>
+                                    </div>
+                                </div>
+                                <div class="fancy-tripple">
+                                    <div class="bet-table-mobile-row show-in-mbl">
+                                        <div class="bet-table-mobile-team-name"><span>A Mathews run</span> <span
+                                                style="color: rgb(153, 153, 153);">0</span></div>
+                                    </div>
+                                    <div data-title="" class="bet-table-row">
+                                        <div class="nation-name show-in-desktop">
+                                            <p>A Mathews run</p>
+                                            <p class="mb-0" style="color: rgb(153, 153, 153);">0</p>
+                                        </div>
+                                        <div class="bl-box lay"><span class="d-block odds">74</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">100</span></div>
+                                        <div class="bl-box back"><span class="d-block odds">74</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">80</span></div>
+                                        <div class="fancy-min-max">
+                                            Min:<span>100</span> Max:<span>200K</span></div>
+                                    </div>
+                                </div>
+                                <div class="fancy-tripple">
+                                    <div class="bet-table-mobile-row show-in-mbl">
+                                        <div class="bet-table-mobile-team-name"><span>3rd wkt pship boundaries SL</span>
+                                            <span style="color: rgb(153, 153, 153);">0</span>
+                                        </div>
+                                    </div>
+                                    <div data-title="" class="bet-table-row">
+                                        <div class="nation-name show-in-desktop">
+                                            <p>3rd wkt pship boundaries SL</p>
+                                            <p class="mb-0" style="color: rgb(153, 153, 153);">0</p>
+                                        </div>
+                                        <div class="bl-box lay"><span class="d-block odds">11</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">100</span></div>
+                                        <div class="bl-box back"><span class="d-block odds">12</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">100</span></div>
+                                        <div class="fancy-min-max">
+                                            Min:<span>100</span> Max:<span>25K</span></div>
+                                    </div>
+                                </div>
+                                <div class="fancy-tripple">
+                                    <div class="bet-table-mobile-row show-in-mbl">
+                                        <div class="bet-table-mobile-team-name"><span>D Chandimal boundaries</span> <span
+                                                style="color: rgb(153, 153, 153);">0</span></div>
+                                    </div>
+                                    <div data-title="" class="bet-table-row">
+                                        <div class="nation-name show-in-desktop">
+                                            <p>D Chandimal boundaries</p>
+                                            <p class="mb-0" style="color: rgb(153, 153, 153);">0</p>
+                                        </div>
+                                        <div class="bl-box lay"><span class="d-block odds">19</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">100</span></div>
+                                        <div class="bl-box back"><span class="d-block odds">20</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">100</span></div>
+                                        <div class="fancy-min-max">
+                                            Min:<span>100</span> Max:<span>25K</span></div>
+                                    </div>
+                                </div>
+                                <div class="fancy-tripple">
+                                    <div class="bet-table-mobile-row show-in-mbl">
+                                        <div class="bet-table-mobile-team-name"><span>A Mathews boundaries</span> <span
+                                                style="color: rgb(153, 153, 153);">0</span></div>
+                                    </div>
+                                    <div data-title="" class="bet-table-row">
+                                        <div class="nation-name show-in-desktop">
+                                            <p>A Mathews boundaries</p>
+                                            <p class="mb-0" style="color: rgb(153, 153, 153);">0</p>
+                                        </div>
+                                        <div class="bl-box lay"><span class="d-block odds">8</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">115</span></div>
+                                        <div class="bl-box back"><span class="d-block odds">8</span> <span
+                                                class="d-block odds-size" style="font-size: 14px; font-weight:normal;">85</span></div>
+                                        <div class="fancy-min-max">
+                                            Min:<span>100</span> Max:<span>25K</span></div>
+                                    </div>
+                                </div> -->
+                        </div>
+                    </div>
+                </div>
+                }
+
+                <!-- ODDS EVENS Market -->
+                <div class="market-6" *ngIf="sportbookData?.length>0">
+                    <div class="bet-table">
+                        <div class="bet-table-header">
+                            <div data-bs-toggle="collapse" data-bs-target="#market5" aria-expanded="true"
+                                class="nation-name">
+                                <span title="oddeven" class="mobile-nation-name d-flex align-items-center"><a
+                                        title=""><img
+                                            src="https://g1ver.sprintstaticdata.com/v32/static/admin/img/arrow-down.svg"
+                                            class="me-1"></a>
+                                    <span>oddeven</span>
+                                </span>
+                            </div>
+                            <div class="float-end"><a class="btn btn-back ">Bet Lock</a>
+                            </div>
+                        </div>
+                        <div id="market5" data-title="OPEN" class="bet-table-body collapse show">
+                            <div class="bet-table-row justify-content-start">
+                                <div class="text-end nation-name"></div>
+                                <div class="back bl-title show-in-desktop">Odd</div>
+                                <div class="back bl-title show-in-desktop">Even</div>
+                            </div>
+                            <div *ngFor="let market of sportbookData; let i = index; trackBy: trackByFn">
+                                <div class="fancy-tripple" [ngClass]="{'border-none': i === 0}">
+                                    <div class="bet-table-mobile-row show-in-mbl">
+                                        <div class="bet-table-mobile-team-name"><span>{{market.marketName}}</span> <span
+                                                style="color: rgb(153, 153, 153);">0</span></div>
+                                    </div>
+                                    <div class="bet-table-row justify-content-start"
+                                        [ngClass]="{'suspendedtext  table-rowforJokey':(market.oddsData.status!=='ONLINE'),'border-none': i === 0}"
+                                        [attr.data-title]="( (market?.oddsData?.status == 'SUSPENDED' || market?.oddsData?.status == 'CLOSED' ||  market?.oddsData?.status == 'BALLRUN')) ? market?.oddsData?.status:''">
+                                        <div class="nation-name show-in-desktop">
+                                            <p>{{market.marketName}}</p>
+                                            <p class="mb-0"
+                                                style="color: rgb(153, 153, 153);font-size: 14px; font-weight: normal;">
+                                                0</p>
+                                        </div>
+                                        <div class="bl-box back no-val position-relative " appRatehighlight>
+                                            <span class="d-block odds">{{market.oddsData?.runners[0].price.lay[0].price
+                                                }}</span>
+                                            <span
+                                                style="font-size: 14px; font-weight: normal;">{{market.oddsData?.runners[0].price.lay[0].size
+                                                | shortNumber}}</span>
+                                        </div>
+                                        <div class="bl-box back no-val position-relative " appRatehighlight>
+                                            <span
+                                                class="d-block odds">{{market.oddsData?.runners[0].price.back[0].price}}</span>
+                                            <span
+                                                style="font-size: 14px; font-weight: normal;">{{market.oddsData?.runners[0].price.back[0].size
+                                                | shortNumber}}</span>
+                                        </div>
+                                        <div class="fancy-min-max">
+                                            Min:<span>{{(market?.min) |
+                                                shortNumber}}</span>
+                                            Max:<span>{{(market?.max) | shortNumber}}</span></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="fancy-tripple">
+                                <div class="bet-table-mobile-row show-in-mbl">
+                                    <div class="bet-table-mobile-team-name"><span>80 over run odd even SL</span> <span
+                                            style="color: rgb(153, 153, 153);">0</span></div>
+                                </div>
+                                <div data-title="" class="bet-table-row">
+                                    <div class="nation-name show-in-desktop">
+                                        <p>80 over run odd even SL</p>
+                                        <p class="mb-0" style="color: rgb(153, 153, 153);">0</p>
+                                    </div>
+                                    <div class="bl-box back"><span class="d-block odds">1.98</span> <span
+                                            class="d-block odds-size" style="font-size: 14px; font-weight:normal;">1000K</span></div>
+                                    <div class="bl-box back"><span class="d-block odds">1.98</span> <span
+                                            class="d-block odds-size" style="font-size: 14px; font-weight:normal;">1000K</span></div>
+                                    <div class="fancy-min-max">
+                                        Min:<span>100</span>
+                                        Max:<span>100K</span></div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- This market is commented until backend response -->
+                <!-- <div class="market-9">
+                    <div class="bet-table">
+                        <div class="bet-table-header">
+                            <div data-bs-toggle="collapse" data-bs-target="#market6" aria-expanded="true"
+                                class="nation-name">
+                                <span title="1ST INN 70 OVER SL VS NZ" class="mobile-nation-name"><a title=""><img
+                                            src="https://g1ver.sprintstaticdata.com/v32/static/admin/img/arrow-down.svg"
+                                            class="me-1"></a>
+                                    1ST INN 70 OVER SL VS NZ
+                                </span>
+                            </div>
+                            <div class="float-end"><a class="btn btn-back">Bet Lock</a>
+                            </div>
+                        </div>
+                        <div id="market6" data-title="OPEN" class="bet-table-body collapse show">
+                            <div class="bet-table-row">
+                                <div class="text-end nation-name"><span class="max-bet">
+                                        Min:<span>100</span>
+                                        Max:<span>100K</span></span></div>
+                                <div class="back bl-title show-in-desktop">Back</div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">0 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>0 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;"> 0
+                                </div>
+                                <div class="bl-box back f"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size" style="font-size: 14px; font-weight:normal">100</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">1 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>1 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;"> 0
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">2 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>2 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">3 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>3 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">4 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>4 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">5 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>5 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">6 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>6 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">7 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>7 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">8 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>8 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">9 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>9 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="market-9">
+                    <div class="bet-table">
+                        <div class="bet-table-header">
+                            <div data-bs-toggle="collapse" data-bs-target="#market7" aria-expanded="true"
+                                class="nation-name">
+                                <span title="1ST INN  80 OVER SL VS NZ" class="mobile-nation-name"><a title=""><img
+                                            src="https://g1ver.sprintstaticdata.com/v32/static/admin/img/arrow-down.svg"
+                                            class="me-1"></a>
+                                    1ST INN 80 OVER SL VS NZ
+                                </span>
+                            </div>
+                            <div class="float-end"><a class="btn btn-back">Bet Lock</a>
+                            </div>
+                        </div>
+                        <div id="market7" data-title="OPEN" class="bet-table-body collapse show">
+                            <div class="bet-table-row">
+                                <div class="text-end nation-name"><span class="max-bet">
+                                        Min:<span>100</span>
+                                        Max:<span>100K</span></span></div>
+                                <div class="back bl-title show-in-desktop">Back</div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">0 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>0 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">1 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>1 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">2 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>2 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">3 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>3 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">4 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>4 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">5 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>5 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">6 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>6 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">7 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>7 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">8 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>8 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                            <div class="bet-table-mobile-row show-in-mbl">
+                                <div class="bet-table-mobile-team-name">9 Number
+                                    <span style="color: rgb(153, 153, 153);">0</span> <span class="d-none">0</span>
+                                </div>
+                            </div>
+                            <div class="bet-table-row">
+                                <div class="nation-name show-in-desktop">
+                                    <p>9 Number</p>
+                                    <p class="mb-0 float-left"
+                                        style="color: rgb(153, 153, 153); font-size: 18px; font-weight: normal;">0</p>
+                                    <p class="mb-0 float-end d-none">0</p>
+                                </div>
+                                <div class="bl-box back"><span class="d-block odds">9.5</span> <span
+                                        class="d-block odds-size"
+                                        style="font-size: 14px; font-weight:normal;">100</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- right side Bar  -->
+        <div class="right-sidebar">
+            <div class="simplebar-wrapper" style="margin: 0px;">
+                <div class="simplebar-height-auto-observer-wrapper">
+                    <div class="simplebar-height-auto-observer"></div>
+                </div>
+                <div class="simplebar-mask">
+                    <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                        <div class="simplebar-content-wrapper" tabindex="0" role="region"
+                            aria-label="scrollable content" style="height: auto; overflow: hidden;">
+                            <div class="simplebar-content" style="padding: 0px;">
+                                <div style="margin-bottom: 10px;">
+                                    <div class="card mb-tv-0">
+                                        <div class="card-header pointer" style="background-color: #464646 !important;">
+                                            <h6 class="card-title text-uppercase" data-bs-toggle="collapse"
+                                                data-bs-target="#video-tv" (click)="liveTvOpen()" aria-expanded="true"
+                                                aria-controls="video-tv">
+                                                <a title="">
+                                                    <img src="../../../assets/market-details-assets/arrow-down.svg"
+                                                        class="me-1"></a>
+                                                Live Match
+                                            </h6>
+                                        </div>
+
+                                    </div>
+                                    <!-- <div id="video-tv" class="collapse">
+
+                                        <div>
+                                            <app-video-player></app-video-player>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <div id="my-game-bets" class="card m-b-10 my-bet">
+                                    <div class="card-header" style="background-color: #464646 !important;">
+                                        <h6 class="card-title float-left text-uppercase">My Bets</h6>
+
+                                        <a class="btn btn-back me-1 float-end" data-bs-toggle="modal"
+                                            data-bs-target="#matchedbetsModal">View More</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tabs" id="__BVID__1993">
+                                            <div class="">
+                                                <ul role="tablist" class="nav nav-tabs small"
+                                                    id="__BVID__1993__BV_tab_controls_">
+                                                    <li role="presentation" class="nav-item"><a role="tab"
+                                                            aria-selected="true" aria-setsize="1" aria-posinset="1"
+                                                            href="#" target="_self" class="nav-link active"
+                                                            id="__BVID__1994___BV_tab_button__"
+                                                            aria-controls="__BVID__1994">Matched Bets</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="tab-content" id="__BVID__1993__BV_tab_container_">
+                                                <div role="tabpanel" aria-hidden="false" class="tab-pane active"
+                                                    id="__BVID__1994" aria-labelledby="__BVID__1994___BV_tab_button__">
+                                                    <div id="matched-bet" class="tab-pane active">
+                                                        <div class="table-responsive">
+                                                            <table class="table coupon-table mb-0"
+                                                                style="font-weight: 400 !important;">
+                                                                <thead>
+                                                                    <tr class="table-font  table-font-th"
+                                                                        style="border-top: 1px solid #F0F2F8;  ">
+                                                                        <th style=" min-width: 90px;">
+                                                                            UserName</th>
+                                                                        <th style=" min-width: 90px;">
+                                                                            Nation</th>
+                                                                        <th class="text-end" style=" min-width: 50px;">
+                                                                            Rate</th>
+                                                                        <th class="text-end" style=" min-width: 70px;">
+                                                                            Amount</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td colspan="4"
+                                                                            class="text-center table-font border-0"
+                                                                            style="padding: 5px 0 20px 0 !important;">
+                                                                            No records
+                                                                            found</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matched Bets View More Modal  -->
+                <div class="modal fade" id="matchedbetsModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-big"><span tabindex="0"></span>
+                        <div id="__BVID__1888___BV_modal_content_" tabindex="-1" class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">View More</h5><button type="button" aria-label="Close"
+                                    class="close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                            </div>
+
+                            <div class="modal-body">
+                                <div class="tab-content m-t-20">
+                                    <div class="tabs" id="betTab">
+                                        <!-- Nav Pills -->
+                                        <div class="card-header">
+                                            <ul role="tablist" class="nav nav-pills card-header-pills"
+                                                id="betTabControls">
+                                                <li role="presentation" class="nav-item">
+                                                    <a class="nav-link active" id="matched-bets-tab"
+                                                        data-bs-toggle="tab" href="#matched-bets" role="tab"
+                                                        aria-controls="matched-bets" aria-selected="true">Matched
+                                                        Bets</a>
+                                                </li>
+                                                <li role="presentation" class="nav-item">
+                                                    <a class="nav-link" id="deleted-bets-tab" data-bs-toggle="tab"
+                                                        href="#deleted-bets" role="tab" aria-controls="deleted-bets"
+                                                        aria-selected="false">Deleted Bets</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Tab Content -->
+                                        <div class="tab-content" id="betTabContent">
+                                            <!-- Matched Bets Content -->
+                                            <div role="tabpanel" class="tab-pane fade show active card-body"
+                                                id="matched-bets" aria-labelledby="matched-bets-tab">
+                                                <div id="matched-bet2" class="tab-pane active">
+                                                    <div class="text-center">No records found</div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Deleted Bets Content -->
+                                            <div role="tabpanel" class="tab-pane fade card-body" id="deleted-bets"
+                                                aria-labelledby="deleted-bets-tab">
+                                                <!-- You can add content for Deleted Bets here -->
+                                                <div class="text-center">No deleted bets available</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><span tabindex="0"></span>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+            </div>
+            <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+                <div class="simplebar-scrollbar" style="height: 0px; display: none;"></div>
+            </div>
+        </div>
+    </div>
+</div>

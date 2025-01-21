@@ -1,0 +1,133 @@
+.casino-detail {
+    padding: 10px 10px 40px;
+    background-color: #f8f8fb;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 6px #e2e2e2;
+}
+.three-card-j-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: auto;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.three-card-j-box.back {
+    border: 2px solid #72bbef;
+    background-color: #72bbef17 !important;
+}
+.three-card-j-box.lay {
+    border: 2px solid #f994ba;
+    background-color: #f994ba17 !important;
+}
+.three-card-j-title {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+.casino-book-value {
+    font-size: 18px;
+}
+.three-j-cards {
+    width: 90%;
+    height: 100%;
+}
+.suspended {
+    position: relative;
+}
+.three-j-cards.suspended::before {
+    background-size: 35px 35px;
+}
+.three-j-cards.suspended::after {
+    border-radius: 0;
+}
+
+.three-card-j-odds {
+    padding: 4px;
+    width: 100%;
+    font-size: 18px;
+}
+.casino-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: center;
+    padding-bottom: 5px;
+}
+.casino-card-item {
+    min-width: 40px !important;
+    margin-right: 5px;
+    margin-left: 5px;
+    width: auto;
+    margin-bottom: 10px;
+}
+.card-img {
+    cursor: pointer;
+    display: inline-block;
+}
+.card-icon {
+    width: 48px;
+}
+.casino-min-max-text {
+    font-size: 11px;
+    color: black;
+    font-weight: normal;
+    padding-left: 12px;
+}
+.casino-marque-container {
+    display: flex;
+    align-items: center;
+    background-color: #d3d3d36b;
+    color: #333;
+    border-radius: 16px;
+    height: 32px;
+    width: 100%;
+}
+.remark-icon {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    background-color: #434343;
+}
+.remark-icon img {
+    height: 20px;
+}
+.casino-marque-container marquee {
+    width: calc(100% - 60px);
+    float: right;
+    padding-left: 10px;
+}
+
+@media (max-width: 767px) {
+    .card-icon {
+        width: 42px;
+        height: auto;
+    }
+    .three-card-j-title {
+        width: 100%;
+        height: auto;
+        justify-content: space-between;
+        flex-direction: row;
+        padding: 5px;
+    }
+    .casino-cards {
+        justify-content: flex-start;
+    }
+    .three-j-cards {
+        width: 100%;
+    }
+    .casino-min-max-text {
+        font-size: 12px;
+    }
+}

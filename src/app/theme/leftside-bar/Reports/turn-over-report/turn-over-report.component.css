@@ -1,0 +1,15 @@
+@import url('../our-casino-result/our-casino-result.component.css');
+@import url('../account-statement/account-statement.component.css');
+.alert{
+    padding: .75rem 1rem !important;
+    margin-bottom: 1rem !important;
+    color: #2a567d !important;
+    font-size: 12px !important;
+    background-color: #dcedfc !important;
+}
+
+@media(min-width:1279px){
+    .alert{
+        font-size: 13px !important;
+    }
+}

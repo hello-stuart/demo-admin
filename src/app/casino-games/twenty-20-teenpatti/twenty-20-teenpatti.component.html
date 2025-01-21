@@ -1,0 +1,58 @@
+<div class="videoPlayer">
+    <app-video-player></app-video-player>
+
+</div>
+<div class="teenpatti20 casino-table font-noto-sans">
+    <div class="casino-detail">
+        <div class="d-flex justify-content-around d-md-none">
+            <span style="margin-left: 40px;"> </span>
+            <div *ngFor="let runner of winnerMarketArray?.runners; let i = index; ">
+                <div class="casino-nation-name no-border casino-bl-box-title">
+                    <div class="playera" [ngClass]="{
+                    'color-yellow' : i === 1,
+                }">{{winnerMarketArray.runnersName[runner.selectionId]}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="teen20casino-container d-none-small">
+            <div class="teen20left" *ngFor="let runner of winnerMarketArray?.runners; let i = index;  ">
+                <div class="w-100">
+                    <div class="casino-box-row">
+                        <div class="casino-nation-name no-border casino-bl-box-title d-none d-md-block">
+                            <div class="playera" [ngClass]="{ 'color-yellow' : i === 1 }">
+                                {{ capitalize(winnerMarketArray.runnersName[runner.selectionId]) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-use">
+                        <div class="casino-bl-box casino-bl-box-title"
+                            *ngFor="let market of marketArray;let marketIndex = index">
+
+                            <div class="casino-bl-box-item" [ngClass]="{
+                                'mbl-none' : i === 1
+                            }">
+                                <span class="font">{{splitMarketName(market.marketName)}}</span>
+                                <i data-bs-toggle="collapse" [attr.data-bs-target]="'#range' + i + marketIndex"
+                                    class="fas fa-info-circle float-end ms-1">
+                                </i>
+
+                                <div [id]="'range' + i + marketIndex" class="collapse icon-range">
+                                    R:<span>{{market.min | shortNumber}}-{{market.max | shortNumber}}</span>
+                                </div>
+                            </div>
+                            <div class="back casino-bl-box-item mbl-colum"
+                                [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                                <span class="casino-box-odd">{{market.runners[0].price.back[0].price}}</span>
+                                <span class="casino-book book-black">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="teen20center" *ngIf="i===0"></div>
+            </div>
+        </div>
+    </div>
+    <div class="block-768 ">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

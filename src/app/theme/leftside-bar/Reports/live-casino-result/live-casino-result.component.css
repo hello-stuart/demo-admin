@@ -1,0 +1,5 @@
+@import url('../account-statement/account-statement.component.css');
+
+.is-invalid {
+    border-color: red !important;
+  }

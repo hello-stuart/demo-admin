@@ -1,0 +1,133 @@
+.badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  .badge-danger {
+    color: #fff;
+    background-color: #f46a6a;
+  }
+  .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+  }
+  .security-auth {
+    font-size: 14px;
+  }
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
+  .nav-tabs {
+    border-bottom: 1px solid #ced4da;
+  }
+  .security-auth .casino-report-tabs .nav-tabs {
+    justify-content: center;
+  }
+  ul, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-tabs .nav-item {
+    margin-bottom: -1px;
+  }
+  .pointer {
+    cursor: pointer;
+  }
+  .nav-link {
+    display: block;
+    padding: .5rem 1rem;
+  }
+  .nav-pills>a, .nav-pills>li>a, .nav-tabs>li>a {
+    color: #495057;
+    font-weight: 500;
+  }
+  .nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+  }
+  .nav-tabs .nav-link {
+    border-radius: 0!important;
+  }
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ced4da #ced4da #fff;
+  }
+  .tab-content > .tab-pane {
+    padding: 0;
+  }
+  .form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .94rem + 2px);
+    padding: .47rem .75rem;
+    font-size: .8125rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  .security-auth .secure-password .form-control {
+    height: 38px;
+    display: inline-block;
+    width: 200px;
+  }
+  .text-primary {
+    text-decoration: none;
+    color: #556ee6!important;
+  }
+  kbd {
+    padding: .2rem .4rem;
+    font-size: 87.5%;
+    background: var(--login-submit-button-bg) !important;
+    color: var(--login-submit-color) !important;
+    border-radius: .2rem;
+  }
+  
+  .login-auth input {
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    margin: 0 10px;
+    font-size: 30px;
+    border-radius: 4px;
+  
+    text-align: center;
+    /* background-color: var(--bg-table);
+    color: var(--text-table); */
+  }
+  @media only screen and (max-width: 767px){
+    .login-auth input {
+      width: 40px;
+      height: 40px;
+      margin: 0 5px;
+  }
+  
+  }
+  .resendBtn{
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .ResendTimer{
+    text-decoration: none;
+    color: #000;
+    cursor: wait;
+  }

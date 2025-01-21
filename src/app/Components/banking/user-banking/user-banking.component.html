@@ -1,0 +1,187 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box d-flex align-items-center justify-content-between">
+        @if (this.payloadReq.role == 'MASTER') {
+        <h4 class="mb-0 ">
+          Master Banking
+        </h4>
+        }@else {
+        <h4 class="mb-0 ">
+          User Banking
+        </h4>
+        }
+        <div class="total_all" *ngIf="this.payloadReq.role == 'MASTER'">
+          <div class="chips_summary">
+            <strong style="float: left;"> Chips Summary </strong>
+            <div class="form-check form-check-inline ms-2" style="float:left">
+              <label for="chipSummaryOnOFF" class="switch switch-label switch-primary switch-lg mr-2">
+                <input [checked]="isChipSummary" name="chipssummarytoogle" class="switch-input " type="checkbox">
+                <span class="switch-slider" data-checked="✓" data-unchecked="✕"></span>
+              </label>
+              <button id="chipSummaryOnOFF" class="d-none" (click)="UpdateChipsSummary()"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card my-exchange-head card-accent-primary card-shadow">
+          <div class="card-body">
+            <div class="table-responsive tbl-banking">
+              <table datatable [dtOptions]="dtOptions" role="table" aria-busy="false" aria-colcount="6"
+                class="table table-bordered table-hover table-striped">
+                <thead role="rowgroup">
+                  <tr role="row">
+                    <th>UID</th>
+                    <th>Balance</th>
+                    <th>Available D / W</th>
+                    <th>Exposure</th>
+                    <th>Credit Reference</th>
+                    <th>Reference P/L</th>
+                    <th style="min-width: 200px;">Deposit/Withdraw</th>
+                    <th style="min-width: 100px;">Remark</th>
+                  </tr>
+
+                </thead>
+                <tbody class="ng-star-inserted" *ngIf="rows?.length>0">
+                  <!---->
+                  <tr class="ng-star-inserted" *ngFor="let item of rows; trackBy: trackByFn;index as i">
+
+                    <td>
+                      <strong>{{item.userName}}</strong>
+                    </td>
+                    <td>
+                      <strong>{{item.mainBalance | number : '1.0-2'}}</strong>
+                    </td>
+                    <td>
+                      <strong>{{(item.mainBalance-item.exposure) | number : '1.0-2'}}</strong>
+                    </td>
+                    <td class="cl-red">
+                      <strong>({{item.exposure | number : '1.0-2'}})</strong>
+                    </td>
+                    <td>
+                      <a (click)="OpenModal(item,'C')" data-bs-toggle="modal" data-bs-target="#EditRefereceModal">
+                        <strong>{{item.creditReference | number : '1.0-2'}}</strong>
+                        <i class="far fa-edit m-l-10" style="color: var(--user-banking-submit-btn-bg);"></i>
+                      </a>
+                    </td>
+                    <td class="profit cl-black"
+                      [ngClass]="(item.mainBalance-item.creditReference)>0?'cl-green':'cl-red'">
+                      <strong>{{item.mainBalance-item.creditReference| number : '1.0-2'}}</strong>
+                    </td>
+                    <td class="tbl-cell-depst d-flex">
+                      <button (click)="depositWithdrawManager('D',item);depositObj._id=item._id"
+                        [ngClass]="(depositObj.deposit && depositObj._id==item._id)?'bt-deposit-active':'bt-deposit'"
+                        class="btn btn-brand  active text bt-deposit ">
+                        <span class="text-white">D</span>
+                      </button>
+                      <button (click)="depositWithdrawManager('W',item);depositObj._id=item._id"
+                        [ngClass]="(depositObj.withdraw&& depositObj._id==item._id)?'bt-withdraw-active':'bt-withdraw'"
+                        class="btn btn-brand  active text bt-withdraw ">
+                        <span class="text-white">W</span>
+                      </button>
+                      <input class="form-control inpt-dpst" [id]="'withdrwalamount'+i" *ngIf="depositObj._id==item._id"
+                        [(ngModel)]="depositObj.withdrawAmount" placeholder="0" type="text">
+                      <input class="form-control inpt-dpst" [id]="'depisutamoutn'+i" *ngIf="depositObj._id!=item._id"
+                        placeholder="0" type="text">
+                      <button class="btn btn-brand btn-primary bt-full text "
+                        (click)="depositObj.withdrawAmount=item.mainBalance-item.exposure"
+                        [disabled]="!(depositObj.withdraw &&depositObj._id==item._id)">
+                        <span>
+                          <strong>Full</strong>
+                        </span>
+                      </button>
+                    </td>
+                    <td>
+                      <input class="form-control  " [id]="'v12'+i" *ngIf="depositObj._id==item._id"
+                        [(ngModel)]="depositObj.remark" placeholder="Remark" type="text">
+                      <input class="form-control  " [id]="'Remark'+i" *ngIf="depositObj._id!=item._id"
+                        placeholder="Remark" type="text">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="12" class="dt-empty">No matching records found</td>
+                  </tr>
+                </tbody>
+                <tfoot *ngIf="rows?.length==0">
+                  <tr>
+                    <td class="no-data-available text-center" colspan="10" rowspan="1">No data available ion the table
+                    </td>
+                  </tr>
+                </tfoot>
+                <!--                </tfoot>-->
+              </table>
+            </div>
+            <div class="divider"></div>
+            <div class="row align-items-center justify-content-end">
+              <div class="col-12 col-md-3 col-xl-3 mb-3 mb-xl-0 px-2">
+                <button class="btn btn-block btn-danger back-danger" (click)="rerender()" type="button">Clear
+                  All</button>
+              </div>
+              <div class="col-12 col-md-3 col-xl-3 mb-3 mb-xl-0 px-2">
+                <input autocomplete="new-password" [(ngModel)]="depositObj.masterPassword" class="form-control  "
+                  name="paymentPass" placeholder="Password.." type="password">
+              </div>
+              <div class="col-12 col-md-3 col-xl-3 mb-3 mb-xl-0 px-2">
+                <button class="btn btn-block back-success" (click)="DepositWithdraw()" type="button">Submit
+                  Payment</button>
+              </div>
+              <!-- <div class="col-md-3 col-2"></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade " id="EditRefereceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h5 class="modal-title">{{selectedrow.type=='E'?'Edit Exposure Limit':'Edit Credit Reference'}} -
+            {{selectedrow?.userName}} </h5>
+          <button class="close" type="button">
+            <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="ms-3">
+            <div class="form-group row">
+              <div class="col-md-2">Current</div>
+              <div class="col-md-8">
+                <strong>{{selectedrow?.creditReference}}</strong>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-2 col-form-label">New</div>
+              <div class="col-md-8">
+                <input type="number" oninput="validity.valid||(value='');" [(ngModel)]="selectedrow.newLimitLable"
+                  oninput="validity.valid||(value='');" min="0" max="999999999999" required="" name="newLimit"
+                  class="text-right form-control maxlength12 ">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-2 col-form-label">Password</div>
+              <div class="col-md-8">
+                <input type="password" [(ngModel)]="selectedrow.masterPassword" id="masterpassword2"
+                  name="masterpassword2" required="" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-success" type="button" data-bs-dismiss="modal"
+            (click)="CreditOrExposureLimit()">Submit</button>
+          <button class="btn btn-default" type="button" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,575 @@
+<div class="animated fadeIn divider-top">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box d-flex align-items-center justify-content-between">
+        <h4 class="mb-0 ">
+          My Account
+        </h4>
+        <div class="page-title-right">
+          <input type="text" name="searchMarktetText" placeholder="Search Event" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card card-accent-primary card-shadow">
+    <div class="card-header account-detail-head"> Account Details </div>
+    <div class="card-body account-detail-body">
+      <div class="bd-example">
+        <dl class="row">
+          <dt class="col-sm-3">Name</dt>
+          <dd class="col-sm-9">{{data.userName}}</dd>
+          <dt class="col-sm-3">Commission</dt>
+          <dd class="col-sm-9"> {{data?.takenCommission}}
+            <a *ngIf="this.userid && !subchild" data-bs-toggle="modal" data-bs-target="#UpdateCommissionModal">
+              <i class="far fa-edit  fa-sm ms-2"></i>
+            </a>
+          </dd>
+          <!---->
+          <dt class="col-sm-3 " *ngIf="!subchild">Rolling Commission</dt>
+          <!---->
+          <dd class="col-sm-9 " *ngIf="!subchild">
+            <a data-bs-toggle="modal" data-bs-target="#modalRoolingCOmmision">
+              <i class="far fa-edit  fa-sm"></i>
+            </a>
+            <a data-bs-toggle="modal" *ngIf="isMaster" (click)="showRolling=false" data-bs-target="#RoolingMixedModal">
+              <i class="fa fa-eye fa-sm ms-2"></i>
+            </a>
+          </dd>
+          <dt class="col-sm-3" *ngIf="isMaster && !subchild">Agent Rolling Commission</dt>
+          <dd class="col-sm-9" *ngIf="isMaster && !subchild">
+            <a data-bs-toggle="modal" (click)="showRolling=true" *ngIf="userid"
+              data-bs-target="#modalRoolingCOmmisionAgent">
+              <i class="far fa-edit fa-sm"></i>
+            </a>
+            <a data-bs-toggle="modal" (click)="showRolling=true" data-bs-target="#RoolingMixedModal">
+              <i class="fa fa-eye ms-2"></i>
+            </a>
+          </dd>
+          <dt class="col-sm-3">Currency</dt>
+          <dd class="col-sm-9"> IRP</dd>
+          <dt class="col-sm-3">Partnership</dt>
+          <dd class="col-sm-9"> {{data.partnership}} </dd>
+          <dt class="col-sm-3" *ngIf="!isMaster">Exposure Limit</dt>
+          <dd class="col-sm-9" *ngIf="!isMaster">
+            <span class="me-3">{{data?.exposureLimit}}</span>
+            <!---->
+            <a *ngIf="!subchild" class="" data-bs-toggle="modal" data-bs-target="#EditRefereceModal">
+              <i class="far fa-edit  fa-sm"></i>
+            </a>
+          </dd>
+          <dt class="col-sm-3" *ngIf="isMaster">Partnership</dt>
+          <dd class="col-sm-9" *ngIf="isMaster">
+            {{data?.partnership}}
+          </dd>
+          <dt class="col-sm-3">Mobile Number</dt>
+          <dd class="col-sm-9">
+            <span class="me-3">{{data.mobileNo?data.mobileNo:'Not found'}}</span>
+            <!---->
+            <a *ngIf="!subchild && !isMaster" class="" data-bs-toggle="modal" data-bs-target="#editMobileNoModal">
+              <i class="far fa-edit  fa-sm"></i>
+            </a>
+          </dd>
+          <!---->
+          <dt *ngIf="!subchild" class="col-sm-3 ">Password</dt>
+          <!---->
+          <dd *ngIf="!subchild" class="col-sm-9 ">
+            <span class="me-3">*********</span>
+            <a data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+              <i class="far fa-edit  fa-sm"></i>
+            </a>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Rooling Commsion Modal -->
+<div class="modal fade" id="modalRoolingCOmmision" tabindex="-1" aria-labelledby="yourModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title">Rolling Commission - {{data?.userName}}</h5>
+        <button class="close" type="button">
+          <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+        </button>
+      </div>
+      <div class="modal-body ps-4">
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Fancy</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.rollingFancyCommission" name="rfancyCommission"
+                placeholder="Fancy Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Matka</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.rollingMatkaCommission" name="rmatkaCommission"
+                placeholder="Matka Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Casino</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.rollingCasinoCommission" name="rcasinoCommission"
+                placeholder="Casino Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" *ngIf="data.rollingBinaryCommission">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Binary</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.rollingBinaryCommission" name="rbinaryCommission"
+                placeholder="Binary Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Sportbook</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.rollingSportsbookCommission" name="rsportbookCommission"
+                placeholder="Sportbook Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Bookmaker</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.rollingBookmakerCommission" name="rbookmakerCommission"
+                placeholder="Bookmaker Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-md-12">
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label">Lottery</label>
+              <div class="col-md-8">
+                <input class="form-control " [(ngModel)]="data.rollingLotteryCommission" name="rbookmakerCommission"
+                  placeholder="Bookmaker Rolling Commission.." type="text">
+              </div>
+            </div>
+          </div> -->
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Virtual Sports</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.rollingVirtualSportsCommission" name="rbookmakerCommission"
+                placeholder="Virtual Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Password</div>
+            <div class="col-md-8">
+              <div class="d-flex align-items-center position-relative">
+                <input class="form-control" [(ngModel)]="data.mPassword" name="rate" placeholder="Password.."
+                  required="" [type]="eyeIcon.masterPassword?'text':'password'">
+                <a class="eyebtn" (click)="eyeIcon.masterPassword=!eyeIcon.masterPassword">
+                  <i class="far fa-eye" [ngClass]="eyeIcon.masterPassword?'fa-eye-slash':'fa-eye'"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" type="button" data-bs-dismiss="modal" [disabled]="!data.mPassword"
+          aria-label="Close" (click)="updateUserRollingCommission(data)">Submit</button>
+        <button class="btn btn-default" type="button" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Rooling Commsion Modal -->
+<div class="modal fade" id="modalRoolingCOmmisionAgent" tabindex="-1" aria-labelledby="yourModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title">Agent Rolling Commission - {{data?.userName}}</h5>
+        <button class="close" type="button">
+          <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+        </button>
+      </div>
+      <div class="modal-body ps-4">
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Fancy</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.masterFancyCommission" name="rfancyCommission"
+                placeholder="Fancy Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Matka</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.masterMatkaCommission" name="rmatkaCommission"
+                placeholder="Matka Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Casino</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.masterCasinoCommission" name="rcasinoCommission"
+                placeholder="Casino Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" *ngIf="data.rollingBinaryCommission">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Binary</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.masterBinaryCommission" name="rbinaryCommission"
+                placeholder="Binary Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Sportbook</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.masterSportbookCommission" name="rsportbookCommission"
+                placeholder="Sportbook Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Bookmaker</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.masterBookmakerCommission" name="rbookmakerCommission"
+                placeholder="Bookmaker Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Virtual Sports</div>
+            <div class="col-md-8">
+              <input class="form-control " [(ngModel)]="data.masterVirtualSportsCommission" name="rbookmakerCommission"
+                placeholder="Virtual Rolling Commission.." type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Password</div>
+            <div class="col-md-8">
+              <div class="d-flex align-items-center position-relative">
+                <input class="form-control" [(ngModel)]="data.mPassword" name="rate" placeholder="Password.."
+                  required="" [type]="eyeIcon.masterPassword?'text':'password'">
+                <a class="eyebtn" (click)="eyeIcon.masterPassword=!eyeIcon.masterPassword">
+                  <i class="far fa-eye" [ngClass]="eyeIcon.masterPassword?'fa-eye-slash':'fa-eye'"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" type="button" data-bs-dismiss="modal" aria-label="Close"
+          [disabled]="!data.mPassword" (click)="updateMasterRollingCommission(data)">Submit</button>
+        <button class="btn btn-default" type="button" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade " id="EditRefereceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title">Edit Exposure Limit - {{data?.userName}} </h5>
+        <button class="close" type="button">
+          <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="ms-3">
+          <div class="form-group row">
+            <div class="col-md-2">Current</div>
+            <div class="col-md-8">
+              <strong>{{data?.exposureLimit | number :'1.0-2'}}</strong>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">New</div>
+            <div class="col-md-8">
+              <input type="number" oninput="validity.valid||(value='');" [(ngModel)]="data.newLimitLable"
+                oninput="validity.valid||(value='');" min="0" max="999999999999" required="" name="newLimit"
+                class="text-right form-control maxlength12 ">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-2 col-form-label">Password</div>
+            <div class="col-md-8">
+              <div class="d-flex align-items-center position-relative">
+                <input class="master-password-field" [type]="eyeIcon.masterPassword?'text':'password'"
+                  [(ngModel)]="data.masterPassword" id="masterpassword2" name="masterpassword2" required=""
+                  class="form-control">
+                <a class="eyebtn" (click)="eyeIcon.masterPassword=!eyeIcon.masterPassword">
+                  <i class="far fa-eye" [ngClass]="eyeIcon.masterPassword?'fa-eye-slash':'fa-eye'"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-success" type="button" data-bs-dismiss="modal"
+          (click)="CreditOrExposureLimit(data)">Submit</button>
+        <button class="btn btn-default" type="button" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- editMobileNoModal Modal -->
+
+<div class="modal fade" id="editMobileNoModal" tabindex="-1" aria-labelledby="yourModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title"> Change Mobile Number</h5>
+        <button class="close" type="button">
+          <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+        </button>
+      </div>
+      <div class="modal-body row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <div for="meta_keywords">Your Password <span class="asterisk_input"></span>
+            </div>
+            <div class="d-flex align-items-center position-relative">
+              <input class="form-control" name="masterPassword" [(ngModel)]="data.masterPassword"
+                placeholder="Your Password.." required="" [type]="eyeIcon.masterPassword?'text':'password'">
+              <a class="eyebtn" (click)="eyeIcon.masterPassword=!eyeIcon.masterPassword">
+                <i class="far fa-eye" [ngClass]="eyeIcon.masterPassword?'fa-eye-slash':'fa-eye'"></i>
+              </a>
+            </div>
+            <!---->
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div for="meta_keywords">Mobile Number <span class="asterisk_input"></span>
+            </div>
+            <input class="form-control" name="mobileNumber" [(ngModel)]="data.mobileNumber" placeholder="Mobile Number"
+              required="" type="text">
+            <!---->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" data-bs-dismiss="modal" aria-label="Close" type="button"
+          (click)="ChangeMobileNumber(data)">Yes</button>
+        <button class="btn btn-default" data-bs-dismiss="modal" aria-label="Close" type="button">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Change Password Modal -->
+
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="yourModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title"> Change Password</h5>
+        <button class="close" type="button">
+          <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+        </button>
+      </div>
+      <form [formGroup]="passwordForm">
+        <div class="modal-body row">
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <div for="meta_keywords">Your Password <span class="asterisk_input"></span>
+              </div>
+              <div class="d-flex align-items-center position-relative">
+                <input [type]="eyeIcon.masterPassword?'text':'password'" formControlName="MasterPassword"
+                  id="masterpassword3" name="masterpassword3" required="" class="form-control">
+                <a class="eyebtn" (click)="eyeIcon.masterPassword=!eyeIcon.masterPassword">
+                  <i class="far fa-eye" [ngClass]="eyeIcon.masterPassword?'fa-eye-slash':'fa-eye'"></i>
+                </a>
+              </div>
+              <small class="text-danger"
+                *ngIf="passwordForm.get('MasterPassword')?.errors && passwordForm.get('MasterPassword')?.touched">
+                <div *ngIf="passwordForm.get('MasterPassword')?.hasError('required')">Your Password is required.</div>
+
+              </small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <div for="meta_keywords">New Password <span class="asterisk_input"></span>
+              </div>
+              <div class="d-flex align-items-center position-relative">
+                <input [type]="eyeIcon.newPassword?'text':'password'" formControlName="password" name="password"
+                  required="" autocomplete="off" maxlength="20" class="text-right form-control">
+                <a class="eyebtn" (click)="eyeIcon.newPassword=!eyeIcon.newPassword">
+                  <i class="far fa-eye" [ngClass]="eyeIcon.newPassword?'fa-eye-slash':'fa-eye'"></i>
+                </a>
+              </div>
+              <small class="text-danger"
+                *ngIf="passwordForm.get('password')?.errors && passwordForm.get('password')?.touched">
+                <div *ngIf="passwordForm.get('password')?.hasError('required')">New Password is required.</div>
+                <div *ngIf="passwordForm.get('password')?.hasError('pattern')">Password should be min 8 characters
+                  with number combination.</div>
+              </small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <div for="meta_keywords">Confirm Password <span class="asterisk_input"></span>
+              </div>
+              <div class="d-flex align-items-center position-relative">
+                <input [type]="eyeIcon.confirmNewPassword?'text':'password'" formControlName="confirmPassword"
+                  maxlength="20" name="confirmpassword" required="" class=" form-control">
+                <a class="eyebtn" (click)="eyeIcon.confirmNewPassword=!eyeIcon.confirmNewPassword">
+                  <i class="far fa-eye" [ngClass]="eyeIcon.confirmNewPassword?'fa-eye-slash':'fa-eye'"></i>
+                </a>
+              </div>
+              <small class="text-danger"
+                *ngIf="passwordForm.get('confirmPassword')?.touched && passwordForm.hasError('passwordMismatch')">
+                Passwords is not matched. </small>
+            </div>
+          </div>
+
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button class="btn btn-success" type="button" [disabled]="passwordForm.invalid"
+          (click)="changeUserPassword()">Confirm</button>
+        <button class="btn btn-default" data-bs-dismiss="modal" aria-label="Close" type="button">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- roolingModals for profile Modal -->
+<div class="modal fade" id="RoolingMixedModal" tabindex="-1" aria-labelledby="yourModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title"> {{showRolling?'Agent ' : ''}}Rooling Commission</h5>
+        <button class="close" type="button">
+          <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <div class="view-rolling row">
+            <div class="col-md-2 col-3 col-form-label">Fancy</div>
+            <div class="col-md-8 col-9 col-form-label">
+              <span>{{showRolling?data?.masterFancyCommission:data?.rollingFancyCommission}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="view-rolling row">
+            <div class="col-md-2  col-3 col-form-label">Matka</div>
+            <div class="col-md-8 col-9 col-form-label">
+              <span>{{showRolling?data?.masterMatkaCommission:data?.rollingMatkaCommission}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="view-rolling row">
+            <div class="col-md-2 col-3 col-form-label">Casino</div>
+            <div class="col-md-8 col-9 col-form-label">
+              <span>{{showRolling?data?.masterCasinoCommission:data?.rollingCasinoCommission}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="view-rolling row">
+            <div class="col-md-2 col-3 col-form-label">Binary</div>
+            <div class="col-md-8 col-9 col-form-label">
+              <span>{{showRolling?data?.masterBinaryCommission:data?.rollingBinaryCommission}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="view-rolling row">
+            <div class="col-md-2 col-3 col-form-label">Sportbook</div>
+            <div class="col-md-8 col-9 col-form-label">
+              <span>{{showRolling?data?.masterSportbookCommission:data?.rollingSportsbookCommission}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="view-rolling row">
+            <div class="col-md-2 col-3 col-form-label">Bookmaker</div>
+            <div class="col-md-8 col-9 col-form-label">
+              <span>{{showRolling?data?.masterBookmakerCommission:data?.rollingBookmakerCommission}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Change Commisiion Modal -->
+<div class="modal fade" id="UpdateCommissionModal" tabindex="-1" aria-labelledby="yourModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title">Update Commission </h5>
+        <button class="close" type="button">
+          <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+        </button>
+      </div>
+      <div class="modal-body row">
+
+        <div class="col-12">
+          <div class="form-group">
+            <div for="meta_keywords">Commission <span class="asterisk_input"></span>
+            </div>
+            <input class="form-control" name="commission" [(ngModel)]="data.commission" placeholder="Commission"
+              required="" type="text">
+            <!---->
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <div for="meta_keywords">Your Password <span class="asterisk_input"></span>
+            </div>
+            <div class="d-flex align-items-center position-relative">
+              <input class="form-control" name="masterPassword" [(ngModel)]="data.masterPassword"
+                placeholder="Your Password.." required="" [type]="eyeIcon.masterPassword?'text':'password'">
+              <a class="eyebtn" (click)="eyeIcon.masterPassword=!eyeIcon.masterPassword">
+                <i class="far fa-eye" [ngClass]="eyeIcon.masterPassword?'fa-eye-slash':'fa-eye'"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" data-bs-dismiss="modal" aria-label="Close" type="button"
+          (click)="updateUserMatchOddsCommission(data)" [disabled]="!data.commission">Yes</button>
+        <button class="btn btn-default" data-bs-dismiss="modal" aria-label="Close" type="button">No</button>
+      </div>
+    </div>
+  </div>
+</div>

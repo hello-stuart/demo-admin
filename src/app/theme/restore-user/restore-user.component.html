@@ -1,0 +1,49 @@
+<div class="animated fadeIn divider-top">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="card card-accent-primary">
+        <div class="card-header account-detail-head"> Restore User</div>
+        <div class="card-body account-stat-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table datatable [dtOptions]="dtOptions" role="table" aria-busy="false" aria-colcount="6"
+                  class="table table-bordered table-striped ">
+
+                  <thead role="rowgroup">
+                    <tr role="row">
+                      <th class="text-center">User Name</th>
+                      <th class="text-center">Name</th>
+                      <th class="text-center">Date & Time</th>
+                      <th class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let row of rows;let i=index">
+                    <!-- <td colspan="6" style="text-align:center;">No data available in table</td> -->
+                    <td class="border-right-black text-center">
+                      <a>{{row.userName}}</a>
+                    </td>
+                    <td class="border-right-black text-center">
+                      <a>{{row.name}}</a>
+                    </td>
+                    <td class="text-center">{{row.updatedAt | date :'medium'}}</td>
+                    <td class="text-center">
+                      <button class="btn btn-success" (click)="restoreUser(row._id)">Restore</button>
+                    </td>
+                  </tr>
+                  <tr *ngIf="rows.length === 0" >
+                    <td colspan="5" class="dt-emp no-data-available" >No matching records found</td>
+                  </tr>
+                  <!-- <tr class="odd" *ngIf="rows?.length==0">
+                    <td class="no-data-available" colspan="10">No data!</td>
+                  </tr> -->
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

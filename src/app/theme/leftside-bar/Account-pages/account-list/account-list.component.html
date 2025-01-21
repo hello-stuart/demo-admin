@@ -1,0 +1,167 @@
+<div data-v-b00d14ae="">
+    <div data-v-b00d14ae="">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 ">Account List</h4>
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item" routerLink=""><a class="">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <span aria-current="location">Account List</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row account-list">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row row5">
+                            <div class="col-md-6 mb-2 search-form">
+                                <form method="post" class="ajaxFormSubmit">
+                                    <div
+                                        class="d-inline-block form-group form-group-feedback form-group-feedback-right me-1">
+                                        <input type="text" name="searchKey" placeholder="Search User"
+                                            class="form-control">
+                                    </div>
+                                    <div class="d-inline-block"><button type="submit" id="submit"
+                                            class="btn btn-primary me-1">Load</button> <button type="button" id="reset"
+                                            class="btn btn-light me-1">Reset</button></div>
+                                </form>
+                            </div>
+                            <div class="col-md-6 text-end mb-2">
+                                <div class="d-inline-block me-2">
+                                    <div id="export_1727076277114" class="d-inline-block"><button type="button"
+                                            disabled="disabled" class="btn me-1 btn-success disabled"><i
+                                                class="fas fa-file-excel"></i></button></div> <button type="button"
+                                        disabled="disabled" class="btn btn-danger disabled"><i
+                                            class="fas fa-file-pdf"></i></button>
+                                </div>
+                                <div class="d-inline-block" routerLink="create-account">
+                                    <a class="btn btn-success">
+                                        <i aria-hidden="true" class="fa fa-plus"></i>
+                                        CREATE ACCOUNT
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div id="tickets-table_length" class="dataTables_length"><label
+                                        class="d-inline-flex align-items-center">
+                                        Show&nbsp;
+                                        <select class="custom-select custom-select-sm" id="__BVID__2131">
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                            <option value="250">250</option>
+                                            <option value="500">500</option>
+                                            <option value="750">750</option>
+                                            <option value="1000">1000</option>
+                                        </select>&nbsp;entries
+                                    </label></div>
+                            </div>
+                        </div>
+                        <div class="table-responsive mb-0">
+                            <div class="table no-footer table-responsive-sm">
+                                <table id="eventsListTbl" role="table" aria-busy="false" aria-colcount="12"
+                                    class="table b-table"><!----><!---->
+                                    <thead role="rowgroup" class=""><!---->
+                                        <tr role="row" class="">
+                                            <th role="columnheader" scope="col" tabindex="0" aria-colindex="1"
+                                                aria-sort="none" class="position-relative">
+                                                <div>User Name</div><span class="sr-only"> (Click to sort
+                                                    ascending)</span>
+                                            </th>
+                                            <th role="columnheader" scope="col" tabindex="0" aria-colindex="2"
+                                                aria-sort="none" class="position-relative text-end">
+                                                <div>CR</div><span class="sr-only"> (Click to sort ascending)</span>
+                                            </th>
+                                            <th role="columnheader" scope="col" tabindex="0" aria-colindex="3"
+                                                aria-sort="none" class="position-relative text-end">
+                                                <div>Pts</div><span class="sr-only"> (Click to sort ascending)</span>
+                                            </th>
+                                            <th role="columnheader" scope="col" tabindex="0" aria-colindex="4"
+                                                aria-sort="none" class="position-relative text-end">
+                                                <div>Client(P/L)</div><span class="sr-only"> (Click to sort
+                                                    ascending)</span>
+                                            </th>
+                                            <th role="columnheader" scope="col" tabindex="0" aria-colindex="5"
+                                                aria-sort="none" class="position-relative text-end">
+                                                <div>Client(P/L) %</div><span class="sr-only"> (Click to sort
+                                                    ascending)</span>
+                                            </th>
+                                            <th role="columnheader" scope="col" aria-colindex="6" class="text-end">
+                                                <div>Exposure</div>
+                                            </th>
+                                            <th role="columnheader" scope="col" aria-colindex="7" class="text-end">
+                                                <div>Available Pts</div>
+                                            </th>
+                                            <th role="columnheader" scope="col" aria-colindex="8" class="">
+                                                <div>B st</div>
+                                            </th>
+                                            <th role="columnheader" scope="col" aria-colindex="9" class="">
+                                                <div>U st</div>
+                                            </th>
+                                            <th role="columnheader" scope="col" aria-colindex="10" class="">
+                                                <div>PName</div>
+                                            </th>
+                                            <th role="columnheader" scope="col" tabindex="0" aria-colindex="11"
+                                                aria-sort="none" class="position-relative">
+                                                <div>Account Type</div><span class="sr-only"> (Click to sort
+                                                    ascending)</span>
+                                            </th>
+                                            <th role="columnheader" scope="col" aria-colindex="12" class="">
+                                                <div>Action</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody role="rowgroup"><!---->
+                                        <tr role="row" class="b-table-empty-row">
+                                            <td colspan="12" role="cell" class="">
+                                                <div role="alert" aria-live="polite">
+                                                    <div class="text-center my-2">There are no records to show</div>
+                                                </div>
+                                            </td>
+                                        </tr><!---->
+                                    </tbody><!---->
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <div class="col">
+                                <div class="dataTables_paginate paging_simple_numbers float-end">
+                                    <ul class="pagination pagination-rounded mb-0">
+                                        <ul role="menubar" aria-disabled="false" aria-label="Pagination"
+                                            class="pagination dataTables_paginate paging_simple_numbers my-0 b-pagination justify-content-end">
+                                            <li role="presentation" aria-hidden="true" class="page-item disabled"><span
+                                                    role="menuitem" aria-label="Go to first page" aria-disabled="true"
+                                                    class="page-link">«</span></li>
+                                            <li role="presentation" aria-hidden="true" class="page-item disabled"><span
+                                                    role="menuitem" aria-label="Go to previous page"
+                                                    aria-disabled="true" class="page-link">‹</span></li><!----><!---->
+                                            <li role="presentation" class="page-item active"><button
+                                                    role="menuitemradio" type="button" aria-label="Go to page 1"
+                                                    aria-checked="true" aria-posinset="1" aria-setsize="1" tabindex="0"
+                                                    class="page-link">1</button></li><!----><!---->
+                                            <li role="presentation" aria-hidden="true" class="page-item disabled"><span
+                                                    role="menuitem" aria-label="Go to next page" aria-disabled="true"
+                                                    class="page-link">›</span></li>
+                                            <li role="presentation" aria-hidden="true" class="page-item disabled"><span
+                                                    role="menuitem" aria-label="Go to last page" aria-disabled="true"
+                                                    class="page-link">»</span></li>
+                                        </ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

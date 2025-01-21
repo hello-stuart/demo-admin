@@ -1,0 +1,16 @@
+@import url('../account-statement/account-statement.component.css');
+
+::ng-deep .ngb-dp-day .btn-light{
+    height: 32px !important;
+    font-size: 12px !important;
+    color: #73879c !important;
+    border-radius: 0px !important;
+    background-color: white !important;
+}
+::ng-deep .btn-light.bg-primary.text-white{
+    color: white !important;
+    background-color: #1284e7 !important;
+}
+.ngb-dp-container{
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+}

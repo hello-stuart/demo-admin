@@ -1,0 +1,61 @@
+<section class="page-container">
+    <!-- breadcrumb -->
+    <div class="row">
+      <div class="col-12 bredcrumb-container d-flex align-items-center justify-content-between">
+        <h4 class="mb-0 breadcrumb-main-title">Party Win Loss</h4>
+        <div class="breadcrumb-nav">
+          <span style="color: #495057; margin-right: 4px;">Home</span> / <span style="color: #74788d; margin-left: 4px;">Profit loss</span>
+        </div>
+      </div>
+    </div>
+    <!-- body -->
+    <div class="row">
+      <div class="col-12 p-0">
+        <div class="card">
+          <div class="p-3">
+            <form>
+              <div class="row g-2">
+                <div class="col-md-3">
+                  <div class="w-100">
+                    <select name="" id="">
+                      <option value="" selected>All</option>
+                      <option value="">User</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="d-flex col-md-9 my-2" style="gap: 4px;">
+    
+                  <button class="load-btn">Load</button>
+                  <button class="reset-btn">Reset</button>
+                  <button class="excel-file-btn">
+                    <i class="fas fa-file-excel"></i>
+                  </button>
+                  <button class="pdf-file-icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </button>
+    
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="row table">
+            <table datatable [dtOptions]="dtOptions" class="row-border hover">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>User Name</th>
+                  <th>Level</th>
+                  <th>Casino Pts</th>
+                  <th>Sport Pts</th>
+                  <th>Third Party Pts</th>
+                  <th>Profit/loss</th>
+                  <th>Ptype</th>
+                </tr>
+              </thead>
+              
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

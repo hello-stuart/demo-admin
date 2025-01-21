@@ -1,0 +1,104 @@
+.account-detail-head {
+    font-weight: 700;
+    font-size: 15px;
+    background: var(--reports-title-bg);
+    padding: 5px 10px;
+    color: var(--reports-title-text);
+}
+.account-detail-body .bd-example dd,
+.account-detail-body .bd-example dt {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--my-account-card-box-border-btm);
+}
+.card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+a:not([href]):not([tabindex]),
+a:not([href]):not([tabindex]):hover {
+    color: var(--my-account-card-icon-color);
+    cursor: pointer;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+.card-body {
+    padding: 1rem !important;
+}
+.col-form-label {
+    padding-top: calc(0.375rem + 1px);
+    padding-bottom: calc(0.375rem + 1px);
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1.5;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #5c6873;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e4e7ea;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.asterisk_input:before {
+    content: "*";
+    font-size: 15px;
+    color: var(--my-account-asterisk-input-color);
+}
+.view-rolling {
+    margin-bottom: 4px;
+    border: 1px solid #000;
+    font-weight: 700;
+}
+.view-rolling.row {
+    margin-right: calc(0.5 * 1rem) !important;
+    margin-left: calc(0.5 * 0rem) !important;
+}
+
+i.fa-pencil-square-o {
+    font-size: 14px;
+}
+.close {
+    float: right;
+    font-size: 1.21875rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 0.5;
+}
+.modal-header .close {
+    padding: 1rem;
+    margin: -1rem -1rem -1rem auto;
+}
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+/* .master-password-field{
+    position: relative;
+}
+.far.fa-eye{
+    position: absolute;
+    right: 10px !important;
+} */
+
+.eyebtn {
+    position: absolute;
+    right: 10px;
+}
+@media screen and (max-width: 767px){
+
+    .modal-dialog .modal-content .modal-header .modal-title{
+      font-size: 16px !important;
+    }
+  }

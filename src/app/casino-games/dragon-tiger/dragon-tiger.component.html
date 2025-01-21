@@ -1,0 +1,237 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="main-container">
+    <div class=" tool-parent">
+        <i data-bs-toggle="collapse" data-bs-target="#demo-l-1" class="fas fa-info-circle"></i>
+        <div id="demo-l-1" class="icon-range collapse bet-info-card">
+            R:<span class="small-txt">{{(winnerMarketArray?.min) |
+                shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span></div>
+    </div>
+    <!-- 111111111 -->
+    <div class="dtobx">
+        <div class="dragon-side position-relative" *ngIf="winnerMarketArray?.runners?.[0]" [ngClass]="winnerMarketArray?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                        (selectedCell === winnerMarketArray?.runners?.[0]?.selectionId) ? 'selected' : ''">
+            <div class="dragon-text">
+                <p>{{marketArray?.[0]?.runnersName[marketArray?.[0]?.runners?.[0]?.selectionId]}}</p>
+            </div>
+            <div>
+                <p class="dragon-zero">{{marketArray?.[0]?.runners?.[0]?.price?.back?.[0]?.price}}</p>
+                <p class="abosolute-zero">0</p>
+            </div>
+        </div>
+        <div class="middle-tie-div " *ngIf="winnerMarketArray?.runners?.[0]" [ngClass]="winnerMarketArray?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspend' : 
+               (selectedCell === winnerMarketArray?.runners?.[1]?.selectionId) ? 'selected' : ''">
+            <div>
+                <p>{{marketArray?.[0]?.runnersName[marketArray?.[0]?.runners?.[1]?.selectionId]}}</p>
+            </div>
+            <div>
+                <p>{{marketArray?.[0]?.runners?.[1]?.price?.back?.[0]?.price}}</p>
+            </div>
+        </div>
+        <div class="tiger-side position-relative" *ngIf="winnerMarketArray?.runners?.[0]" [ngClass]="winnerMarketArray?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                        (selectedCell === winnerMarketArray?.runners?.[0]?.selectionId) ? 'selected' : ''">
+            <div class="tiger-text">
+                <p>{{marketArray?.[0]?.runnersName[marketArray?.[0]?.runners?.[2]?.selectionId]}}</p>
+            </div>
+            <div>
+                <p class="dragon-zero">{{marketArray?.[0]?.runners?.[2]?.price?.back?.[0]?.price}}</p>
+                <p class="abosolute-right-zero">0</p>
+            </div>
+        </div>
+    </div>
+    <div class=" converting">
+        <div class="dragon-tiger-btns-container mt-5">
+            <div class="width">
+                <!-- dragon even odd -->
+                <div class="tooltip-div icon-bg">
+                    <div>
+                        <p class="tooltip-text-dragon">Dragon</p>
+                    </div>
+                    <div class=" tool-parent">
+                        <i data-bs-toggle="collapse" data-bs-target="#demo-l-2" class="fas fa-info-circle "></i>
+                        <div id="demo-l-2" class="icon-range collapse bet-info-card">
+                            R:<span class="small-txt">{{(winnerMarketArray?.min) |
+                                shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span> </div>
+                    </div>
+                </div>
+                <div class="btns-wraper">
+                    <div class="btns-container">
+                        <div class="alignment">
+                            <p class="text-size">{{marketArray[1]?.runners[0]?.price.back[0]?.price}}</p>
+                            <button class="btn-blue position-relative"
+                                [ngClass]="marketArray[1]?.runners[0].status=='SUSPEND' || game.status=='SUSPEND' || game.length==0 ?'suspended':(selectedCell == marketArray[1].runners[0].selectionId) ? 'suspended' : ''">
+
+                                <p>{{(marketArray[1]?.runnersName[marketArray[1]?.runners[0]?.selectionId]).includes('EVEN')
+                                    ? 'EVEN' : 'ODD'}}</p>
+                            </button>
+                            <p class="btn-bottom-zero">0</p>
+                        </div>
+                    </div>
+                    <div class="btns-container">
+                        <div class="alignment">
+                            <p class="text-size">{{marketArray[1]?.runners[1]?.price.back[0].price}}</p>
+                            <button class="btn-blue position-relative"
+                                [ngClass]="marketArray[1]?.runners[1].status=='SUSPEND' || game.status=='SUSPEND' || game.length==0 ?'suspended':(selectedCell == marketArray[1].runners[1].selectionId) ? 'suspended' : ''">
+                                <p>{{(marketArray[1]?.runnersName[marketArray[1]?.runners[1]?.selectionId]).includes('EVEN')
+                                    ? 'EVEN' : 'ODD'}}</p>
+                            </button>
+                            <p class="btn-bottom-zero">0</p>
+                        </div>
+                    </div>
+                    <div class="btns-container">
+                        <div class="alignment">
+                            <p class="text-size">{{marketArray[3]?.runners[0]?.price.back[0].price}}</p>
+                            <button class="btn-blue position-relative"
+                                [ngClass]="marketArray[3]?.runners[0].status=='SUSPEND' || game.status=='SUSPEND' || game.length==0 ?'suspended':(selectedCell == marketArray[3].runners[0].selectionId) && marketId == marketArray[3].marketId ? 'suspended' : ''">
+                                <div class="card-img-div position-relative">
+                                    <img src="/assets/lucky7/diamond.png" alt="" class="card-img">
+                                </div>
+                                <div class="card-img-div position-relative">
+                                    <img src="/assets/lucky7/heart.png" alt="" class="card-img">
+                                </div>
+                            </button>
+                            <p class="btn-bottom-zero">0</p>
+                        </div>
+                    </div>
+                    <div class="btns-container">
+                        <div class="alignment">
+                            <p class="text-size">{{marketArray[3]?.runners[1]?.price.back[0].price}}</p>
+                            <button class="btn-blue position-relative"
+                                [ngClass]="marketArray[3]?.runners[1].status=='SUSPEND' || game.status=='SUSPEND' || game.length==0 ?'suspended':(selectedCell == marketArray[3].runners[1].selectionId) && marketId == marketArray[3].marketId ? 'suspended' : ''">
+                                <div class="card-img-div position-relative">
+                                    <img src="/assets/lucky7/club.png" alt="" class="card-img">
+                                </div>
+                                <div class="card-img-div position-relative">
+                                    <img src="/assets/lucky7/spade.png" alt="" class="card-img">
+                                </div>
+                            </button>
+                            <p class="btn-bottom-zero">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-tooltip-alignment">
+                    <div></div>
+                    <div class="float-none text-center">
+                        <p>{{marketArray[5]?.runners[0].price.back[0].price}}</p>
+                    </div>
+                    <div class="min-max-info player-min-max position-relative">
+                        <i data-bs-toggle="collapse" data-bs-target="#demo-l-3" class="fas fa-info-circle"></i>
+                        <div id="demo-l-3" class="icon-range collapse bet-info-card">
+                            R:<span class="small-txt">{{(winnerMarketArray?.min) |
+                                shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span> </div>
+                    </div>
+                </div>
+                <div class="cards-container">
+                    <div class="card-wraper" *ngFor="let runner of marketArray[5]?.runners">
+                        <div class="position-relative"
+                            [ngClass]="runner.status=='SUSPEND' || game.status=='SUSPEND' || game.length==0 ?'suspended':(selectedCell == runner.selectionId  && marketId == marketArray[5]?.marketId) ? 'suspended' : ''">
+                            <img [src]="['/assets/lucky7/'+marketArray[5]?.runnersName[runner?.selectionId]+'.png']"
+                                alt="" class="cards-size">
+                        </div>
+                        <p class="card-zero">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="middle-border"></div>
+        <div class="dragon-tiger-btns-container mt-5 margin-changing">
+            <div class="width">
+                <div class="tooltip-div icon-bg">
+                    <div>
+                        <p class="tooltip-text-tiger">Tiger</p>
+                    </div>
+                    <div class="min-max-info player-min-max position-relative">
+                        <i data-bs-toggle="collapse" data-bs-target="#demo-l-4" class="fas fa-info-circle"></i>
+                        <div id="demo-l-4" class="icon-range collapse bet-info-card">
+                            R:<span class="small-txt">{{(winnerMarketArray?.min) |
+                                shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span> </div>
+                    </div>
+                </div>
+                <div class="btns-wraper">
+                    <!-- tiger even odd -->
+                    <div class="btns-container">
+                        <div class="alignment">
+                            <p class="text-size">{{marketArray[2]?.runners[0]?.price.back[0].price}}</p>
+                            <button class="btn-blue position-relative"
+                                [ngClass]="marketArray[2]?.runners[0].status=='SUSPEND' || game.status=='SUSPEND' || game.length==0 ?'suspended':(selectedCell == marketArray[2].runners[0].selectionId) ? 'suspended' : ''">
+                                <p>{{(marketArray[2]?.runnersName[marketArray[2]?.runners[0]?.selectionId]).includes('EVEN')
+                                    ? 'EVEN' : 'ODD'}}</p>
+                            </button>
+                            <p class="btn-bottom-zero">0</p>
+                        </div>
+                    </div>
+                    <div class="btns-container">
+                        <div class="alignment">
+                            <p class="text-size">{{marketArray[2]?.runners[1]?.price.back[0].price}}</p>
+                            <button class="btn-blue position-relative"
+                                [ngClass]="marketArray[2]?.runners[1].status=='SUSPEND' || game.status=='SUSPEND' || game.length==0 ?'suspended':(selectedCell == marketArray[2].runners[1].selectionId) ? 'suspended' : ''">
+                                <p>{{(marketArray[2]?.runnersName[marketArray[2]?.runners[1]?.selectionId]).includes('EVEN')
+                                    ? 'EVEN' : 'ODD'}}</p>
+                            </button>
+                            <p class="btn-bottom-zero">0</p>
+                        </div>
+                    </div>
+                    <div class="btns-container">
+                        <div class="alignment">
+                            <p class="text-size">{{marketArray?.[4]?.runners?.[0]?.price?.back?.[0]?.price}}</p>
+                            <button class="btn-blue position-relative"
+                                [ngClass]="marketArray[4]?.runners[0].status=='SUSPEND' || game.status=='SUSPEND' || game.length==0 ?'suspended':(selectedCell == marketArray[3].runners[1].selectionId) && marketId == marketArray[4].marketId ? 'suspended' : ''">
+                                <div class="card-img-div position-relative">
+                                    <img src="/assets/casino-war/spade.png" alt="" class="card-img">
+                                </div>
+                                <div class="card-img-div position-relative">
+                                    <img src="/assets/casino-war/heart.png" alt="" class="card-img">
+                                </div>
+                            </button>
+                            <p class="btn-bottom-zero">0</p>
+                        </div>
+                    </div>
+
+                    <div class="btns-container">
+                        <div class="alignment">
+                            <p class="text-size">{{marketArray[4]?.runners[1]?.price.back[0].price}}</p>
+                            <button class="btn-blue position-relative"
+                                [ngClass]="marketArray[4]?.runners[0].status=='SUSPEND' || game.status=='SUSPEND' || game.length==0 ?'suspended':(selectedCell == marketArray[3].runners[1].selectionId) && marketId == marketArray[4].marketId ? 'suspended' : ''">
+                                <div class="card-img-div position-relative">
+                                    <img src="/assets/casino-war/club.png" alt="" class="card-img">
+                                </div>
+                                <div class="card-img-div position-relative">
+                                    <img src="/assets/casino-war/spade.png" alt="" class="card-img">
+                                </div>
+                            </button>
+                            <p class="btn-bottom-zero">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-tooltip-alignment">
+                    <div></div>
+                    <div class="float-none text-center">
+                        <p>{{marketArray[6]?.runners[0].price.back[0].price}}</p>
+                    </div>
+                    <div class="min-max-info player-min-max position-relative">
+                        <i data-bs-toggle="collapse" data-bs-target="#demo-l-6" class="fas fa-info-circle"></i>
+                        <div id="demo-l-6" class="icon-range collapse bet-info-card">
+                            R:<span class="small-txt">{{(winnerMarketArray?.min) |
+                                shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span> </div>
+                    </div>
+                </div>
+                <div class="cards-container">
+                    <div class="card-wraper" *ngFor="let runner of marketArray[6]?.runners">
+                        <div class="position-relative"
+                            [ngClass]="runner.status=='SUSPEND' || game.status=='SUSPEND' || game.length==0 ?'suspended':(selectedCell == runner.selectionId  && marketId == marketArray[6]?.marketId) ? 'suspended' : ''">
+                            <img [src]="['/assets/lucky7/'+marketArray[6]?.runnersName[runner?.selectionId]+'.png']"
+                                alt="" class="cards-size">
+                        </div>
+                        <p class="card-zero">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="showInMobile">
+
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

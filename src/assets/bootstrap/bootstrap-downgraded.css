@@ -1,0 +1,180 @@
+.btn {
+    font-size: 13px !important;
+    border-radius: .25rem !important;
+}
+
+.dropdown-menu {
+    font-size: 13px !important;
+}
+
+.ml-1,
+.mx-1 {
+    margin-left: .25rem !important;
+}
+
+.badge-success {
+    color: #fff;
+    background-color: #34c38f;
+}
+
+.h4,
+h4 {
+    font-size: 1.21875rem !important;
+}
+
+
+.mini-stats-wid {
+    margin-bottom: 12px;
+}
+
+.card {
+    margin-bottom: 24px !important;
+    box-shadow: 0 .75rem 1.5rem rgba(18, 38, 63, .03) !important;
+}
+
+.card {
+    position: relative !important;
+    ;
+    display: flex !important;
+    ;
+    flex-direction: column !important;
+    ;
+    min-width: 0 !important;
+    ;
+    word-wrap: break-word !important;
+    ;
+    background-color: #fff !important;
+    ;
+    background-clip: border-box !important;
+    ;
+    border: 0 solid #f6f6f6 !important;
+    ;
+    border-radius: .25rem !important;
+    ;
+}
+
+.row.row5>[class*="col-"] {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -12px;
+    margin-left: -12px;
+ 
+}
+.mini-stats-wid {
+    margin-bottom: 12px !important;
+}
+
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl {
+    width: 100%;
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.accordion-body {
+    padding: 0 !important;
+}
+
+.accordion-item {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.accordion-button:not {
+    background-color: transparent !important;
+}
+
+.accordion {
+    --bs-accordion-bg: transparent !important;
+    --bs-accordion-border-width: none m !important
+
+
+}
+.btn-light {
+    color: var(--reports-reset-btn-color) !important;
+    background-color: var(--reports-reset-btn-bg) !important;
+    border-color: var(--reports-reset-btn-bg) !important;
+}
+.accordion-button:not(.collapsed) {
+    background-color: transparent !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #000000 !important;
+}
+.accordion-button{
+    /* font-size: 13px !important; */
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #34c38f !important;
+    border-color: #34c38f !important;
+}
+.btn-success {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #198754;
+    --bs-btn-border-color: #198754;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #157347;
+    --bs-btn-hover-border-color: #146c43;
+    --bs-btn-focus-shadow-rgb: 60,153,110;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #146c43;
+    --bs-btn-active-border-color: #13653f;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #198754;
+    --bs-btn-disabled-border-color: #198754;
+}
+.table th, .table td {
+    font-size: 12px !important;
+}
+.table td, .table th {
+    padding: 4px .75rem !important;
+    vertical-align: middle !important;
+}
+.table-bordered, .table-bordered td, .table-bordered th {
+    border: 1px solid #eff2f7 !important;
+}
+.row.row5 > [class*="col-"] {
+    /* padding-left: 5px !important;
+    padding-right: 5px !important; */
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+}
+@media (max-width: 1279px) {
+    .card-body {
+        padding: 8px !important;
+    }
+}
+
+@media (min-width: 576px) {
+    .col-sm-6 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+}
+@media screen and  (max-width: 768px ){
+    .row {
+        /* --bs-gutter-x: 0 !important; */
+        margin: 0  !important;;
+        padding: 0 !important;
+    }
+    .row > *{
+        padding: 0 !important;
+    }
+    
+}

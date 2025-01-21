@@ -1,0 +1,95 @@
+<section class="page-container">
+    <!-- breadcrumb -->
+    <div class="row">
+        <div class="col-12 bredcrumb-container d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 breadcrumb-main-title">Live Casino Result</h4>
+            <div class="breadcrumb-nav">
+                <span style="color: #495057; margin-right: 4px;" routerLink="">Home</span> / <span
+                    style="color: #74788d; margin-left: 4px;">Live Casino Result</span>
+            </div>
+        </div>
+    </div>
+    <!-- body -->
+    <div class="row">
+        <div class="col-12 p-0">
+            <div class="card">
+                <div class="card-body p-3">
+                    <form [formGroup]="form">
+                        <div class="row g-2">
+                            <div class="col-lg-2">
+                                <div class="w-100">
+                                    <select style="height: 36px;"
+                                        [ngClass]="{'is-invalid': isFieldInvalid('casinoType')}"
+                                        formControlName="casinoType">
+                                        <option selected>Select Casino Type</option>
+                                        <option>Settled Bets</option>
+                                        <option>Unsettled Bets</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="multi-select-container" (click)="onInputFocus()">
+                                    <span style="color: #ced4da; font-size: 13px;" *ngIf="!clientSearchInput">Select
+                                        Option</span>
+
+                                    <input type="text" class="client-search-input" *ngIf="clientSearchInput"
+                                        placeholder="Search option">
+                                    <div class="options-div d-flex align-items-center" *ngIf="clientSearchInput">
+                                        <ul>
+                                            <li>
+                                                <span class="option-headings">List is Empty</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <div class="w-100">
+                                    <select style="height: 36px;"
+                                        [ngClass]="{'is-invalid': isFieldInvalid('gameType')}"
+                                        formControlName="gameType">
+                                        <option selected>Select</option>
+                                        @for (item of casinoType; track $index) {
+                                        <option>{{item}}</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex col w-100 my-2" style="gap: 4px;">
+
+                            <button class="load-btn">Load</button>
+                            <button class="reset-btn">Reset</button>
+                            <button class="excel-file-btn">
+                                <i class="fas fa-file-excel"></i>
+                            </button>
+                            <button class="pdf-file-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </button>
+
+                        </div>
+
+                    </form>
+                </div>
+                <div class="row table">
+                    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Sr No</th>
+                                <th>Credit</th>
+                                <th>Debit</th>
+                                <th>Pts</th>
+                                <th>Remark</th>
+                                <th>From to</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

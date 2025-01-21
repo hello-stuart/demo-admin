@@ -1,0 +1,65 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="casino-detail">
+    <div class="game-container">
+        <!-- player -->
+        <div class="drogon-box-container" style="position: relative;" *ngIf="winnerMarketArray?.runners?.[0]" [ngClass]="winnerMarketArray?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                        (selectedCell === winnerMarketArray?.runners?.[0]?.selectionId) ? 'selected' : ''">
+            <div class="book-details">
+                <b>{{capitalize(marketArray?.[0]?.runnersName[marketArray?.[0]?.runners?.[0]?.selectionId])}}</b>
+                <span class="d-block">0</span>
+            </div>
+            <div class="text-center odds-value">
+                <span class="d-block">
+                    <b>{{marketArray?.[0]?.runners?.[0]?.price?.back?.[0]?.price}}</b>
+                </span>
+            </div>
+        </div>
+
+        <!-- tie -->
+        <div class="tie-circle-container" *ngIf="winnerMarketArray?.runners?.[0]" [ngClass]="winnerMarketArray?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspend' : 
+                        (selectedCell === winnerMarketArray?.runners?.[0]?.selectionId) ? 'selected' : ''">
+            <div class="text-light">
+                <b>{{capitalize(marketArray?.[1]?.runnersName[marketArray?.[1]?.runners?.[0]?.selectionId])}}</b>
+            </div>
+            <div class="text-center odds-section text-light">
+                <span class="d-block">
+                    <b>{{marketArray?.[1]?.runners?.[0]?.price?.back?.[0]?.price}}</b>
+                </span>
+                <span class="d-block">0</span>
+            </div>
+        </div>
+
+        <!-- dealer -->
+        <div class="tiger-box-container dealer-box" style="position: relative;" *ngIf="winnerMarketArray?.runners?.[0]" [ngClass]="winnerMarketArray?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                        (selectedCell === winnerMarketArray?.runners?.[0]?.selectionId) ? 'selected' : ''">
+            <div class="book-details">
+                <b>{{capitalize(marketArray?.[0]?.runnersName[marketArray?.[0]?.runners?.[1]?.selectionId])}}</b>
+                <span class="d-block">0</span>
+            </div>
+            <div class="text-center odds-value">
+                <span class="d-block">
+                    <b>2</b>
+                </span>
+            </div>
+        </div>
+
+        <!-- pair -->
+        <div class="pair-box-container" *ngIf="winnerMarketArray?.runners?.[0]" [ngClass]="winnerMarketArray?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                        (selectedCell === winnerMarketArray?.runners?.[0]?.selectionId) ? 'selected' : ''">
+            <div class="pair-title">
+                <b>{{capitalize(marketArray?.[2]?.runnersName[marketArray?.[2]?.runners?.[0]?.selectionId])}}</b>
+            </div>
+            <div class="text-center odds-section">
+                <span class="d-block">
+                    <b>{{marketArray?.[2]?.runners?.[0]?.price?.back?.[0]?.price}}</b>
+                </span>
+                <span class="d-block">0</span>
+            </div>
+        </div>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

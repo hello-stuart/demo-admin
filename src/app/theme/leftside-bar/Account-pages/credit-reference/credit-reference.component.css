@@ -1,0 +1,35 @@
+table tr:nth-child(even) {
+  background-color: #ccc;
+}
+
+.border-right-black {
+  border-right: 1px solid #bbb;
+}
+thead {
+  border-width: 1px !important;
+  height: 40px;
+  vertical-align: middle;
+}
+td , tr ,th{
+  text-align: center !important;
+}
+td {
+  height: 40px;
+  padding: 0 4px !important;
+  vertical-align: middle;
+}
+thead {
+  border-width: 1px !important;
+  height: 40px;
+  vertical-align: middle;
+}
+.border-left{
+  border-left: 1px solid #bbb;
+}
+.table > :not(caption) > * > *{
+  background-color: transparent !important;
+}
+
+::ng-deep tr .dt-empty {
+  display: none !important;
+}

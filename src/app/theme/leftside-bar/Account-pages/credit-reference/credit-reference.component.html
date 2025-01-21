@@ -1,0 +1,30 @@
+<div class="table-responsive table table-striped">
+  <table datatable [dtOptions]="dtOptions" role="table" aria-busy="false" aria-colcount="6"
+    class="table table-border table-striped ">
+    <thead role="rowgroup">
+      <tr role="row">
+        <th>Form Name</th>
+        <th>User Name</th>
+        <th>Old Credit Reference</th>
+        <th>New Credit Reference</th>
+
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let row of rows;let i=index">
+      <td class="border-right-black border-left"> <a class="">{{row.fromName}}</a>
+      </td>
+      <td class="border-right-black"> {{row.userName}}</td>
+      <td class="border-right-black"> {{row.oldCreditReference}}</td>
+
+      <td class="border-right-black">{{row.newCreditReference}}</td>
+      <td class="border-right-black">{{row.createdAt | date :'medium'}}</td>
+    </tr>
+    <tr *ngIf="rows.length === 0">
+      <td colspan="5" class="dt-emp" >No matching records found</td>
+    </tr>
+    <!-- <tr class="odd" *ngIf="rows?.length==0">
+      <td valign="top" colspan="5" class="nofound">No matching records found</td>
+    </tr> -->
+  </table>
+</div>

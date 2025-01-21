@@ -1,0 +1,106 @@
+.login-mn {
+    margin: 0 auto;
+    width: 400px;
+    padding: 100px 0 0 0;
+    max-width: 85%;
+}
+.log-logo {
+    width: 100%;
+    text-align: center;
+}
+.login, .login .wrapper {
+    background-image: var(--login-bg);
+    height: 100vh;
+}
+.login-mn {
+    margin: 0 auto;
+    width: 400px;
+    padding: 100px 0 0 0;
+    max-width: 85%;
+}
+.log-logo {
+    width: 100%;
+    text-align: center;
+}
+.log-fld {
+    width: 100%;
+    padding: 35px 30px 10px;
+    box-sizing: border-box;
+    margin-top: 15px;
+    background: var(--login-log-fld-bg);
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px #fff;
+}
+.log-fld h2 {
+    color: var(--login-log-fld-color) !important;
+    position: relative;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+.log-fld h2::before {
+    left: 0;
+}
+.log-fld h2::before, .log-fld h2::after {
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 12px;
+    width: 20%;
+    background: var(--login-log-fld-color);
+}
+.log-fld h2::after {
+    right: 0;
+}
+.log-fld h2::before, .log-fld h2::after {
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 12px;
+    width: 20%;
+    background: var(var(--login-log-fld-color));
+}
+.login .form-group {
+    margin-bottom: 25px;
+}
+.btn-login {
+    width: 100%;
+}
+.btn-submit .fa-sign-in-alt {
+    font-size: 12px;
+    margin-left: 10px;
+}
+.btn-submit, .btn-submit:hover, .btn-submit:active, .btn-submit:focus {
+    background-color: var(--d247-ag-theme-bg);
+    border-color: var(--d247-ag-theme-bg);
+    color: var(--d247-ag-theme-color);
+}
+.log-fld h2 {
+    color: var(--login-log-fld-color);
+    position: relative;
+    margin-bottom: 30px !important;
+    font-size: 20px;
+}
+::ng-deep .form-control:focus{
+    box-shadow: none !important;
+    border: none !important;
+}
+.form-control{
+    font-size: 13px !important;
+}
+@media only screen and (min-width: 320px) and (max-width: 992px) {
+    .log-fld h2 {
+        font-size: 14px !important;
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 1279px) {
+    body {
+        font-size: 12px !important;
+    }
+}
+
+.error {
+    color: #ff0000;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+

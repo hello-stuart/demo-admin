@@ -1,0 +1,144 @@
+.page-content {
+    min-height: 100vh;
+    padding: 0 11px 0px;
+    margin-top: 76px;
+}
+
+@media (max-width: 1279px) {
+    .page-content {
+        padding: 0%;
+    }
+}
+
+.zeroMargin {
+    margin-left: 0 !important;
+}
+
+.center-main-container {
+    display: flex;
+    display: -webkit-flex;
+    /* flex-wrap: wrap; */
+}
+
+.center-content {
+    width: 100%;
+    /* margin-right: 12px; */
+}
+
+.right-sidebar {
+    width: 350px;
+    max-height: calc(100vh - 72px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.custom-width-casino {
+    width: calc(100% - 362px);
+    margin-right: 12px;
+}
+
+.custom-width {
+    width: calc(100% - 462px);
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .casino-container {
+        min-height: unset;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .main-content {
+        margin-left: 250px;
+        overflow: hidden;
+    }
+    .padding-12 {
+        padding: 0 12px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-content {
+        margin-left: 0 !important;
+    }
+
+    .detail-page-container {
+        padding: 7px;
+    }
+
+    .padding-0 {
+        padding: 0;
+    }
+}
+
+@media (max-width: 1279px) {
+    .rightBar {
+        display: none;
+    }
+
+    .mobile-matched-container {
+        width: 98%;
+    }
+
+    .center-content {
+        width: 100%;
+        margin: 0;
+    }
+
+    .page-content {
+        /* padding: 0; */
+        margin-top: 76px;
+    }
+}
+
+.mdi-cards-playing-outline:before {
+    content: "\F063A";
+}
+
+.mdi-set,
+.mdi:before {
+    display: inline-block;
+    font: normal normal normal 24px/1 Material Design Icons;
+    font-size: inherit;
+    text-rendering: auto;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.head-accounts {
+    margin: 0 10px 0 10px;
+    border: 1px solid #ddd;
+    border-bottom: 0;
+    display: none;
+}
+
+.head-accounts ul {
+    margin-bottom: 0;
+}
+
+.metismenu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.metismenu span {
+    font-size: 14px;
+    color: black;
+}
+
+.metismenu li {
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+}
+
+i {
+    font-size: 18px;
+    color: black;
+}
+
+.my-acc-head {
+    background: #dddddd;
+}

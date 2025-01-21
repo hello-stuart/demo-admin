@@ -1,0 +1,127 @@
+.dropdown-icon-data {
+    position: absolute;
+    z-index: 11;
+    top: 50px;
+    right: 5px;
+    background-color: #00000099;
+    max-width: 85px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    font-family: "Noto Sans" !important;
+}
+.resultA {
+    width: 35px;
+    margin-left: 5px;
+    color: #fc4242;
+    margin-top: 5px;
+    border-radius: 4px;
+    height: 35px;
+    text-align: center;
+    background-color: #434343;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all;
+    transition-duration: 1000ms;
+}
+.resultA-lottery {
+    width: 50px;
+    margin-left: 5px;
+    color: #ef910f;
+    margin-top: 5px;
+    border-radius: 4px;
+    height: 35px;
+    text-align: center;
+    background-color: #434343;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 4px;
+    transition: all;
+    transition-duration: 1000ms;
+}
+.read-more {
+    background-color: #434343;
+    width: 100%;
+    margin: 5px;
+    text-align: center;
+    color: #ddd;
+    border-radius: 4px;
+    height: 25px;
+    line-height: 1.8;
+    font-weight: bold;
+}
+.read-more-lottery {
+    background-color: #434343;
+    width: 35px;
+    height: 35px;
+    margin: 5px 5px 0 5px;
+    text-align: center;
+    color: #ddd;
+    border-radius: 4px;
+    line-height: 1.8;
+    font-weight: bold;
+}
+
+.collapse {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: transform 0.2s ease-in-out, opacity 0.3s ease-in-out !important;
+}
+
+.collapse.show {
+    max-height: 245px;
+    opacity: 1;
+}
+
+.lottery-result-design {
+    color: #ef910f !important;
+    width: 50px !important;
+    height: 35px;
+    letter-spacing: 1px;
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1599px) {
+    .resultA {
+        width: 25px;
+        height: 25px;
+    }
+
+    .dropdown-icon-data {
+        max-width: 65px;
+    }
+
+    .collapse.show {
+        max-height: 185px;
+        opacity: 1;
+    }
+}
+
+.color-A {
+    color: #fc4242; /* Color for A */
+}
+.color-B {
+    color: #ef910f; /* Color for A */
+}
+.color-L {
+    color: #fc4242; /* Color for A */
+}
+
+.color-H {
+    color: #03b37f; /* Color for P */
+}
+.color-T {
+    color: white; /* Color for P */
+}
+.color-P {
+    color: #509bff; /* Color for P */
+}
+.color-BB {
+    color: #d3393d !important; /* Color for P */
+}

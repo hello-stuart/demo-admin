@@ -1,0 +1,57 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="casino-detail">
+    <div class="worlibox">
+        <div class="worli-left" *ngIf="winnerMarketArray">
+            <div class="worli-box-title">
+                <b>{{ winnerMarketArray?.runners[0]?.price.back[0]?.price }}</b>
+            </div>
+            <div class="worli-box-row">
+                <ng-container *ngFor="let runner of modifiedItemsWinner; index as i; trackBy: trackByFn">
+                    <div class="worli-odd-box back mt-1 position-relative"
+                        [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ? 'suspended' : (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                        <span class="worli-odd">{{ marketArray[0]?.runnersName[runner?.selectionId] }}</span>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="casino-min-max mt-1">
+                R:<span class="small-txt">{{ winnerMarketArray?.min | shortNumber }}-{{ winnerMarketArray?.max |
+                    shortNumber }}</span>
+            </div>
+        </div>
+        <!--  -->
+        <div class="worli-right" *ngIf="marketArray">
+            <div class="worli-box-title">
+                <b>{{ marketArray[1]?.runners[0]?.price.back[0]?.price }}</b>
+            </div>
+            <div class="worli-box-row">
+                <div class="worli-odd-box back position-relative mt"
+                    *ngFor="let runner of marketArray[1].runners; let j = index"
+                    [ngClass]="winnerMarketArray.runners[0].status == 'SUSPEND' || game.status == 'SUSPEND' ? 'suspended' : (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                    <span class="worli-odd">{{ marketArray[1]?.runnersName[runner?.selectionId] }}</span>
+                    <span class="d-block noto">
+                        {{ j === 0 ? '1|2|3|4|5' : '6|7|8|9|0' }}
+                    </span>
+                </div>
+            </div>
+            <div class="worli-box-row">
+                <div class="worli-odd-box back position-relative mt"
+                    *ngFor="let runner of marketArray[2].runners; let j = index"
+                    [ngClass]="winnerMarketArray.runners[0].status == 'SUSPEND' || game.status == 'SUSPEND' ? 'suspended' : (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                    <span class="worli-odd">{{ marketArray[2]?.runnersName[runner?.selectionId] }}</span>
+                    <span class="d-block noto">
+                        {{ j === 0 ? '1|3|5|7|9' : '2|4|6|8|0' }}
+                    </span>
+                </div>
+            </div>
+            <div class="casino-min-max mt-1">
+                R:<span class="small-txt">{{ marketArray[1]?.min | shortNumber }}-{{ marketArray[1]?.max | shortNumber
+                    }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

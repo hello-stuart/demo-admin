@@ -1,0 +1,204 @@
+<div class="videoPlayer">
+    <app-video-player></app-video-player>
+</div>
+<!-- 20 Race table starts -->
+<div class="casino-detail font-noto-sans">
+    <div class="text-end showInMobile  text-black">
+        Total Cards: 17 | Total Points: 107
+    </div>
+
+    <!---------------------- Row 1 --------------------->
+    <div class="row  k-cards d-flex flex-wrap">
+        <!--Column 1 -->
+        <ng-container *ngFor="let markets of marketArray;let i = index">
+            <ng-container *ngIf="i===0">
+                <div class="col-6 col-md-3 colm-1" *ngFor="let runner of markets?.runners;let b = index">
+                    <div class="casino-box-row d-flex flex-wrap position-relative align-items-center">
+                        <!-- Main card -->
+                        <div class="w-100 position-relative bg-transparent text-center p-1">
+                            <img [src]="'../assets/twenty-card-race/'+markets.runnersName[runner.selectionId]+'.png'"
+                                [alt]="markets.runnersName[runner.selectionId]">
+                            <div class="range-icon d-inline-block">
+                                <i data-bs-toggle="collapse" [attr.data-bs-target]="'#range' + i + b"
+                                    class="fas fa-info-circle float-right"></i>
+                                <div [id]="'range'+i+b" class="collapse icon-range">
+                                    R:{{(markets?.min) |shortNumber}}-{{(markets?.max) |
+                                    shortNumber}}</div>
+                            </div>
+                        </div>
+
+                        <!-- cassino buttons -->
+                        <div
+                            class="mb-1 mb-md-0 d-flex flex-wrap justify-content-center align-items-center w-100 h-100 position-relative">
+                            <!-- Back -->
+                            <div [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                                class="back casino-bl-box-item  d-flex justify-content-center align-items-center flex-column text-center text-black position-relative ">
+                                <span class="casino-box-odd fw-bold">{{runner.price.back[0].price}}</span>
+                            </div>
+                            <!-- Lay -->
+                            <!-- <div
+                                class="lay casino-bl-box-item d-flex justify-content-center align-items-center flex-column text-center text-black position-relative">
+                                <span class="casino-box-odd fw-bold">{{runner.price.lay[0].price}}</span>
+                            </div> -->
+                        </div>
+
+                        <!-- zero -->
+                        <div class="book-black text-black w-100 position-relative bg-transparent text-center p-1">0
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+
+    </div>
+
+    <!---------------------- Row 2 --------------------->
+    <div class="row row-5 gap mt-3">
+        <div class="col-12 col-md-6 d-flex flex-column pl">
+            <ng-container *ngFor="let markets of marketArray;let i = index">
+                <ng-container *ngIf="i===1">
+                    <div class="row w-100">
+                        <div class="col-6" *ngFor="let runner of markets?.runners;let b = index">
+                            <div class="text-center">{{runner.price.back[0].price}}</div>
+                            <div
+                                class="back-width back casino-bl-box-item  d-flex justify-content-center align-items-center flex-column text-center text-black position-relative ">
+                                <span
+                                    [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                    <span *ngIf="markets.runnersName[runner.selectionId]=='RED'"
+                                        class="casino-box-odd fw-bold">
+                                        <img src="/assets/lucky7/DIAMONDS.png" alt="">
+                                        <img src="/assets/lucky7/HEARTS.png" alt="">
+                                    </span>
+                                    <span *ngIf="markets.runnersName[runner.selectionId]=='BLACK'"
+                                        class="casino-box-odd fw-bold">
+                                        <img src="/assets/lucky7/CLUBS.png" alt="">
+                                        <img src="/assets/lucky7/SPADES.png" alt="">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-6">
+                            <div class="text-center">1.95</div>
+                            <div
+                                class="back-width back casino-bl-box-item  d-flex justify-content-center align-items-center flex-column text-center text-black position-relative ">
+                                <span class="casino-box-odd fw-bold">
+                                    <img src="/assets/lucky7/CLUBS.png" alt="">
+                                    <img src="/assets/lucky7/SPADES.png" alt="">
+                                </span>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="row text-end w-100 px-2">
+                        <span class="casino-min-max">R:{{(markets?.min) |shortNumber}}-{{(markets?.max) |
+                            shortNumber}}</span>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </div>
+        <ng-container *ngFor="let markets of marketArray;let i = index">
+            <div class="col-12 col-md-6 d-flex flex-column padding" *ngIf="i===2">
+                <div class="row w-100">
+                    <div class="col-6" *ngFor="let runner of markets?.runners;let b = index">
+                        <div class="text-center">{{runner.price.back[0].price}}</div>
+                        <div
+                            class="back-width back casino-bl-box-item  d-flex justify-content-center align-items-center flex-column text-center text-black position-relative ">
+                            <span class="casino-box-odd fw-bold"
+                                [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">{{capitalize(markets.runnersName[runner.selectionId])}}</span>
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-6">
+                <div class="text-center">1.95</div>
+                <div
+                    class="back-width back casino-bl-box-item  d-flex justify-content-center align-items-center flex-column text-center text-black position-relative ">
+                    <span class="casino-box-odd fw-bold">ODD</span>
+                </div>
+            </div> -->
+                </div>
+                <div class="row text-end w-100 px-2">
+                    <span class="casino-min-max">R:{{(markets?.min) |shortNumber}}-{{(markets?.max) |
+                        shortNumber}}</span>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="row row-5 mt-3 gap">
+        <ng-container *ngFor="let markets of marketArray; let i = index">
+            <div class="col-12 col-md-6 d-flex flex-column pl" *ngIf="i===3">
+                <div class="row w-100">
+                    <b class="f-14 mb-2 market-title">{{capitalize(markets.marketName)}}</b>
+                    <div class="col-6" *ngFor="let runner of markets?.runners;let b = index">
+                        <div class="text-center">{{runner.price.back[0].price}}</div>
+                        <div
+                            class="back-width back casino-bl-box-item  d-flex justify-content-center align-items-center flex-column text-center text-black position-relative ">
+                            <span
+                                [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                <span class="casino-box-odd fw-bold"
+                                    *ngIf="markets.runnersName[runner.selectionId]=='RED'">
+                                    <img src="/assets/lucky7/DIAMONDS.png" alt="DIAMONDS">
+                                    <img src="/assets/lucky7/HEARTS.png" alt="HEARTS">
+                                </span>
+                                <span class="casino-box-odd fw-bold"
+                                    *ngIf="markets.runnersName[runner.selectionId]=='BLACK'">
+                                    <img src="/assets/lucky7/CLUBS.png" alt="CLUBS">
+                                    <img src="/assets/lucky7/SPADES.png" alt="SPADES">
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-6">
+                    <div class="text-center">1.95</div>
+                    <div
+                        class="back-width back casino-bl-box-item  d-flex justify-content-center align-items-center flex-column text-center text-black position-relative ">
+                        <span class="casino-box-odd fw-bold">
+                            <img src="/assets/lucky7/CLUBS.png" alt="">
+                            <img src="/assets/lucky7/SPADES.png" alt="">
+                        </span>
+                    </div>
+                </div> -->
+                </div>
+                <div class="row text-end w-100 px-2">
+                    <div class="col-12">
+                        <span class="casino-min-max">R:{{(markets?.min) |shortNumber}}-{{(markets?.max) |
+                            shortNumber}}</span>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngFor="let markets of marketArray; let i = index">
+            <div class="col-12 col-md-6 d-flex flex-column padding" *ngIf="i===4">
+                <div class="row w-100">
+                    <b class="f-14 mb-2 market-title">{{capitalize(markets.marketName)}}</b>
+                    <div class="col-12" *ngFor="let runner of markets?.runners">
+                        <div class="text-center">{{runner.price.back[0].price}}</div>
+                        <div
+                            class="back-width back casino-bl-box-item  d-flex justify-content-center align-items-center flex-column text-center text-black position-relative ">
+                            <span *ngIf="markets.runnersName[runner.selectionId]=='ANY SUIT'"
+                                [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                                class="casino-box-odd fw-bold mb-0">
+                                <div>
+                                    <img src="/assets/lucky7/DIAMONDS.png" alt="">
+                                    <img src="/assets/lucky7/HEARTS.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="/assets/lucky7/CLUBS.png" alt="">
+                                    <img src="/assets/lucky7/SPADES.png" alt="">
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-end w-100 px-2">
+                    <span class="casino-min-max">R:{{(markets?.min) |shortNumber}}-{{(markets?.max) |
+                        shortNumber}}</span>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="block-768 ">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>
+<!-- 20 Race table ends -->

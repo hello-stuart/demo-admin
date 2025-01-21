@@ -1,0 +1,159 @@
+.modal-body {
+    max-height: calc(100vh - 58px) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+.rules-language-container .dropdown-toggle {
+    cursor: pointer;
+    color: #000000;
+}
+
+.rules-language-container img {
+    height: 20px;
+}
+
+.rules-language-container {
+    text-align: right;
+}
+
+.modal-header .close {
+    padding: 1rem;
+    margin: -1rem -1rem -1rem auto;
+}
+
+.modal-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.close {
+    float: right;
+    font-size: 1.21875rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+}
+
+.rules-language {
+    background-color: #3c444b;
+    padding: 6px;
+    position: absolute;
+    width: 200px;
+    right: 0 !important;
+    left: unset !important;
+    top: 55px;
+    text-align: left;
+    color: #ffffff;
+    border: 0;
+}
+
+.main-rules-container .menu-box {
+    float: left;
+    width: 100%;
+}
+
+.main-rules-container .card {
+    background: transparent;
+    border: 0;
+    margin-bottom: 0 !important;
+}
+
+.card {
+    margin-bottom: 24px;
+    box-shadow: 0 .75rem 1.5rem rgba(18, 38, 63, .03) !important;
+}
+
+.main-rules-container .card-header {
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 4px;
+    box-shadow: 0 .75rem 1.5rem rgba(18, 38, 63, .03) !important;
+}
+
+.main-rules-container .card-header a {
+    color: #aaafb5;
+    position: relative;
+    color: #000000;
+    padding-left: 20px;
+}
+
+.main-rules-container .card-body {
+    padding: 6px !important;
+}
+
+.main-rules-container .card-header a.collapsed::before {
+    position: absolute;
+    content: "\f055";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    left: 0;
+}
+.main-rules-container .card-header a::before {
+    position: absolute;
+    content: "\f056";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    left: 0;
+}
+::ng-deep .highlight {
+    background-color: yellow !important; /* Example styling */
+    font-weight: bold !important;
+}
+
+::ng-deep .rule-container ul{
+    list-style: none !important;
+}
+
+::ng-deep .rule-container ul li{
+    background-color: #ddd;
+    color: black !important;
+    padding: 5px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+::ng-deep .rule-container p{
+    background-color: #ddd;
+    color: black !important;
+    padding: 5px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+::ng-deep .rule-container ol{
+    color: #bb2834 !important;
+}
+
+::ng-deep .rule-container ol li h4{
+    background-color: #ddd;
+    color: #bb2834 !important;
+    padding: 5px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-size: 14px !important;
+}
+
+::ng-deep .rule-container ol li ul{
+    padding: 0px !important;
+}
+
+::ng-deep .rule-container div h3{
+    background-color: #ddd;
+    color: #bb2834 !important;
+    padding: 5px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-size: 14px !important;
+}

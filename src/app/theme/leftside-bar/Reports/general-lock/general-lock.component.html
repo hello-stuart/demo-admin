@@ -1,0 +1,49 @@
+<section class="page-container">
+    <!-- breadcrumb -->
+    <div class="row">
+      <div class="col-12 bredcrumb-container d-flex align-items-center justify-content-between">
+        <h4 class="mb-0 breadcrumb-main-title">General Lock</h4>
+        <div class="breadcrumb-nav">
+          <span style="color: #495057; margin-right: 4px;" routerLink="">Home</span> / <span style="color: #74788d; margin-left: 4px;">General Lock</span>
+        </div>
+      </div>
+    </div>
+    <!-- body -->
+    <div class="row">
+      <div class="col-12 p-0">
+        <div class="card">
+          <div class="p-3">
+            <form>
+              <div class="row d-flex align-items-end" style="gap: 5px;">
+                <div class="col-md-3">
+                    <label class="d-inline-block">Search By Client Name</label>
+                    <div class="multi-select-container" (click)="onInputFocus()">
+                      <span style="color: #ced4da; font-size: 13px;" *ngIf="!clientSearchInput">Select Option</span>
+    
+                      <input type="text" class="client-search-input" *ngIf="clientSearchInput" placeholder="Search option">
+                      <div class="options-div d-flex align-items-center" *ngIf="clientSearchInput">
+                        <ul>
+                          <li>
+                            <span class="option-headings">List is Empty</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 mt-3">
+                    <input type="text" class="form-control transaction-input" id="exampleInputEmail1" aria-describedby="transaction" placeholder="Transaction Code">
+                  </div>
+                <div class=" col-md-2 mt-3" style="gap: 4px;">
+    
+                  <button class="load-btn">Load</button>
+                  <button class="reset-btn">Reset</button>
+    
+                </div>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>

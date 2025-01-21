@@ -1,0 +1,271 @@
+.main-container {
+  padding: 5px;
+  background-color: #f8f8fb;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 2px 6px #e2e2e2;
+}
+.wraper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.box {
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+  margin: 0%;
+}
+.border {
+  width: 2px;
+  background-color: grey;
+  display: none;
+}
+.alignment {
+  display: flex;
+  justify-content: space-between;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  padding: 2px 0;
+  align-items: center;
+  position: relative;
+}
+.player {
+  width: 50%;
+  position: relative;
+  padding: 4px;
+  padding-right: 10px;
+  background-color: #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+}
+
+.odds-row{
+  width: 100%;
+  position: relative;
+  padding: 4px;
+  padding-right: 10px;
+  background-color: #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+}
+.player-text {
+  font-size: 9px;
+  font-weight: bolder;
+  color: black;
+  background-color: transparent;
+  margin: 0%;
+  padding: 0%;
+  letter-spacing: -0.03rem;
+  transform: translateY(1px);
+}
+
+@media (min-width: 320px) and (max-width:767px){
+.player-text{
+  font-size: 14px !important;
+}
+}
+
+.odds-text{
+  font-size: 14px;
+  font-weight: bolder;
+  color: black;
+  background-color: transparent;
+  margin: 0%;
+  padding: 0%;
+  letter-spacing: -0.03rem;
+  transform: translateY(1px);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.zero-text {
+  font-size: 9px;
+  margin-right: 0.69rem;
+  margin-bottom: 0%;
+  transform: translateY(2px);
+}
+
+.text-icon {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  padding: 0%;
+}
+.btns-div {
+  display: flex;
+  width: 50%;
+  align-items: center;
+}
+.btn {
+  width: calc(50% - 2px);
+  height: 40px;
+  background-color: #72bbef17;
+  border: 2px solid #72bbef;
+  font-size: 12px;
+  margin-right: 4px;
+  border-radius: 4px;
+  font-weight: 700;
+  color: #333333;
+}
+.btn-red {
+  width: calc(50% - 2px);
+  height: 40px;
+  background-color: #f994ba17;
+  border: 2px solid #f994ba;
+  font-size: 12px;
+  border-radius: 4px;
+}
+.lock-div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dce0df;
+  border-radius: 4px;
+  z-index: 10;
+  opacity: 90%;
+}
+.lock-img {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-2{
+  width: 100%;
+}
+
+.fa-info-circle{
+  color: #4a4a4a;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+.icon-range {
+  position: absolute;
+  top: 100%;
+  background-color: #000;
+  padding: 4px;
+  max-width: 100%;
+  word-wrap: break-word;
+  font-size: 12px;
+  z-index: 10;
+  right: 0;
+  transition: 0.1s;
+  text-transform: capitalize;
+  color: #aaafb5;
+}
+
+@media (min-width: 768px) {
+  .zero-text {
+    font-size: 18px;
+    margin-right: 0.65rem;
+    transform: translateY(0);
+  }
+  .btn {
+    font-size: 12px !important;
+  }
+  .player-text{
+   transform: translateY(0);
+   font-size: 14px;
+  }
+  .odd-back{
+    width: calc(10% - 4px) !important;
+  }
+  .odd-back-zero{
+    bottom: -20px !important;
+    font-size: 18px;
+  }
+  .odd-back-text{
+    font-size: 60px !important;
+  transform: translateY(0px) !important;
+
+  }
+}
+
+
+@media (min-width: 900px) {
+  .main-container{
+    padding: 10px 10px 40px;
+  }
+
+  .wraper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .border {
+    width: 2px;
+    background-color: grey;
+    display: block;
+  }
+  .table {
+    width: 100%;
+    margin: 0%;
+  }
+
+  .box {
+    width: calc(50% - 10px); 
+  }
+
+  .box:nth-child(odd) {
+    width: calc(50%); 
+    border-right: 2px solid grey;
+    padding-right: 10px; 
+  }
+
+  .btn-2{
+    width: 100%;
+  }
+}
+
+.odd-back{
+  width: calc(20% - 4px);
+  margin-bottom: 20px;
+  height: 80px;
+  border: 2px solid #72bbef;
+  background-color: #72bbef17;
+  margin-right: 4px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  color: black;
+  text-align: center;
+  cursor: not-allowed;
+}
+
+.odd-back-text{
+  font-size: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  width: 100%;
+  color: #333;
+  transform: translateY(-8px);
+}
+
+.odd-back-zero{
+  position: absolute;
+  bottom: 8px;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+  color: #000;
+  letter-spacing: 0;
+}

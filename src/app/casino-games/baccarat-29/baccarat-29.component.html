@@ -1,0 +1,46 @@
+<div class="videoPlayer">
+    <app-video-player></app-video-player>
+</div>
+<div class="parent-class font-noto-sans">
+    <div class="players-container">
+        <div class="player-A-container" *ngFor="let runner of winnerMarketArray?.runners; let i = index; ">
+            <div class="player-title">
+                <div class="Player-text">{{capitalize(winnerMarketArray.runnersName[runner.selectionId])}}</div>
+            </div>
+            <div class="btns-headings">
+                <ng-container *ngFor="let market of marketArray;let marketIndex = index">
+                    <div class="cover" *ngIf="marketIndex !== 4">
+                        <div class="heading">{{(market.marketName)}}</div>
+                        <button class="btns position-relative"
+                            [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                            <div class=" d-flex justify-content-center align-items-center">
+                            </div>
+                            <span class="btn-text">{{market.runners[0].price.back[0].price}}</span>
+                            <span class="btn-bottom-zero">0</span>
+                        </button>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="border-verticall"></div>
+    </div>
+    <ng-container *ngFor="let market of marketArray;let marketIndex = index">
+        <div class="lucky-nine-container" *ngIf="marketIndex === 4">
+            <img src="/assets/baccarat-29/lucky9.png" alt="" class="lucky-nine-img w-auto" />
+            <div class="bottom-btn-wraper">
+                <button class="left-btn position-relative"
+                    [ngClass]="market.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                    {{market.runners[0].price.back[0].price}}
+                </button>
+                <button class="right-btn position-relative"
+                    [ngClass]="market.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                    {{market.runners[0].price.lay[0].price}}
+                </button>
+                <p class="bottom-zero">0</p>
+            </div>
+        </div>
+    </ng-container>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

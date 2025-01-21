@@ -1,0 +1,321 @@
+<div class="videoPlayer">
+    <app-video-player></app-video-player>
+</div>
+<div class="casino-details">
+    <!-- 1st market -->
+    <div class="dt1dayfancy">
+        <ng-container *ngFor="let runner of winnerMarketArray?.runners; let i = index; ">
+            <div class="casino-box-row dragon-fan" *ngIf="i === 0">
+                <div class="casino-title">
+                    <div class="info-icon">
+                        <i data-bs-toggle="collapse" data-bs-target="#range2" class="fas fa-info-circle float-end"></i>
+                        <div id="range2" class="collapse icon-range">
+                            R:<span class="small-txt">{{(winnerMarketArray?.min) |
+                                shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span>
+                        </div>
+                    </div>
+                    <b>{{capitalize(winnerMarketArray.runnersName[runner.selectionId])}}</b>
+                </div>
+                <div class="casino-bl-box">
+                    <div class="casino-bl-box-item back"
+                        [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                        <span class="casino-box-odd">{{runner.price.back[0].price}}</span>
+                    </div>
+                    <div class="casino-bl-box-item lay"
+                        [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                        <span class="casino-box-odd">{{runner.price.lay[0].price}}</span>
+                    </div>
+                </div>
+                <div class="casino-nation-name">
+                    <span class="casino-book">0</span>
+                </div>
+            </div>
+        </ng-container>
+
+        <div class="casino-box-row pair-fan">
+            <div class="casino-title n-pl">
+                <div class="info-icon s-mr">
+                    <i data-bs-toggle="collapse" data-bs-target="#range1" class="fas fa-info-circle float-end"></i>
+                    <div id="range1" class="collapse icon-range">
+                        R:<span class="small-txt">{{(winnerMarketArray?.min) | shortNumber}}-{{(winnerMarketArray?.max)
+                            | shortNumber}}</span></div>
+                </div>
+                <b>{{capitalize(splitMarketName(marketArray[1]?.runnersName[marketArray[1]?.runners[0]?.selectionId]))}}</b>
+            </div>
+            <div class="casino-bl-box">
+                <div class="casino-bl-box-item back"
+                    [ngClass]="marketArray[1]?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                    <span class="casino-box-odd">{{marketArray[1]?.runners[0]?.price?.back[0]?.price}}</span>
+                </div>
+            </div>
+            <div class="casino-nation-name">
+                <span class="casino-book">0</span>
+            </div>
+        </div>
+
+        <ng-container *ngFor="let runner of winnerMarketArray?.runners; let i = index;  ">
+
+            <div class="casino-box-row tiger-fan" *ngIf="i === 1">
+                <div class="casino-title">
+                    <div class="info-icon">
+                        <i data-bs-toggle="collapse" data-bs-target="#range3" class="fas fa-info-circle float-end"></i>
+                        <div id="range3" class="collapse icon-range">
+                            R:<span class="small-txt">{{(winnerMarketArray?.min) |
+                                shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span></div>
+                    </div>
+                    <b>Tiger</b>
+                </div>
+                <div class="casino-bl-box">
+                    <div class="casino-bl-box-item back"
+                        [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                        <span class="casino-box-odd">{{runner.price.back[0].price}}</span>
+                    </div>
+                    <div class="casino-bl-box-item lay"
+                        [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                        <span class="casino-box-odd">{{runner.price.lay[0].price}}</span>
+                    </div>
+                </div>
+                <div class="casino-nation-name">
+                    <span class="casino-book">0</span>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <!-- 2nd market -->
+    <ng-container *ngFor="let runner of winnerMarketArray?.runners; let i = index;  ">
+
+        <div class="casino-container" *ngIf="i === 1">
+
+            <div class="dragon-tiger-left">
+                <div class="dragon-tiger-market">
+                    <div class="casino-box-row casino-odds casino-title">
+                        <div class="text-left w-100">
+                            <b class="playera">Dragon</b>
+                        </div>
+                    </div>
+                    <div class="casino-box-row">
+                        <div class="casino-bl-box"><b>{{marketArray[2]?.runners[1]?.price.back[0].price}}</b></div>
+                        <div class="casino-bl-box"><b>{{marketArray[2]?.runners[0]?.price.back[0].price}}</b></div>
+                        <div class="casino-bl-box"><b>{{marketArray[4]?.runners[1]?.price.back[0].price}}</b></div>
+                        <div class="casino-bl-box"><b>{{marketArray[4]?.runners[0]?.price.back[0].price}}</b></div>
+                    </div>
+                    <div class="casino-box-row">
+                        <div class="casino-bl-box">
+                            <div class="back casino-bl-box-item up"
+                                [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                                <span class="casino-box-odd">Even</span>
+                                <!-- <span class="casino-book">0</span> -->
+                            </div>
+                            <span class="casino-book down">0</span>
+                        </div>
+                        <div class="casino-bl-box">
+                            <div class="back casino-bl-box-item up"
+                                [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                                <span class="casino-box-odd">Odd</span>
+                                <!-- <span class="casino-book">0</span> -->
+                            </div>
+                            <span class="casino-book down">0</span>
+                        </div>
+                        <div class="casino-bl-box">
+                            <div class="back casino-bl-box-item up"
+                                [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                                <span class="casino-imgs">
+                                    <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/spade.png"
+                                        alt="" class="ml">
+                                    <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/club.png"
+                                        alt="" class="ml-2">
+                                </span>
+                                <!-- <span class="casino-book">0</span> -->
+                            </div>
+                            <span class="casino-book down">0</span>
+                        </div>
+                        <div class="casino-bl-box">
+                            <div class="back casino-bl-box-item up"
+                                [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                                <span class="casino-imgs">
+                                    <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/heart.png"
+                                        alt="" class="ml">
+                                    <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/diamond.png"
+                                        alt="" class="ml-2">
+                                </span>
+                                <!-- <span class="casino-book">0</span> -->
+                            </div>
+                            <span class="casino-book down">0</span>
+                        </div>
+                    </div>
+                    <div class="casino-box-row casino-odds">
+                        <div class="casino-tip">
+                            <span>
+                                R:{{(winnerMarketArray?.min) |
+                                shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dt-casino-market mt-top">
+                    <div class="casino-box-row">
+                        <div class="casino-bl-box">
+                            <div class="casino-bl-box-item">
+                                <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/spade.png"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="casino-bl-box">
+                            <div class="casino-bl-box-item">
+                                <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/heart.png"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="casino-bl-box">
+                            <div class="casino-bl-box-item">
+                                <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/club.png"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="casino-bl-box">
+                            <div class="casino-bl-box-item">
+                                <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/diamond.png"
+                                    alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="casino-box-row">
+                        <div class="casino-bl-box mr" *ngFor="let runner of marketArray[6]?.runners">
+                            <div class="back casino-bl-box-item up"
+                                [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                                <span class="casino-box-odd">{{marketArray[6]?.runners[0].price.back[0].price}}</span>
+                            </div>
+                            <span class="casino-book card-zero">0</span>
+                        </div>
+                    </div>
+                    <div class="casino-box-row casino-odds">
+                        <div class="casino-tip">
+                            <span>
+                                R:{{(winnerMarketArray?.min) |
+                                shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 3rd market -->
+            <div class="dragon-tiger-center"></div>
+
+            <div class="dragon-tiger-right">
+                <div class="dragon-tiger-market">
+                    <div class="casino-box-row casino-odds casino-title">
+                        <div class="text-left w-100">
+                            <b class="playerb">Tiger</b>
+                        </div>
+                    </div>
+                    <div class="casino-box-row">
+                        <div class="casino-bl-box"><b>{{marketArray[3]?.runners[1]?.price.back[0].price}}</b></div>
+                        <div class="casino-bl-box"><b>{{marketArray[3]?.runners[0]?.price.back[0].price}}</b></div>
+                        <div class="casino-bl-box"><b>{{marketArray[4]?.runners[1]?.price.back[0].price}}</b></div>
+                        <div class="casino-bl-box"><b>{{marketArray[4]?.runners[0]?.price.back[0].price}}</b></div>
+                    </div>
+                    <div class="casino-box-row">
+                        <div class="casino-bl-box">
+                            <div class="back casino-bl-box-item up"
+                                [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                                <span class="casino-box-odd">Even</span>
+                                <!-- <span class="casino-book">0</span> -->
+                            </div>
+                            <span class="casino-book down">0</span>
+                        </div>
+                        <div class="casino-bl-box">
+                            <div class="back casino-bl-box-item up"
+                                [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                                <span class="casino-box-odd">Odd</span>
+                                <!-- <span class="casino-book">0</span> -->
+                            </div>
+                            <span class="casino-book down">0</span>
+                        </div>
+                        <div class="casino-bl-box">
+                            <div class="back casino-bl-box-item up"
+                                [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                                <span class="casino-imgs">
+                                    <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/spade.png"
+                                        alt="" class="ml">
+                                    <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/club.png"
+                                        alt="" class="ml-2">
+                                </span>
+                                <!-- <span class="casino-book">0</span> -->
+                            </div>
+                            <span class="casino-book down">0</span>
+                        </div>
+                        <div class="casino-bl-box">
+                            <div class="back casino-bl-box-item up"
+                                [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                                <span class="casino-imgs">
+                                    <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/heart.png"
+                                        alt="" class="ml">
+                                    <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/diamond.png"
+                                        alt="" class="ml-2">
+                                </span>
+                                <!-- <span class="casino-book">0</span> -->
+                            </div>
+                            <span class="casino-book down">0</span>
+                        </div>
+                    </div>
+                    <div class="casino-box-row casino-odds">
+                        <div class="casino-tip">
+                            <span>
+                                R:{{(winnerMarketArray?.min) |
+                                shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dt-casino-market mt-top">
+                    <div class="casino-box-row">
+                        <div class="casino-bl-box">
+                            <div class="casino-bl-box-item">
+                                <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/spade.png"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="casino-bl-box">
+                            <div class="casino-bl-box-item">
+                                <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/heart.png"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="casino-bl-box">
+                            <div class="casino-bl-box-item">
+                                <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/club.png"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="casino-bl-box">
+                            <div class="casino-bl-box-item">
+                                <img src="https://g1ver.sprintstaticdata.com/v34/static/admin/img/cards/diamond.png"
+                                    alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="casino-box-row">
+                        <div class="casino-bl-box" *ngFor="let runner of marketArray[7]?.runners">
+                            <div class="back casino-bl-box-item up"
+                                [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                                <span class="casino-box-odd">{{marketArray[7]?.runners[0].price.back[0].price}}</span>
+                            </div>
+                            <span class="casino-book card-zero">0</span>
+                        </div>
+                    </div>
+                    <div class="casino-box-row casino-odds">
+                        <div class="casino-tip">
+                            <span>
+                                R:{{(winnerMarketArray?.min) |
+                                shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

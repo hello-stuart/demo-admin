@@ -1,0 +1,44 @@
+<div class="animated fadeIn divider-top">
+  <div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 ">
+                Activity Log
+            </h4>
+        </div>
+  </div>
+</div>
+  <div class="card card-accent-primary card-shadow">
+    <div class="card-body account-detail-body table-responsive">
+      <table id="example" class="display nowrap table table-striped table-bordered" style="width: 100%;">
+        <thead>
+          <tr role="row">
+            <th role="columnheader" scope="col" aria-colindex="1" class="text-center">Login&nbsp;Date &amp; Time</th>
+            <th role="columnheader" scope="col" aria-colindex="2" class="text-center">Login Status </th>
+            <th role="columnheader" scope="col" aria-colindex="3" class="text-center">IP Address </th>
+            <th role="columnheader" scope="col" aria-colindex="4" class="text-center">ISP </th>
+            <th role="columnheader" scope="col" aria-colindex="5" class="text-center"> City/State/Country</th>
+          </tr>
+        </thead>
+        <tbody class="table-responsive">
+          <tr *ngFor="let item of data">
+            <td class="text-center" >{{ getLocalDateTime(item?.createdAt)}} </td>
+            <td class="text-center">
+              <span [ngClass]="item.logMessage=='Login Successful'?'text-success':'text-danger'">
+                <b>{{item?.logMessage}}</b>
+              </span>
+            </td>
+            <td class="text-center">{{item?.location?.query}}</td>
+            <td class="text-center">{{item?.location?.isp}}</td>
+            <td class="text-center">
+              <span *ngIf="item.location?.city">{{item.location?.city}}/</span>
+              <span *ngIf="item.location?.regionName">{{item.location?.regionName}}/</span>
+              <span *ngIf="item.location?.country">{{item.location?.country}}</span>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

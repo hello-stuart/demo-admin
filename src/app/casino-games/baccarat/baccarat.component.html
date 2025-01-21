@@ -1,0 +1,158 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="casino-detail">
+    <div class="w-100 pt-3">
+        <div class="baccarat-bets-container">
+            <ng-container *ngFor="let markets of marketArray; let i = index">
+                <ng-container *ngIf="i===2">
+                    <ng-container *ngFor="let runner of markets?.runners;let b =index">
+                        <div class="player-pair-container" *ngIf="b===0">
+                            <div class="bet-player-name"
+                                [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                <div>
+                                    {{(marketArray[2]?.runnersName[runner?.selectionId])}}
+                                </div>
+                                <div class="mb-0">
+                                    {{runner?.price?.back[0]?.price}}
+                                </div>
+                            </div>
+                            <div class="player-bet-value">
+                                0
+                            </div>
+                            <div class="min-max-info player-min-max">
+                                <i data-bs-toggle="collapse" data-bs-target="#demo-l-6" class="fas fa-info-circle"></i>
+                                <div id="demo-l-6" class="icon-range collapse bet-info-card">
+                                    R:<span>{{markets.min | shortNumber}}-{{markets.max | shortNumber}}</span></div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngFor="let markets of marketArray; let i = index">
+                <ng-container *ngIf="i===0">
+                    <ng-container *ngFor="let runner of markets?.runners;let b =index">
+                        <div class="player-container" *ngIf="b===0">
+                            <div class="player-bets-name"
+                                [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                <div class="ms-1 ms-md-3">{{(marketArray[0]?.runnersName[runner?.selectionId])}}
+                                    <span>{{runner?.price?.back[0]?.price}}</span>
+                                </div>
+                                <div class="mb-0 position-relative" style="z-index: 11;">
+                                    <span class="me-0 ms-1 ms-md-3">
+                                        <img *ngIf="game?.cardsArr['PLAYER']?.card_3!=0 && game?.cardsArr['PLAYER']?.card_3"
+                                            class="l-rotate-card"
+                                            [src]="['/assets/cards/'+game?.cardsArr['PLAYER']?.card_3+'.png']">
+                                    </span>
+                                    <span class="me-1">
+                                        <img class="casino-card"
+                                            [src]="['/assets/cards/'+game?.cardsArr['PLAYER']?.card_2+'.png']">
+                                    </span>
+                                    <span >
+                                        <img class="casino-card"
+                                            [src]="['/assets/cards/'+game?.cardsArr['PLAYER']?.card_1+'.png']">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="player-bet-value">
+                                0
+                            </div>
+                            <div class="min-max-info player-min-max">
+                                <i data-bs-toggle="collapse" data-bs-target="#demo-l-7" class="fas fa-info-circle"></i>
+                                <div id="demo-l-7" class="icon-range collapse bet-info-card">
+                                    R:<span>{{markets.min | shortNumber}}-{{markets.max | shortNumber}}</span></div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngFor="let markets of marketArray; let i = index">
+                <ng-container *ngIf="i===1">
+                    <div class="tie-container">
+                        <div class="tie-bet-name"
+                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                            <div>{{markets.marketName}}</div>
+                            <div class="mb-0">
+                                {{markets.runners[0].price.back[0].price}}
+                            </div>
+
+                        </div>
+                        <div class="tie-bet-value">
+                            0
+                        </div>
+                        <div class="min-max-info tie-min-max">
+                            <i data-bs-toggle="collapse" data-bs-target="#demo-l-8" class="fas fa-info-circle"></i>
+                            <div id="demo-l-8" class="icon-range collapse bet-info-card">
+                                R:{{markets.min | shortNumber}}-{{markets.max | shortNumber}}</div>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngFor="let markets of marketArray; let i = index">
+                <ng-container *ngIf="i===0">
+                    <ng-container *ngFor="let runner of markets?.runners;let b =index">
+                        <div class="banker-container" *ngIf="b===1">
+                            <div class="banker-bets-name"
+                                [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                <div>{{(marketArray[0]?.runnersName[runner?.selectionId])}}
+                                    <span>{{runner?.price?.back[0]?.price}}</span>
+                                </div>
+                                <div class="mb-0">
+                                    <span class="me-1">
+                                        <img class="casino-card"
+                                            [src]="['/assets/cards/'+game?.cardsArr['BANKER']?.card_1+'.png']">
+                                    </span>
+                                    <span>
+                                        <img class="casino-card"
+                                            [src]="['/assets/cards/'+game?.cardsArr['BANKER']?.card_2+'.png']">
+                                    </span>
+                                    <span class="me-1">
+                                        <img *ngIf="game?.cardsArr['BANKER']?.card_3!=0 && game?.cardsArr['BANKER']?.card_3"
+                                            class="r-rotate-card"
+                                            [src]="['/assets/cards/'+game?.cardsArr['BANKER']?.card_3+'.png']">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="banker-bet-value">
+                                0
+                            </div>
+                            <div class="min-max-info">
+                                <i data-bs-toggle="collapse" data-bs-target="#demo-l-9" class="fas fa-info-circle"></i>
+                                <div id="demo-l-9" class="icon-range collapse bet-info-card">
+                                    R:<span>{{markets.min | shortNumber}}-{{markets.max | shortNumber}}</span></div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngFor="let markets of marketArray; let i = index">
+                <ng-container *ngIf="i===2">
+                    <ng-container *ngFor="let runner of markets?.runners;let b =index">
+                        <div class="banker-pair-container" *ngIf="b===1">
+                            <div class="banker-pair-name"
+                                [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                <div>
+                                    {{(marketArray[2]?.runnersName[runner?.selectionId])}}
+                                </div>
+                                <div class="mb-0">
+                                    {{runner?.price?.back[0]?.price}}
+                                </div>
+                            </div>
+                            <div class="banker-pair-bet-value">
+                                0
+                            </div>
+                            <div class="min-max-info">
+                                <i data-bs-toggle="collapse" data-bs-target="#demo-l-10" class="fas fa-info-circle"></i>
+                                <div id="demo-l-10" class="icon-range collapse bet-info-card">
+                                    R:<span>{{markets.min | shortNumber}}-{{markets.max | shortNumber}}</span></div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

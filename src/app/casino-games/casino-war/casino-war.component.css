@@ -1,0 +1,264 @@
+.parent-container {
+    padding: 5px 5px 40px;
+    background-color: #f8f8fb;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 6px #e2e2e2;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+    width: 100%;
+    column-gap: 5px;
+    margin-top: 20px;
+}
+.table-row {
+    display: flex;
+    display: -webkit-flex;
+    padding: 2px 0;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+.table-row-1 {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    padding: 2px 0;
+    align-items: center;
+    position: relative;
+    width: 13%;
+    row-gap: 20px;
+}
+
+.market-heading {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    margin-top: 7px;
+    width: 22%;
+}
+.empty {
+    min-width: 22%;
+    background-color: #dddddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center !important;
+    padding: 4px;
+    height: 30px;
+}
+.table-box {
+    width: 13%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-img {
+    width: 30px;
+    height: 42px;
+}
+.bottom-zero {
+    position: absolute;
+    bottom: -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text {
+    font-size: 14px;
+    font-weight: bolder;
+}
+p {
+    padding: 0;
+    margin: 0;
+}
+.btn {
+    width: calc(100% - 4px);
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    background-color: #72bbef17;
+    border: 2px solid #72bbef;
+}
+.btn-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: black;
+}
+.locker-wraper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dae1e0;
+}
+.lock-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.table-size {
+    width: 100%;
+}
+.cards-img {
+    width: 25px;
+    height: 25px;
+}
+.margin-change {
+    margin-top: 1.5rem;
+}
+.m-right {
+    margin-right: 5px;
+}
+@media (max-width: 767px) {
+    .hiding {
+        display: none !important;
+    }
+
+    .table-row-1 {
+        width: 50%;
+    }
+
+    .market-heading {
+        width: 50%;
+    }
+
+    .middle-border {
+        width: 2px !important;
+        background-color: grey;
+    }
+    .empty {
+        min-width: 50%;
+        background-color: #dddddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center !important;
+        padding: 4px;
+        height: 30px;
+    }
+    .bottom-zero {
+        position: absolute;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        z-index: -10;
+    }
+    .btn-text {
+        font-size: 16px;
+        color: black;
+    }
+    .mobile-hide {
+        display: none;
+    }
+    .table-box {
+        width: 100%;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .margin-change {
+        margin-top: 5px;
+    }
+}
+@media (min-width: 767px) {
+    .tabs-text {
+        display: none;
+    }
+    .casino-tabs {
+        height: 36px;
+        background-color: #3c444b;
+        margin-bottom: 10px;
+        justify-content: flex-start;
+        border-radius: 0;
+        width: 100%;
+        margin-top: 10px;
+        display: none;
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .casino-tabs {
+        height: 36px;
+        background-color: #3c444b;
+        margin-bottom: 10px;
+        justify-content: flex-start;
+        border-radius: 0;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .tabs-text {
+        padding-top: 4px;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: 4px;
+        text-align: center;
+    }
+}
+
+.nav-tabs {
+    border: 0px !important;
+}
+
+.custom-tab {
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: white;
+    width: 100%;
+    padding-bottom: 4px !important;
+}
+
+.custom-tab.active {
+    background-color: transparent;
+    border-bottom: 3px solid #ef910f;
+    color: #fdcf13;
+}
+
+.custom-tab:hover {
+    border-bottom: 3px solid #ef910f;
+    color: #fdcf13;
+}
+.casino-tabs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex: 1 1 0;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+.nav-item {
+    width: 100%;
+    text-align: center;
+}
+
+.bet-info-card {
+    position: absolute;
+    top: 100%;
+    transform: translateX(-20px);
+    background-color: #16191c;
+    padding: 4px;
+    max-width: 100%;
+    word-wrap: break-word;
+    font-size: 12px;
+    z-index: 10;
+    transition: 0.1s;
+    text-transform: capitalize;
+    color: #aaafb5;
+    z-index: 150;
+}
+
+.flipCard {
+    transform: rotateY(360deg);
+    position: relative;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,136 @@
+.market-analysis{
+  font-family: Poppins, sans-serif;
+}
+.px-padding{
+  padding-left: 1px !important;
+  padding-right: 1px !important;
+}
+
+.market-analysis .page-title-box h4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.market-analysis .page-title-box h4 a {
+  padding-right: 10px;
+}
+
+.form-control {
+  display: block;
+  max-width: 184px;
+  height: calc(1.5em + .94rem + 2px);
+  padding: .47rem .75rem;
+  font-size: .8125rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-icon {
+  animation: rotate 2s ease-in-out forwards;
+}
+
+.market-ui-container{
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px;
+}
+
+.market-title{
+  color: #FFFFFF;
+  background-color: #464646;
+  display: flex;
+  justify-content: space-between;
+  padding: 6px;
+  font-size: 16px;
+}
+
+.ma-link{
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.market-content{
+  padding: 10px 10px 0 10px;
+}
+
+.row.row5 {
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+.content-detail{
+  max-height: 250px;
+  overflow: auto;
+  margin-bottom: 4px;
+}
+
+.market-content .table thead th{
+  background-color: #464646d9;
+  color: #FFFFFF;
+  padding: 4px 6px !important;
+  font-weight: 500;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #eff2f7;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.table td {
+  white-space: nowrap;
+  font-size: 12px;
+  padding: 4px 6px !important;
+  vertical-align: middle;
+  border-top: 1px solid #eff2f7;
+  background-color: #e1e1e1;
+  margin-bottom: 10px;
+  width: 100%;
+  color: #495057;
+}
+tr{
+  cursor: pointer;
+}
+input::placeholder{
+  color: #74788d !important;
+}
+
+.market-analysis{
+  margin-right: 0 !important;
+}
+@media(max-width:1279px){
+  .ma-text{
+    font-size: 14px !important;
+  }
+  .mobile-title-box{
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+@media (min-width:1280px) {
+  .mobile-title-box{
+    padding-top: 0 !important;
+  }
+}

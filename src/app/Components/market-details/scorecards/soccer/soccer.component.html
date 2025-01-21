@@ -1,0 +1,149 @@
+<div class="container-main" *ngIf="checkData?.length > 0">
+    <div class="row  pt-3 pb-3">
+        <div class="col carretIcon">
+            <!-- <i class="fa fa-solid fa-caret-down"></i> -->
+        </div>
+        <div class="col mobileWidth"><span class=" text-light"></span></div>
+        <div class="col headSvg">
+            <!-- <img class="scoreSvg" src="../../../../../assets/scoreCard/goal.svg"> -->
+            <app-score-card-svgs  [isDesktop]="isDesktop" [isTabDesk]="isTabDesk"
+            [sportId]="'goal'"></app-score-card-svgs>
+        </div>
+        <div class="col headSvg">
+            <!-- <img class="scoreSvg" style="width: 12px;" src="../../../../../assets/scoreCard/corner.svg"> -->
+            <app-score-card-svgs  [isDesktop]="isDesktop" [isTabDesk]="isTabDesk"
+            [sportId]="'corner'"></app-score-card-svgs>
+        </div>
+        <div class="col headSvg">
+            <!-- <img class="scoreSvg" src="../../../../../assets/scoreCard/htscore.svg"> -->
+            <app-score-card-svgs  [isDesktop]="isDesktop" [isTabDesk]="isTabDesk"
+            [sportId]="'ht'"></app-score-card-svgs>
+        </div>
+        <div class="col headSvg">
+            <!-- <img class="scoreSvg" src="../../../../../assets/scoreCard/yellow-card.svg"> -->
+            <app-score-card-svgs  [isDesktop]="isDesktop" [isTabDesk]="isTabDesk"
+            [sportId]="'yellowCard'"></app-score-card-svgs>
+        </div>
+        <div class="col headSvg">
+            <!-- <img class="scoreSvg" src="../../../../../assets/scoreCard/red-card.svg"> -->
+            <app-score-card-svgs  [isDesktop]="isDesktop" [isTabDesk]="isTabDesk"
+            [sportId]="'red-card'"></app-score-card-svgs>
+        </div>
+
+        <!-- <div class="col headSvg" *ngIf="isDesktop"><img class="scoreSvg" src="../../../../../assets/scoreCard/penalty.svg"></div>
+        <div class="col headSvg" *ngIf="isDesktop">SHOTS</div>
+        <div class="col headSvg" *ngIf="isDesktop">SHOTS ON</div>
+        <div class="col headSvg" *ngIf="isDesktop">POSS %</div> -->
+    </div>
+    <div class="row pb-3">
+        <ng-container>
+            <div class="col shirt">
+                <img class="soccerShirt"
+                    src="https://spxstatic.com/sports/assets/media/spTeamKits/{{teamInfo?.team2KitFileName}}">
+            </div>
+            <div class="col soccerData mobileWidth" style="max-width: 22%;">
+                <span class="title">
+
+
+                    {{(teamInfo?.team1Name)?.length>10 ||
+                    (teamInfo?.team2Name)?.length>10 ?
+                    teamInfo?.team1Abbreviation :
+                    teamInfo?.team1Name
+                    }}
+
+                </span>
+                <span class="goalInfo">
+                    {{slider[0]?.scoreData[5]?.value}}
+                </span>
+            </div>
+            <div class="col soccerData">
+                {{slider[0]?.scoreData[0]?.value}}
+            </div>
+
+            <div class="col soccerData">
+                {{slider[0]?.scoreData[2]?.value}}
+            </div>
+
+            <div class="col soccerData">
+                {{slider[0]?.scoreData[1]?.value}}
+            </div>
+
+            <div class="col soccerData">
+                {{slider[0]?.scoreData[3]?.value}}
+            </div>
+
+            <div class="col soccerData">
+                {{slider[0]?.scoreData[4]?.value}}
+            </div>
+        </ng-container>
+
+        <!-- <div class="col soccerData">0</div>
+        <div class="col soccerData">0</div>
+        <div class="col soccerData">0</div>
+        <div class="col soccerData">0</div>
+        <div class="col soccerData">0</div> -->
+        <!-- 
+        <div class="col soccerData" *ngIf="isDesktop">0</div>
+        <div class="col soccerData" *ngIf="isDesktop">0</div>
+        <div class="col soccerData" *ngIf="isDesktop">0</div>
+        <div class="col soccerData" *ngIf="isDesktop">0</div> -->
+    </div>
+    <div class="row pb-4">
+
+        <ng-container>
+            <div class="col shirt">
+                <img class="soccerShirt"
+                    src="https://spxstatic.com/sports/assets/media/spTeamKits/{{teamInfo?.team1KitFileName}}">
+            </div>
+            <div class="col soccerData mobileWidth" style="max-width: 22%;">
+                <span class="title">
+
+                    {{(teamInfo?.team1Name)?.length>10 ||
+                    (teamInfo?.team2Name)?.length>10 ?
+                    teamInfo?.team2Abbreviation :
+                    teamInfo?.team2Name
+                    }}
+
+                </span>
+                <span class="goalInfo">
+                    {{slider[1]?.scoreData[5]?.value}}
+                </span>
+            </div>
+            <div class="col soccerData">
+                {{slider[1]?.scoreData[0]?.value}}
+            </div>
+
+            <div class="col soccerData">
+                {{slider[1]?.scoreData[2]?.value}}
+            </div>
+
+            <div class="col soccerData">
+                {{slider[1]?.scoreData[1]?.value}}
+            </div>
+
+            <div class="col soccerData">
+                {{slider[1]?.scoreData[3]?.value}}
+            </div>
+
+            <div class="col soccerData">
+                {{slider[1]?.scoreData[4]?.value}}
+            </div>
+        </ng-container>
+
+        <!-- <div class="col soccerData" *ngIf="isDesktop">0</div>
+        <div class="col soccerData" *ngIf="isDesktop">0</div>
+        <div class="col soccerData" *ngIf="isDesktop">0</div>
+        <div class="col soccerData" *ngIf="isDesktop">0</div> -->
+    </div>
+    <!-- <div class="d-flex footer">
+       <div class=" carretIcon" style="margin-left: 15px;">
+            <i style="transform: rotate(270deg);" class="fa fa-solid fa-caret-down"></i>
+        </div>
+        <div class=" d-flex" style="line-height: 30px;margin-left: 15px;">
+            <div style="width: 20px;"><img class="scoreSvg" style="width: 12px;"
+                    src="../../../../../assets/scoreCard/corner.svg"></div>
+            <div class="Comment">84' - 9th Corner (OFK)</div>
+        </div> 
+    </div>-->
+
+</div>

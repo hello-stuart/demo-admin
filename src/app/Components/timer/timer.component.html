@@ -1,0 +1,22 @@
+<!-- <div class="timer" *ngIf="timer && !resultDeclared"  >
+    {{ countdown }}
+  </div>
+   -->
+<div class="casino-timer" *ngIf="timer && !resultDeclared">
+  <div class="base-timer">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="base-timer__svg">
+      <g class="base-timer__circle">
+        <circle cx="50" cy="50" r="45" class="base-timer__path-elapsed"></circle>
+        <path [attr.stroke-dasharray]="strokeDasharray" [attr.stroke-dashoffset]="strokeDashoffset"
+          [ngClass]="circleColor" d="M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0"
+          class="base-timer__path-remaining">
+        </path>
+      </g>
+    </svg>
+    <span class="base-timer__label" [ngClass]="[circleColor, 'slide-down']">
+      <span class="digit" *ngIf="firstDigit" [class.animate-first]="animateFirstDigit">{{ firstDigit }}</span>
+      <span class="digit" [class.animate-second]="animateSecondDigit">{{ secondDigit }}</span>
+    </span>
+
+  </div>
+</div>

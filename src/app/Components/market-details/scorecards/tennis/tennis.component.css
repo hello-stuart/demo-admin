@@ -1,0 +1,196 @@
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+
+.container-forTest{
+  padding: 0;
+  background: linear-gradient(101deg, rgb(0 0 0 / 40%), rgb(0 0 0 / 64%)), url('../../../../../assets/scorecard-assets/tennisstadium.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: auto;
+  margin-left: auto;
+  color: white;
+  height: 80px;
+  align-items: center;
+  background-position: bottom;
+  position: relative;
+}
+.headingInnings{
+  color:#b1bbc4;
+  font-size: 10px;
+}
+.score-section{
+  font-size: 17px;
+}
+.currentTestBatsMan{
+  color: #b4b4b4;
+  line-height: 7px;
+  font-size: 10px;
+}
+.TestTeamName{
+  font-size: 15px;
+}
+.InnignsScore{
+  font-size: 14px;
+}
+.newsforTest{
+  font-size: 12px;
+  color: whitesmoke;
+}
+.activeInnings{
+  color: white;
+}
+@media only screen and (max-width: 767px) {
+
+  .container-forTest{
+    height: 105px !important;
+  }
+}
+
+.row-ctm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0px 0;
+}
+
+.team {
+  flex: 0 0 25%;
+  max-width: 25%;
+  text-align: center;
+}
+
+.match_status {
+  flex: 0 0 50%;
+  max-width: 50%;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0px;
+  padding: 4px 0;
+  position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.inn1 {
+  font-size: 10px;
+  font-weight: 600;
+  font-style: italic;
+  color: #fff;
+  width: max-content;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.curr_inn {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.team_name {
+  text-transform: capitalize;
+  font-size: 14px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.day {
+  width: 100%;
+  display: block;
+  text-transform: capitalize;
+  font-size: 10px;
+}
+
+.status {
+  width: 100%;
+}
+
+.day:before {
+  color: #fff;
+  margin: 0 5px;
+}
+
+.day:after {
+  color: #fff;
+  margin: 0 5px;
+}
+
+.team_name img {
+  /* padding-left: 5px; */
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+.sportIcon{
+  height: 14px !important;
+  width: 14px !important;
+
+}
+@media screen and (min-width:993px){
+  .container-forTest{
+    height: 127px;
+  }
+  .team_name{
+    font-size: 20px;
+  }
+  .curr_inn{
+    font-size: 14px;
+  }
+  .TestTeamName{
+    font-size: 20px;
+  }
+  .currentTestBatsMan{
+    line-height: 12px;
+    font-size: 14px;
+  }
+  .InnignsScore{
+    font-size: 18px;
+  }
+  .newsforTest{
+    font-size: 16px;
+  }
+  .headingInnings{
+    font-size: 16px;
+  }
+  .sportIcon {
+    height: 20px !important;
+    width: 18px !important;
+    line-height: 24px;
+    margin-left: 5px;
+    margin-right: 12px;
+}
+.flag{
+  margin-right: 6px;
+}
+}
+@media screen and (max-width:330px) {
+  .container-forTest{
+    height: 147px !important;
+  }
+}
+@media screen and (min-width:768px) and (max-width:992px){
+
+  .container-forTest{
+    height: 123px !important;
+  }
+}
+
+
+.w-20{
+  width: 20% ;
+  min-width: 20%;
+  max-width: 20%;
+}
+.w-14{
+  width: 14.28%;
+  min-width: 14.28%;
+  max-width: 14.28%;
+}

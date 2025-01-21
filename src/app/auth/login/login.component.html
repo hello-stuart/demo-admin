@@ -1,0 +1,38 @@
+<div id="app" class="login">
+    <section class="login-mn">
+        <div class="log-logo m-b-20">
+            <img src="https://sitethemedata.com/sitethemes/dono95.com/front/logo.png"
+                style="max-width: 250px; max-height: 100px" />
+        </div>
+        <div class="log-fld">
+            <h2 class="text-center">Sign In</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input id="input-1" name="input-1" formControlName="username" type="text" placeholder="Enter Username"
+                        class="form-control" #userNameInput />
+                    <div *ngIf="f.username.touched && f.username.errors" class="error">
+                        <div *ngIf="f.username.errors.required"><span class="error">
+                                The username field is required
+                            </span></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input formControlName="password" id="password" [type]="show_Eye ? 'text' : 'password'"
+                        placeholder="Enter Password" class="form-control" />
+                    <span *ngIf="f.password.touched && f.password.errors" class="error">
+                        <div *ngIf="f.password.errors.required"> The password field is required
+                        </div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters.</div>
+                    </span>
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-secondary btn-login btn-submit"  (click)="loginAuthentication('REAL')">
+                        Sign In <i class="fas fa-sign-in-alt"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

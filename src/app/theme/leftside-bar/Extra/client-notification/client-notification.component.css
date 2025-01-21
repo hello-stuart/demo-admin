@@ -1,0 +1,33 @@
+.btn-success {
+  background-color: var(--extra-success-btn-bg) !important ;
+  color: var(--extra-btn-txt-color);
+}
+
+.row,
+.col-md-12,
+.col-12 {
+  padding-left: inherit !important;
+  padding-right: inherit !important;
+}
+
+.page-title-box {
+  padding: 0px 0px 12px;
+}
+.card {
+  box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03) !important;
+}
+@media (max-width: 1279px) {
+  .heading-logo {
+    font-size: 14px !important;
+  }
+  .page-title-box {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .page-title-box {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}

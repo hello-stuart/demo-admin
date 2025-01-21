@@ -1,0 +1,35 @@
+<div  class="animated fadeIn">
+  <div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 heading-logo">
+                Client Notification
+            </h4>
+        </div>
+  </div>
+  <div  class="row">
+    <div  class="col-md-12">
+      <div  class="card card-accent-primary list-card card-shadow">
+        <div  class="card-header account-detail-head">Client Notifitcation</div>
+        <form  novalidate="" class="">
+          <div  class="card-body">
+            <div  class="row">
+              <div  class="col-md-12">
+                <div  class="row">
+                  <div  class="col-md-4">
+                    <textarea  class="form-control " [(ngModel)]="news" name="news" placeholder="Notification" type="text"></textarea>
+                  </div>
+                </div>
+                <div  class="row mt-5">
+                  <div  class="col-md-3">
+                    <button  class="btn btn-success" type="button" (click)="updateNews()">Update News</button>&nbsp;
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

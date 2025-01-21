@@ -1,0 +1,71 @@
+<div class="dropdown-icon-data showInDesktop collapse" id="balanceDetails">
+  <ng-container *ngIf="checkEventId()">
+    <div class="resultA" data-bs-toggle="modal" data-bs-target="#normalViewResultModal" (click)="setResults(result)"
+      [ngClass]="{
+     'color-A': result.winner.slice(0, 1) === 'A',
+     'color-B': result.winner.slice(0, 1) === 'B',
+     'color-L': result.winner.slice(0, 1) === 'L',
+     'color-H': result.winner.slice(0, 1) === 'H',
+     'color-T': result.winner.slice(0, 1) === 'T',
+     'color-P': result.winner.slice(0, 1) === 'P',
+     'tie': result.winner == 'TIE'
+   }" *ngFor="let result of resultArray">
+      {{ result.winner.slice(7, 9) == "" ? result.winner.slice(0, 1) : result.winner.slice(7, 9) }}
+    </div>
+  </ng-container>
+  <!-- specific result bar -->
+  <ng-container *ngIf=" eventId =='99.0009' ">
+    <div class="resultA" data-bs-toggle="modal" data-bs-target="#normalViewResultModal" (click)="setResults(result)"
+      *ngFor="let result of resultArray">
+      {{'R'}}
+    </div>
+  </ng-container>
+  <ng-container *ngIf="eventId =='99.0040'   ">
+    <div class="resultA" data-bs-toggle="modal" data-bs-target="#normalViewResultModal" (click)="setResults(result)"
+      *ngFor="let result of resultArray">
+      {{result?.winner ? result?.winner : 'R'}}
+    </div>
+  </ng-container>
+  <div class="read-more">...</div>
+</div>
+
+
+<div class="d-flex justify-content-center align-items-center d-md-none py-3 flex-wrap showInMobile mt-3">
+  <ng-container *ngIf="checkEventId()">
+    <div class="resultA" data-bs-toggle="modal" data-bs-target="#normalViewResultModal" (click)="setResults(result)"
+      [ngClass]="{
+     'color-A': result.winner.slice(0, 1) === 'A',
+     'color-B': result.winner.slice(0, 1) === 'B',
+     'color-L': result.winner.slice(0, 1) === 'L',
+     'color-H': result.winner.slice(0, 1) === 'H',
+     'color-T': result.winner.slice(0, 1) === 'T',
+     'color-P': result.winner.slice(0, 1) === 'P',
+     'tie': result.winner == 'TIE'
+   }" *ngFor="let result of resultArray">
+      {{ result.winner.slice(7, 9) == "" ? result.winner.slice(0, 1) : result.winner.slice(7, 9) }}
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf=" eventId =='99.0009' ">
+    <div class="resultA" data-bs-toggle="modal" data-bs-target="#normalViewResultModal" (click)="setResults(result)"
+      *ngFor="let result of resultArray">
+      {{'R'}}
+    </div>
+  </ng-container>
+  <ng-container *ngIf="eventId =='99.0040'  ">
+    <div class="resultA-lottery" data-bs-toggle="modal" data-bs-target="#normalViewResultModal"
+      (click)="setResults(result)" *ngFor="let result of resultArray">
+      {{result?.winner ? result?.winner : 'R'}}
+    </div>
+    <!-- <div class="read-more-lottery">...</div> -->
+  </ng-container>
+</div>
+<ng-container *ngIf="  eventId =='99.0058' ">
+  <div class="d-flex justify-content-center align-items-center   py-3 flex-wrap   mt-3">
+    <div class="resultA-lottery" data-bs-toggle="modal" data-bs-target="#normalViewResultModal"
+      (click)="setResults(result)" *ngFor="let result of resultArray">
+      {{result?.winner ? result?.winner : 'R'}}
+    </div>
+    <!-- <div class="read-more-lottery">...</div> -->
+  </div>
+</ng-container>

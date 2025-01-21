@@ -1,0 +1,92 @@
+<div>
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+                <h4 class="mb-0 ">Create Account</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a routerLink="" class="" target="_self">Home</a></li>
+                        <li class="breadcrumb-item"><a  class="router-link-active"
+                                target="_self">Users</a></li>
+                        <li class="breadcrumb-item active"><span aria-current="location">Create Account</span></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form data-vv-scope="InserUserAccount" method="post">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group"><label>User name:</label> <input placeholder="User Name"
+                                        type="text" name="username" data-vv-as="User Name" autocomplete="new-password"
+                                        class="form-control animation is-invalid" aria-required="true"
+                                        aria-invalid="false"> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group"><label>Password:</label> <input placeholder="Password"
+                                        type="password" data-vv-as="Password" name="password"
+                                        class="form-control animation" aria-required="true" aria-invalid="false">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group"><label>Full Name:</label> <input placeholder="Full Name"
+                                data-vv-as="Full Name" type="text" name="fullname" class="form-control animation"
+                                aria-required="true" aria-invalid="false"> </div>
+                        <div class="form-group"><label>Credit Amount:</label> <input placeholder="Credit Amount"
+                                type="number" data-vv-as="Credit Amount" name="camt" class="form-control"
+                                aria-required="false" aria-invalid="false"> </div>
+                        <div class="form-group tag-select"><label>User Type:</label> <select name="newlvlno"
+                                label="label" data-vv-as="User Type" class="form-control" aria-required="true"
+                                aria-invalid="false">
+                                <option value="">Select User Type</option>
+                                <option value="4">Super Master</option>
+                                <option value="5">Master</option>
+                                <option value="6">Agent</option>
+                                <option value="7">User</option>
+                            </select> </div>
+                        <h4 class="card-title">Partnership Information</h4> 
+                        <div>
+                            <div class="form-group"><label>Partnership With No Return:</label> <input
+                                    placeholder="Partnership With No Return" type="text" name="spart1"
+                                    data-vv-as="Partnership With No Return" maxlength="4" class="form-control animation"
+                                    aria-required="true" aria-invalid="false">
+                                
+                                <p class="help is-success m-0 d-inline-block">Our : 0 | Down Line: 0</p>
+                            </div>  
+                        </div> 
+                        <div class="d-flex justify-content-end align-items-center"><input placeholder="Transaction Code"
+                                type="password" name="mpassword" class="form-control" aria-required="true"
+                                aria-invalid="false"> <button type="submit"
+                                class="btn btn-primary ms-2">Submit
+                            </button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">General Information</h4>
+                        <div class="form-group"><label>City:</label> <input placeholder="City" type="text"
+                                data-vv-as="City" name="city" class="form-control animation" aria-required="false"
+                                aria-invalid="false"> </div>
+                        <div class="form-group"><label>Mobile Number:</label> <input placeholder="Mobile Number"
+                                type="text" data-vv-as="Mobile Number" name="mono" maxlength="15"
+                                class="form-control animation" aria-required="false" aria-invalid="false"> 
+                        </div>
+                        <div class="form-group"><label>Remark:</label> <textarea placeholder="Remark"
+                                data-vv-as="Remark" name="remark" class="form-control" aria-required="false"
+                                aria-invalid="false"></textarea> </div>
+                        <div class="d-flex justify-content-end align-items-center"><button type="submit"
+                                 class="btn btn-primary ms-2">Submit
+                            </button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

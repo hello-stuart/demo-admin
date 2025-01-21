@@ -1,0 +1,149 @@
+::ng-deep .mydp, .mydp .selectiongroup, .mydp .selection, .mydp .selector, .mydp .headertodaybtn {
+  border-radius: 0px !important;
+  /* border-top-right-radius:4px !important;
+  border-bottom-right-radius:4px !important; */
+  /* border-top-left-radius:0px !important;
+  border-bottom-left-radius:0px !important; */
+}
+::ng-deep .mydp .btnpicker, .mydp .btnclear, .mydp .btndecrease, .mydp .btnincrease, .mydp .headertodaybtn {
+    background: #c8ced3 !important;
+}
+::ng-deep .mydp .btnpicker {
+    border-radius: 0 0px 0px 0 !important;
+}
+::ng-deep .mydp .selectiongroup {
+  border-radius: 0px !important;
+  border-style: none !important;
+  background-color: #e4e7ea !important;
+}
+::ng-deep.mydp .btnpicker, .mydp .btnclear, .mydp .btndecrease, .mydp .btnincrease {
+  width: 35px !important;
+}
+::ng-deep .mydp .selection {
+  background-color: #e4e7ea !important;
+  color: #555;
+}
+
+.row, .col-md-12 ,.col-12{
+  padding-left: inherit !important;
+  padding-right: inherit !important;
+}
+
+.page-title-box{
+  padding: 10px 5px 12px !important;
+}
+
+.card-report {
+  padding: 10px 10px 0;
+  border-bottom: 1px solid var(--my-account-total-box-border-btm);
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: #5c6873;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #e4e7ea;
+  border-radius: .25rem;
+  height: 38px;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.form-control:disabled, .form-control[readonly] {
+  background-color: #e4e7ea;
+  opacity: 1;
+}
+/* .card-report .form-control:disabled, .form-control[readonly] {
+  border: 1px solid #ccc;
+} */
+.dpWidth{
+  width: 70%;
+}
+.latterup{
+  text-transform: uppercase;
+  /* justify-self: unset; */
+}
+.secondDiv{
+  width: 45px;
+  border: 1px solid #cccccc;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.datePickerWidth{
+  width: 30%;
+}
+@media only screen and (max-width : 992px) {
+  .secondDiv{
+    width: 45px;
+    border: 1px solid #cccccc;
+    padding: 0.25rem 0.4rem;
+  }
+  .datePickerWidth{
+    width: 100%;
+  }
+  label {
+    /* margin-top: -13px; */
+    margin-bottom: 0;
+    padding: 0px 0px 4px 0;
+}
+.fadeIn{
+  margin-left: -7px !important;
+  margin-right: -7px !important;
+}
+}
+@media only screen and (max-width : 767px) {
+  .secondDiv{
+    width: 45px;
+    border: 1px solid #cccccc;
+    padding: 0.25rem 1rem;
+  }
+
+  .me-2{
+    margin-right: 0;
+  }
+
+}
+
+.btn-dark{
+  background-color: var(--reports-btn-dark-bg) !important;
+  border-color: var(--reports-btn-dark-bg) !important;
+  color: white;
+  font-weight: 300;
+}
+
+.no-data-available{
+  padding: 16px !important;
+  color: #495057;
+  text-align: center;
+}
+
+::ng-deep table tbody tr td.dt-empty{
+  display: none !important;
+}
+
+::ng-deep #DataTables_Table_0_info {
+  display: none !important;
+}
+
+.cl-green{
+  color: #4dbd74;
+}
+.cl-red{
+  color: var(--my-account-total-box-cl-red-color);
+}
+
+
+@media screen and (min-width: 1279px) {
+  .table-main{
+      margin-left: 1px !important;
+      margin-right: 1px !important;
+  }
+  .page-title-box{
+      padding: 0px 0px 24px 1px !important;
+  }
+}

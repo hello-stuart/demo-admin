@@ -1,0 +1,102 @@
+
+<div [ngClass]="isMaster?'detail-row ':''">
+
+<div class="d-flex justify-content-end w-100 mb-2">
+  <div class="back indicators ms-1 ">
+    Back
+  </div>
+  <div class="lay indicators ms-1 ">
+    Lay
+  </div>
+  <div class="voidBet indicators ms-1">
+    Void
+  </div>
+</div>
+
+<div class="card card-accent-primary">
+  <div class="game-heading">
+    <span class="card-header-title">Bet History</span>
+  </div>
+
+  <div class="card-body account-detail-body p-0" style="overflow: auto;">
+    <table id="example" class=" table-responsive table table-striped table-bordered" style="width: 100%;">
+      <thead>
+        <tr role="row">
+          <th role="columnheader" scope="col" aria-colindex="1" class="text-center">Sport Name</th>
+          <th role="columnheader" scope="col" aria-colindex="2" class="text-center">Event Name </th>
+          <th role="columnheader" scope="col" aria-colindex="3" class="text-center min-width-100">Market Name </th>
+          <th role="columnheader" scope="col" aria-colindex="4" class="text-center">Runner Name </th>
+          <th role="columnheader" scope="col" aria-colindex="5" class="text-center">Bet Type</th>
+          <th role="columnheader" scope="col" aria-colindex="6" class="text-center">User Price </th>
+          <th role="columnheader" scope="col" aria-colindex="7" class="text-center">Amount </th>
+          <th role="columnheader" scope="col" aria-colindex="8" class="text-center">PL </th>
+          <th role="columnheader" scope="col" aria-colindex="9" class="text-center min-width-100">Place Date </th>
+          <th role="columnheader" scope="col" aria-colindex="10" class="text-center min-width-100">Match Date</th>
+          <th role="columnheader" scope="col" aria-colindex="10" class="text-center">Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let item of data" [ngClass]="{
+          'back':item.type=='B',
+          'lay':item.type=='L' ,
+          'voidBet':item.isVoid==1
+          }">
+            <td class="text-center">{{item?.sportName}}</td>
+            <td class="text-center">{{item?.eventName}}</td>
+            <td class="text-center">{{item.marketName}}</td>
+            <td class="text-center">{{item?.selectionName}}</td>
+            <td class="text-center">{{item?.type=='B'?'BACK':'LAY'}}</td>
+            <td class="text-center">{{item.oddsPrice}}/{{item.oddsRate}}</td>
+            <td class="text-center">{{item?.stake}}</td>
+            <td class="text-center">
+              <span [ngClass]="textSpliter(item?.betPl,true)>0?'cl-green':'cl-red'">
+                {{textSpliter(item?.betPl,true)| number :'1.0-2'}}
+              </span>
+              <span [ngClass]="textSpliter(item?.betPl,false)>0?'cl-green':'cl-red'">
+                ({{textSpliter(item?.betPl,false) | number :'1.0-2'}})
+
+              </span>
+
+            </td>
+            <td class="text-center">{{item.createdAt | date : 'medium'}}</td>
+            <td class="text-center">{{item.matchedTime | date : 'medium'}}</td>
+            <td class="text-center "><a class="detailsLink" (click)="openDeviceInfo(item)" data-bs-toggle="modal" data-bs-target="#BetDetailsModal" >Info</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+
+<!-- Masterbook Modal -->
+
+<div class="modal fade" id="BetDetailsModal" tabindex="-1" aria-labelledby="yourModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title">Device Details </h5>
+        <button class="close" type="button">
+          <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+        <div class="row linesInfo">
+          <div class="col-3">
+            <b>Device Info</b>
+          </div>
+          <div class="col-9">
+            {{selectedObj?.deviceInfo}}
+          </div>
+        </div>
+        <div class="row linesInfo">
+           <div class="col-3">
+            <b>Ip Info</b>
+          </div>
+          <div class="col-9">
+            {{selectedObj?.ip}}
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

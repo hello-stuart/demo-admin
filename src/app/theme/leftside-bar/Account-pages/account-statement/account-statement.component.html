@@ -1,0 +1,94 @@
+<div class="animated fadeIn divider-top">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="card card-report">
+        <div class="card-body row p-0">
+
+          <div class="col-lg-3 col-md-4 col-sm-8">
+            <div class="form-group">
+              <label for="datasource">Data Source</label>
+              <select class="form-control form-select" [(ngModel)]="dataSource" id="datasource"
+                (ngModelChange)="onDataSourceChange($event)">
+                <option disabled="" value="">Data Source</option>
+                <option value="LIVE">LIVE DATA</option>
+                <option value="BACKUP">BACKUP DATA</option>
+                <option value="OLD">OLD DATA</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-12">
+            <div class="form-group mb-0 ">
+              <div for="startDate" class="mb-2">From</div>
+              <div class="input-group">
+                <!-- <my-date-picker class="form-control dateClass" placeholder="Select Date" id="startDate" name="mydate"
+                  style="padding: 0px !important;" [(ngModel)]="startDate" [options]="myDpOptions" readonly
+                  autocomplete="off"></my-date-picker> -->
+              </div>
+
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-12">
+            <div class="form-group mb-0">
+              <div for="endDate" class="mb-2 marTo">To</div>
+              <!-- <my-date-picker class="form-control dateClass" id="endDate" placeholder="Select Date" name="mydate"
+                style="padding: 0px !important;" [(ngModel)]="endDate" [options]="myDpOptions" readonly
+                autocomplete="off" angular-mydatepicker (click)="dp" #dp></my-date-picker> -->
+
+            </div>
+
+          </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="form-group">
+              <div class="mobile-d-none" for="statementbtn" style="width: 100%;">&nbsp;</div>
+              <button class="btn btn-primary btnMrgn" id="statementbtn" type="button" (click)="rerender()">
+                <strong>Get Statement</strong>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="card card-accent-primary">
+        <div class="card-header account-detail-head"> Account Statement
+
+        </div>
+        <div class="card-body account-stat-body">
+          <div class="table-responsive table table-striped">
+            <table datatable [dtOptions]="dtOptions" role="table" aria-busy="false" aria-colcount="6"
+              class="table table-bordered table-striped ">
+              <thead role="rowgroup">
+                <tr role="row">
+                  <th>Date/Time</th>
+                  <th>Deposit</th>
+                  <th>Withdraw</th>
+                  <th>Balance</th>
+                  <th>Remark</th>
+                  <th>from//To</th>
+                </tr>
+              </thead>
+              <tr *ngFor="let row of rows;let i=index">
+                <td> {{getLocalDateTime(row.createdAt)}}</td>
+                <td> <b>{{row.deposit}}</b></td>
+                <td class="cl-red"> <b>{{row.withdraw==0?'-':row.withdraw}}</b></td>
+                <td><b>{{row.bankBalance}}</b> </td>
+                <td> {{row.remark}}</td>
+                <td> {{row.fromName}}
+                  <i aria-hidden="true" class="fa fa-arrow-right"></i>
+                  {{row.userName}}
+                </td>
+              </tr>
+              <tr class="odd" *ngIf="rows?.length==0">
+                <td class="no-data-available" colspan="10">No data!</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

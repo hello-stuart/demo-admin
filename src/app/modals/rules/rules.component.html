@@ -1,0 +1,99 @@
+<!-- Modal -->
+<div class="modal fade" id="RulesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h5 class="modal-title">Rules</h5>
+                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="close">×</button>
+            </header>
+            <div id="__BVID__80___BV_modal_body_" class="modal-body">
+
+                <!-- <div [innerHTML]="rulesInfo?.rules"></div> -->
+
+                <div class="main-rules-container">
+                    <div class="dropdown rules-language-container">
+                        <div data-bs-toggle="dropdown" aria-expanded="false" class="">
+                            <img src="https://g1ver.sprintstaticdata.com/v33/static/admin/img/flag_english.png">
+                            English
+                            <i class="fas fa-angle-down ml-1"></i>
+                        </div>
+                        <div class="dropdown-menu rules-language">
+                            <div><img src="https://g1ver.sprintstaticdata.com/v33/static/admin/img/flag_english.png">
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-box">
+                        <div id="accordion">
+                            <div class="card">
+                                <ng-container *ngFor="let item of rulesInfo; let i = index">
+                                    <div id="eventhead0" class="card-header">
+                                        <a (click)="showInfo(i)" 
+                                        [attr.data-bs-target]="'#event' + i"
+                                        [attr.aria-controls]="'#event' + i"
+                                        data-bs-toggle="collapse"
+                                         class="collapsed" aria-expanded="false">
+                                            {{ item.sportName }}
+                                        </a>
+                                        <div class="showGenral" *ngIf="showGeneral[i]">
+                                            <div class="rulesContainer rules-Regulations" id="showInfo">
+                                                <!-- <div [innerHTML]="item.rules" class="rule-container"></div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div  [attr.id]="'event' + i" aria-labelledby="eventhead0" data-bs-parent="#accordion"
+                                        class="collapse">
+                                        <div id="eventaccordion0" class="card-body">
+                                            <div class="card" *ngIf="isRuleEl(item,'bookmaker')">
+                                                <div class="card-header">
+                                                    <a data-bs-toggle="collapse" data-bs-target="#event0game0"
+                                                        class="collapsed">bookmaker</a>
+                                                </div>
+                                                <div data-bs-parent="#eventaccordion0" id="event0game0"
+                                                    class="card-body collapse">
+                                                    <div class="rule-text">
+                                                        <div [innerHTML]="bookmakerEl" class="rule-container"></div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card" *ngIf="isRuleEl(item,'fancy')">
+                                                <div class="card-header"><a data-bs-toggle="collapse"
+                                                        data-bs-target="#event0game1" class="collapsed">fancy</a>
+                                                </div>
+                                                <div data-bs-parent="#eventaccordion0" id="event0game1"
+                                                    class="card-body collapse">
+                                                    <div class="rule-text text-danger">
+                                                        <div [innerHTML]="fancyEl" class="rule-container"></div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <a data-bs-toggle="collapse" data-bs-target="#event0game2"
+                                                        class="collapsed">match</a>
+                                                </div>
+                                                <div data-bs-parent="#eventaccordion0" id="event0game2"
+                                                    class="card-body collapse">
+                                                    <div class="rule-text">
+                                                        <div [innerHTML]="isRuleEl(item,'bookmaker') ? matchEl : item.rules" class="rule-container"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

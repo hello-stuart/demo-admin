@@ -1,0 +1,82 @@
+<div class="vitual-content">
+    <div class="casinoStream">
+        <div class="right-arrows-main">
+            <div class="arrow-up" (click)="logoClickHandler()">
+                <i class="fas fa-home"></i>
+            </div>
+            <div (click)="loadRules()" class="arrow-up" data-bs-toggle="modal" data-bs-target="#resultModal"
+                data-bs-backdrop="false">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="arrow-up showInDesktop" style="margin-right: 0;" data-bs-toggle="collapse"
+                data-bs-target="#balanceDetails" aria-expanded="false" aria-controls="balanceDetails">
+                <div class="arrow ">
+                    <i class="fas fa-chevron-circle-up arrow-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <app-casino-result-modal></app-casino-result-modal>
+        <div class="showInDesktop ">
+            <app-resultbar></app-resultbar>
+        </div>
+        <app-timer [minutes]="TIME_LIMIT"></app-timer>
+        <div class="video-left">
+            <div class="casino-video-title"><span class="casino-name">{{eventName}}</span>
+                <div class="casino-id">Round ID: {{roundID}}</div>
+            </div>
+        </div>
+        <!-- [class.margin-bottom]="eventid=='88.0021'" -->
+
+        <!-- <div class="round-id mb-1" *ngIf="game">RID: {{game.roundId}}</div> -->
+        <!--  timer ends -->
+
+        <!-- <div class="finalresultdiv" *ngIf="isResultDeclare">
+        <img *ngIf="idToLandOn && idToLandOn == 1" src="../../../assets/img/sector01.svg">
+        <img *ngIf="idToLandOn && idToLandOn == 2" src="../../../assets/img/sector02.svg">
+        <img *ngIf="idToLandOn && idToLandOn == 5" src="../../../assets/img/sector05.svg">
+        <img *ngIf="idToLandOn && idToLandOn == 10" src="../../../assets/img/sector10.svg">
+        <img *ngIf="idToLandOn && idToLandOn == 20" src="../../../assets/img/sector20.svg">
+        <img *ngIf="idToLandOn && idToLandOn == 40" src="../../../assets/img/sector40.svg">
+      </div> -->
+
+        <!-- head & tail images  -->
+        <div class="coin" id="coin">
+            <div class="heads d-flex align-items-center justify-content-center">
+                <img src="/assets/img/heads.png">
+            </div>
+            <div class="tails d-flex align-items-center justify-content-center">
+                <img src="/assets/img/tails.png">
+
+            </div>
+        </div>
+    </div>
+
+    <section class="" id="betZone" *ngIf="marketArray">
+        <!-- PL SECTION -->
+        <div class="down_set" name="betZoneBac">
+            <div class="box_player 0 greenodd no_win position-relative" id="betBoxPlayer" name="betZoneBac"
+                [ngClass]="marketArray[0]?.runners[0].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                <img class="betImage" src="../../../assets/img/head-bet.jpg">
+            </div>
+
+            <div class="box_player 1 redodd no_win position-relative" id="betBoxPlayer" name="betZoneBac"
+                [ngClass]="marketArray[0]?.runners[1].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                <img class="betImage" src="../../../assets/img/tails-bet.jpg">
+
+            </div>
+
+        </div>
+    </section>
+
+
+</div>
+<div class="showInMobile">
+    <app-resultbar></app-resultbar>
+</div>
+
+<div class="audioIntialize" style="display: none;">
+    <audio id="coinSound" src="./../../assets/coinsound.mp3" muted></audio>
+    <audio id="headSound" src="./../../assets/headwin.mp3" muted></audio>
+    <audio id="tailSound" src="./../../assets/tailwin.mp3" muted></audio>
+</div>

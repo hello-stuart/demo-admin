@@ -1,0 +1,242 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="casino-detail">
+    <ng-container *ngFor="let markets of marketArray;">
+        <div class="three-card-j-container">
+            <div class="three-card-j-box back">
+                <div class="three-card-j-title">
+                    <b>Yes</b>
+                    <span class="casino-book-value">0</span>
+                </div>
+                <div class="three-j-cards"
+                    [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                    <div class="three-card-j-odds text-center">
+                        <b>{{markets.runners[0].price.back[0].price}}</b>
+                    </div>
+                    <div class="casino-cards text-center">
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/A-card.png" alt="A-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-two.png" alt="2-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-three.png" alt="3-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-four.png" alt="4-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-five.png" alt="5-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-six.png" alt="6-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-seven.png" alt="7-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-eight.png" alt="8-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-nine.png" alt="9-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-ten.png" alt="10-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/J-card.png" alt="J-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/Q-card.png" alt="Q-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/K-card.png" alt="K-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="casino-min-max-text text-end"  direction="left" scrollamount="3" behavior="scroll">
+                        <span>
+                            Select any 3 card and you will win if you will get at least 1 card from the 3 cards
+                            you
+                            have
+                            selected.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="three-card-j-box lay">
+                <div class="three-card-j-title">
+                    <b>No</b>
+                    <span class="casino-book-value">0</span>
+                </div>
+                <div class="three-j-cards"
+                    [ngClass]="winnerMarketArray.runners[1].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[1].selectionId) ? 'selected' : ''">
+                    <div class="three-card-j-odds text-center">
+                        <b>{{markets.runners[1].price.lay[0].price}}</b>
+                    </div>
+                    <div class="casino-cards text-center">
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/A-card.png" alt="A-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-two.png" alt="2-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-three.png" alt="3-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-four.png" alt="4-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-five.png" alt="5-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-six.png" alt="6-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-seven.png" alt="7-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-eight.png" alt="8-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-nine.png" alt="9-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/card-ten.png" alt="10-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/J-card.png" alt="J-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/Q-card.png" alt="Q-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="casino-card-item">
+                            <div class="card-img">
+                                <span>
+                                    <img src="/assets/casino-cards/K-card.png" alt="k-card" class="card-icon">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="casino-min-max-text text-end" direction="left" scrollamount="3" behavior="scroll">
+                        <span>
+                            Select any 3 card and you will win if you will get at least 1 card from the 3 cards
+                            you
+                            have
+                            selected.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <div class="text-end casino-min-max-text">
+        R:<span>{{(winnerMarketArray?.min) | shortNumber}}-{{(winnerMarketArray?.max)
+            | shortNumber}}</span>
+    </div> 
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

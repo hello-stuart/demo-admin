@@ -1,0 +1,231 @@
+.videoPlayer {
+    height: 309px;
+}
+
+.casino-table {
+    background-color: #f7f7f7;
+    color: #333;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+.casino-table-box {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.casino-table-left-box,
+.casino-table-center-box,
+.casino-table-right-box {
+    width: 49%;
+    border-left: 1px solid #c7c8ca;
+    border-right: 1px solid #c7c8ca;
+    border-top: 1px solid #c7c8ca;
+    background-color: #f2f2f2;
+}
+.casino-table-header,
+.casino-table-row {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid #c7c8ca;
+}
+.casino-nation-detail {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 5px;
+    min-height: 46px;
+}
+.casino-table-header .casino-nation-detail {
+    font-weight: bold;
+    min-height: unset;
+}
+.casino-nation-detail {
+    width: 40%;
+}
+.back {
+    background-color: #72bbef17 !important;
+    border: 2px solid #72bbef !important;
+}
+
+.casino-odds-box {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+    font-weight: bold;
+    border-left: 1px solid #c7c8ca;
+    cursor: pointer;
+    min-height: 46px;
+}
+.casino-table-header .casino-odds-box {
+    cursor: unset;
+    padding: 2px;
+    min-height: unset;
+    height: auto !important;
+}
+.casino-odds-box {
+    width: 20%;
+    position: relative;
+}
+.casino-table-header,
+.casino-table-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid #c7c8ca;
+}
+.casino-nation-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+.casino-odds {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1;
+}
+.card-icon {
+    font-family: Card Characters !important;
+    display: inline-block;
+}
+.card-black {
+    color: #000000 !important;
+}
+.card-red {
+    color: #ff0000 !important;
+}
+.casino-nation-name img {
+    height: 20px;
+}
+.casino-table .tab-content {
+    width: 100%;
+}
+
+.is-desktop {
+    display: flex !important;
+}
+
+.is-mobile {
+    display: none !important;
+}
+
+.is-mobile-tab {
+    display: none !important;
+}
+
+.casino-odds {
+    font-size: 14px;
+}
+
+.casino-cards img {
+    height: 35px;
+}
+
+/* mbl */
+@media only screen and (max-width: 1199px) {
+    .casino-nation-name {
+        font-size: 14px;
+    }
+    .casino-odds {
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .casino-nation-name img {
+        height: 16px;
+    }
+
+    .casino-cards {
+        height: 35px !important;
+    }
+
+    .is-desktop {
+        display: none !important;
+    }
+
+    .is-mobile {
+        display: flex !important;
+    }
+
+    .is-mobile-tab {
+        display: block !important;
+    }
+
+    .casino-table-box {
+        padding: 5px;
+    }
+    .casino-table-left-box,
+    .casino-table-right-box {
+        width: 100%;
+        padding: 0 5px;
+        padding-right: 0;
+    }
+    .casino-table-left-box,
+    .casino-table-right-box {
+        width: 49%;
+    }
+    .casino-nation-detail {
+        width: 60%;
+    }
+    .casino-odds-box {
+        width: 40%;
+    }
+}
+.nav-pills .nav-link {
+    background-color: #cccccc;
+    color: #000000;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-right: 1px solid #2c3e50;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+}
+.nav-pills .activeTab,
+.nav-pills .show > .nav-link {
+    background-color: #2c3e50;
+    color: #ffffff;
+}
+.activeTab .nav-link {
+    background-color: #2c3e50;
+    color: #ffffff;
+}
+.profitLoss-font {
+    /* position: absolute; */
+    bottom: -4px;
+    left: 4px;
+}
+.pl-cards {
+    left: 40px !important;
+    top: 13px !important;
+}
+
+.casino-table-row {
+    position: relative;
+}
+@media only screen and (min-width: 1024px) {
+    .profitLoss-font {
+        left: 149px;
+        top: 14px;
+    }
+}
+.plus-book {
+    color: green;
+}
+.minus-book {
+    color: red;
+}

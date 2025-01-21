@@ -1,0 +1,61 @@
+<div class="videoPlayer">
+    <app-video-player></app-video-player>
+</div>
+<div class="casino-detail">
+    <div class="muf-teen-container">
+        <div class="muf-teen-left">
+            <div class="player-title-row">
+                <div class="player-name">
+                    <div class="player-a-text text-start">
+                        {{capitalize(winnerMarketArray?.runnersName[winnerMarketArray?.runners[0]?.selectionId])}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="casino-box-row">
+                        <div class="casino-status text-center">
+                            <b>{{ winnerMarketArray?.marketName }}</b>
+                        </div>
+                        <div class="casino-bet-box">
+                            <div class="casino-box-item back" style="position: relative;"
+                                [ngClass]="winnerMarketArray?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray?.runners[0]?.selectionId) ? 'selected' : ''">
+                                <span
+                                    class="casino-odd-value">{{winnerMarketArray?.runners[0].price?.back[0]?.price}}</span>
+                                <span class="bet-size-value">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="muf-teen-center"></div>
+        <div class="muf-teen-right">
+            <div class="player-title-row">
+                <div class="player-name">
+                    <div class="player-b-text text-start">
+                        {{capitalize(winnerMarketArray?.runnersName[winnerMarketArray?.runners[1]?.selectionId])}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="casino-box-row">
+                        <div class="casino-status text-center">
+                            <b>{{ winnerMarketArray?.marketName }}</b>
+                        </div>
+                        <div class="casino-bet-box">
+                            <div class="casino-box-item back" style="position: relative;"
+                                [ngClass]="winnerMarketArray?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray?.runners[0]?.selectionId) ? 'selected' : ''">
+                                <span
+                                    class="casino-odd-value">{{winnerMarketArray?.runners[0]?.price.back[0]?.price}}</span>
+                                <span class="bet-size-value">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

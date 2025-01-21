@@ -1,0 +1,41 @@
+.card-report {
+  padding: 10px 10px 0;
+  background-color: #e0e6e6;
+  border-bottom: 1px solid var(--my-account-total-box-border-btm);
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: #5c6873;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #e4e7ea;
+  border-radius: .25rem;
+  height: 38px !important;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+select.form-control:not([size]):not([multiple]) {
+  height: calc(2.0625rem + 2px);
+}
+.game-heading {
+  font-weight: 700;
+  font-size: 15px;
+  background: var(--reports-title-bg);
+  padding: 5px 10px;
+  color: var(--reports-title-text);
+}
+table.dataTable tbody td, table.dataTable tbody th {
+  padding: 8px 10px;
+}
+th , td{
+  text-align: center !important;
+}
+::ng-deep table tbody tr td.dt-empty{
+  display: none !important;
+}

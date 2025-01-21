@@ -1,0 +1,354 @@
+.main-container {
+    padding: 10px 10px 40px;
+    background-color: #f8f8fb;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 6px #e2e2e2;
+}
+
+.tooltip-div {
+    text-align: right;
+    width: 100%;
+}
+
+.fa-info-circle{
+    font-size: 14px;
+}
+
+.dtobx {
+    width: 100%;
+    display: flex;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    position: relative;
+}
+
+.dragon-side {
+    width: 100%;
+    padding: 6px;
+    padding-right: 6px;
+    border: 2px solid #fc4242;
+    background-color: #fc42422e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+    padding-right: 35px;
+    position: relative;
+}
+
+.dragon-text{
+    line-height: 22px;
+    letter-spacing: 0;
+    color: black;
+    font-family: "Noto Sans";
+    font-size: 12px !important;
+    text-transform:capitalize;
+    font-weight: bold;
+}
+
+p {
+    margin: 0%;
+    padding: 0%;
+}
+
+.dragon-zero {
+    font-size: 14px;
+}
+
+.abosolute-zero {
+    left: 0;
+    position: absolute;
+    bottom: -20px;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+.tiger-side {
+    width: 100%;
+    padding: 6px;
+    border: 2px solid #fdcf13;
+    background-color: #fdcf132e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+    padding-left: 35px;
+    position: relative;
+}
+
+
+
+.abosolute-right-zero {
+    right: 0;
+    position: absolute;
+    bottom: -20px;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+.middle-tie-div {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    background-color: #03b37f;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 50;
+    font-size: 14px;
+}
+
+.dragon-tiger-btns-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.icon-bg {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ddd;
+    padding: 7px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.tooltip-text-dragon {
+    color: #fc4242;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.tooltip-text-tiger {
+    color: #ef910f;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.btns-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.alignment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.text-size {
+    font-size: 14px;
+}
+
+.btn-blue {
+    width: 100%;
+    height: 50px;
+    background-color: #72bbef17;
+    border: 2px solid #72bbef;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-bottom-zero {
+    font-size: 18px;
+}
+
+.btns-wraper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    column-gap: 5px;
+}
+
+.card-img {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+.card-img-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom-tooltip-alignment {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ddd;
+    padding: 7px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.card-wraper {
+    min-width: 80px;
+    margin-right: 5px;
+    margin-left: 5px;
+    width: auto;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards-size {
+    width: 48px;
+}
+
+.card-zero {
+    font-size: 18px;
+}
+
+.converting {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.margin-changing {
+    margin-top: 0% !important;
+}
+
+.lock-img {
+    width: 15px;
+    height: 15px;
+}
+
+.lock-wraper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d6dedbd6;
+    z-index: 10;
+    border-radius: 4px;
+    top: 0%;
+    left: 0%;
+}
+
+@media (min-width: 767px) {
+    .converting {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        position: relative;
+    }
+
+    
+.middle-tie-div {
+    width: 100px;
+    height: 100px;
+}
+
+    .dragon-tiger-btns-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 49%;
+        height: 100%;
+    }
+
+    .middle-border {
+        height: calc(100% - 3rem);
+        margin-top: 3rem;
+        width: 2px;
+        background-color: grey;
+        position: absolute;
+        left: 50%;
+    }
+
+    .margin-changing {
+        margin-top: 3rem !important;
+    }
+
+    .dragon-text{
+        font-size: 14px;
+    }
+
+    .dragon-side{
+        padding-right: 60px;
+    }
+
+    .tiger-side{
+        padding-left: 60px;
+    }
+
+    .abosolute-zero{
+        font-size: 18px;
+    }
+
+    .abosolute-right-zero{
+        font-size: 18px;
+    }
+}
+
+.bet-info-card {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #16191c;
+    padding: 4px;
+    /* min-width: 100%; */
+    word-wrap: break-word;
+    font-size: 12px;
+    z-index: 10;
+    transition: 0.1s;
+    text-transform: capitalize;
+    color: #aaafb5;
+    z-index: 150;
+    text-wrap: nowrap;
+}
+
+.tool-parent {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 22px;
+}
+
+
+@media (max-width: 1279px) {
+    .main-container{
+        padding: 5px;
+        box-shadow: none;
+        border-radius: 0;
+    }
+}

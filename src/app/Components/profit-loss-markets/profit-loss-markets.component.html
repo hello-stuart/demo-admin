@@ -1,0 +1,58 @@
+<div class="card card-accent-primary">
+  <div class="game-heading"  >
+    <span class="card-header-title">Profit & Loss Markets</span>
+  </div>
+  <div class="card-body account-detail-body">
+
+
+    <div class="row ">
+      <div class="col-12" style="overflow: auto;">
+        <div class="table-responsive table table-striped">
+          <table datatable [dtOptions]="dtOptions" role="table" aria-busy="false" aria-colcount="6" class="table table-bordered table-striped ">
+            <thead role="rowgroup">
+              <tr role="row">
+                <th>Sport Name</th>
+                <th>Event Name</th>
+                <th [ngClass]="{'d-none':sportId!=='66102'}">Market Id</th>
+                <th>Market Name</th>
+                <th>Result</th>
+                <th>Profit & Loss</th>
+                <th>Commission</th>
+                <th>Settle Time</th>
+              </tr>
+            </thead>
+            <!--                <tfoot *ngIf="rows?.length == 0">-->
+            <tr *ngFor="let row of rows;let i=index">
+              <!-- <td colspan="6" style="text-align:center;">No data available in table</td> -->
+              <td class="border-right-black">
+                <a>{{row.sportName}}</a>
+              </td>
+              <td class="border-right-black">
+                <a>{{row.eventName}}</a>
+              </td>
+              <td [ngClass]="{'d-none':sportId!=='66102'}">
+                <span>{{row.roundId?row.roundId:row.marketId}}</span>
+              </td>
+              <td class="border-right-black">
+                <a class="plLink" (click)="goto(row.sportId,row.marketId)">{{row.marketName}}</a>
+              </td>
+              <td>
+                <span>{{row.result}}</span>
+              </td>
+              <td>
+                <span [ngClass]="{'cl-green':row.pl>0,'cl-red':0>row.pl}"><b>{{row.pl |number : '1.0-2'}}</b></span>
+              </td>
+              <td> <b [ngClass]="{'cl-green':row.commission>0,'cl-red':0>=row.commission}">{{row.commission | number : '1.0-2'}}</b></td>
+
+              <td> {{row.createdAt | date : 'medium'}}</td>
+            </tr>
+            <tr class="odd" *ngIf="rows?.length==0">
+              <td valign="top" colspan="11" class="nofound">No matching records found</td>
+            </tr>
+            <!--                </tfoot>-->
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

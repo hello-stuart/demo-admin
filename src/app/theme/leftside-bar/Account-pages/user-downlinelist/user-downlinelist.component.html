@@ -1,0 +1,607 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 header-logo">
+                User Downline List
+            </h4>
+            <div class="total_all">
+              <a class="btn_replay mb-1" id="refresh" (click)="rerender()">
+                <img [class.rotate]="isRotating"  src="../../../../../assets/transparent-login.gif">
+              </a>
+              <a class="add_member mb-10" data-bs-toggle="modal" data-bs-target="#AddNewUserModal">
+                <i class="fa fa-plus"></i>
+                Create Account </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="total_box" id="totalBox">
+      <dl class="total_dl">
+        <dt>Total Balance</dt>
+        <dd id="totalBalance">IRP {{ ConvertToIndianForamt(agentBalance?.totalBalance)}}</dd>
+      </dl>
+      <dl class="total_dl">
+        <dt>Total Exposure</dt>
+        <dd id="totalExposure">IRP <span class="cl-red">({{ConvertToIndianForamt(agentBalance?.exposure)}})</span>
+        </dd>
+      </dl>
+      <dl class="total_dl">
+        <dt>Available Balance</dt>
+        <dd id="totalAvailBal">IRP <span>{{ConvertToIndianForamt(agentBalance?.totalBalance - agentBalance?.exposure)}}</span></dd>
+      </dl>
+      <dl class="total_dl">
+        <dt>Balance</dt>
+        <dd id="mastersBalance">IRP {{ ConvertToIndianForamt(agentBalance?.availableBalance)}}</dd>
+      </dl>
+      <dl class="total_dl">
+        <dt>Total Avail. bal.</dt>
+        <dd id="mastersAvailBal">IRP {{ConvertToIndianForamt(agentBalance?.availableBalance + agentBalance?.totalBalance)}}
+        </dd>
+      </dl>
+      <dl class="total_dl">
+        <dt>Upline P/L</dt>
+        <dd id="mastersAvailBal"> IRP
+          <span [ngClass]="(agentBalance?.totalBalance+agentBalance?.availableBalance)-(agentBalance?.creditReference)>0?'':'cl-red'">
+            {{ConvertToIndianForamt((agentBalance?.totalBalance+agentBalance?.availableBalance)-(agentBalance?.creditReference))}}
+          </span>
+  
+          <!---->
+          <!---->
+        </dd>
+      </dl>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card my-exchange-head">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table datatable [dtOptions]="dtOptions" role="table" aria-busy="false" aria-colcount="6"
+                class="table table-bordered table-hover ">
+                <thead role="rowgroup">
+                  <tr role="row">
+                    <th>Username</th>
+                    <th>Credit Ref.</th>
+                    <th>Balance</th>
+                    <th>Exposure</th>
+                    <th>Exposure Limit</th>
+                    <th>Avail.Bal.</th>
+                    <th>Ref. P/L</th>
+                    <th style="width: 75px;">Partnership</th>
+                    <th>Status</th>
+                    <th class="minSettings">Actions</th>
+                  </tr>
+  
+                </thead>
+                <tbody *ngIf="rows?.length>0">
+                  <!---->
+                  <tr *ngFor="let item of rows; trackBy: trackByFn">
+                    <td>
+                      <span class="badge badge-success">{{item.role}}</span>
+                      <span title="testun"> {{item.userName}}</span>
+                    </td>
+                    <td>
+                      <span (click)="copyToClipboard(item.creditReference)">{{item.creditReference>0?ConvertToIndianForamt(item.creditReference):'0.00'}}</span>
+                      <a (click)="OpenModal(item,'C')" data-bs-toggle="modal" data-bs-target="#EditRefereceModal">
+                       &nbsp;
+                       <i class="far fa-edit fa-sm" style="color: #34c38f;"></i>
+                                          </a>
+                      <a (click)="showCreditReference(item)" data-bs-toggle="modal" data-bs-target="#modalCreditReference"
+                        title="History"> &nbsp; <i class="fa  fa-eye"></i>
+                      </a>
+                    </td>
+                    <td (click)="copyToClipboard(item.mainBalance)">{{ConvertToIndianForamt(item.mainBalance)}}</td>
+                    <td>
+                      <a class="cl-red" (click)="showExposureDetail(item);copyToClipboard(item.exposure)" data-bs-toggle="modal"
+                        data-bs-target="#modalExposureDetail"><span class="zero" style="cursor: pointer;">
+                        ({{ConvertToIndianForamt(item.exposure)}}) </span></a>
+                    </td>
+                    <td class="exp-limit">
+                      <span (click)="copyToClipboard(item.exposureLimit)">{{ConvertToIndianForamt(item.exposureLimit)}}</span>
+                      <a (click)="OpenModal(item,'E');" data-bs-toggle="modal"
+                        data-bs-target="#EditRefereceModal"> &nbsp; 
+                        <i class="far fa-edit" style="color: #34c38f;"></i>
+                      </a>
+                    </td>
+                    <td (click)="copyToClipboard((item.mainBalance-item.exposure))">{{ConvertToIndianForamt(item.mainBalance-item.exposure)}}</td>
+                    <td>
+                      <ng-container *ngIf="!isChipSummary">
+                        <span (click)="copyToClipboard((item.mainBalance  - item.creditReference))" [ngClass]="(item.mainBalance - item.creditReference)>0?'':'cl-red'">
+                        ({{ ConvertToIndianForamt(item.mainBalance  - item.creditReference) }})</span>
+                      </ng-container>
+                    </td>
+                    <td (click)="copyToClipboard(item.partnership)">{{ConvertToIndianForamt(item.partnership)}}</td>
+                    <td>
+                      <span class="badge "
+                        [ngClass]="{'status-active':item.status=='active','status-lock':item.status=='locked','status-suspend':item.status=='suspended'}">{{item.status}}</span>
+                    </td>
+                    <td style="white-space: nowrap;">
+                      <ul class="action">
+                        <li>
+                          <a (click)="OpenModal(item,' ')" data-bs-toggle="modal" data-bs-target="#depositWithdrawModal"
+                            class="bank" title="Banking">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                              version="1.1" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 26 26"
+                              enable-background="new 0 0 26 26" xml:space="preserve">
+                              <g id="Layer_1">
+                                <g>
+                                  <path fill="currentColor"
+                                    d="M16.237,3.225c-0.717,0-1.376,0.058-2.006,0.172c1.834,0.373,3.466,1.263,4.868,2.67    c1.92,1.924,2.863,4.221,2.863,6.947c0,2.669-0.943,4.965-2.863,6.89c-1.402,1.406-3.034,2.296-4.868,2.673    c0.63,0.141,1.289,0.199,2.006,0.199c2.69,0,4.981-0.976,6.874-2.872c1.92-1.925,2.863-4.221,2.863-6.89    c0-2.727-0.943-5.023-2.863-6.947C21.218,4.172,18.927,3.225,16.237,3.225z" />
+                                  <g>
+                                    <path fill="currentColor"
+                                      d="M2.889,6.067c-1.918,1.924-2.863,4.221-2.863,6.947c0,2.669,0.945,4.965,2.863,6.89     C4.78,21.8,7.1,22.776,9.792,22.776c2.692,0,4.984-0.976,6.875-2.872c1.915-1.925,2.864-4.221,2.864-6.89     c0-2.727-0.949-5.023-2.864-6.947c-1.891-1.895-4.183-2.842-6.875-2.842C7.1,3.225,4.78,4.172,2.889,6.067z" />
+                                  </g>
+                                  <g>
+                                    <path fill="#FFFFFF"
+                                      d="M8.819,5.607v1.579V7.76C7.902,7.875,7.186,8.192,6.728,8.651c-0.487,0.431-0.746,1.004-0.746,1.723     c-0.028,0.632,0.229,1.177,0.659,1.664c0.459,0.518,1.203,1.033,2.292,1.607c0.888,0.46,1.488,0.832,1.804,1.18     c0.344,0.342,0.487,0.745,0.487,1.145c0,0.689-0.459,1.034-1.374,1.034c-0.945,0-1.403-0.345-1.403-0.976v-0.861H5.925v0.748     c0,0.717,0.229,1.293,0.744,1.779c0.488,0.431,1.204,0.748,2.149,0.861v0.432c0,0.717,0,1.207,0,1.434h2.205v-1.52v-0.346     c0.945-0.113,1.661-0.431,2.147-0.889c0.516-0.459,0.744-1.063,0.744-1.811c0-0.633-0.199-1.204-0.657-1.693     c-0.431-0.518-1.204-1.062-2.292-1.637c-0.888-0.459-1.489-0.861-1.804-1.205c-0.344-0.315-0.488-0.66-0.488-1.033     c0-0.661,0.43-1.006,1.347-1.006c0.889,0,1.347,0.345,1.347,1.006v0.43h2.52v-0.315c0-0.717-0.229-1.32-0.716-1.78     c-0.486-0.459-1.202-0.746-2.147-0.861V7.245V5.607H8.819z" />
+                                  </g>
+                                </g>
+                              </g>
+                            </svg>
+                          </a>
+                        </li>
+                        <li>
+                            <a class="p_l" (click)="setRouteToAssign('profit-loss', item)">
+                              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                version="1.1" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 26 26"
+                                enable-background="new 0 0 26 26" xml:space="preserve">
+                                <g id="Layer_2">
+                                  <g>
+                                    <path fill="currentColor"
+                                      d="M25.958,16.59h-4.393V3.555h-3.287V16.59h-4.391l5.971,5.855L25.958,16.59z" />
+                                    <path fill="currentColor"
+                                      d="M12.08,9.442l-5.97-5.855L0.042,9.442h4.357v13.004h3.324V9.442H12.08z" />
+                                  </g>
+                                </g>
+                              </svg>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="betting_history" (click)="setRouteToAssign('bet-history', item)">
+                              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                version="1.1" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 26 26"
+                                enable-background="new 0 0 26 26" xml:space="preserve">
+                                <g id="Layer_3">
+                                  <g>
+                                    <path fill="currentColor" d="M9.793,15.429v-2.862H0.234v2.862H9.793z" />
+                                    <path fill="currentColor" d="M0.234,6.137V9.03h25.501V6.137H0.234z" />
+                                    <path fill="currentColor" d="M25.736,0.574H0.234v2.893h25.501V0.574z" />
+                                    <g>
+                                      <g>
+                                        <path fill="currentColor"
+                                          d="M11.076,18.062c0,2.028,0.738,3.766,2.15,5.179c1.412,1.449,3.174,2.155,5.197,2.186      c2.054-0.03,3.751-0.736,5.194-2.186c1.443-1.413,2.149-3.15,2.149-5.179c0-2.054-0.706-3.792-2.149-5.236      c-1.443-1.416-3.141-2.123-5.194-2.123c-2.022,0-3.785,0.708-5.197,2.123C11.814,14.27,11.076,16.008,11.076,18.062z" />
+                                      </g>
+                                      <g>
+                                        <polyline fill="none" stroke="#FFFFFF" stroke-width="1.2846" stroke-linecap="round"
+                                          stroke-linejoin="round" stroke-miterlimit="10"
+                                          points="      21.339,20.09 18.453,19.221 18.453,14.463     " />
+                                      </g>
+                                    </g>
+                                  </g>
+                                </g>
+                              </svg>
+                            </a>
+                          </li>
+                          
+                        <li>
+                          <a class="status setIcon" (click)="OpenModal(item,item.status)" data-bs-toggle="modal"
+                            data-bs-target="#changeUserStatusModal" title="Setting">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 26 26" enable-background="new 0 0 26 26" xml:space="preserve">
+  
+                              <g id="Layer_7">
+                                <g>
+                                  <path fill="currentColor" d="M15.75,0.394H10.25v4.135C9.163,4.891,8.187,5.436,7.318,6.197L3.807,3.985L0.875,8.664l3.511,2.212    c-0.145,0.689-0.217,1.379-0.217,2.14c0,0.799,0.107,1.633,0.29,2.359L1.02,17.659l3.041,4.61l3.474-2.322    c0.833,0.688,1.737,1.158,2.715,1.485v4.175h5.501v-4.209c1.05-0.327,2.028-0.872,2.935-1.635l3.544,2.214l2.896-4.714    l-3.55-2.178c0.184-0.689,0.252-1.343,0.252-2.069c0-0.87-0.104-1.631-0.286-2.358l3.44-2.321l-3.079-4.606l-3.441,2.285    c-0.831-0.653-1.733-1.161-2.711-1.452V0.394z M7.788,13.162c0-0.072,0-0.109,0-0.145c0-1.451,0.508-2.719,1.521-3.736    c1.012-1.017,2.244-1.524,3.69-1.524c1.412,0,2.643,0.507,3.691,1.524c0.979,1.017,1.484,2.176,1.519,3.555    c0,0.036,0,0.072,0,0.145v0.036c0,1.416-0.505,2.648-1.519,3.667c-1.049,1.015-2.279,1.52-3.691,1.52    c-1.446,0-2.679-0.505-3.69-1.52C8.332,15.702,7.826,14.504,7.788,13.162z"/>
+                                </g>
+                              </g>
+  
+  
+                              </svg>
+                          </a>
+                        </li>
+                        <!-- profile  -->
+                        <li>
+                          <a class="profile profileImg" title="Profile" (click)="setRouteToAssign('profile', item)"
+                            routerLink="profit-loss">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                              version="1.1" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 26 26"
+                              enable-background="new 0 0 26 26" xml:space="preserve">
+  
+                              <g id="Layer_6">
+                                <g>
+                                  <path fill="currentColor"
+                                    d="M25.36,21.222c-0.678-0.975-1.612-1.868-2.842-2.634c-2.586-1.699-5.682-2.551-9.37-2.508    c-3.646-0.043-6.783,0.809-9.412,2.508c-1.4,0.894-2.46,1.955-3.095,3.104v3.91H25.36V21.222z" />
+                                  <path fill="currentColor"
+                                    d="M17.176,11.024c1.23-1.233,1.822-2.678,1.822-4.421c0-1.699-0.592-3.188-1.822-4.377    c-1.187-1.232-2.671-1.827-4.367-1.827c-1.738,0-3.18,0.595-4.409,1.827C7.213,3.416,6.576,4.904,6.576,6.603    c0,1.743,0.637,3.188,1.824,4.421c1.229,1.188,2.671,1.827,4.409,1.827C14.505,12.851,15.99,12.212,17.176,11.024z" />
+                                </g>
+                              </g>
+  
+  
+  
+                            </svg>
+                          </a>
+                        </li>
+                        <!-- sports setting  -->
+                        <li>
+                          <a class="profile sportImg" title="Sport Settings" data-bs-toggle="modal"
+                            data-bs-target="#sportSettingModal" (click)="selectedrow=item;getsportsLockedList(item._id)">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                              version="1.1" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 26 26"
+                              enable-background="new 0 0 26 26" xml:space="preserve">
+  
+                              <g id="Layer_5">
+                                <g>
+                                  <path fill="currentColor"
+                                    d="M11.605,3.012c-0.931-0.266-2.259-0.398-3.986-0.398H0.179v20.772h7.439c1.728,0,3.056-0.131,3.986-0.4    c0.532-0.131,0.93-0.399,1.328-0.799v-8.653C12.667,13.265,12.27,13.134,11.87,13c1.994-0.534,2.924-1.995,2.924-4.527    c0-1.465-0.266-2.66-0.93-3.595C13.2,3.946,12.535,3.279,11.605,3.012L11.605,3.012z M9.479,8.872c0,0.665-0.133,1.199-0.53,1.598    c-0.268,0.399-1.063,0.665-2.526,0.665H5.227V6.742H6.69c1.195-0.134,1.991,0.133,2.259,0.531    C9.346,7.674,9.479,8.205,9.479,8.872L9.479,8.872z M5.227,14.862h1.195c1.463,0,2.259,0.27,2.526,0.8    c0.397,0.398,0.532,0.936,0.532,1.604c0,0.53-0.135,1.062-0.532,1.461c-0.268,0.399-1.063,0.669-2.259,0.669H5.227V14.862    L5.227,14.862z" />
+                                  <path fill="currentColor"
+                                    d="M23.43,13.4v-1.73c0-0.934-0.4-1.864-1.062-2.53c-0.661-0.667-1.592-1.065-2.521-1.065    c-0.938,0-1.866,0.398-2.528,1.065c-0.667,0.666-1.063,1.597-1.063,2.53v1.73h-1.33c-0.266,0-0.532,0.134-0.798,0.399    c-0.133,0.133-0.265,0.401-0.265,0.667v7.59c0,0.269,0.132,0.53,0.265,0.668c0.266,0.262,0.532,0.393,0.798,0.393h9.826    c0.276,0,0.538-0.131,0.8-0.393c0.138-0.138,0.269-0.399,0.269-0.668v-4.928l0,0v-2.662c0-0.266-0.131-0.534-0.269-0.667    c-0.262-0.266-0.523-0.399-0.8-0.399H23.43L23.43,13.4z M22.1,11.669v1.73h-4.512v-1.73c0-0.665,0.262-1.2,0.661-1.599    c0.398-0.397,0.929-0.663,1.598-0.663c0.661,0,1.191,0.266,1.591,0.663C21.831,10.469,22.1,11.004,22.1,11.669L22.1,11.669z     M20.901,18.197c0,0.399-0.124,0.661-0.523,0.93l0.131,0.931h-1.199v-0.931c-0.262-0.269-0.4-0.53-0.4-0.93    c0-0.27,0.139-0.538,0.27-0.669c0.131-0.262,0.393-0.399,0.669-0.399c0.262,0,0.53,0.138,0.661,0.399    C20.777,17.659,20.901,17.927,20.901,18.197L20.901,18.197z" />
+                                </g>
+                              </g>
+  
+  
+  
+                            </svg>
+                          </a>
+                        </li>
+                        <!-- delete  -->
+                        <li>
+                          <a class="profile delete" (click)="deleteUser(item._id)" title="Delete">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                              version="1.1" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 26 26"
+                              enable-background="new 0 0 26 26" xml:space="preserve">
+                              <g id="Layer_4">
+                                <g>
+                                  <path fill="currentColor"
+                                    d="M16.162,0.213H9.838C9.358,0.535,9.005,1.049,8.78,1.821H2.233c-0.191,0-0.32,0.097-0.32,0.29v2.541    c0,0.193,0.129,0.29,0.32,0.322h21.534c0.224-0.032,0.32-0.129,0.32-0.322V2.111c0-0.193-0.097-0.29-0.32-0.29h-6.514    C16.995,1.049,16.643,0.535,16.162,0.213z" />
+                                  <path fill="currentColor"
+                                    d="M19.725,25.788c1.088-0.453,1.698-1.256,1.795-2.415c0-0.031,0-0.062,0-0.097l1.058-16.694H3.454    l1.027,16.694c0,0.035,0,0.065,0.031,0.097c0.096,1.159,0.674,1.962,1.765,2.415H19.725z" />
+                                </g>
+                              </g>
+  
+  
+  
+                            </svg>
+                          </a>
+                        </li>
+  
+                      </ul>
+  
+                      <!-- <a class="deleteicon" (click)="deleteUser(item._id)" title="Delete">
+                        <i class="fa  fa-trash fa-lg "></i>
+                      </a> -->
+                    </td>
+                  </tr>
+                  <tr *ngIf="rows.length === 0">
+                    <td colspan="5" class="dt-emp" >No matching records found</td>
+                  </tr>
+                </tbody>
+              
+                <!-- <tfoot *ngIf="rows?.length==0">
+                  <tr>
+                    <td class="no-data-available text-center" colspan="10" rowspan="1">No data!</td>
+                  </tr>
+                </tfoot> -->
+                <!--                </tfoot>-->
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!-- Modal -->
+  <div class="modal fade add-user " id="AddNewUserModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title headtext" id="exampleModalLabel">Add User</h5>
+          <button class="close" type="button">
+            <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-addnew-downline-user [role]="'USER'"></app-addnew-downline-user>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Modal -->
+  <div class="modal fade " id="EditRefereceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h5 class="modal-title">{{selectedrow.type=='E'?'Edit Exposure Limit':'Edit Credit Reference'}} -
+            {{selectedrow?.userName}} </h5>
+          <button class="close" type="button">
+            <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="ms-3">
+            <div class="form-group row">
+              <div class="col-2">Current</div>
+              <div class="col-8">
+                <strong *ngIf="selectedrow.type!='E'">{{ConvertToIndianForamt(selectedrow?.creditReference)}}</strong>
+                <strong *ngIf="selectedrow.type=='E'">{{ ConvertToIndianForamt(selectedrow?.exposureLimit)}}</strong>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <div class="col-md-2 col-form-label">New</div>
+              <div class="col-md-8">
+                <input *ngIf="selectedrow.type!='E'" type="number"  [(ngModel)]="selectedrow.newLimitLable"
+                 min="0" max="999999999999" required="" name="newLimit"
+                  class="text-right form-control maxlength12 ">
+                  <input *ngIf="selectedrow.type=='E'" type="number" oninput="validity.valid||(value='');" [(ngModel)]="selectedrow.newLimitLable"
+                  oninput="validity.valid||(value='');" min="0" max="999999999999" required="" name="newLimit"
+                  class="text-right form-control maxlength12 ">
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <div class="col-md-2 col-form-label">Password</div>
+              <div class="col-md-8">
+                <div class="d-flex align-items-center position-relative">
+                  <input autocomplete="current-password" [type]="eyeIcon.newPassword?'text':'password'" [(ngModel)]="selectedrow.masterPassword"
+                    id="masterpassword2" name="password" required="" class="form-control">
+                  <a class="eyebtn" (click)="eyeIcon.newPassword=!eyeIcon.newPassword">
+                    <i class="far fa-eye" [ngClass]="eyeIcon.newPassword?'fa-eye-slash':'fa-eye'"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="button"
+            (click)="CreditOrExposureLimit()">Submit</button>
+          <button class="btn btn-default" type="button" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Credit Reference Modal -->
+  <div class="modal fade" id="modalCreditReference" tabindex="-1" aria-labelledby="yourModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Credit Reference Log - {{selectedrow?.userName}} </h5>
+          <button class="close" type="button">
+            <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-credit-reference *ngIf="selectedrow?.type==true"
+            [mySelectedRowObj]="selectedrow._id"></app-credit-reference>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Exposure details Modal -->
+  <div class="modal fade" id="modalExposureDetail" tabindex="-1" aria-labelledby="yourModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h5 class="modal-title">Exposure Details- {{selectedrow?.userName}} </h5>
+          <button class="close" type="button">
+            <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-exposure-detail *ngIf="selectedrow?.type=='exposure'"
+            [mySelectedRowObj]="selectedrow._id"></app-exposure-detail>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Deposit Withdraw Modal -->
+  <div class="modal fade" id="depositWithdrawModal" tabindex="-1" aria-labelledby="yourModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h5 class="modal-title"> Banking - <strong class="strong">Master Balance: {{ ConvertToIndianForamt(agentBalance.availableBalance)}} </strong>
+          </h5>
+          <button class="close" type="button">
+            <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-md-12">
+            <div class="form-group row">
+              <div class="col-7">
+                <span class="badge badge-success me-2"> {{selectedrow?.role}}</span>
+                <strong>{{selectedrow?.userName}}</strong>
+              </div>
+  
+              <div class="col-5 text-end">
+                <span>Client Bal : <b>{{ConvertToIndianForamt(selectedrow?.mainBalance)}}</b></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group row">
+              <div class="col-md-2 col-form-label">Balance</div>
+              <div class="col-md-8">
+                <input type="number" min="0"  [(ngModel)]="selectedrow.amount"
+                  (keyup)="checkNumber()" max="9999999999" step="1" name="amount"
+                  required="" class="text-right form-control maxlength10 ">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group row">
+              <div class="col-md-2 col-form-label">Remark</div>
+              <div class="col-md-8">
+                <input class="form-control" autocomplete="username" id="balanceRemark" [(ngModel)]="selectedrow.remark" [value]=""
+                  name="balanceRemark" placeholder="Remark.." type="text">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group row">
+              <div class="col-md-2 col-form-label">Your Password</div>
+              <div class="col-md-8">
+                <div class="d-flex align-items-center position-relative">
+                  <input [type]="eyeIcon.newPassword?'text':'password'" autocomplete="current-password"
+                    [(ngModel)]="selectedrow.masterPassword" id="masterpassword1" name="masterpassword1" required=""
+                    class="form-control">
+                  <!-- <a class="eyebtn" (click)="eyeIcon.newPassword=!eyeIcon.newPassword">
+                    <i class="far fa-eye" [ngClass]="eyeIcon.newPassword?'fa-eye-slash':'fa-eye'"></i>
+                  </a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success" type="button"
+            (click)="DepositWithdraw('D')"
+            [disabled]="selectedrow.remark=='' || !selectedrow.remark || selectedrow.amount=='' || !selectedrow.amount || selectedrow.masterPassword=='' || !selectedrow.masterPassword">Deposite</button>
+          <button class="btn btn-danger" type="button"
+            (click)="DepositWithdraw('W')"
+            [disabled]="selectedrow.remark=='' || !selectedrow.remark || selectedrow.amount=='' || !selectedrow.amount || selectedrow.masterPassword=='' || !selectedrow.masterPassword">Withdraw</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Change Status Modal -->
+  <div class="modal fade" id="changeUserStatusModal" tabindex="-1" aria-labelledby="yourModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h5 class="modal-title">Change Status</h5>
+          <button class="close" type="button">
+            <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="">
+            <div class="d-flex justify-content-between">
+              <p >
+                <span class="badge badge-success">{{selectedrow?.role}}</span> {{selectedrow.userName}}
+              </p>
+              <p >
+                <span class="badge "  [ngClass]="{'status-active':selectedrow.status=='active','status-lock':selectedrow.status=='locked','status-suspend':selectedrow.status=='suspended'}">{{selectedrow.status}}</span>
+              </p>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="row userGap align-items-center stat-btn-list">
+            <div class="col6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+              <button class="btn btn-block btn-outline-success w-100" type="button" (click)="selectedrow.type='active'"
+                [disabled]="selectedrow.type=='active'">
+                <div class="stat-icon">
+                  <i class="far fa-check-circle fa-2x"></i>
+                </div>
+                <div class="stat-text">Active</div>
+              </button>
+            </div>
+            <div class="col6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+              <button class="btn btn-block btn-outline-danger w-100" type="button" (click)="selectedrow.type='suspended'"
+                [disabled]="selectedrow.type=='suspended'">
+                <div class="stat-icon">
+                  <i class="fa fa-ban fa-2x"></i>
+                </div>
+                <div class="stat-text">Suspend</div>
+              </button>
+            </div>
+            <div class="col6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+              <button class="btn btn-block btn-outline-secondary w-100" type="button" (click)="selectedrow.type='locked'"
+                [disabled]="selectedrow.type=='locked'">
+                <div class="stat-icon">
+                  <i class="fa fa-lock fa-2x"></i>
+                </div>
+                <div class="stat-text">Locked</div>
+              </button>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="row col6-gap">
+            <div class="col6">
+              <div class="d-flex align-items-center position-relative">
+                <input autocomplete="new-password" [(ngModel)]="selectedrow.masterPassword" class="form-control" [ngModelOptions]="{standalone: true}"
+                  name="rate" placeholder="Password.." required="" [type]="eyeIcon.newPassword?'text':'password'">
+                <a class="eyebtn" (click)="eyeIcon.newPassword=!eyeIcon.newPassword">
+                  <i class="far fa-eye" [ngClass]="eyeIcon.newPassword?'fa-eye-slash':'fa-eye'"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col6">
+              <button class="btn btn-primary change-status" type="button"
+                (click)="changeUserStatus()">Change</button>
+            </div>
+          </div>
+  
+        </div>
+  
+  
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Sports Settings Modal -->
+  <div class="modal fade" id="sportSettingModal" tabindex="-1" aria-labelledby="yourModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h5 class="modal-title">Sports Settings</h5>
+          <button class="close" type="button">
+            <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-bordered mb-0">
+            <thead class="bg-default">
+              <tr>
+                <th>SrNo.</th>
+                <th>Sport Name</th>
+                <th>Action</th>
+  
+              </tr>
+            </thead>
+            <tbody>
+  
+              <tr *ngFor="let sport of UserSports.data;index as i">
+                <td>{{i+1}}</td>
+                <td>{{sport.sportName}}</td>
+                <td>
+                  <div class="nav-item d-inline-block ">
+                    <div class="form-check form-check-inline ml-2" style="float:left">
+                      <label [for]="'switch2'+sport.sportName" class="switch switch-label switch-primary switch-sm mr-2">
+                        <input [checked]="sport.locked" class="switch-input " name="checkboxtoogle"  type="checkbox">
+                        <span class="switch-slider" data-checked="✓" data-unchecked="✕"></span>
+                      </label>
+                    </div>
+                    <!-- <label [for]="'switch2'+sport.sportName" class="switch switchSmall float-right">
+                        <input type="checkbox" [checked]="sport.locked" class="" name="switcch2">
+                        <span class="slider slider2 round"></span>
+                      </label> -->
+                  </div>
+                  <button [id]="'switch2'+sport.sportName" class="d-none" (click)="userSportsBetLocked(i)"></button>
+                </td>
+  
+              </tr>
+  
+  
+            </tbody>
+          </table>
+        </div>
+  
+  
+      </div>
+    </div>
+  </div>
+  

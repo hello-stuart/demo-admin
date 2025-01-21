@@ -1,0 +1,223 @@
+.page-title-box {
+    padding-bottom: 24px;
+}
+.page-title-box .breadcrumb {
+    background-color: transparent;
+    padding: 0;
+}
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: .75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #eff2f7;
+    border-radius: .25rem;
+}
+.breadcrumb-item>a {
+    color: #495057;
+    cursor: pointer;
+}
+.breadcrumb-item>span{
+    cursor: pointer;
+}
+a {
+    text-decoration: none!important;
+}
+.breadcrumb-item+.breadcrumb-item {
+    padding-left: .5rem;
+}
+.active {
+    color: #74788d;
+}
+/* .page-title-box h4 {
+    text-transform: uppercase;
+    font-weight: 600 !important;
+    font-size: 16px!important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+} */
+.create-account-form {
+    border: 1px solid #eff2f7;
+    padding: 10px;
+    background: #f9f9f9;
+}
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem !important;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    color: #495057 !important;
+}
+.h5, h5 {
+    font-size: 1.015625rem;
+}
+.form-group {
+    position: relative;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+form{
+    color: #495057 !important;
+}
+label {
+    display: inline-block;
+    margin-bottom: .5rem !important;
+}
+.previlage-box {
+    background-color: #ececec !important;
+    border: 1px solid #ddd;
+}
+.previlage-box {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #dfdddd;
+    padding: 10px;
+}
+.previlage-item {
+    min-width: 180px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.custom-control {
+    position: relative;
+    display: block;
+    min-height: 1.21875rem;
+    padding-left: 1.5rem;
+}
+.custom-control-input {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    width: 1rem;
+    height: 1.109375rem;
+    opacity: 0;
+}
+.custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+label {
+    font-weight: 500;
+}
+.custom-checkbox .custom-control-label:before {
+    border-radius: .25rem;
+}
+.custom-control-label:after, .custom-control-label:before {
+    position: absolute;
+    top: .109375rem;
+    left: -1.5rem;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    content: "";
+}
+.custom-control-label:before {
+    /* pointer-events: none; */
+    background-color: #fff;
+    border: 1px solid #adb5bd;
+}
+.custom-control-label:after {
+    background: no-repeat 50%/50% 50%;
+}
+.custom-control-label:after, .custom-control-label:before {
+    position: absolute;
+    top: .109375rem;
+    left: -1.5rem;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    content: "";
+}
+.previlage-master .form-group {
+    display: inline-block !important;
+}
+.previlage-master {
+    text-align: right;
+}
+.previlage-master .form-group input {
+    width: auto;
+    display: inline-block !important;
+}
+.create-account-container .mpass-text {
+    width: 150px !important;
+}
+
+.create-account-container .fixed-col-1 {
+    position: absolute;
+    left: 0;
+    width: 150px;
+}
+.create-account-container .fixed-col-2 {
+    position: absolute;
+    left: 150px;
+    width: 150px;
+}
+.create-account-container .fixed-col-3 {
+    position: absolute;
+    left: 300px;
+    width: 150px;
+}
+.create-account-container .outer {
+    position: relative;
+}
+.create-account-container .inner {
+    overflow-x: scroll;
+    overflow-y: visible;
+    margin-left: 450px;
+}
+.create-account-container td, .create-account-container th {
+    white-space: nowrap;
+    height: 40px;
+}
+
+@media only screen and (min-width: 280px) and (max-width: 374px) {
+    .create-account-container .mpass-text {
+        width: 140px !important;
+    }
+}
+@media screen and (max-width: 1279px) {
+    .page-title-box  {
+        padding: 10px 5px 12px;
+        font-size: 10px !important;
+    }
+    
+    .card-body {
+        padding: 0.5rem !important;
+    }
+    .table th, .table td {
+        white-space: nowrap;
+    }
+    .create-account-container .inner {
+        margin-left: 0;
+    }
+    .create-account-container .fixed-col-3 {
+        position: relative;
+        left: 0;
+        width: auto;
+    }
+    .create-account-container .fixed-col-2 {
+        position: relative;
+        left: 0;
+        width: auto;
+    }
+    .create-account-container .fixed-col-1 {
+        position: relative;
+        left: 0;
+        width: auto;
+    }
+}
+.custom-select-sm {
+    height: calc(1.5em + .5rem + 2px) !important;
+    padding-top: .25rem !important;
+    padding-bottom: .25rem !important;
+    padding-left: .5rem !important;
+    font-size: .7109375rem !important;
+}
+.form-control:focus {
+    box-shadow: none !important;
+  } 
+

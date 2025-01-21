@@ -1,0 +1,133 @@
+.casino-detail {
+    padding: 10px 10px 40px;
+    background-color: #f8f8fb;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 6px #e2e2e2;
+}
+
+.game-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    position: relative;
+}
+
+.drogon-box-container {
+    width: 40%;
+    padding: 6px;
+    border: 2px solid #fc4242;
+    background-color: #fc42422e;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+    padding-right: 60px;
+    cursor: pointer;
+}
+
+.book-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90%;
+    flex-direction: column;
+}
+
+.odds-value {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.tie-circle-container {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    left: 40%;
+    transform: translateX(-50%);
+    padding: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #03b37f;
+    color: var(--text-white);
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.odds-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.tiger-box-container {
+    width: 40%;
+    padding: 6px;
+    border: 2px solid #fdcf13;
+    background-color: #fdcf132e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+    padding-left: 60px;
+    cursor: pointer;
+    position: relative;
+}
+
+.pair-box-container {
+    width: 18%;
+    margin-left: 2%;
+    background-color: #03b37f33;
+    padding: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+    flex-wrap: wrap;
+    cursor: pointer;
+    border: 2px solid #0041a2;
+    position: relative;
+}
+
+.pair-title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90%;
+}
+
+@media(max-width:767px) {
+    .pair-box-container {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .drogon-box-container {
+        padding-right: 35px;
+        width: 50%;
+    }
+
+    .tiger-box-container{
+        padding-left: 35px;
+        width: 50%;
+    }
+
+    .tie-circle-container {
+        left: 50%;
+        height: 70px;
+        width: 70px;
+        top: 15px;
+    }
+}
+ 

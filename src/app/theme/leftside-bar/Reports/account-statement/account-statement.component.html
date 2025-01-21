@@ -1,0 +1,221 @@
+<section class="page-container">
+  <!-- breadcrumb -->
+  <div class="row">
+    <div class="col-12 bredcrumb-container d-flex align-items-center justify-content-between">
+      <h4 class="mb-0 breadcrumb-main-title">Account Statement</h4>
+      <div class="breadcrumb-nav">
+        <span style="color: #495057 !important; margin-right: 4px;" routerLink="">Home</span> / <span
+          style="color: #74788d; margin-left: 4px;">Account Statement</span>
+      </div>
+    </div>
+  </div>
+  <!-- body -->
+  <div class="row">
+    <div class="col-12 p-0">
+      <div class="card">
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="col-lg-3 date-picker-section">
+                <label for="dropdownBasic1" class="d-inline-block form-label">
+                  Select Date Range
+                </label>
+                <div class="d-inline-block position-relative dp-container w-100" ngbDropdown>
+                  <input type="text" class="form-control dp-input" style="height: 36px;" [value]="formattedRange"
+                    id="dropdownBasic1" name="range" ngbDropdownToggle (mouseenter)="showCrossIcon = true"
+                    (mouseleave)="showCrossIcon = false">
+                  <img src="/assets/calender.svg" alt="calender-svg" class="calender-icon" *ngIf="!showCrossIcon">
+                  <img src="/assets/cross-icon.png" alt="cross-icon" class="cross-icon" *ngIf="showCrossIcon">
+
+                  <ngb-datepicker #dp [displayMonths]="2"
+                    class="ngb-dp-container" outsideDays="visible"
+                    ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  </ngb-datepicker>
+                </div>
+              </div>
+              <div class="col-lg-2 data-source-section">
+                <label class="d-inline-block form-label" for="datasource">Type</label>
+                <div class="w-100">
+                  <select style="height: 36px;" [(ngModel)]="dataSource" [ngModelOptions]="{standalone: true}"
+                    id="datasource" (ngModelChange)="onDataSourceChange($event)">
+                    <option disabled="" value="">Data Source</option>
+                    <option value="LIVE">LIVE DATA</option>
+                    <option value="BACKUP">BACKUP DATA</option>
+                    <option value="OLD">OLD DATA</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex col w-100 action-btns" style="gap: 4px;">
+              <button class="load-btn" (click)="rerender()">Load</button>
+              <button class="reset-btn" (click)="onResetBtnClick()">Reset</button>
+              <button class="excel-file-btn">
+                <i class="fas fa-file-excel"></i>
+              </button>
+              <button class="pdf-file-icon">
+                <i class="fas fa-file-pdf"></i>
+              </button>
+            </div>
+          </form>
+          <div class="row table" #dataTableInstance>
+            <table  datatable [dtOptions]="dtOptions" role="table" aria-busy="false" aria-colcount="6"
+              class="table table-bordered table-striped ">
+              <thead role="rowgroup">
+                <tr role="row">
+                  <th>Date/Time</th>
+                  <th>Deposit</th>
+                  <th>Withdraw</th>
+                  <th>Balance</th>
+                  <th>Remark</th>
+                  <th>from//To</th>
+                </tr>
+              </thead>
+              <tr *ngFor="let row of rows;let i=index">
+                <td> {{getLocalDateTime(row.createdAt)}}</td>
+                <td> <b>{{row.deposit}}</b></td>
+                <td class="cl-red"> <b>{{row.withdraw==0?'-':row.withdraw}}</b></td>
+                <td><b>{{row.bankBalance}}</b> </td>
+                <td> {{row.remark}}</td>
+                <td> {{row.fromName}}
+                  <i aria-hidden="true" class="fa fa-arrow-right"></i>
+                  {{row.userName}}
+                </td>
+              </tr>
+              <tr class="odd" *ngIf="rows?.length==0">
+                <td class="no-data-available" colspan="10">There are no records to show</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- These html elements are positioned in the the navigation header of ngb date picker -->
+    <div class="d-flex align-items-center justify-content-between dp-nav-chevron-first ">
+      <div class="d-flex">
+        <div class="px-1" (click)="prevYear('from')" *ngIf="!isFromYearNav">
+          <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron " id="dualprev-chevron">
+        </div>
+        <div class="px-1" (click)="previousYears()" *ngIf="isFromYearNav">
+          <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron " id="dualprev-chevron">
+        </div>
+        <div (click)="prevMonth('from')" *ngIf="!isFromYearNav">
+          <img src="/assets/single-prev-chevron.png" alt="" class="dp-single-chevron">
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="px-1" (click)="nextMonth('from')" *ngIf="!isFromYearNav">
+          <img src="/assets/single-next-chevron.png" alt="" class="dp-single-chevron">
+        </div>
+        <div (click)="nextYear('from')" *ngIf="!isFromYearNav">
+          <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron" id="dualnext-chevron">
+        </div>
+        <div (click)="nextYears()" *ngIf="isFromYearNav">
+          <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron" id="dualnext-chevron">
+        </div>
+      </div>
+
+    </div>
+    <div class="d-flex align-items-center justify-content-between dp-nav-chevron-second ">
+      <div class="d-flex">
+        <div class="px-1" (click)="prevYear('to')" *ngIf="!isToYearNav">
+          <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron " id="dualprev-chevron">
+        </div>
+        <div class="px-1" (click)="previousYears()" *ngIf="isToYearNav">
+          <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron " id="dualprev-chevron">
+        </div>
+        <div (click)="prevMonth('to')" *ngIf="!isToYearNav">
+          <img src="/assets/single-prev-chevron.png" alt="" class="dp-single-chevron">
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="px-1" (click)="nextMonth('to')" *ngIf="!isToYearNav">
+          <img src="/assets/single-next-chevron.png" alt="" class="dp-single-chevron">
+        </div>
+        <div (click)="nextYear('to')" *ngIf="!isToYearNav">
+          <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron" id="dualnext-chevron">
+        </div>
+        <div (click)="nextYears()" *ngIf="isToYearNav">
+          <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron" id="dualnext-chevron">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row months-navigation-first g-2">
+      @for (item of dpMonthsFisrt; track $index) {
+      <div class="col-4" [ngClass]="{'nav-month-cell':item.isSelected}"
+        (click)="onFromMonthSelect(item, $index, 'first')">
+        {{item.value}}
+      </div>
+      }
+    </div>
+    <div class="row months-navigation-second g-2">
+      @for (item of dpMonthsSecond; track $index) {
+      <div class="col-4" [ngClass]="{'nav-month-cell':item.isSelected}"
+        (click)="onToMonthSelect(item, $index, 'second')">
+        {{item.value}}
+      </div>
+      }
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center screen1-date-navigation">
+      <div class="from-month-btn" *ngIf="isFromMonth">
+        {{dpMonthsFisrt[fromMonth-1].value}}
+      </div>
+      <div class="from-year-btn" *ngIf="isFromYear">
+        {{fromYear}}
+      </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-center screen2-date-navigation">
+      <div class="to-month-btn" *ngIf="istoMonth">
+        {{dpMonthsFisrt[toMonth-1].value}}
+      </div>
+      <div class="to-year-btn" *ngIf="isToYear">
+        {{toYear}}
+      </div>
+    </div>
+
+    <div class="row from-year-navigation">
+      @for (item of fromYears; track $index) {
+      <div class="col-6" (click)="onYearSelect(item,$index,'first')" [ngClass]="{'year-nav-cell':item.isSelected}">
+        {{item.value}}
+      </div>
+      }
+    </div>
+    <div class="row to-year-navigation">
+      @for (item of fromYears; track $index) {
+      <div class="col-6" (click)="onYearSelect(item,$index,'second')" [ngClass]="{'year-nav-cell':item.isSelected}">
+        {{item.value}}
+      </div>
+      }
+    </div>
+    <div class="row from-month-days-template">
+      <table>
+        <tbody>
+          <tr *ngFor="let week of fromWeeks" class="from-custom-weekdays">
+            <td *ngFor="let item of week"
+            [ngClass]="{ 'disabled-day': item.disabled || isDayDisabled(item.day, fromMonth, fromYear), 'in-range':isRange(item.day,fromMonth,fromYear)}"
+              class="custom-day"
+              (click)="onDateClick(item.day, fromMonth, fromYear, true)">
+              <span >{{ item.day }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row to-month-days-template">
+      <table>
+        <tbody>
+          <tr *ngFor="let week of toWeeks" class="to-custom-weekdays">
+            <td *ngFor="let item of week"
+             [ngClass]="{ 'disabled-day': item.disabled ||  isDayDisabled(item.day, toMonth, toYear), 'in-range':isRange(item.day,toMonth,toYear)}"
+              class="custom-day"
+              (click)="onDateClick(item.day, toMonth, toYear, false)">
+              <span >{{ item.day }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

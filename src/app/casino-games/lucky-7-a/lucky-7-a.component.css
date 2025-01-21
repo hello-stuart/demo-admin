@@ -1,0 +1,285 @@
+/* .videoPlayer {
+    height: 309px;
+} */
+.casino-details {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px 5px 40px;
+    box-shadow: none;
+    border-radius: 0;
+    background-color: #f8f8fb;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: #000000;
+    font-family: "Noto Sans";
+    font-size: 14px;
+}
+
+.casino-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.low-high-box {
+    width: 100%;
+    margin-right: 0;
+}
+
+.low-odds {
+    border-radius: 0;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding: 6px;
+    height: 76px;
+    color: #ffffff;
+    background-color: #434343;
+    border: 5px solid #fc4242;
+}
+
+.lucky7-cards {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #43434333;
+    padding: 6px;
+}
+
+.high-odds {
+    border-radius: 0;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding: 6px;
+    height: 76px;
+    color: #ffffff;
+    background-color: #434343;
+    border: 5px solid #03b37f;
+}
+
+.casino-min-max {
+    margin-top: 25px;
+    position: relative;
+    height: 20px;
+    width: 100%;
+    font-size:9px;
+    color: #000000;
+    font-weight: normal;
+}
+
+.casino-odds {
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    line-height: 18px;
+    position: relative;
+}
+
+.casino-book {
+    position: absolute;
+    bottom: -25px;
+    font-size: 9px;
+    line-height: 18px;
+}
+
+.lucky7-cards img {
+    height: 60px;
+    max-width: 100%;
+}
+
+.sidebets-box {
+    width: 100%;
+    margin-right: 0;
+}
+
+.lucky7-extra-bets {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.lucky7-extra-bets-item-container {
+    width: 23.5%;
+    margin-right: 2%;
+    margin-bottom: 5px;
+}
+
+.lucky7-extra-bets-item-container:last-child {
+    margin-right: 0px;
+}
+
+.lucky7-extra-bets-item {
+    background-color: #434343;
+    padding: 6px;
+    border-radius: 8px;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #fff;
+    position: relative;
+}
+
+.casino-book.book-black {
+    font-size: 10px;
+}
+
+.cards-top {
+    width: 100%;
+}
+
+.container-fluid {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+.row.row5 {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.casino-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    /* column-gap: 24px; */
+}
+
+.cards-top-box {
+    /* height: 90px; */
+    padding: 5px;
+    border: 5px solid #43434390;
+    cursor: pointer;
+    display: block !important;
+}
+
+.casino-card-item {
+    display: inline-block;
+    width: auto;
+    min-width: 32px !important;
+    margin-right: 0;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.casino-card-item .card-img {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.card-img img {
+    width: 35px;
+}
+
+.low-cards .casino-odds,
+.high-cards .casino-odds {
+    color: black;
+}
+
+.casino-cards .casino-book {
+    position: static;
+    bottom: 0;
+}
+
+.low-cards .casino-min-max {
+    margin-top: 0;
+}
+
+.cards-box {
+    width: 100%;
+    margin-right: 0;
+}
+
+.high-cards .casino-cards .casino-card-item {
+    margin-bottom: 0;
+    min-width: 80px !important;
+    margin-right: 5px;
+    margin-left: 5px;
+    /* width: auto; */
+}
+
+.cards-top-box .casino-card-item:first-child {
+    margin-left: 0;
+}
+
+.casino-buttons img {
+    height: 25px;
+    margin: 0 2px;
+}
+
+.cards-top-box {
+    width: 147.29px;
+    height: 90px;
+}
+
+.col-gap {
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+    .cards-top-box {
+        width: 100%;
+        height: 86.53px;
+    }
+
+    .high-cards .casino-cards .casino-card-item {
+        margin-bottom: 10px;
+    }
+
+    .card-img img {
+        width: 48px;
+    }
+
+    .low-high-box {
+        width: 49%;
+        margin-right: 2%;
+    }
+
+    .sidebets-box {
+        width: 49%;
+    }
+
+    .casino-book {
+        font-size: 18px !important;
+        line-height: 18px !important;
+    }
+    .row.row5 > [class*="col-"] {
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+        max-width: 25% !important;
+    }
+}
+.luckyImg {
+    width: 45px !important;
+}
+
+@media screen and (max-width: 290px) {
+.casino-min-max{
+    font-size: 10px;
+}
+}
+
+@media screen and (max-width: 320px) {
+    .sm-card{
+        height: 20px !important;
+    }
+}

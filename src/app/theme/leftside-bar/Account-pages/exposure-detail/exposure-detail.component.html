@@ -1,0 +1,74 @@
+<div class="table-responsive table table-striped">
+  <table  role="table" aria-busy="false" aria-colcount="6"
+    class="table table-border table-striped ">
+    <thead role="rowgroup">
+      <tr role="row">
+        <th>Sport Name</th>
+        <th>Event Name</th>
+        <th>Market Name</th>
+        <th>Bet Count</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let row of rows;let i=index">
+      <td class="border-right-black border-left"> <a class="">{{row.sportName}}</a>
+      </td>
+      <td class="border-right-black"> {{row.eventName}}</td>
+      <td class="border-right-black " ><a class="plLink" (click)="getuserUsMarketListExposure(row)">{{row.marketName}}</a> </td>
+
+      <td class="border-right-black">{{row.betCounts}}</td>
+    </tr>
+    <tr class="odd" *ngIf="rows?.length==0">
+      <td valign="top" colspan="5" class="nofound">No matching records found</td>
+    </tr>
+  </table>
+</div>
+<div class="custom-modal-overlay" [ngClass]="openRiskMarketModal?'d-block':'d-none'">
+  <div class="custom-modal modal-xl">
+    <div class="modal-header bg-light justify-content-between align-items-center">
+      <h4 id="modal-basic-title" class="modal-title"> Market Exposure</h4>
+      <button type="button" class="close" (click)="closeModal()" >
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="custom-modal-body">
+      <table id="example" class="display nowrap table table-responsive table-bordered" style="width: 100%;">
+        <thead>
+          <tr role="row">
+            <th role="columnheader" scope="col" aria-colindex="1" class="text-center">Sport Name</th>
+            <th role="columnheader" scope="col" aria-colindex="2" class="text-center">Event Name </th>
+            <th role="columnheader" scope="col" aria-colindex="3" class="text-center">Market Name </th>
+            <th role="columnheader" scope="col" aria-colindex="4" class="text-center">Runner Name </th>
+            <th role="columnheader" scope="col" aria-colindex="5" class="text-center"> Bet Type</th>
+            <th role="columnheader" scope="col" aria-colindex="6" class="text-center">User Price </th>
+            <th role="columnheader" scope="col" aria-colindex="7" class="text-center">Rate </th>
+            <th role="columnheader" scope="col" aria-colindex="8" class="text-center">Amount </th>
+            <th role="columnheader" scope="col" aria-colindex="9" class="text-center">Place Date </th>
+            <th role="columnheader" scope="col" aria-colindex="10" class="text-center">Match Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of userMarketListExposure" [ngClass]="item.type=='B'?'back':'lay'">
+              <td class="text-center">{{item?.sportName}}</td>
+              <td class="text-center">{{item?.eventName}}</td>
+              <td class="text-center">{{item?.marketName}}</td>
+              <td class="text-center">{{item?.selectionName}}</td>
+              <td class="text-center">{{item?.type=='B'?'BACK':'LAY'}}</td>
+              <td class="text-center">{{item?.oddsPrice}}</td>
+              <td class="text-center">
+                {{item?.oddsRate}}
+               </td>
+              <td class="text-center"><b>{{item?.stake}}</b></td>
+
+              <td class="text-center">{{item?.createdAt | date : 'medium'}}</td>
+              <td class="text-center">{{item?.matchedTime | date : 'medium'}}</td>
+          </tr>
+          <tr *ngIf="userMarketListExposure.length==0">
+            <td colspan="10" class="text-center">
+              No Data Found
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

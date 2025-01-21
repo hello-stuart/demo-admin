@@ -1,0 +1,705 @@
+<div class="modal fade" id="normalViewResultModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content h-100">
+            <div class="bottom-pb">
+                <header class="modal-header">
+                    <h5 class="modal-title">{{capitalize(selectedResult?.eventName)}} Result</h5>
+                    <button type="button" data-bs-dismiss="modal" aria-label="Close" class="close">×</button>
+                </header>
+                <div class="modal-body">
+                    <div class="casino-result-round">
+                        <div>Round-ID: {{selectedResult?.roundId}}</div>
+                        <!-- <div>Match Time: <span>23/10/2024 10:06:08</span></div> -->
+                    </div>
+                    <!-- teenpatti & Poker 3 -->
+                    <div style="display: flex; justify-content: space-around; align-items: start; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0010' || selectedResult?.eventId == '99.0014' || selectedResult?.eventId == '99.0013'
+             || selectedResult?.eventId == '99.0007'  || selectedResult?.eventId == '99.0056'">
+                        <div class="casino-result-cards">
+                            <div class="d-flex align-items-end">
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='A'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                                <div class="d-flex align-items-center flex-column">
+                                    <h4 style="color: #495057;">Player A</h4>
+                                    <div>
+                                        <div class="casino-result-cards-item">
+                                            <img class="add-shadow"
+                                                [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER_A']?.card_1+'.png']">
+                                        </div>
+                                        <div class="casino-result-cards-item">
+                                            <img class="add-shadow"
+                                                [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER_A']?.card_2+'.png']">
+                                        </div>
+                                        <div class="casino-result-cards-item">
+                                            <img class="img-cards add-shadow"
+                                                *ngIf="selectedResult?.cards['PLAYER_A'].card_3 !== 0 && selectedResult?.eventId !== '99.0007'"
+                                                [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER_A']?.card_3+'.png']">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 2px;
+                        height: 130px;
+                        background-color: #ddd;"></div>
+                        <div class="casino-result-cards">
+                            <div class="d-flex align-items-end">
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='B'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                                <div>
+                                    <div class="d-flex align-items-center flex-column">
+                                        <h4>Player B</h4>
+                                        <div>
+                                            <div class="casino-result-cards-item">
+                                                <img class="img-cards add-shadow"
+                                                    [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER_B']?.card_1+'.png']">
+                                            </div>
+                                            <div class="casino-result-cards-item">
+                                                <img class="img-cards add-shadow"
+                                                    [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER_B']?.card_2+'.png']">
+                                            </div>
+                                            <div class="casino-result-cards-item">
+                                                <img class="img-cards add-shadow"
+                                                    *ngIf="selectedResult?.cards['PLAYER_B'].card_3!=0 && selectedResult?.eventId !== '99.0007'"
+                                                    [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER_B']?.card_3+'.png']">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- bollywood -->
+                    <div style="display: flex; justify-content: space-around; align-items: start; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0050'">
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.card+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Lucky 7  1 card-->
+                    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0030' || selectedResult?.eventId == '99.0005' || selectedResult?.eventId == '99.0032' ||selectedResult?.eventId == '99.0031'
+            ||selectedResult?.eventId == '99.0006'">
+                        <div class="winner-div"
+                            *ngIf="selectedResult?.eventId == '99.0030' ||selectedResult?.eventId == '99.0032' ||selectedResult?.eventId == '99.0031'">
+                            <div class="winner">
+                                <span class="high-card" *ngIf="selectedResult.winner == 'H'">High Card</span>
+                                <span class="high-card" *ngIf="selectedResult.winner == 'L'">Low Card</span>
+                            </div>
+                        </div>
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.card+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- baccrat 2card-->
+                    <div style="display: flex; justify-content: space-around; align-items: start; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0002' || selectedResult?.eventId == '99.0036' || selectedResult?.eventId == '99.0001' ">
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <h4 style="color: #495057;">Player</h4>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='P'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER']?.card_1+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER']?.card_2+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="img-cards add-shadow" *ngIf="selectedResult?.cards['PLAYER'].card_3!=0"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER']?.card_3+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 2px;
+                        height: 130px;
+                        background-color: #ddd;"></div>
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <h4>Banker</h4>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='B'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="img-cards add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['BANKER']?.card_1+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="img-cards add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['BANKER']?.card_2+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="img-cards add-shadow" *ngIf="selectedResult?.cards['BANKER']?.card_3!=0"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['BANKER']?.card_3+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- dealer  2card-->
+                    <div style="display: flex; justify-content: space-around; align-items: start; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0057'">
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <h4 style="color: #495057;">DEALER</h4>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='D'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['DEALER']?.card_1+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 2px;
+                      height: 130px;
+                      background-color: #ddd;"></div>
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <h4>Player</h4>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='P'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="img-cards add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER']?.card_1+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- DTL teenpatti - A  3 card-->
+                    <div style="display: flex; justify-content: space-around; align-items: start; margin-top: 10px; padding: 6px; flex-wrap: wrap;"
+                        *ngIf="selectedResult?.eventId == '99.0041' || selectedResult?.eventId == '99.0004'">
+                        <div class="casino-result-cards">
+                            <div class="d-flex flex-column align-items-center">
+                                <h4 style="color: #495057;">DRAGON</h4>
+                                <div>
+                                    <div class="casino-result-cards-item"
+                                        *ngIf="selectedResult?.winner=='DRAGON'|| selectedResult?.winner=='D'">
+                                        <img src="/assets/winner.png" class="winner-icon">
+                                    </div>
+                                    <div class="casino-result-cards-item">
+                                        <img class="add-shadow"
+                                            [src]="['../../../assets/cards/'+selectedResult?.cards['DRAGON']?.card_1+'.png']">
+                                    </div>
+                                    <div class="casino-result-cards-item"
+                                        *ngIf="selectedResult?.cards['DRAGON']?.card_2">
+                                        <img class="add-shadow"
+                                            [src]="['../../../assets/cards/'+selectedResult?.cards['DRAGON']?.card_2+'.png']">
+                                    </div>
+                                    <div class="casino-result-cards-item"
+                                        *ngIf="selectedResult?.cards['DRAGON']?.card_3">
+                                        <img class="img-cards add-shadow"
+                                            [src]="['../../../assets/cards/'+selectedResult?.cards['DRAGON']?.card_3+'.png']">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="casino-result-cards">
+                            <div class="d-flex flex-column align-items-center">
+                                <h4>LION</h4>
+                                <div>
+                                    <div class="casino-result-cards-item"
+                                        *ngIf="selectedResult?.winner=='LION' || selectedResult?.winner=='L'">
+                                        <img src="/assets/winner.png" class="winner-icon">
+                                    </div>
+                                    <div class="casino-result-cards-item">
+                                        <img class="img-cards add-shadow"
+                                            [src]="['../../../assets/cards/'+selectedResult?.cards['LION']?.card_1+'.png']">
+                                    </div>
+                                    <div class="casino-result-cards-item" *ngIf="selectedResult?.cards['LION']?.card_2">
+                                        <img class="img-cards add-shadow"
+                                            [src]="['../../../assets/cards/'+selectedResult?.cards['LION']?.card_2+'.png']">
+                                    </div>
+                                    <div class="casino-result-cards-item" *ngIf="selectedResult?.cards['LION']?.card_3">
+                                        <img class="img-cards add-shadow"
+                                            [src]="['../../../assets/cards/'+selectedResult?.cards['LION']?.card_3+'.png']">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="casino-result-cards">
+                            <div class="d-flex flex-column align-items-center">
+                                <h4>TIGER</h4>
+                                <div>
+                                    <div class="casino-result-cards-item"
+                                        *ngIf="selectedResult?.winner=='TIGER' || selectedResult?.winner=='T'">
+                                        <img src="/assets/winner.png" class="winner-icon">
+                                    </div>
+                                    <div class="casino-result-cards-item">
+                                        <img class="img-cards add-shadow"
+                                            [src]="['../../../assets/cards/'+selectedResult?.cards['TIGER']?.card_1+'.png']">
+                                    </div>
+                                    <div class="casino-result-cards-item"
+                                        *ngIf="selectedResult?.cards['TIGER']?.card_2">
+                                        <img class="img-cards add-shadow"
+                                            [src]="['../../../assets/cards/'+selectedResult?.cards['TIGER']?.card_2+'.png']">
+                                    </div>
+                                    <div class="casino-result-cards-item"
+                                        *ngIf="selectedResult?.cards['TIGER']?.card_3">
+                                        <img class="img-cards add-shadow"
+                                            [src]="['../../../assets/cards/'+selectedResult?.cards['TIGER']?.card_3+'.png']">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 32 Cards A & B 4 scroll -->
+                    <div style="display: flex; row-gap: 5px; flex-direction: column; justify-content: space-around; align-items: start; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0023' || selectedResult?.eventId == '99.0022'">
+                        <!-- Player 8 -->
+                        <div class="casino-result-cards">
+                            <div class="d-flex align-items-center">
+                                <h4 style="color: #495057; margin-right: 10px;">Player 8</h4>
+                                <div class="casino-result-cards-item"
+                                    *ngFor="let cardAndar of selectedResult?.cards?.PLAYER_8">
+                                    <img class="add-shadow img-35" [src]="['../../../assets/cards/'+cardAndar+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='PLAYER_8'">
+                                    <img src="/assets/winner.png" class="winner-icon img-35">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Player 9 -->
+                        <div class="casino-result-cards">
+                            <div class="d-flex align-items-center">
+                                <h4 style="color: #495057; margin-right: 10px;">Player 9</h4>
+                                <div class="casino-result-cards-item"
+                                    *ngFor="let cardAndar of selectedResult?.cards?.PLAYER_9">
+                                    <img class="add-shadow img-35" [src]="['../../../assets/cards/'+cardAndar+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='PLAYER_9'">
+                                    <img src="/assets/winner.png" class="winner-icon img-35">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Player 10 -->
+                        <div class="casino-result-cards">
+                            <div class="d-flex align-items-center">
+                                <h4 style="color: #495057; margin-right: 10px;">Player 10</h4>
+                                <div class="casino-result-cards-item"
+                                    *ngFor="let cardAndar of selectedResult?.cards?.PLAYER_10">
+                                    <img class="add-shadow img-35" [src]="['../../../assets/cards/'+cardAndar+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='PLAYER_10'">
+                                    <img src="/assets/winner.png" class="winner-icon img-35">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Player 11 -->
+                        <div class="casino-result-cards">
+                            <div class="d-flex align-items-center">
+                                <h4 style="color: #495057; margin-right: 10px;">Player 11</h4>
+                                <div class="casino-result-cards-item"
+                                    *ngFor="let cardAndar of selectedResult?.cards?.PLAYER_11">
+                                    <img class="add-shadow img-35" [src]="['../../../assets/cards/'+cardAndar+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='PLAYER_11'">
+                                    <img src="/assets/winner.png" class="winner-icon img-35">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Intstant Worli-->
+                    <div style="display: flex; justify-content: space-around; align-items: start; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0009'">
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <h4 style="color: #495057;">{{worliSplitter(selectedResult?.winner)}}</h4>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='A'">
+                                    <img class="add-shadow" src="/assets/winner.png" class="winner-icon">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.card_1+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.card_2+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="img-cards add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.card_3+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- casino war-->
+                    <div style="display: flex; justify-content: space-around; align-items: start; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0027' ">
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <h4 style="color: #495057;">Player A</h4>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='P'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER']?.card_1+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER']?.card_2+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER']?.card_3+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER']?.card_4+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER']?.card_5+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['PLAYER']?.card_6+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <h4>Player B</h4>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='D'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="img-cards add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['DEALER']?.card_1+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- casino meter -->
+                    <div style="display: flex; flex-direction: column; justify-content: space-around; align-items: start; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0055'">
+                        <div class="casino-result-cards">
+                            <div class="d-flex align-items-center">
+                                <h4 style="color: #495057; width: 50px;">Low</h4>
+                                <div class="casino-result-cards-item"
+                                    *ngFor="let cardLow of selectedResult?.cards?.LOW">
+                                    <img class="add-shadow" [src]="['../../../assets/cards/'+cardLow+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='LOW'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="casino-result-cards">
+                            <div class="d-flex align-items-center">
+                                <h4 style="width: 50px;">High</h4>
+                                <div class="casino-result-cards-item"
+                                    *ngFor="let cardBahar of selectedResult?.cards?.HIGH">
+                                    <img class="img-cards add-shadow"
+                                        [src]="['../../../assets/cards/'+cardBahar+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='HIGH'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- trio  1 card-->
+                    <div style="display: flex; justify-content: space-around; align-items: start; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0060' ">
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.card_1+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.card_2+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.card_3+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- kbc  1 card-->
+                    <div style="display: flex; justify-content: center; align-items: start; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0059' ">
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.Q1+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.Q2+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.Q3+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.Q4+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.Q5+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Andar bahar  3 card 2 scroll-->
+                    <div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0025' || selectedResult?.eventId == '99.0034'">
+                        <div class="casino-result-cards">
+                            <div class="d-flex align-items-center flex-column">
+                                <h4 style="color: #495057;">Joker</h4>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow img-35"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards?.cardScan?.RESULT+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="casino-result-cards">
+                            <div class="d-flex align-items-center flex-column">
+                                <h4 style="color: #495057;">Andhar</h4>
+                                <div style="display: flex;
+                                flex-wrap: wrap;
+                                justify-content: center;">
+                                    <div class="casino-result-cards-item"
+                                        *ngFor="let cardAndar of selectedResult?.cards?.cardsArr?.ANDAR_CARDS">
+                                        <img class="add-shadow img-35"
+                                            [src]="['../../../assets/cards/'+cardAndar+'.png']">
+                                    </div>
+                                    <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='A'">
+                                        <img src="/assets/winner.png" class="winner-icon img-35">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="casino-result-cards">
+                            <div class="d-flex align-items-center flex-column">
+                                <h4 style="color: #495057;">Bahar</h4>
+                                <div style="display: flex;
+                                flex-wrap: wrap;
+                                justify-content: center;">
+                                    <div class="casino-result-cards-item"
+                                        *ngFor="let cardBahar of selectedResult?.cards?.cardsArr?.BAHAR_CARDS">
+                                        <img class="add-shadow img-35"
+                                            [src]="['../../../assets/cards/'+cardBahar+'.png']">
+                                    </div>
+                                    <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='B'">
+                                        <img src="/assets/winner.png" class="winner-icon img-35">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 20-20 card race -->
+                    <div style="display: flex; justify-content: start; flex-direction: column; align-items: center; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0046'">
+                        <div class="d-flex flex-column">
+                            <!-- HK -->
+                            <div class="casino-result-cards">
+                                <div class="d-inline-block">
+                                    <div class="casino-result-cards-item" style="margin-right: 25px; width: 35px;">
+                                        <img src="../../../assets/cards/HK_.png" class="winner-icon add-shadow w-35">
+                                    </div>
+                                    <div class="casino-result-cards-item" *ngFor="let hCard of hValues">
+                                        <img class="add-shadow w-35" [src]="['../../../assets/cards/'+hCard+'.png']">
+                                    </div>
+                                    <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='HK'">
+                                        <img src="../../../assets/winner.png" class="winner-icon w-35">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- CK -->
+                            <div class="casino-result-cards">
+                                <div class="d-inline-block">
+                                    <div class="casino-result-cards-item" style="margin-right: 25px; width: 35px;">
+                                        <img class="add-shadow" src="../../../assets/cards/CK_.png"
+                                            class="winner-icon add-shadow w-35">
+                                    </div>
+                                    <div class="casino-result-cards-item" *ngFor="let cCard of cValues">
+                                        <img [src]="['../../../assets/cards/'+cCard+'.png']" class="add-shadow w-35">
+                                    </div>
+                                    <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='CK'">
+                                        <img class="add-shadow" src="../../../assets/winner.png"
+                                            class="winner-icon w-35">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- DK -->
+                            <div class="d-inline-block">
+                                <div class="casino-result-cards-item" style="margin-right: 25px; width: 35px;">
+                                    <img class="add-shadow" src="../../../assets/cards/HK_.png"
+                                        class="winner-icon add-shadow w-35">
+                                </div>
+                                <div class="casino-result-cards-item" *ngFor="let dCard of dValues">
+                                    <img [src]="['../../../assets/cards/'+dCard+'.png']" class="add-shadow w-35">
+                                </div>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='DK'">
+                                    <img src="../../../assets/winner.png" class="winner-icon w-35">
+                                </div>
+                            </div>
+                            <!-- SK -->
+                            <div class="d-inline-block">
+                                <div class="casino-result-cards-item" style="margin-right: 25px; width: 35px;">
+                                    <img class="add-shadow" src="../../../assets/cards/SK_.png"
+                                        class="winner-icon add-shadow w-35">
+                                </div>
+                                <div class="casino-result-cards-item" *ngFor="let sCard of sValues">
+                                    <img [src]="['../../../assets/cards/'+sCard+'.png']" class="add-shadow w-35">
+                                </div>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='SK'">
+                                    <img src="../../../assets/winner.png" class="winner-icon w-35">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--1 card meter  2card-->
+                    <div style="display: flex; justify-content: space-around; align-items: start; margin-top: 10px; padding: 6px;"
+                        *ngIf=" selectedResult?.eventId == '99.0051'">
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <h4 style="color: #495057;">Fighter A</h4>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='A'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.cards['FIGHTER_A']?.card_1 +'.png']">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <h4>Fighter B</h4>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='B'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="img-cards add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.cards['FIGHTER_B']?.card_1 +'.png']">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 3card jugment -->
+                    <div style="display: flex; justify-content: center; align-items: start; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0040' || selectedResult?.eventId == '99.0058'">
+                        <div class="casino-result-cards">
+                            <div class="d-inline-block">
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.card_1+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.card_2+'.png']">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards.card_3+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--20-20 dragon tiger  2card-->
+                    <div style="display: flex; justify-content: space-around; align-items: center; margin-top: 10px; padding: 6px;"
+                        *ngIf="selectedResult?.eventId == '99.0019' || selectedResult?.eventId == '99.0018' || selectedResult?.eventId == '99.0020' || selectedResult?.eventId == '99.0021'">
+                        <div class="casino-result-cards d-flex justify-content-center" style="width: 49%;">
+                            <div class="d-inline-block">
+                                <h4 style="color: #495057;">Dragon</h4>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='DRAGON'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['DRAGON']?.card_1+'.png']">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 2px; height: 130px; background-color: #ddd;"></div>
+                        <div class="casino-result-cards  d-flex justify-content-center" style="width: 49%;">
+                            <div class="d-inline-block">
+                                <h4>Tiger</h4>
+                                <div class="casino-result-cards-item" *ngIf="selectedResult?.winner=='TIGER'">
+                                    <img src="/assets/winner.png" class="winner-icon">
+                                </div>
+                                <div class="casino-result-cards-item">
+                                    <img class="add-shadow"
+                                        [src]="['../../../assets/cards/'+selectedResult?.cards['TIGER']?.card_1 +'.png']">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- showMore -->
+                <div class="oepn-teen-result mt-2 mx-10" *ngFor="let result of selectedResult?.results">
+                    <div class="text-center ResultMarketName my-1">
+                        <b>{{result?.marketName}}</b>
+                    </div>
+                    <ng-container>
+                        <div class="d-flex justify-content-around align-items-center mt-1 cotent-font "
+                            [ngClass]="{
+                            'dtlA': ['DRAGON CARD', 'TIGER CARD', 'LION CARD'].includes(result?.marketName) || eventid == '99.0041'}"
+                            [class.bolly]="eventid == '99.0050' && result?.marketName=='WINNER'"
+                            [class.reverse]="eventid =='99.0018' || eventid =='99.0019' || eventid =='99.0020' || eventid =='99.0004' || eventid =='99.0041' || eventid == '99.0051'"
+                            [class.warr]="eventid == '99.0027'">
+                            <ng-container>
+                                <div class="d-flex justify-content-between align-items-center"
+                                    *ngFor="let runner of result?.runners">
+                                    <div>
+                                        {{splitMarketName(result.runnersName[runner.selectionId])}}
+                                    </div>
+                                    <div class="ms-2 winner-box 3333 " *ngIf="runner?.result=='WINNER' ">
+                                        <div class="casino-result-cards-item">
+                                            <img src="/assets/winner.png" class="winner-icon-last">
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="selectedResult?.eventId == '99.0058'">
+                                <div class="d-flex justify-content-between align-items-center"
+                                    *ngFor="let runnerId of getRunnerIds(result.runners)">
+                                    <div>
+                                        {{ result.runners[runnerId] }}
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <!-- <ng-container *ngIf="selectedResult?.eventId == '99.0009'">
+                                <div class="d-flex justify-content-between align-items-center"
+                                    *ngFor="let runner of result?.runners">
+                                    <div>
+                                        {{result?.runnersName[runner?.selectionId]}}
+                                    </div>
+                                </div>
+                            </ng-container> -->
+                        </div>
+                    </ng-container>
+                    <!--  -->
+
+                </div>
+
+
+                <!-- showMore -->
+            </div>
+        </div>
+    </div>
+</div>

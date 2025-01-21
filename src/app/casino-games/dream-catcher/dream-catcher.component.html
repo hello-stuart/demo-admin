@@ -1,0 +1,148 @@
+<div style="background-color: black;">
+    <div class="catcher">
+        <div class="right-arrows-main">
+            <div class="arrow-up" (click)="logoClickHandler()">
+                <i class="fas fa-home"></i>
+            </div>
+            <div (click)="loadRules()" class="arrow-up" data-bs-toggle="modal" data-bs-target="#resultModal"
+                data-bs-backdrop="false">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="arrow-up showInDesktop" style="margin-right: 0;" data-bs-toggle="collapse"
+                data-bs-target="#balanceDetails" aria-expanded="false" aria-controls="balanceDetails">
+                <div class="arrow ">
+                    <i class="fas fa-chevron-circle-up arrow-icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="casinoStream">
+            <div class="finalresultdiv" *ngIf="isResultDeclare">
+                <img *ngIf="idToLandOn && idToLandOn == 1" src="/assets/img/sector01.svg">
+                <img *ngIf="idToLandOn && idToLandOn == 2" src="/assets/img/sector02.svg">
+                <img *ngIf="idToLandOn && idToLandOn == 5" src="/assets/img/sector05.svg">
+                <img *ngIf="idToLandOn && idToLandOn == 10" src="/assets/img/sector10.svg">
+                <img *ngIf="idToLandOn && idToLandOn == 20" src="/assets/img/sector20.svg">
+                <img *ngIf="idToLandOn && idToLandOn == 40" src="/assets/img/sector40.svg">
+                <!-- <span>{{idToLandOn}}</span> -->
+            </div>
+            <div align="center" style="padding-top: 30px;">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="480" height="480" class="the_wheel" align="center" valign="center">
+                            <universe-wheel id="wheelCanvas" #wheel width='480' height='480' spinDuration='10'
+                                [items]='items' [innerRadius]='48' [spinAmount]='100'
+                                [textOrientation]='textOrientation' [textAlignment]='textAlignment'
+                                pointerStrokeColor='black' pointerFillColor='gold' [idToLandOn]='idToLandOn'
+                                (onSpinComplete)='after()'></universe-wheel>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <app-casino-result-modal></app-casino-result-modal>
+        <div class="showInDesktop ">
+            <app-resultbar></app-resultbar>
+        </div>
+        <app-timer [minutes]="TIME_LIMIT"></app-timer>
+        <div class="casino-video-title"><span class="casino-name">{{eventName}}</span>
+            <div class="casino-id">Round ID: {{roundID}}</div>
+        </div>
+    </div>
+
+    <div class="lucky-footer">
+        <section id="betZone" class="bet_zone stop_bet">
+            <div name="betZoneBac" class="down_set">
+
+                <!-- Winner Runner 1X -->
+                <div name="betZoneBac" id="betBoxPlayer"
+                    (click)="openBetslip(marketArray[0].marketId,marketArray[0].runners[0].selectionId,'back',marketArray[0].runners[0].price.back[0].price,marketArray[0]?.min,marketArray[0]?.max)"
+                    [ngClass]="marketArray[0]?.runners[0].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''"
+                    class="box_player 0 greenodd no_win">
+                    <img src="../../../assets/img/dream1x.png" class="betImage">
+                    <span class="pl_lucky" *ngIf="casinoPl[marketArray[0]?.marketId]">
+                        <span *ngIf="casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[0]?.selectionId]"
+                            [ngClass]="[casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[0]?.selectionId] > 0  ? 'plus-book' : 'minus-book']">{{casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[0]?.selectionId]
+                            ? (casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[0]?.selectionId] | number) :
+                            '0.00'}}</span>
+                    </span>
+                </div>
+
+                <!-- Winner Runner 2X -->
+                <div name="betZoneBac" id="betBoxPlayer"
+                    (click)="openBetslip(marketArray[0].marketId,marketArray[0].runners[1].selectionId,'back',marketArray[0].runners[1].price.back[0].price,marketArray[0]?.min,marketArray[0]?.max)"
+                    [ngClass]="marketArray[0]?.runners[1].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''"
+                    class="box_player 0 greenodd no_win">
+                    <img src="../../../assets/img/dream2x.png" class="betImage">
+                    <span class="pl_lucky" *ngIf="casinoPl[marketArray[0]?.marketId]">
+                        <span *ngIf="casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[1]?.selectionId]"
+                            [ngClass]="[casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[1]?.selectionId] > 0  ? 'plus-book' : 'minus-book']">{{casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[1]?.selectionId]
+                            ? (casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[1]?.selectionId] | number) :
+                            '0.00'}}</span>
+                    </span>
+                </div>
+                <!-- Winner Runner 5X -->
+
+                <div name="betZoneBac" id="betBoxPlayer"
+                    (click)="openBetslip(marketArray[0].marketId,marketArray[0].runners[2].selectionId,'back',marketArray[0].runners[2].price.back[0].price,marketArray[0]?.min,marketArray[0]?.max)"
+                    [ngClass]="marketArray[0]?.runners[2].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''"
+                    class="box_player 0 greenodd no_win">
+                    <img src="../../../assets/img/dream5x.png" class="betImage">
+                    <span class="pl_lucky" *ngIf="casinoPl[marketArray[0]?.marketId]">
+                        <span *ngIf="casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[2]?.selectionId]"
+                            [ngClass]="[casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[2]?.selectionId] > 0  ? 'plus-book' : 'minus-book']">{{casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[2]?.selectionId]
+                            ? (casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[2]?.selectionId] | number) :
+                            '0.00'}}</span>
+                    </span>
+                </div>
+            </div>
+            <div name="betZoneBac" class="down_set">
+
+                <!-- Winner Runner 10X -->
+                <div name="betZoneBac" id="betBoxPlayer"
+                    (click)="openBetslip(marketArray[0].marketId,marketArray[0].runners[3].selectionId,'back',marketArray[0].runners[3].price.back[0].price,marketArray[0]?.min,marketArray[0]?.max)"
+                    [ngClass]="marketArray[0]?.runners[3].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''"
+                    class="box_player 0 greenodd no_win">
+                    <img src="../../../assets/img/dream10x.png" class="betImage">
+                    <span class="pl_lucky" *ngIf="casinoPl[marketArray[0]?.marketId]">
+                        <span *ngIf="casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[3]?.selectionId]"
+                            [ngClass]="[casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[3]?.selectionId] > 0  ? 'plus-book' : 'minus-book']">{{casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[3]?.selectionId]
+                            ? (casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[3]?.selectionId] | number) :
+                            '0.00'}}</span>
+                    </span>
+                </div>
+
+                <!-- Winner Runner 20X -->
+                <div name="betZoneBac" id="betBoxPlayer"
+                    (click)="openBetslip(marketArray[0].marketId,marketArray[0].runners[4].selectionId,'back',marketArray[0].runners[4].price.back[0].price,marketArray[0]?.min,marketArray[0]?.max)"
+                    [ngClass]="marketArray[0]?.runners[4].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''"
+                    class="box_player 0 greenodd no_win">
+                    <img src="../../../assets/img/dream20x.png" class="betImage">
+                    <span class="pl_lucky" *ngIf="casinoPl[marketArray[0]?.marketId]">
+                        <span *ngIf="casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[4]?.selectionId]"
+                            [ngClass]="[casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[4]?.selectionId] > 0  ? 'plus-book' : 'minus-book']">{{casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[4]?.selectionId]
+                            ? (casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[4]?.selectionId] | number) :
+                            '0.00'}}</span>
+                    </span>
+                </div>
+
+                <!-- Winner Runner 50X -->
+                <div name="betZoneBac" id="betBoxPlayer"
+                    (click)="openBetslip(marketArray[0].marketId,marketArray[0].runners[5].selectionId,'back',marketArray[0].runners[5].price.back[0].price,marketArray[0]?.min,marketArray[0]?.max)"
+                    [ngClass]="marketArray[0]?.runners[5].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''"
+                    class="box_player 0 greenodd no_win">
+                    <img src="../../../assets/img/dream40x.png" class="betImage">
+                    <span class="pl_lucky" *ngIf="casinoPl[marketArray[0]?.marketId]">
+                        <span *ngIf="casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[5]?.selectionId]"
+                            [ngClass]="[casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[5]?.selectionId] > 0  ? 'plus-book' : 'minus-book']">{{casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[5]?.selectionId]
+                            ? (casinoPl[marketArray[0]?.marketId][marketArray[0]?.runners[5]?.selectionId] | number) :
+                            '0.00'}}</span>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+<div class="showInMobile">
+    <app-resultbar></app-resultbar>
+</div>

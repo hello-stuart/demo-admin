@@ -1,0 +1,23 @@
+@import url('../account-statement/account-statement.component.css');
+
+
+.toggle-container{
+    
+}
+.toggle-switch{
+    font-size: 12px;
+    color: #495057;
+    padding: 0.5rem;
+    border-bottom: none !important;
+}
+.toggle-switch-active{
+    position: relative;
+    z-index: 10;
+    background-color: white;
+    border: 1px solid;
+    border-color: #ced4da #ced4da #fff !important;
+    margin-bottom: -2px;
+}
+.card{
+    border-top: 1px solid #49505744 !important;
+}

@@ -1,0 +1,54 @@
+@import url('../..//../../Components/multi-login-accounts/multi-login-accounts.component.css');
+
+.page-title-box h4 {
+    text-transform: uppercase;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+}
+
+.form-group {
+    position: relative !important;
+    font-size: .8125rem !important;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: var(--reports-btn-dark-bg) !important;
+    border-color: var(--reports-btn-dark-bg) !important;
+    color: #ffffff !important;
+}
+
+.btn-light {
+    color: #212529 !important;
+    background-color: var(--reports-reset-btn-bg) !important;
+    border-color: var(--reports-reset-btn-bg) !important;
+}
+
+.btn-light.focus,
+.btn-light:focus,
+.btn-light:hover {
+    color: #212529 !important;
+    background-color: #d6ddea !important;
+    border-color: #cdd6e6 !important;
+}
+.form-control{
+    font-size: .8125rem !important;
+    border-radius: .25rem !important;
+}
+.custom-select-sm {
+    height: calc(1.5em + .5rem + 2px) !important;
+    padding-top: .25rem !important;
+    padding-bottom: .25rem !important;
+    padding-left: .5rem !important;
+    font-size: .7109375rem !important;
+}
+@media screen and (max-width: 1279px) {
+    .account-list .search-form .form-control {
+        max-width: 170px !important;
+    }
+    .page-title-box h4{
+        font-size: 14px !important;
+    }
+}

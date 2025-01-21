@@ -1,0 +1,81 @@
+<div>
+    <app-video-player></app-video-player>
+
+</div>
+<div class="casino-detail">
+    <div class="casino-container">
+        <!-- casino toggle tabs for mobile -->
+        <div class="casino-tabs">
+            <ul style="list-style: none;" class="nav-tabs">
+                <li class="toggle-btn" (click)="toggleNavTabs('dragon')">
+                    <a class="toggle-btn-link" [ngClass]="{'active-tab':isDragon}">Dragon</a>
+                </li>
+                <li class="toggle-btn" (click)="toggleNavTabs('tiger')">
+                    <a class="toggle-btn-link" [ngClass]="{'active-tab':isTiger}">Tiger</a>
+                </li>
+                <li class="toggle-btn" (click)="toggleNavTabs('lion')">
+                    <a class="toggle-btn-link" [ngClass]="{'active-tab':isLion}">Lion</a>
+                </li>
+            </ul>
+        </div>
+        <div class="teen-one-day-left">
+            <div class="casino-header row mb-0">
+                <div class="casino-nation-name">
+                    <!-- empty div to occupy space -->
+                    <div></div>
+                </div>
+                <div class="casino-bl-box">
+                    <b>{{splitMarketName(winnerMarketArray?.runnersName[winnerMarketArray?.runners[2]?.selectionId])}}</b>
+                </div>
+                <div class="casino-bl-box">
+                    <b>
+                        {{splitMarketName(winnerMarketArray?.runnersName[winnerMarketArray?.runners[0]?.selectionId])}}</b>
+                </div>
+                <div class="casino-bl-box">
+                    <b>
+                        {{splitMarketName(winnerMarketArray?.runnersName[winnerMarketArray?.runners[1]?.selectionId])}}</b>
+                </div>
+            </div>
+            <div class="casino-market-row" *ngFor="let markets of marketArray; let i=index ;">
+                <div class="casino-info-name">
+                    <b>{{markets.marketName}}</b>
+                </div>
+                <div class="float-right dtl-bet-info">
+                    <i data-bs-toggle="collapse" [attr.data-bs-target]="'#range' + i" class="fas fa-info-circle"></i>
+                    <div [id]="'range' + i" class="icon-range collapse bet-info-card">
+                        R:<span>{{markets.min | shortNumber}}-{{markets.max | shortNumber}}</span></div>
+                </div>
+                <div class="casino-bl-box mobile-casino-bl-box" [ngClass]="{
+                    'd-flex' : isDragon
+                }">
+                    <div class="market-bet-field-container"
+                        [ngClass]="markets.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == markets.runners[0].selectionId) ? 'selected' : ''">
+                        {{markets.runners[2].price.back[0].price | number}}
+                        <div class="market-bet-value mobile-bet-value">0</div>
+                    </div>
+                </div>
+                <div class="casino-bl-box mobile-casino-bl-box" [ngClass]="{
+                    'd-flex' : isTiger
+                }">
+                    <div class="market-bet-field-container"
+                        [ngClass]="markets.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == markets.runners[0].selectionId) ? 'selected' : ''">
+                        {{markets.runners[0].price.back[0].price | number}}
+                        <div class="market-bet-value mobile-bet-value">0</div>
+                    </div>
+                </div>
+                <div class="casino-bl-box mobile-casino-bl-box" [ngClass]="{
+                    'd-flex' : isLion
+                }">
+                    <div class="market-bet-field-container"
+                        [ngClass]="markets.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == markets.runners[0].selectionId) ? 'selected' : ''">
+                        {{markets.runners[1].price.back[0].price | number}}
+                        <div class="market-bet-value mobile-bet-value">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

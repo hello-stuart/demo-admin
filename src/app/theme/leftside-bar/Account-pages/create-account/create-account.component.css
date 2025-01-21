@@ -1,0 +1,22 @@
+/* @import url('../..//../../Components/multi-login-accounts/multi-login-accounts.component.css'); */
+@import url('../..//../../theme//leftside-bar/Account-pages/account-list/account-list.component.css');
+
+.card-title {
+    font-size: 15px !important;
+    margin: 0 0 7px !important;
+    font-weight: 600 !important;
+}
+.breadcrumb-item+.breadcrumb-item {
+    padding-left: .5rem !important;
+}
+.page-title-box   h4 {
+    text-transform: uppercase;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+}
+@media (max-width: 1279px) {
+    .page-title-box {
+        padding: 10px 5px 12px !important;
+        font-size: 10px !important;
+    }
+}

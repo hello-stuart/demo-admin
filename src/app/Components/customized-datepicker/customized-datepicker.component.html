@@ -1,0 +1,146 @@
+<div class="row">
+    <div class="col-xl-4 me-2 mb-2" ngbDropdown>
+        <label for="dropdownBasic1">From Date:</label>
+    <div class="position-relative">
+        <input type="text" class="form-control" style="height: 36px;"
+            [(ngModel)]="fromFormattedRange" id="dropdownBasic1" ngbDropdownToggle
+            name="datePickerFromInput">
+        <img src="/assets/calender.svg" alt="calender-svg" class="calender-icon">
+    </div>
+    <!-- ngb datepicker custom navigation chevron section -->
+    <div class="d-flex align-items-center justify-content-between dp-nav-chevron-first">
+        <div class="d-flex">
+            <div class="px-1" (click)="prevYear('from')" *ngIf="!isFromYearNav">
+                <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron " id="dualprev-chevron">
+            </div>
+            <div class="px-1" (click)="previousYears('from')" *ngIf="isFromYearNav">
+                <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron " id="dualprev-chevron">
+            </div>
+            <div (click)="prevMonth('from')" *ngIf="!isFromYearNav">
+                <img src="/assets/single-prev-chevron.png" alt="" class="dp-single-chevron">
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="px-1" (click)="nextMonth('from')" *ngIf="!isFromYearNav">
+                <img src="/assets/single-next-chevron.png" alt="" class="dp-single-chevron">
+            </div>
+            <div (click)="nextYear('from')" *ngIf="!isFromYearNav">
+                <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron" id="dualnext-chevron">
+            </div>
+            <div (click)="nextYears('from')" *ngIf="isFromYearNav">
+                <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron" id="dualnext-chevron">
+            </div>
+        </div>
+
+    </div>
+    <!-- ngb datepicker custom date display section -->
+    <div class="d-flex align-items-center justify-content-center screen1-date-navigation">
+        <div class="from-month-btn" *ngIf="isFromMonth" >
+            {{dpMonthsFisrt[fromMonth-1].value}}
+        </div>
+        <div class="from-year-btn" *ngIf="isFromYear">
+            {{fromYear}}
+        </div>
+    </div>
+    <ngb-datepicker #dpFrom ngbDropdownMenu aria-labelledby="dropdownBasic1"
+        (dateSelect)="onFromDateSelect($event)" class="ngb-from-dp-container" [dayTemplate]="customDayTemplateFrom">
+    </ngb-datepicker>
+    <ng-template #customDayTemplateFrom let-date="date" let-currentMonth="currentMonth" let-disabled="disabled">
+        <span class="custom-day"
+              [ngClass]="{
+                'disabled-day': isDayDisabled(date),
+              }"
+              [class.text-muted]="date.month !== currentMonth">
+          {{ date.day }}
+        </span>
+      </ng-template>
+    <!-- ngb datepicker custom month navigation custom -->
+    <div class="row months-navigation-first g-2">
+        @for (item of dpMonthsFisrt; track $index) {
+        <div class="col-4" [ngClass]="{'nav-month-cell':item.isSelected}" (click)="onFromMonthSelect(item,$index,'from-month')">
+            {{item.value}}
+        </div>
+        }
+    </div>
+    <!-- ngb datepicker custom year navigation -->
+    <div class="row from-year-navigation" >
+        @for (item of fromYears; track $index) {
+        <div class="col-6" [ngClass]="{'year-nav-cell':item.isSelected}" (click)="onFromYearSelect(item,$index,'from-year')">
+            {{item.value}}
+        </div>
+        }
+    </div>
+</div>
+<div class="col-xl-4 me-2 mb-2" ngbDropdown>
+        <label for="dropdownBasic2">To Date:</label>
+    <div class="position-relative">
+        <input type="text" class="form-control" style="height: 36px;"
+            [(ngModel)]="toFormattedRange" id="dropdownBasic2" ngbDropdownToggle
+            name="datePickerToInput">
+        <img src="/assets/calender.svg" alt="calender-svg" class="calender-icon">
+    </div>
+    <!-- ngb datepicker custom navigation chevron section -->
+    <div class="d-flex align-items-center justify-content-between dp-nav-chevron-second ">
+        <div class="d-flex">
+            <div class="px-1" (click)="prevYear('to')" *ngIf="!isToYearNav">
+                <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron " id="dualprev-chevron">
+            </div>
+            <div class="px-1" (click)="previousYears('to')" *ngIf="isToYearNav">
+                <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron " id="dualprev-chevron">
+            </div>
+            <div (click)="prevMonth('to')" *ngIf="!isFromYearNav">
+                <img src="/assets/single-prev-chevron.png" alt="" class="dp-single-chevron">
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="px-1" (click)="nextMonth('to')" *ngIf="!isToYearNav">
+                <img src="/assets/single-next-chevron.png" alt="" class="dp-single-chevron">
+            </div>
+            <div (click)="nextYear('to')" *ngIf="!isToYearNav">
+                <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron" id="dualnext-chevron">
+            </div>
+            <div (click)="nextYears('to')" *ngIf="isToYearNav">
+                <img src="/assets/dual-nav-chevron.png" alt="" class="dp-dual-chevron" id="dualnext-chevron">
+            </div>
+        </div>
+
+    </div>
+    <!-- ngb datepicker custom date display section -->
+    <div class="d-flex align-items-center justify-content-center screen2-date-navigation">
+        <div class="to-month-btn" *ngIf="isToMonth" >
+            {{dpMonthsFisrt[toMonth-1].value}}
+        </div>
+        <div class="to-year-btn" *ngIf="isToYear">
+            {{toYear}}
+        </div>
+    </div>
+    <ngb-datepicker #dpTo ngbDropdownMenu aria-labelledby="dropdownBasic2"
+        (dateSelect)="onToDateSelect($event)" class="ngb-to-dp-container" [dayTemplate]="customDayTemplateTo">
+    </ngb-datepicker>
+    <ng-template #customDayTemplateTo let-date="date" let-currentMonth="currentMonth" let-disabled="disabled">
+        <span class="custom-day"
+              [ngClass]="{
+                'disabled-day': isDayDisabled(date),
+              }"
+              [class.text-muted]="date.month !== currentMonth">
+          {{ date.day }}
+        </span>
+      </ng-template>
+    <!-- ngb datepicker custom month navigation custom -->
+    <div class="row months-navigation-second g-2">
+        @for (item of dpMonthsFisrt; track $index) {
+        <div class="col-4" [ngClass]="{'nav-month-cell':item.isSelected}" (click)="onToMonthSelect(item,$index,'to-month')">
+            {{item.value}}
+        </div>
+        }
+    </div>
+    <!-- ngb datepicker custom year navigation -->
+    <div class="row to-year-navigation">
+        @for (item of toYears; track $index) {
+        <div class="col-6" [ngClass]="{'year-nav-cell':item.isSelected}" (click)="onToYearSelect(item,$index,'to-year')">
+            {{item.value}}
+        </div>
+        }
+    </div>
+</div>
+</div>

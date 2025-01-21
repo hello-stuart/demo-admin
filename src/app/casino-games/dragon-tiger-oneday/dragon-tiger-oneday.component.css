@@ -1,0 +1,449 @@
+.videoPlayer {
+    height: 309px;
+}
+
+.mr {
+    margin-right: 0 !important;
+}
+
+.s-mr {
+    margin-right: 0rem !important;
+    margin-left: 4px;
+}
+
+.n-pl {
+    padding-left: 0 !important;
+    gap: 8%;
+}
+
+.casino-details {
+    padding: 10px 10px 40px;
+    box-shadow: 0 2px 6px #c2c1c1;
+    border-radius: 0;
+    background-color: #f8f8fb;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: #000000;
+    font-family: "Noto Sans";
+    font-size: 14px;
+    border-radius: 0 0 8px 8px;
+}
+
+.dt1dayfancy {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.casino-box-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+}
+
+.dragon-fan {
+    width: 35%;
+    padding: 6px;
+    padding-bottom: 8px;
+    border: 2px solid #fc4242;
+    background-color: #fc42422e;
+}
+
+.pair-fan {
+    width: 28%;
+    padding-bottom: 14px !important;
+    background-color: #ddd;
+    padding: 6px;
+}
+
+.tiger-fan {
+    width: 35%;
+    padding: 6px;
+    padding-bottom: 8px;
+    border: 2px solid #fdcf13;
+    background-color: #fdcf132e;
+}
+
+.casino-title {
+    width: 100%;
+    background-color: transparent;
+    padding-right: 10px;
+    position: relative;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.fa-info-circle {
+    color: #4a4a4a !important;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.info-icon {
+    display: inline;
+    margin-right: 0.5rem;
+}
+
+.casino-bl-box {
+    width: 100%;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
+.casino-bl-box-item {
+    width: calc(50% - 2px);
+    height: 40px;
+    cursor: not-allowed;
+    color: #000000;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 4px;
+    position: relative;
+}
+
+.back {
+    margin-right: 4px;
+    background-color: #72bbef17;
+    border: 2px solid #72bbef;
+}
+
+.lay {
+    background-color: #f994ba17;
+    border: 2px solid #f994ba;
+}
+
+.casino-box-odd {
+    font-size: 13px;
+    height: 16px;
+    line-height: 16px;
+    margin-bottom: 2px;
+    width: 100%;
+    color: #333;
+    font-weight: bold;
+    display: block;
+}
+
+.casino-nation-name {
+    background-color: transparent;
+    padding-right: 10px;
+    padding: 4px;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: -25px;
+}
+
+.casino-book {
+    /* position: absolute; */
+    bottom: -20px;
+    font-size: 11px;
+    line-height: 18px;
+}
+@media(max-width:767px){
+    .casino-book{
+        font-size: 9px;
+    }
+}
+.pair-fan .casino-bl-box {
+    margin-bottom: -2px;
+}
+
+.pair-fan .casino-bl-box-item {
+    width: calc(100% - 2px);
+    margin-right: 0;
+}
+
+.pair-fan .casino-nation-name .casino-book {
+    bottom: -23px;
+}
+
+.casino-nation-name{
+    left: 0;
+}
+
+.casino-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.dragon-tiger-left {
+    width: 100%;
+}
+
+.dragon-tiger-center {
+    display: none;
+    width: 2px;
+    background-color: grey;
+}
+
+.dragon-tiger-right {
+    width: 100%;
+}
+
+.dragon-tiger-market .casino-box-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 2px 0;
+    align-items: center;
+    position: relative;
+
+}
+
+.casino-odds {
+    font-weight: bold;
+    text-align: center;
+    line-height: 18px;
+    color: #000000;
+    position: relative;
+}
+
+.dragon-tiger-market .casino-box-row.casino-title {
+    background-color: #ddd;
+    padding: 7px;
+    margin-bottom: 5px;
+}
+
+.dragon-tiger-market .casino-box-row.casino-title div {
+    text-align: left;
+}
+
+.playera {
+    color: #fc4242;
+}
+
+.playerb {
+    color: #ef910f;
+}
+
+.dragon-tiger-market .casino-box-row .casino-bl-box {
+    width: calc(25% - 3px);
+    margin-right: 4px !important;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.dragon-tiger-market .casino-box-row .casino-bl-box:last-child {
+    margin-right: 0 !important;
+}
+
+.dragon-tiger-market .casino-box-row .casino-bl-box .casino-bl-box-item {
+    width: 100%;
+    height: 50px;
+    margin-right: 0;
+}
+
+.casino-tip {
+    width: 100%;
+    text-align: center;
+    transform: translateY(-5px);
+}
+
+.casino-tip span {
+    /* margin-top: 20px; */
+    margin-top: -2px;
+    font-size: 9px;
+    color: #000000;
+    font-weight: normal;
+    float: right;
+    text-align: center;
+}
+
+.casino-imgs img {
+    width: 25px;
+    height: auto;
+    margin-left: 5px;
+}
+
+.casino-imgs img:first-child {
+    margin-left: 0;
+}
+
+.dt-casino-market .casino-box-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px 0;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
+.dt-casino-market .casino-box-row .casino-bl-box {
+    width: calc(25% - 3px);
+    /* margin-right: 4px; */
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.dt-casino-market .casino-box-row .casino-bl-box .casino-bl-box-item {
+    width: 100%;
+    height: 50px;
+    margin-right: 0;
+    cursor: not-allowed;
+    color: #000000;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 4px;
+}
+
+.dt-casino-market .casino-box-row .casino-bl-box .casino-bl-box-item img {
+    width: 25px;
+    height: auto;
+    margin-left: 5px;
+}
+
+.dt-casino-market .casino-odds {
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    line-height: 18px;
+    color: #000000;
+    position: relative;
+}
+
+.icon-range {
+    position: absolute;
+    top: 100%;
+    background-color: #16191c;
+    padding: 4px;
+    max-width: 100%;
+    word-wrap: break-word;
+    font-size: 12px;
+    z-index: 10;
+    transition: 0.1s;
+    text-transform: capitalize;
+    color: #aaafb5;
+    z-index: 150;
+    left: 0;
+    right: unset;
+}
+
+#range2 {
+    font-size: 14px;
+}
+
+.small-txt {
+    font-size: 12px !important;
+    margin-right: 0 !important;
+}
+
+.mt-top{
+    margin-top: 10px;
+}
+
+.down , .card-zero{
+    margin-top: 10px;
+}
+
+.ml{
+    margin-left: 5px !important;
+}
+
+.ml-2{
+    margin-left: 8px !important;
+}
+
+@media screen and (min-width: 768px) {
+    .casino-container {
+        flex-wrap: nowrap;
+    }
+
+    .dragon-tiger-center {
+        display: block;
+    }
+
+    .dragon-tiger-left,
+    .dragon-tiger-right {
+        width: 49%;
+    }
+
+    .dragon-fan , .tiger-fan{
+        width: 40%;
+        padding-bottom: 4px;
+    }
+
+    .pair-fan {
+        width: 18%;
+        padding-bottom: 10px !important;
+    }
+
+    .casino-title {
+        width: 50%;
+        display: flex;
+        align-items: center;
+    }
+
+    .casino-bl-box {
+        width: 50%;
+    }
+
+    .dt1dayfancy .casino-book , .casino-book{
+        font-size: 18px;
+        line-height: 18px;
+    }
+
+    .casino-nation-name {
+        bottom: -28px;
+        left: 0;
+    }
+
+    .casino-tip span{
+        font-size: 12px;
+        margin-top: 0;
+    }
+
+    .casino-imgs img {
+        width: 30px;
+    }
+
+    .dt-casino-market .casino-box-row .casino-bl-box .casino-bl-box-item img {
+        width: 30px;
+    }
+
+    .up{
+        margin-top: -2px;
+    }
+    
+    .down{
+        margin-top: 4px;
+    }
+
+    .card-zero{
+        margin-top: 0;
+    }
+}
+
+
+@media (max-width: 1279px) {
+    .casino-details{
+        padding: 5px;
+        box-shadow: none;
+        border-radius: 0;
+    }
+}
+

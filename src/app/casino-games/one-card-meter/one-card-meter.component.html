@@ -1,0 +1,42 @@
+<div class="videoPlayer">
+    <app-video-player></app-video-player>
+</div>
+<!-- One-card-meter table starts -->
+<div class="cm-table font-noto-sans">
+    <div class="d-flex flex-wrap justify-content-between" *ngFor="let market of marketArray; let i = index">
+        <!-- Runners -->
+        <div class="meter-btn" *ngFor="let runner of winnerMarketArray?.runners; let j = index">
+            <div class="text-end min-max">
+                Min: <span>{{(market?.min) | shortNumber}}</span>
+                Max: <span>{{(market?.max) | shortNumber}}</span>
+            </div>
+
+            <!-- Button -->
+            <div class="w-100 position-relative"
+                [ngClass]="winnerMarketArray.runners[0].status == 'SUSPEND' || game.status == 'SUSPEND' ? 'suspended' : (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+
+                <button
+                    class="btn btn-fighter-1 w-100 position-relative d-flex justify-content-center align-items-center text-uppercase text-center fw-bold"
+                    [ngClass]="{
+                        'border-red': j % 2 == 0, 
+                        'border-yellow': j % 2 != 0}">
+
+                    <img *ngIf="j % 2 != 0" src="assets/card-meter/fight.png" alt="Fight" class="fighter-2 w-auto">
+
+                    <span class="f-text">
+                        {{winnerMarketArray.runnersName[runner.selectionId]}}
+                    </span>
+                    <img *ngIf="j % 2 == 0" src="assets/card-meter/fight.png" alt="Fight" class="fighter-1 w-auto">
+
+                </button>
+            </div>
+
+            <div class="book-green text-center fw-bold">
+                <b class="book-black">{{runner.price.back[0]?.price}}</b>
+            </div>
+        </div>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

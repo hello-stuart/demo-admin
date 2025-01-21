@@ -1,0 +1,27 @@
+.card-body {
+  min-height: 98px;
+  padding: 20px !important;
+  min-height: 106.9px;
+}
+.row5 {
+  padding-top: 4px;
+}
+.col-md-3 {
+  padding: 0%;
+}
+.text-muted{
+  color: #74788d;
+}
+@media (max-width: 1279px) {
+ 
+  .card-body {
+    padding: 8px !important;
+    min-height: 81.4px !important;
+  }
+  .mini-stats-wid {
+    max-height: 81.4px;
+  }
+  .col-md-3 {
+    max-height: 93.4px;
+  }
+}

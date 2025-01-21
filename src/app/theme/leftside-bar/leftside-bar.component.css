@@ -1,0 +1,419 @@
+.vertical-menu {
+    width: 250px;
+    z-index: 1001;
+    background: #fff;
+    bottom: 0;
+    margin-top: 0;
+    position: fixed;
+    top: 70px;
+    box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+}
+
+.vertical-menu {
+    background-color: var(--left-sidebar-vertical-menu-bg);
+}
+
+.simplebar-wrapper {
+    overflow: hidden;
+    width: inherit;
+    height: inherit;
+    max-width: inherit;
+    max-height: inherit;
+}
+
+.simplebar-height-auto-observer-wrapper {
+    box-sizing: inherit !important;
+    height: 100%;
+    width: 100%;
+    max-width: 1px;
+    position: relative;
+    float: left;
+    max-height: 1px;
+    overflow: hidden;
+    z-index: -1;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+    flex-grow: inherit;
+    flex-shrink: 0;
+    flex-basis: 0;
+}
+
+.simplebar-height-auto-observer,
+.simplebar-track {
+    position: absolute;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.simplebar-height-auto-observer {
+    box-sizing: inherit;
+    display: block;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    height: 1000%;
+    width: 1000%;
+    min-height: 1px;
+    min-width: 1px;
+    z-index: -1;
+}
+
+.simplebar-mask {
+    direction: inherit;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    width: auto !important;
+    height: auto !important;
+    z-index: 0;
+}
+
+#sidebar-menu {
+    padding: 10px 0 30px;
+    max-height: 100vh;
+    /* Set the height you want, can be adjusted */
+    overflow-y: auto;
+    /* Adds vertical scroll */
+    overflow-x: hidden;
+}
+
+#sidebar-menu ul li a {
+    display: block;
+    padding: 0.625rem 23px;
+    color: #545a6d;
+    position: relative;
+    font-size: 13px !important;
+    transition: all 0.4s;
+    cursor: pointer;
+}
+
+#sidebar-menu ul li a i {
+    display: inline-block;
+    min-width: 31.5px;
+    padding-bottom: 0.125em;
+    font-size: 1.25rem;
+    line-height: 1.40625rem;
+    vertical-align: middle;
+    color: #7f8387;
+    transition: all 0.4s;
+}
+
+#sidebar-menu div a i {
+    display: inline-block;
+    min-width: 1.75rem;
+    padding-bottom: 0.125em;
+    font-size: 1.25rem;
+    line-height: 1.40625rem;
+    vertical-align: middle;
+    color: #7f8387;
+    transition: all 0.4s;
+}
+
+#sidebar-menu div a i {
+    color: var(--left-sidebar-sidebar-menu-txt-color) !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+#sidebar-menu ul li a,
+#sidebar-menu ul li ul.sub-menu li a,
+#sidebar-menu ul li a i {
+    color: var(--left-sidebar-sidebar-menu-txt-color) !important;
+}
+
+#sidebar-menu ul li ul.sub-menu li a {
+    padding: 0.4rem 1.5rem 0.4rem 3.5rem;
+    font-size: 13px;
+    color: #545a6d;
+}
+
+.badge-pill {
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+}
+
+li {
+    list-style: none !important;
+}
+
+.simplebar-height-auto-observer-wrapper {
+    box-sizing: inherit !important;
+    height: 100%;
+    width: 100%;
+    max-width: 1px;
+    position: relative;
+    float: left;
+    max-height: 1px;
+    overflow: hidden;
+    z-index: -1;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+    flex-grow: inherit;
+    flex-shrink: 0;
+    flex-basis: 0;
+}
+
+/* scroll bar css properties */
+#sidebar-menu::-webkit-scrollbar {
+    /* width: 8px; */
+}
+
+#sidebar-menu::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+#sidebar-menu::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.accordion-button {
+    padding: 10px 24px !important;
+}
+
+h2 {
+    margin-bottom: 0 !important;
+}
+
+.mdi-cards-playing-outline:before {
+    content: "\F063A";
+}
+
+.mdi-set,
+.mdi:before {
+    display: inline-block;
+    font: normal normal normal 24px/1 Material Design Icons;
+    font-size: inherit;
+    text-rendering: auto;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* demo accordion css  */
+.product-listing .panel-group .panel-heading .panel-title a {
+    display: inline-flex;
+    font-family: open sans;
+    font-size: 14px;
+    padding: 5px;
+    width: 94%;
+}
+
+.product-listing .panel-default .panel-body a {
+    color: #333;
+    display: inline-flex;
+    font-size: 14px;
+    padding: 5px;
+    text-align: left;
+    width: 95%;
+}
+
+.product-listing .panel-group .panel-default .panel-body {
+    background: #eaeaea none repeat scroll 0 0;
+    padding: 5px 15px 5px 30px;
+}
+
+.product-listing .panel-group .panel-body .panel-body {
+    background: #f5f5f5 none repeat scroll 0 0;
+}
+
+.product-listing .panel-default .panel-collapse .panel-body .checkbox {
+    margin: 5px;
+}
+
+.product-listing .accordian-arrow {
+    background: #27a542 none repeat scroll 0 0;
+    color: #fff;
+    height: 15px;
+    margin-left: -5px;
+    margin-right: 5px;
+    padding: 1px 2px;
+    position: relative;
+    transition: all 0.3s ease-in-out 0s;
+    width: 14px;
+    text-align: center;
+}
+
+.hideOverflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.product-listing .collapsed .accordian-arrow .fa-plus-square-o,
+.product-listing .accordian-arrow .fa-minus-square-o {
+    display: block;
+}
+
+.product-listing .accordian-arrow .fa-plus-square-o,
+.product-listing .collapsed .accordian-arrow .fa-minus-square-o {
+    display: none;
+}
+
+.nested-accordion .panel-group .panel-body li .panel .panel-heading {
+    padding: 5px;
+}
+
+.nested-accordion .panel-body li .panel-group .panel-collapse .panel-body {
+    padding: 5px 15px;
+}
+
+.sportsName {
+    padding: 0.4rem 1.5rem 0.4rem 3.5rem !important;
+    font-size: 13px;
+    color: #545a6d;
+}
+.tournamentName {
+    padding: 0.4rem 1.5rem 0.4rem 3.5rem !important;
+    font-size: 13.5px !important;
+}
+.eventName {
+    padding: 0.4rem 1.5rem 0.4rem 3.5rem !important;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+/* ::ng-deep .accordion-button:not(.collapsed)::after{
+    background-image: url('/assets/down-chevron.png') !important;
+    transform: rotate(360deg) !important;
+} */
+
+::ng-deep .accordion-button::after {
+    background-image: url("/assets/down-chevron.png") !important;
+    background-size: 40%;
+    background-position: center;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+.account-pge:hover {
+    background-color: #f4f4f8;
+}
+.accordion-button:not(.collapsed).active-cricket-sport {
+    background-color: #20327b !important;
+    color: white !important;
+}
+
+::ng-deep .accordion-button:not(.collapsed).active-cricket-sport,
+#levelTwoCollapse0 .tournamentName.accordion-button:not(.collapsed) {
+    background-color: #20327bbf !important;
+    color: white !important;
+}
+
+.accordion-button:not(.collapsed).active-tennis-sport {
+    background-color: #f18521 !important;
+    color: white !important;
+}
+
+::ng-deep .accordion-button:not(.collapsed).active-tennis-sport,
+#levelTwoCollapse1 .tournamentName.accordion-button:not(.collapsed) {
+    background-color: #f18521bf !important;
+    color: white !important;
+}
+
+.accordion-button:not(.collapsed).active-casino-sport {
+    background-color: #074a60;
+}
+
+::ng-deep .accordion-button:not(.collapsed).active-casino-sport,
+#levelTwoCollapse2 .tournamentName.accordion-button:not(.collapsed) {
+    background-color: #074a60bf !important;
+    color: white !important;
+}
+
+.accordion-button:not(.collapsed).active-soccer-sport {
+    background-color: #03b37f !important;
+}
+
+::ng-deep .accordion-button:not(.collapsed).active-soccer-sport,
+#levelTwoCollapse3 .tournamentName.accordion-button:not(.collapsed) {
+    background-color: #03b37fbf !important;
+    color: white !important;
+}
+
+.accordion-button:not(.collapsed).active-horseracing-sport {
+    background-color: #9e4025 !important;
+}
+
+::ng-deep .accordion-button:not(.collapsed).active-horseracing-sport,
+#levelTwoCollapse4 .tournamentName.accordion-button:not(.collapsed) {
+    background-color: #9e4025bf !important;
+    color: white !important;
+}
+
+.accordion-button:not(.collapsed).active-greyhound-sport {
+    background-color: #e89780 !important;
+}
+
+::ng-deep .accordion-button:not(.collapsed).active-greyhound-sport,
+#levelTwoCollapse5 .tournamentName.accordion-button:not(.collapsed) {
+    background-color: #e89780bf !important;
+    color: white !important;
+}
+
+.accordion-button:not(.collapsed).active-kabbadi-sport {
+    background-color: gray !important;
+}
+
+::ng-deep .accordion-button:not(.collapsed).active-kabbadi-sport,
+#levelTwoCollapse6 .tournamentName.accordion-button:not(.collapsed) {
+    background-color: rgb(57, 57, 57) !important;
+    color: white !important;
+}
+
+.accordion-button:not(.collapsed).active-basketball-sport {
+    background-color: #fbb03b !important;
+}
+
+::ng-deep .accordion-button:not(.collapsed).active-basketball-sport,
+#levelTwoCollapse7 .tournamentName.accordion-button:not(.collapsed) {
+    background-color: #fbb03bbf !important;
+    color: white !important;
+}
+.accordion-button:not(.collapsed).active-politics-sport {
+    background-color: #b4845b !important;
+}
+
+::ng-deep .accordion-button:not(.collapsed).active-politics-sport,
+#levelTwoCollapse8 .tournamentName.accordion-button:not(.collapsed) {
+    background-color: #b4845bbf !important;
+    color: white !important;
+}
+
+.accordion-button:not(.collapsed).active-virtual-sport {
+    background-color: #d592ff !important;
+}
+
+::ng-deep .accordion-button:not(.collapsed).active-virtual-sport,
+#levelTwoCollapse9 .tournamentName.accordion-button:not(.collapsed) {
+    background-color: #d592ffbf !important;
+    color: white !important;
+}
+
+.accordion-button:not(.collapsed).active-binary-sport {
+    background-color: #0e345e !important;
+}
+
+::ng-deep .accordion-button:not(.collapsed).active-binary-sport,
+#levelTwoCollapse10 .tournamentName.accordion-button:not(.collapsed) {
+    background-color: #0e345ebf !important;
+    color: white !important;
+}
+
+::ng-deep .accordion-button.tournamentName {
+    background-color: #3c444b !important;
+    color: #aaafb5 !important;
+}
+::ng-deep .accordion-button:not(.collapsed).active-cricket-sport::after,
+.accordion-button.tournamentName::after {
+    filter: invert(94%) sepia(0%) saturate(23%) hue-rotate(348deg)
+        brightness(105%) contrast(105%);
+}

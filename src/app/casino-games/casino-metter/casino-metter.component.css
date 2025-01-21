@@ -1,0 +1,125 @@
+.casino-detail {
+    padding: 10px;
+    box-shadow: none;
+    border-radius: 0;
+    background-color: #f8f8fb;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: #000000;
+    font-family: "Noto Sans";
+    font-size: 14px;
+}
+
+.casino-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.casino-left {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 2px 10px;
+    background-color: #ddd;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.casino-center {
+    width: 2px;
+    background-color: grey;
+    display: none;
+}
+
+.casino-right {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 2px 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #ddd;
+}
+
+.player {
+    color: #ef910f;
+    font-weight: bold;
+}
+
+.text-success {
+    color: #128412 !important;
+    margin-left: 0.5rem;
+}
+
+.casino-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.casino-card-item {
+    margin-bottom: 0;
+    min-width: 45px !important;
+    margin-right: 5px;
+    margin-left: 5px;
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    justify-content: center;
+}
+
+.card-image {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.card-image img {
+    width: 40px !important;
+    height: 56px;
+    margin-bottom: 10px;
+}
+
+
+.casino-min-max {
+    font-size: 9px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+    .card-image{
+        width: 35px !important;
+        height: 49px !important;
+    }
+    .book-black {
+        font-size: 18px;
+        line-height: 18px;
+    }
+
+    .casino-center {
+        display: block;
+    }
+
+    .casino-left {
+        width: 49%;
+        background-color: #ddd;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 8px;
+        margin-bottom: 0;
+    }
+
+    .casino-right {
+        width: 49%;
+        background-color: #ddd;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 8px;
+        margin-bottom: 0;
+    }
+}

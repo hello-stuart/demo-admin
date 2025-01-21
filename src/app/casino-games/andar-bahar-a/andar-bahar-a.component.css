@@ -1,0 +1,224 @@
+.casino-detail{
+    padding: 5px 5px 40px;
+    background-color: #f8f8fb;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 6px #e2e2e2;
+}
+.ab-first-container, .ab-type-container, .teen-cards-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.ab-left-container, .ab-right-container, .odd-even-container, .card-symbol-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    width: 49%;
+}
+.ab-left-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5%;
+    margin-right: 2%;
+    color: black;
+    height: 60px;
+    font-size: 14px;
+}
+.sa-box{
+    background-color: #434343;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fdcf13;
+    width: 20%;
+    margin-right: 2%;
+    color: white;
+    height: 60px;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+.suspended{
+    position: relative;
+}
+ 
+.ab-bottom-bet-value, .cards-bet-value{
+    position: absolute;
+    bottom: -24px;
+    font-size: 18px;
+}
+.ab-bet-box{
+    background-color: #434343;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fdcf13;
+    width: 30%;
+    margin-right: 2%;
+    color: white;
+    height: 60px;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+.ab-centre-line{
+    width: 2px;
+    background-color: #e0e0e0;
+}
+.odd-even-header, .odd-even-bet-container, .card-symbol-header, .symbols-bet-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px 0;
+    align-items: center;
+    position: relative;
+}
+.header-box, .odd-even-bet-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 50%;
+}
+.header-box-item, .box-item{
+    width: calc(100% - 8px);
+    height: 40px;
+    margin-right: 4px;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    color: black;
+    text-align: center;
+    cursor: not-allowed;
+}
+.odd-even-box-item{
+    width: calc(100% - 8px);
+    height: 40px;
+    background-color: #72bbef17;
+    border: 2px solid #72bbef;
+}
+.odd-even-main-value, .symbol-main-value{
+    font-size: 12px;
+    font-weight: 700;
+    height: 16px;
+    line-height: 16px;
+    margin-bottom: 2px;
+    width: 100%;
+    color: #333;
+}
+.card-symbol-box, .symbol-bet-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 25%;
+}
+.card-symbol-box-item, .symbol-box-item{
+    width: calc(100% - 4px) !important;
+}
+.symbol-box-item{
+    background-color: #72bbef17;
+    border: 2px solid #72bbef;
+}
+.symbol-icon{
+    width: 30px;
+    height: auto;
+    margin-left: 5px;
+}
+.teen-total-container{
+    background-color: #ddd;
+    color: #000;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.total-item{
+    margin-right: 4px;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    color: black;
+    text-align: center;
+    cursor: not-allowed;
+    height: 40px;
+    font-size: 14px;
+}
+.teen-cards-wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+.casino-card-item{
+    position: relative;
+    min-width: 80px;
+    margin-right: 5px;
+    margin-left: 5px;
+    width: auto;
+    margin-bottom: 10px;
+}
+.card-img{
+    cursor: pointer;
+    display: inline-block;
+    width: auto;
+    
+}
+.cards-icon{
+    width: 48px;
+}
+.card-bet-value{
+    font-size: 18px;
+}
+.teen-min-max{
+    font-size: 12px;
+}
+
+.main-card-img{
+    width: auto;
+    height: 67.2px;
+}
+@media(max-width:767px){
+    .ab-left-container, .ab-right-container, .odd-even-container, .card-symbol-container{
+        width: 100%;
+        margin-bottom: 32px;
+    }
+    .casino-card-item{
+        min-width: 75px;
+    }
+    .main-card-img{
+        width: 35px;
+        height: 49px;
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .teen-total-container{
+        margin-bottom: 4px;
+    }
+}
+
+@media only screen and (max-width: 330px){
+    .sa-box{
+        font-size: 11px !important;
+        line-height: 12px;
+    }
+    .sa-text{
+        margin-top: 3px;
+    }
+}

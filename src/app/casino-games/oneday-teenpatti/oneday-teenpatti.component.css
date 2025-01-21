@@ -1,0 +1,223 @@
+.oneday-wrapper {
+    padding: 5px 5px 40px;
+    background-color: #f8f8fb;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 6px #e2e2e2;
+    position: relative;
+}
+
+.oneday-casino-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: #000;
+    font-family: "Noto Sans";
+    font-size: 14px;
+    font-weight: 400;
+    flex-direction: column;
+    align-items: center;
+}
+
+.teen1day-left {
+    width: 100%;
+}
+
+.teen1day-center {
+    display: none;
+    width: 2px;
+    background-color: grey;
+    position: absolute;
+    height: 70%;
+    left: 49.9%;
+}
+
+.teen1day-right {
+    width: 100%;
+}
+
+.casino-box-row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px 0;
+    align-items: center;
+    position: relative;
+    justify-content: flex-end;
+}
+
+.player-name {
+    width: 50%;
+    position: relative;
+}
+
+.playera {
+    color: #fc4242;
+}
+
+.playerb {
+    color: #ef910f;
+}
+
+.bl-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.back {
+    width: calc(50% - 2px);
+    color: #000000;
+    height: 24px !important;
+    font-size: 14px;
+    flex-direction: row;
+    margin-right: 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: not-allowed;
+}
+
+.back:last-child {
+    margin-right: 0;
+}
+
+.casino-player-name {
+    width: 50%;
+    position: relative;
+    background-color: #ddd;
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bl-content span {
+    margin-right: 0.5rem;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.bl-content i {
+    cursor: pointer;
+    color: #4a4a4a;
+}
+
+#range2 {
+    font-size: 14px;
+}
+
+.small-txt {
+    font-size: 12px !important;
+    margin-right: 0 !important;
+}
+
+.casino-bl-box {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+}
+
+.box-item {
+    cursor: not-allowed;
+    height: 40px;
+    color: #000000;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 4px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.casino-back {
+    background-color: #72bbef17;
+    border: 2px solid #72bbef;
+}
+
+.casino-lay {
+    background-color: #f994ba17;
+    border: 2px solid #f994ba;
+    margin-right: 0;
+}
+
+.is-desktop {
+    display: none;
+}
+
+.is-mobile {
+    display: inline-block;
+}
+
+.mobile-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.collapse {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.collapse.show {
+    max-height: 30px;
+    opacity: 1;
+}
+
+.icon-range {
+    position: absolute;
+    top: 100%;
+    background-color: #16191c;
+    padding: 4px;
+    max-width: 100%;
+    word-wrap: break-word;
+    font-size: 12px;
+    z-index: 10;
+    right: 0;
+    transition: 0.1s;
+    text-transform: capitalize;
+    color: #aaafb5;
+    z-index: 150;
+}
+
+@media screen and (min-width: 768px) {
+    .is-mobile {
+        display: none;
+    }
+
+    .is-desktop {
+        display: flex;
+    }
+
+    .teen1day-center {
+        display: block;
+        /* height: 116px; */
+    }
+
+    .oneday-casino-container {
+        flex-direction: row;
+    }
+
+    .teen1day-left {
+        width: 49%;
+    }
+
+    .teen1day-right {
+        width: 49%;
+    }
+}

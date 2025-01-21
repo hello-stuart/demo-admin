@@ -1,0 +1,72 @@
+.game-heading {
+  font-weight: 700;
+  font-size: 15px;
+  padding: 5px 10px;
+}
+.table-bordered thead td, .table-bordered thead th {
+  color: #243a48;
+  background-color: #e4e4e4;
+  padding: 8px 10px;
+}
+.cl-green {
+  color: #224927 !important;
+}
+.min-width-100{
+  min-width: 100px;
+}
+th , td {
+  vertical-align: middle;
+}
+.voidBet> td, .voidBet>tr{
+  background: white !important;
+  color: black !important;
+}
+.indicators{
+  padding: 5px 5px;
+  border-radius: 4px;
+  width: 60px;
+  text-align: center;
+  color: #000000;
+  box-shadow: 0 2px 6px #bcbaba !important;
+}
+.detailsLink{
+  cursor: pointer;
+  color: blue;
+  text-decoration: none;
+}
+.linesInfo
+{
+  border: 1px solid #dee2e6;
+  padding: 5px;
+  vertical-align: middle;
+}
+.col-3{
+  display: flex;
+  align-items: center;
+  background: #f2f2f2;
+
+}
+.col-9{
+  padding: 5px;
+}
+.modal-header .close {
+  padding: 1rem;
+  margin: -1rem -1rem -1rem auto;
+}
+.close {
+  float: right;
+  font-size: 1.21875rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5;
+}
+button.close {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

@@ -1,0 +1,317 @@
+<div >
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+                <h4 class="mb-0 f-18">Multi Login Account</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item" routerLink="">
+                            <a (click)="this.tab = 'home'" [class.active]="tab =='home'"  >Home</a>
+                        </li>
+                        <li class="breadcrumb-item " >
+                            <span  (click)="this.tab = 'MultiLoginAccount'" [class.active]="tab =='MultiLoginAccount'">Multi Login Account</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body create-account-container">
+                    <form  data-vv-scope="userInsert">
+                        <div class="create-account-form">
+                            <div> 
+                                <h5 class="mb-0">Personal Information</h5>
+                                <div class="row">
+                                    <div class="col-md-3 form-group"><label>Client ID</label> 
+                                        <input type="text"
+                                            name="uname" data-vv-as="Client ID" class="form-control is-invalid"
+                                            aria-required="true" aria-invalid="false"> <!----></div>
+                                    <div class="col-md-3 form-group"><label>Full Name</label> <input type="text"
+                                            name="fullname" data-vv-as="Full Name" class="form-control"
+                                            aria-required="true" aria-invalid="false"> <!----></div>
+                                    <div class="col-md-3 form-group"><label>Password</label> <input type="password"
+                                            data-vv-as="Password" name="password" class="form-control"
+                                            aria-required="true" aria-invalid="false"> <!----></div>
+                                    <div class="col-md-3 form-group"><label>Confirm Password</label> <input
+                                            type="password" name="cpass" data-vv-as="Confirm Password"
+                                            class="form-control" aria-required="true" aria-invalid="false"> <!---->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 previlages">
+                                <h5 class="mb-0">Privileges</h5>
+                                <div class="previlage-box">
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input type="checkbox"
+                                                     class="custom-control-input" value="true"
+                                                    id="__BVID__12887"><label class="custom-control-label"
+                                                    for="__BVID__12887">All</label></div>
+                                        </div>
+                                    </div> <br>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="1"
+                                                    id="__BVID__12888"><label class="custom-control-label"
+                                                    for="__BVID__12888">DashBoard</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="2"
+                                                    id="__BVID__12889"><label class="custom-control-label"
+                                                    for="__BVID__12889">Market Analysis</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="4"
+                                                    id="__BVID__12890"><label class="custom-control-label"
+                                                    for="__BVID__12890">User List</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="5"
+                                                    id="__BVID__12891"><label class="custom-control-label"
+                                                    for="__BVID__12891">Insert User</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="6"
+                                                    id="__BVID__12892"><label class="custom-control-label"
+                                                    for="__BVID__12892">Bank</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="8"
+                                                    id="__BVID__12893"><label class="custom-control-label"
+                                                    for="__BVID__12893">Account Statement</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="9"
+                                                    id="__BVID__12894"><label class="custom-control-label"
+                                                    for="__BVID__12894">Party Win Loss</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="10"
+                                                    id="__BVID__12895"><label class="custom-control-label"
+                                                    for="__BVID__12895">Current Bets</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="11"
+                                                    id="__BVID__12896"><label class="custom-control-label"
+                                                    for="__BVID__12896">User History</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="12"
+                                                    id="__BVID__12897"><label class="custom-control-label"
+                                                    for="__BVID__12897">General Lock</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="13"
+                                                    id="__BVID__12898"><label class="custom-control-label"
+                                                    for="__BVID__12898">Casino Result</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="14"
+                                                    id="__BVID__12899"><label class="custom-control-label"
+                                                    for="__BVID__12899">Live Casino Result</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="15"
+                                                    id="__BVID__12900"><label class="custom-control-label"
+                                                    for="__BVID__12900">Our Casino</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="16"
+                                                    id="__BVID__12901"><label class="custom-control-label"
+                                                    for="__BVID__12901">Events</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="17"
+                                                    id="__BVID__12902"><label class="custom-control-label"
+                                                    for="__BVID__12902">Market Search Analysis</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="19"
+                                                    id="__BVID__12903"><label class="custom-control-label"
+                                                    for="__BVID__12903">Login User creation</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="54"
+                                                    id="__BVID__12904"><label class="custom-control-label"
+                                                    for="__BVID__12904">Withdraw</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="55"
+                                                    id="__BVID__12905"><label class="custom-control-label"
+                                                    for="__BVID__12905">Deposit</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="56"
+                                                    id="__BVID__12906"><label class="custom-control-label"
+                                                    for="__BVID__12906">Credit Reference</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="57"
+                                                    id="__BVID__12907"><label class="custom-control-label"
+                                                    for="__BVID__12907">User Info</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="58"
+                                                    id="__BVID__12908"><label class="custom-control-label"
+                                                    for="__BVID__12908">User Password Change</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="59"
+                                                    id="__BVID__12909"><label class="custom-control-label"
+                                                    for="__BVID__12909">User Lock</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="60"
+                                                    id="__BVID__12910"><label class="custom-control-label"
+                                                    for="__BVID__12910">Bet Lock</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="62"
+                                                    id="__BVID__12911"><label class="custom-control-label"
+                                                    for="__BVID__12911">TurnOver</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="90"
+                                                    id="__BVID__12912"><label class="custom-control-label"
+                                                    for="__BVID__12912">CouponReport</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="previlage-item">
+                                        <div>
+                                            <div class="custom-control custom-checkbox"><input 
+                                                    type="checkbox" autocomplete="off"  class="custom-control-input" value="91"
+                                                    id="__BVID__12913"><label class="custom-control-label"
+                                                    for="__BVID__12913">active user</label></div>
+                                        </div>
+                                    </div>
+                                </div> <!---->
+                                <div class="previlage-master mt-2">
+                                    <div class="form-group mb-0"><input type="password" name="mpass"
+                                            placeholder="Transaction Code" class="form-control mpass-text"
+                                            aria-required="true" aria-invalid="false"> <button type="submit"
+                                            class="btn btn-success">Submit</button> <button type="button" id="reset"
+                                            class="btn btn-light">Reset</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="outer mt-4">
+                        <div class="inner">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th class="fixed-col-1">Action</th>
+                                        <th class="fixed-col-2">Username</th>
+                                        <th class="fixed-col-3">Full Name</th>
+                                        <th>DashBoard</th>
+                                        <th>Market Analysis</th>
+                                        <th>User List</th>
+                                        <th>Insert User</th>
+                                        <th>Bank</th>
+                                        <th>Account Statement</th>
+                                        <th>Party Win Loss</th>
+                                        <th>Current Bets</th>
+                                        <th>User History</th>
+                                        <th>General Lock</th>
+                                        <th>Casino Result</th>
+                                        <th>Live Casino Result</th>
+                                        <th>Our Casino</th>
+                                        <th>Events</th>
+                                        <th>Market Search Analysis</th>
+                                        <th>Login User creation</th>
+                                        <th>Withdraw</th>
+                                        <th>Deposit</th>
+                                        <th>Credit Reference</th>
+                                        <th>User Info</th>
+                                        <th>User Password Change</th>
+                                        <th>User Lock</th>
+                                        <th>Bet Lock</th>
+                                        <th>TurnOver</th>
+                                        <th>CouponReport</th>
+                                        <th>active user</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!----> <!---->
+</div>

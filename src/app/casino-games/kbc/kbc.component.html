@@ -1,0 +1,135 @@
+<div class="videoPlayer">
+    <app-video-player></app-video-player>
+</div>
+<div class="kbc-table font-noto-sans">
+    <!-- Row 1 -->
+    <div class="row kbc-btns d-flex flex-wrap align-items-center">
+
+        <!-- [Q1] RED-BLACK-->
+        <ng-container *ngFor="let markets of marketArray;let i =index">
+            <ng-container *ngIf="i===0">
+                <div class="col-12 col-md-4 pair1">
+                    <div class="casino-box-row d-flex flex-wrap align-items-center position-relative">
+                        <div class="casino-nation-name text-center text-black bg-transparent w-100">
+                            <b>{{capitalize(marketArray[0]?.question)}}</b>
+                        </div>
+                        <div class="btn-group btn-group-toggle d-flex flex-wrap justify-content-between  position-relative"
+                            data-toggle="buttons">
+                            <label
+                                [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                                *ngFor="let runner of markets?.runners;let b = index"
+                                class="btn btn1 d-flex align-items-center justify-content-center  position-relative  text-center bg-transparent text-black mb-0 fw-bold">
+                                <input type="radio" name="options"  [id]="'option' + i + '-' + b" autocomplete="off" checked="checked">
+                                <img class="btn-img" src="/assets/lucky7/spade.png" alt=""
+                                    *ngIf="marketArray[0]?.runnersName[runner?.selectionId]=='BLACK'">
+                                <img class="btn-img" src="/assets/lucky7/heart.png" alt=""
+                                    *ngIf="marketArray[0]?.runnersName[runner?.selectionId]=='RED'">
+                                <img class="btn-img" src="/assets/lucky7/club.png" alt=""
+                                    *ngIf="marketArray[0]?.runnersName[runner?.selectionId]=='BLACK'">
+                                <img class="btn-img" src="/assets/lucky7/diamond.png" alt=""
+                                    *ngIf="marketArray[0]?.runnersName[runner?.selectionId]=='RED'">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+        <!-- [Q2] ODD-EVEN -->
+        <ng-container *ngFor="let markets of marketArray;let i =index">
+            <ng-container *ngIf="i===1">
+                <div class="col-12 col-md-4 pair1">
+                    <div class="casino-box-row d-flex flex-wrap align-items-center position-relative">
+                        <div class="casino-nation-name text-center text-black bg-transparent w-100">
+                            <b>{{capitalize(marketArray[1]?.question)}}</b>
+                        </div>
+                        <div class="btn-group btn-group-toggle d-flex flex-wrap justify-content-between  position-relative"
+                            data-toggle="buttons">
+                            <label
+                                [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                                *ngFor="let runner of markets?.runners;let j =index"
+                                class="btn btn1 d-flex  align-items-center justify-content-center  position-relative  text-center bg-transparent text-black mb-0 fw-bold">
+                                <input type="radio" name="options"  [id]="'option' + i + '-' + j" autocomplete="off" checked="checked">
+                                {{(marketArray[1]?.runnersName[runner?.selectionId])}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+        <!-- [Q3] 7 UP-7 DOWN -->
+        <ng-container *ngFor="let markets of marketArray;let i =index">
+            <ng-container *ngIf="i===2">
+                <div class="col-12 col-md-4 pair1">
+                    <div class="casino-box-row d-flex flex-wrap align-items-center position-relative">
+                        <div class="casino-nation-name text-center text-black bg-transparent w-100">
+                            <b>{{capitalize(marketArray[2]?.question)}}</b>
+                        </div>
+                        <div class="btn-group btn-group-toggle d-flex flex-wrap justify-content-between  position-relative"
+                            data-toggle="buttons">
+                            <label
+                                [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                                *ngFor="let runner of markets?.runners;let j =index"
+                                class="btn btn1 d-flex  align-items-center justify-content-center  position-relative  text-center bg-transparent text-black mb-0 fw-bold">
+                                <input type="radio" name="options"  [id]="'option' + i + '-' + j" autocomplete="off" checked="checked">
+                                {{(marketArray[2].runnersName[runner?.selectionId])}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+    <!-- Row 2  -->
+    <div class="row kbc-btns d-flex flex-wrap align-items-center mt-2">
+        <!--  [Q4] 3 CARD JUDGEMENT -->
+        <ng-container *ngFor="let markets of marketArray;let i =index">
+            <div class="col-12 col-md-6 pair1" *ngIf="i===3">
+                <div class="casino-box-row d-flex flex-wrap align-items-center position-relative">
+                    <div class="casino-nation-name text-center text-black bg-transparent w-100">
+                        <b>{{capitalize(marketArray[3]?.question)}}</b>
+                    </div>
+                    <div class="btn-group btn-group-toggle d-flex flex-wrap justify-content-between  position-relative"
+                        data-toggle="buttons">
+                        <label
+                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                            *ngFor="let runner of markets?.runners;let j = index"
+                            class="btn btn2 d-flex  align-items-center justify-content-center  position-relative  text-center bg-transparent text-black mb-0 fw-bold">
+                            <input type="radio" name="options"  [id]="'option' + i + '-' + j" autocomplete="off" checked="checked">
+                            {{(marketArray[3].runnersName[runner?.selectionId])}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <!-- [Q5] SUITS -->
+        <ng-container *ngFor="let markets of marketArray;let i =index">
+            <div class="col-12 col-md-6 pair1" *ngIf="i===4">
+                <div class="casino-box-row d-flex flex-wrap align-items-center position-relative">
+                    <div class="casino-nation-name text-center text-black bg-transparent w-100">
+                        <b>{{capitalize(marketArray[4]?.question)}}</b>
+                    </div>
+                    <div class="btn-group btn-group-toggle d-flex flex-wrap justify-content-between  position-relative"
+                        data-toggle="buttons">
+                        <label
+                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                            *ngFor="let runner of markets?.runners;let j =index"
+                            class="btn btn2 d-flex  align-items-center justify-content-center  position-relative  text-center bg-transparent text-black mb-0 fw-bold">
+                            <input type="radio" name="options" [id]="'option' + i + '-' + j" autocomplete="off" checked="checked">
+                            <img class="btn-img" src="/assets/lucky7/spade.png" alt=""
+                                *ngIf="marketArray[4]?.runnersName[runner?.selectionId]=='SPADE'">
+                            <img class="btn-img" src="/assets/lucky7/heart.png" alt=""
+                                *ngIf="marketArray[4]?.runnersName[runner?.selectionId]=='HEART'">
+                            <img class="btn-img" src="/assets/lucky7/club.png" alt=""
+                                *ngIf="marketArray[4]?.runnersName[runner?.selectionId]=='CLUB'">
+                            <img class="btn-img" src="/assets/lucky7/diamond.png" alt=""
+                                *ngIf="marketArray[4]?.runnersName[runner?.selectionId]=='DIAMOND'">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

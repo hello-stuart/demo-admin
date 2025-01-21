@@ -1,0 +1,326 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="main-container">
+    <div class="main-container">
+        <!-- 1st row -->
+        <div class="row-class">
+            <!--=== 1st market ===-->
+            <ng-container *ngFor="let markets of marketArray;let i =index">
+                <ng-container *ngIf="i===0">
+                    <div class="btns-padding ">
+                        <div class="btns-div">
+                            <div class="btns-banner">
+                                <p class="text-start">{{capitalize(markets.marketName)}}</p>
+                                <p class="text-end">0</p>
+                            </div>
+                            <div class="btns-wraper d-flex column-gap-1">
+                                <div class="position-relative red-btn">
+                                    <button class="red-btn-inner"
+                                        [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                        <span class="btn-zero-1st">{{markets.runners[0].price.lay[0].price}}</span>
+                                    </button>
+                                </div>
+                                <div class="blue-btn position-relative">
+                                    <button class="blue-btn-inner"
+                                        [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                        <span class="btn-zero-1st">{{markets.runners[0].price.back[0].price}}</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <div class=" div-wraper">
+                <!--=== 2nd market ===-->
+                <ng-container *ngFor="let markets of marketArray;let i = index">
+                    <ng-container *ngIf="i===1">
+                        <div class="btns-text-div">
+                            <div class="btns-box">
+                                <div>
+                                    <p class="btns-heading">{{capitalize(markets.marketName)}}</p>
+                                </div>
+                                <div class="w-100 d-flex column-gap-1">
+                                    <div class="blue-btn position-relative">
+                                        <button class="blue-btn-inner"
+                                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                            <span class="btn-zero">{{markets.runners[0].price.back[0].price}}</span>
+                                        </button>
+                                    </div>
+                                    <div class="red-btn position-relative">
+                                        <button class="red-btn-inner"
+                                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                            <span class="btn-zero">{{markets.runners[0].price.lay[0].price}}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="bottom-btn-zero">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+                <div class="btns-text-div">
+                    <!--=== 3rd market ===-->
+                    <ng-container *ngFor="let markets of marketArray;let i = index">
+                        <ng-container *ngIf="i===2">
+                            <div class="btns-box">
+                                <div>
+                                    <p class="btns-heading">{{capitalize(markets.marketName)}}</p>
+                                </div>
+                                <div class="w-100 d-flex column-gap-1">
+                                    <div class="blue-btn position-relative">
+                                        <button class="blue-btn-inner"
+                                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                            <span class="btn-zero">{{markets.runners[0].price.back[0].price}}</span>
+                                        </button>
+                                    </div>
+                                    <div class="red-btn position-relative">
+                                        <button class="red-btn-inner"
+                                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                            <span class="btn-zero">{{markets.runners[0].price.lay[0].price}}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="bottom-btn-zero">0</p>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <!-- 2nd Row -->
+        <div class="row-class ">
+            <div class="div-wraper">
+                <!--=== 4th market ===-->
+                <ng-container *ngFor="let markets of marketArray;let i = index">
+                    <ng-container *ngIf="i===3">
+                        <div class="btns-text-div">
+                            <div class="btns-box">
+                                <div>
+                                    <p class="btns-heading">{{capitalize(markets.marketName)}}</p>
+                                </div>
+                                <div class="w-100 d-flex flex-row-reverse column-gap-1">
+                                    <div class="red-btn position-relative">
+                                        <button class="red-btn-inner"
+                                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                            <span class="btn-zero">{{markets.runners[0].price.lay[0].price}}</span>
+                                        </button>
+                                    </div>
+                                    <div class="blue-btn position-relative">
+                                        <button class="blue-btn-inner"
+                                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                            <span class="btn-zero">{{markets.runners[0].price.back[0].price}}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="bottom-btn-zero">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+                <div class="btns-text-div">
+                    <!--=== 5th market ===-->
+                    <ng-container *ngFor="let markets of marketArray; let i = index">
+                        <ng-container *ngIf="i===4">
+                            <div class="btns-box">
+                                <div>
+                                    <p class="btns-heading">{{capitalize(markets.marketName)}}</p>
+                                </div>
+                                <div class="w-100 d-flex flex-row-reverse column-gap-1">
+                                    <div class="red-btn position-relative">
+                                        <button class="red-btn-inner"
+                                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                            <span class="btn-zero">{{markets.runners[0].price.lay[0].price}}</span>
+                                        </button>
+                                    </div>
+                                    <div class="blue-btn position-relative">
+                                        <button class="blue-btn-inner"
+                                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                            <span class="btn-zero">{{markets.runners[0].price.back[0].price}}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="bottom-btn-zero">0</p>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="div-wraper">
+                <!--=== 6th market ===-->
+                <ng-container *ngFor="let markets of marketArray; let i = index">
+                    <ng-container *ngIf="i===5">
+                        <div class="btns-text-div">
+                            <div class="btns-box">
+                                <div>
+                                    <p class="btns-heading">{{capitalize(markets.marketName)}}</p>
+                                </div>
+                                <div class="w-100 d-flex flex-row-reverse column-gap-1">
+                                    <div class="red-btn position-relative">
+                                        <button class="red-btn-inner"
+                                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                            <span class="btn-zero">{{markets.runners[0].price.lay[0].price}}</span>
+                                        </button>
+                                    </div>
+                                    <div class="blue-btn position-relative">
+                                        <button class="blue-btn-inner"
+                                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                            <span class="btn-zero">{{markets.runners[0].price.back[0].price}}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="bottom-btn-zero">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+                <!--=== 7th market ===-->
+                <ng-container *ngFor="let markets of marketArray; let i = index">
+                    <ng-container *ngIf="i===6">
+                        <div class="btns-text-div">
+                            <div class="btns-box">
+                                <div>
+                                    <p class="btns-heading">{{capitalize(markets.marketName)}}</p>
+                                </div>
+                                <div class="w-100 d-flex flex-row-reverse column-gap-1">
+                                    <div class="red-btn position-relative">
+                                        <button class="red-btn-inner"
+                                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                            <span class="btn-zero">{{markets.runners[0].price.lay[0].price}}</span>
+                                        </button>
+                                    </div>
+                                    <div class="blue-btn position-relative">
+                                        <button class="blue-btn-inner"
+                                            [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                            <span class="btn-zero">{{markets.runners[0].price.back[0].price}}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="bottom-btn-zero">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+        <!-- 3rd row last-row -->
+        <div class="grid ">
+            <!--=== 8th market ===-->
+            <ng-container *ngFor="let markets of marketArray; let i = index">
+                <ng-container *ngIf="i===7">
+                    <div class="bottom-row ">
+                        <div class="btns-heading">
+                            <p>{{capitalize(markets.marketName)}}</p>
+                        </div>
+                        <div class="d-flex column-gap-1 align-items-center w-100">
+                            <div class="blue-btn-bottom position-relative">
+                                <button
+                                    [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                                    class="blue-btn-bottom-inner">{{markets.runners[0].price.back[0].price}}</button>
+                            </div>
+                        </div>
+                        <div class="btns-heading">
+                            <p>0</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <!--=== 9th market ===-->
+            <ng-container *ngFor="let markets of marketArray; let i = index">
+                <ng-container *ngIf="i===8">
+                    <div class="bottom-row ">
+                        <div class="btns-heading">
+                            <p>{{capitalize(markets.marketName)}}</p>
+                        </div>
+                        <div class="d-flex column-gap-1 align-items-center w-100">
+                            <div class="blue-btn-bottom position-relative">
+                                <button
+                                    [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                                    class="blue-btn-bottom-inner">{{markets.runners[0].price.back[0].price}}</button>
+                            </div>
+                        </div>
+                        <div class="btns-heading">
+                            <p>0</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <!--=== 10th market ===-->
+            <ng-container *ngFor="let markets of marketArray; let i = index">
+                <ng-container *ngIf="i===9">
+                    <div class="bottom-row ">
+                        <div class="btns-heading">
+                            <p>{{capitalize(markets.marketName)}}</p>
+                        </div>
+                        <div class="d-flex column-gap-1 align-items-center w-100">
+                            <div class="blue-btn-bottom position-relative">
+                                <button
+                                    [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                                    class="blue-btn-bottom-inner">{{markets.runners[0].price.back[0].price}}</button>
+                            </div>
+                        </div>
+                        <div class="btns-heading">
+                            <p>0</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <!--=== 11th market ===-->
+            <ng-container *ngFor="let markets of marketArray; let i = index">
+                <ng-container *ngIf="i===10">
+                    <div class="bottom-row ">
+                        <div class="btns-heading">
+                            <p>{{capitalize(markets.marketName)}}</p>
+                        </div>
+                        <div class="d-flex column-gap-1 align-items-center w-100">
+                            <div class="blue-btn-bottom position-relative">
+                                <button
+                                    [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                                    class="blue-btn-bottom-inner">{{markets.runners[0].price.back[0].price}}</button>
+                            </div>
+                        </div>
+                        <div class="btns-heading">
+                            <p>0</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <!--=== 12th market ===-->
+            <ng-container *ngFor="let markets of marketArray; let i = index">
+                <ng-container *ngIf="i===11">
+                    <div class="bottom-row ">
+                        <div class="btns-heading">
+                            <p>{{capitalize(markets.marketName)}}</p>
+                        </div>
+                        <div class="d-flex column-gap-1 align-items-center w-100">
+                            <div class="blue-btn-bottom position-relative">
+                                <button
+                                    [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                                    class="blue-btn-bottom-inner">{{markets.runners[0].price.back[0].price}}</button>
+                            </div>
+                        </div>
+                        <div class="btns-heading">
+                            <p>0</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

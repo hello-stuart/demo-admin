@@ -1,0 +1,59 @@
+<div  class="animated fadeIn">
+  <div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 heading-logo">
+                News Update
+            </h4>
+        </div>
+  </div>
+  <div  class="row">
+    <div  class="col-md-12">
+      <div  class="card card-accent-success list-card card-shadow">
+        <form  novalidate="" class="">
+          <div  class="card-body">
+            <div  class="row">
+              <div  class="col-md-12">
+                <div  class="row">
+                  <div  class="col-md-4">
+                    <textarea  class="form-control " [(ngModel)]="news" name="news" placeholder="News" type="text"></textarea>
+                  </div>
+                </div>
+                <div  class="row mt-5">
+                  <div  class="col-md-3">
+                    <button  class="btn btn-success " type="button" (click)="updateNews()">Update News</button>&nbsp;
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table class="hover table table-bordered table-sm">
+                    <thead>
+                      <tr class="text-center">
+                        <th>Current News</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!---->
+                      <tr >
+                        <td class="text-center">
+                          {{oldNews}}
+                        </td>
+                      </tr>
+                      <!---->
+                      <tr *ngIf="!oldNews">
+                        <td class="no-data-available" colspan="3">No News Found!</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

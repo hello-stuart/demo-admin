@@ -1,0 +1,13 @@
+.transaction-input::placeholder{
+    font-size: 14px !important;
+    color: #495057 !important;
+}
+thead th{
+    border-bottom-width: 2px;
+}
+.table th{
+    font-size: 12px !important;
+}
+.table, th, td{
+    color: #495057 !important;
+}

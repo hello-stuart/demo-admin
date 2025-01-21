@@ -1,0 +1,71 @@
+<div class="layout-main-container">
+    <div>
+        <app-header></app-header>
+    </div>
+    <div class="leftside-bar-menu">
+        <div>
+            <app-leftside-bar></app-leftside-bar>
+        </div>
+    </div>
+    <div class="main-content" [class.zeroMargin]="!showLeftSidebar">
+        <div class="page-content "
+            [ngClass]="{'padding-12':currentRoute.includes('/marketdetails') || currentRoute.includes('/99')}">
+            <div class="detail-page-container" [ngClass]="{'padding-0':currentRoute.includes('/marketdetails')}">
+                <div class="center-main-container">
+                    <div class="center-content"
+                        [ngClass]="{'custom-width':currentRoute == '','custom-width-casino':currentRoute.includes('/99') , 'w-100':currentRoute.includes('/plMarket')}">
+                        <!-- ============My Acccounts================ -->
+                        <!-- <div class="head-accounts showInMobile" [ngClass]="{'d-block':isMatchingRoute() ,
+                            
+                            }">
+                            <div class="p-2 my-acc-head"><b>My Account</b></div>
+                            <ul id="side-menu" class="metismenu list-unstyled">
+
+                                <li>
+                                    <a class="" routerLink="profile">
+                                        <i class="mdi mdi-cards-playing-outline"></i>
+                                        <span>My Profile</span>
+                                    </a>
+                                </li>
+                                <li *ngIf="role =='USER'">
+                                    <a class="" routerLink="bet-history">
+                                        <i class="mdi mdi-cards-playing-outline"></i>
+                                        <span>Bet List</span>
+                                    </a>
+                                </li>
+                                <li *ngIf="role =='USER'">
+                                    <a class="" routerLink="profit-loss">
+                                        <i class="mdi mdi-cards-playing-outline"></i>
+                                        <span>Profit & Loss</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="" routerLink="account-statement">
+                                        <i class="mdi mdi-cards-playing-outline"></i>
+                                        <span>Account Statement</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="" routerLink="activity-log">
+                                        <i class="mdi mdi-cards-playing-outline"></i>
+                                        <span>Activity log</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div> -->
+                        <!-- ============My Acccounts================ -->
+                        <router-outlet></router-outlet>
+                    </div>
+                    <div class="rightBar">
+                        <app-casino-matched-bets class="mobile-matched-container"
+                            [class.d-none]="currentRoute == '/' || !currentRoute.includes('/99') || currentRoute.includes('/plMarket')"></app-casino-matched-bets>
+                    </div>
+                </div>
+            </div>
+            <!-- <app-dashboard></app-dashboard> -->
+            <!-- <app-casino-games></app-casino-games> -->
+        </div>
+        <app-footer></app-footer>
+    </div>
+
+</div>

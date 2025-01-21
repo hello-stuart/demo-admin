@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-12">
+        <h4 class="sport-list-title alignment">Our Live Casino</h4>
+        <div>
+            <div class="casino-banners">
+                <div class="casino-banner-item" *ngFor="let tab of casinoGamesDataFilter">
+                    <a class=""(click)="goTOMarket(tab.eventId)">
+                        <app-all-svgs [eventName]="tab?.eventName"></app-all-svgs>
+                    <div class="casino-bottom">{{tab?.eventName}}</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

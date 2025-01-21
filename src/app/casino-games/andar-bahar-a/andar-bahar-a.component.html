@@ -1,0 +1,175 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="casino-detail">
+    <!-- first market -->
+    <div class="ab-first-container">
+        <div class="ab-left-container">
+            <div class="ab-left-title">A</div>
+            <div class="sa-box" [ngClass]="marketArray?.[1]?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                            (selectedCell === marketArray?.[1]?.runners?.[0]?.selectionId) ? 'isSelected' : ''">
+                <div class="text-center">
+                    {{marketArray?.[1]?.runnersName?.[marketArray?.[1]?.runners?.[0]?.selectionId]}}</div>
+                <div class="sa-text">{{marketArray?.[1]?.runners?.[0]?.price?.back?.[0]?.price}}</div>
+                <div class="ab-bottom-bet-value">
+                    0
+                </div>
+            </div>
+            <div class="ab-bet-box" [ngClass]="marketArray?.[0]?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                            (selectedCell === marketArray?.[0]?.runners?.[0]?.selectionId) ? 'isSelected' : ''">
+                <div>{{marketArray?.[0]?.runnersName?.[marketArray?.[0]?.runners?.[0]?.selectionId]}}</div>
+                <div>{{marketArray?.[0]?.runners?.[0]?.price?.back?.[0]?.price}}</div>
+                <div class="ab-bottom-bet-value">
+                    0
+                </div>
+            </div>
+            <div class="ab-bet-box" [ngClass]="marketArray?.[0]?.runners?.[2]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                            (selectedCell === marketArray?.[0]?.runners?.[2]?.selectionId) ? 'isSelected' : ''">
+                <div>{{marketArray?.[0]?.runnersName?.[marketArray?.[0]?.runners?.[2]?.selectionId]}}</div>
+                <div>{{marketArray?.[0]?.runners?.[2]?.price?.back?.[0]?.price}}</div>
+                <div class="ab-bottom-bet-value">
+                    0
+                </div>
+            </div>
+            <div class="ab-left-title">A</div>
+        </div>
+        <div class="ab-centre-line"></div>
+        <div class="ab-right-container">
+            <div class="ab-left-title">B</div>
+            <div class="sa-box" [ngClass]="marketArray?.[1]?.runners?.[1]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                            (selectedCell === marketArray?.[1]?.runners?.[1]?.selectionId) ? 'isSelected' : ''">
+                <div class="text-center">
+                    {{marketArray?.[1]?.runnersName?.[marketArray?.[1]?.runners?.[1]?.selectionId]}}</div>
+                <div class="sa-text">{{marketArray?.[1]?.runners?.[1]?.price?.back?.[0]?.price}}</div>
+                <div class="ab-bottom-bet-value">
+                    0
+                </div>
+            </div>
+            <div class="ab-bet-box" [ngClass]="marketArray?.[0]?.runners?.[1]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                            (selectedCell === marketArray?.[0]?.runners?.[1]?.selectionId) ? 'isSelected' : ''">
+                <div>{{marketArray?.[0]?.runnersName?.[marketArray?.[0]?.runners?.[1]?.selectionId]}}</div>
+                <div>{{marketArray?.[0]?.runners?.[1]?.price?.back?.[0]?.price}}</div>
+                <div class="ab-bottom-bet-value">
+                    0
+                </div>
+            </div>
+            <div class="ab-bet-box" [ngClass]="marketArray?.[0]?.runners?.[3]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                            (selectedCell === marketArray?.[0]?.runners?.[3]?.selectionId) ? 'isSelected' : ''">
+                <div>{{marketArray?.[0]?.runnersName?.[marketArray?.[0]?.runners?.[3]?.selectionId]}}</div>
+                <div>{{marketArray?.[0]?.runners?.[3]?.price?.back?.[0]?.price}}</div>
+                <div class="ab-bottom-bet-value">
+                    0
+                </div>
+            </div>
+            <div class="ab-left-title">B</div>
+        </div>
+    </div>
+
+    <!-- 2nd market -->
+    <div class="ab-type-container">
+        <div class="odd-even-container">
+            <div class="odd-even-header">
+                <div class="header-box">
+                    <div class="header-box-item">
+                        <b>{{marketArray?.[2]?.runnersName?.[marketArray?.[2]?.runners?.[0]?.selectionId]}}</b>
+                    </div>
+                </div>
+                <div class="header-box">
+                    <div class="header-box-item">
+                        <b>{{marketArray?.[2]?.runnersName?.[marketArray?.[2]?.runners?.[1]?.selectionId]}}</b>
+                    </div>
+                </div>
+            </div>
+            <div class="odd-even-bet-container">
+                <div class="odd-even-bet-box">
+                    <div class="odd-even-box-item box-item"
+                        [ngClass]="marketArray?.[2]?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                                    (selectedCell === marketArray?.[2]?.runners?.[0]?.selectionId) ? 'isSelected' : ''">
+                        <span
+                            class="odd-even-main-value">{{marketArray?.[2]?.runners?.[0]?.price?.back?.[0]?.price}}</span>
+                    </div>
+                    <div class="ab-bottom-bet-value">
+                        0
+                    </div>
+                </div>
+                <div class="odd-even-bet-box">
+                    <div class="odd-even-box-item box-item"
+                        [ngClass]="marketArray?.[2]?.runners?.[1]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                                    (selectedCell === marketArray?.[2]?.runners?.[1]?.selectionId) ? 'isSelected' : ''">
+                        <span
+                            class="odd-even-main-value">{{marketArray?.[2]?.runners?.[1]?.price?.back?.[0]?.price}}</span>
+                    </div>
+                    <div class="ab-bottom-bet-value">
+                        0
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3rd market -->
+        <div class="ab-centre-line"></div>
+        <div class="card-symbol-container">
+            <div class="card-symbol-header">
+                <div class="card-symbol-box" *ngFor="let runner of marketArray?.[3]?.runners">
+                    <div class="box-item card-symbol-box-item"
+                        *ngIf="marketArray?.[3]?.runnersName?.[runner?.selectionId] === 'SPADES'">
+                        <img src="../../../assets/lucky7/spade.png" alt="" class="symbol-icon">
+                    </div>
+                    <div class="box-item card-symbol-box-item"
+                        *ngIf="marketArray?.[3]?.runnersName?.[runner?.selectionId] === 'HEARTS'">
+                        <img src="../../../assets/lucky7/heart.png" alt="" class="symbol-icon">
+                    </div>
+                    <div class="box-item card-symbol-box-item"
+                        *ngIf="marketArray?.[3]?.runnersName?.[runner?.selectionId] === 'CLUBS'">
+                        <img src="../../../assets/lucky7/club.png" alt="" class="symbol-icon">
+                    </div>
+                    <div class="box-item card-symbol-box-item"
+                        *ngIf="marketArray?.[3]?.runnersName?.[runner?.selectionId] === 'DIAMONDS'">
+                        <img src="../../../assets/lucky7/diamond.png" alt="" class="symbol-icon">
+                    </div>
+                </div>
+            </div>
+            <div class="symbols-bet-container">
+                <div class="symbol-bet-box" *ngFor="let runner of marketArray?.[3]?.runners">
+                    <div class="box-item symbol-box-item" [ngClass]="runner?.status === 'SUSPEND' || game?.status === 'SUSPEND' || game?.length === 0 ? 'suspended' : 
+                                    (selectedCell === runner?.selectionId) ? 'isSelectedImg' : ''">
+                        <div class="symbol-main-value">
+                            {{runner?.price?.back?.[0]?.price}}</div>
+                    </div>
+                    <div class="ab-bottom-bet-value">
+                        0
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4th market -->
+    <div class="teen-cards-container mt-3">
+        <div class="text-center w-100">
+            <div class="teen-total-container">
+                <div class="total-item">
+                    <b>{{marketArray?.[4]?.runners?.[0]?.price?.back?.[0]?.price}}</b>
+                </div>
+            </div>
+        </div>
+        <div class="teen-cards-wrap text-center mt-1">
+            <div class="casino-card-item" *ngFor="let runner of marketArray?.[4]?.runners">
+                <div class="card-img" [ngClass]="winnerMarketArray?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                                (selectedCell === winnerMarketArray?.runners?.[0]?.selectionId) ? 'selected' : ''">
+                    <img [src]="'/assets/lucky7/' + marketArray?.[4]?.runnersName?.[runner?.selectionId] + '.png'"
+                        alt="" style="position: relative; " class="main-card-img">
+                </div>
+                <div class="card-bet-value">0</div>
+            </div>
+        </div>
+    </div>
+    <div class="text-end teen-min-max">
+        <span>
+            {{(winnerMarketArray?.min) | shortNumber}} - {{(winnerMarketArray?.max) | shortNumber}}
+        </span>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

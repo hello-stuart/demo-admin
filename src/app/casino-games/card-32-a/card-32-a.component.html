@@ -1,0 +1,121 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="main-container font-noto-sans">
+    <div class="mb-3" *ngFor="let market of marketArray; let i = index">
+        <ng-container *ngIf="i==0 || i==1">
+            <div class="wraper">
+                <div class="box" *ngFor="let runner of market.runners; let j = index">
+                    <div class="table">
+                        <div class="alignment">
+                            <div class="player">
+                                <p class="player-text">{{market.runnersName[runner?.selectionId]}}</p>
+                                <div class="text-icon">
+                                    <p class="zero-text">0</p>
+                                    <i class="fas fa-info-circle" data-bs-toggle="collapse"
+                                        [attr.data-bs-target]="'#range' + i + '-' + j"></i>
+                                    <div [id]="'range' + i + '-' + j" class="collapse icon-range">
+                                        Range:<span>{{ market.min | shortNumber }}-{{ market.max | shortNumber }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btns-div mb-1 mb-md-0 position-relative"
+                                [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                <button class="btn">{{runner.price.back[0].price}}</button>
+                                <button class="btn-red">{{runner.price.lay[0].price}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+    <div class="mb-3" *ngFor="let market of marketArray; let i = index">
+        <ng-container *ngIf="i==2">
+            <div class="wraper">
+                <div class="box" *ngFor="let runner of market.runners; let j = index">
+                    <div class="table">
+                        <div class="alignment">
+                            <div class="player">
+                                <p class="player-text">{{market.runnersName[runner?.selectionId]}}</p>
+                                <div class="text-icon">
+                                    <p class="zero-text">0</p>
+                                    <i class="fas fa-info-circle" data-bs-toggle="collapse"
+                                        [attr.data-bs-target]="'#range' + i + '-' + j"></i>
+                                    <div [id]="'range' + i + '-' + j" class="collapse icon-range">
+                                        Range:<span>{{ market.min | shortNumber }}-{{ market.max | shortNumber }}</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="btns-div mb-1 mb-md-0 position-relative"
+                                [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                <button class="btn btn-2">{{runner.price.back[0].price}}</button>
+                                <!-- <button class="btn-red">{{runner.price.lay[0].price}}</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+    <!-- Last row -->
+    <div class="mb-3" *ngFor="let market of marketArray; let i = index">
+        <!-- Odds row -->
+        <div class="odds-row" *ngIf="i==3">
+            <div class="odds-text w-100">{{marketArray[3]?.runners[0].price?.back[0].price}}</div>
+            <i class="fas fa-info-circle" data-bs-toggle="collapse" [attr.data-bs-target]="'#range' + i "></i>
+            <div [id]="'range' + i " class="collapse icon-range">
+                Range:<span>{{ market.min | shortNumber }}-{{ market.max | shortNumber }}</span>
+            </div>
+        </div>
+
+        <ng-container *ngIf="i==3">
+            <!-- Odds -->
+             <div class="cards-32-odds w-100 d-flex justify-content-center align-items-center flex-wrap
+                        mb-1 mt-1">
+                <div class="odd-back position-relative" *ngFor="let runner of market.runners; let j = index"
+                    [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                    <span class="odd-back-text">{{market.runnersName[runner?.selectionId]}}</span>
+                    <div class="odd-back-zero">0</div>
+                </div>
+        </div>
+        </ng-container>
+    </div>
+
+
+    <!-- <div class="mb-3" *ngFor="let market of marketArray; let i = index">
+        <h4 class="w-100 text-center mb-2 fw-normal" *ngIf="i==3">
+            <b>{{marketArray[3]?.runners[0].price?.back[0].price}}</b>
+        </h4>
+        <ng-container *ngIf="i==3">
+            <div class="wraper">
+                <div class="box" *ngFor="let runner of market.runners; let j = index">
+                    <div class="table position-relative"
+                        [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                        <div class="alignment">
+                            <div class="player w-100">
+                                <p class="player-text">{{market.runnersName[runner?.selectionId]}}</p>
+                                <div class="text-icon">
+                                    <p class="zero-text">0</p>
+                                    <i class="fas fa-info-circle" data-bs-toggle="collapse"
+                                        [attr.data-bs-target]="'#range' + i + '-' + j"></i>
+                                    <div [id]="'range' + i + '-' + j" class="collapse icon-range">
+                                        Range:<span>{{ market.min | shortNumber }}-{{ market.max | shortNumber }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div> -->
+
+
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

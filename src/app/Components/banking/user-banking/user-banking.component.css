@@ -1,0 +1,273 @@
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.page-title-box{
+    padding: 0px 0px 10px;
+}
+
+.row, .col-md-12 ,.col-12{
+    padding-left: inherit !important;
+    padding-right: inherit !important;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #5c6873;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e4e7ea;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+a:not([href]):not([tabindex]),
+a:not([href]):not([tabindex]):hover {
+    color: var(--user-banking-not-hover-bg);
+    cursor: pointer;
+}
+.tbl-cell-depst .inpt-dpst {
+    width: 50%;
+    display: table-cell;
+    margin-left: 5px;
+}
+table.dataTable tbody td,
+table.dataTable tbody th {
+    padding: 3px 10px;
+    vertical-align: middle;
+}
+.m-l-10 {
+    margin-left: 10px;
+}
+
+.bt-deposit,
+.bt-withdraw {
+    padding: 2px 10px !important;
+    border: 1px solid #333 !important;
+    width: 34px;
+}
+.tbl-cell-depst .bt-deposit,
+.tbl-cell-depst .bt-full,
+.tbl-cell-depst .bt-withdraw {
+    display: table-cell;
+    margin-left: 5px;
+}
+
+.bt-withdraw-active {
+    background-color: red !important;
+}
+
+.bt-deposit-active {
+    background-color: green !important;
+    border-color: green;
+}
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.show > .btn-secondary.dropdown-toggle {
+    color: #23282c;
+    background-color: #acb5bc;
+    border-color: #a5aeb7;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+.divider {
+    margin-top: 30px;
+}
+.total_all {
+    margin: 13px 0 10px;
+}
+.chips_summary {
+    float: right;
+    font-size: 15px;
+    line-height: 28px;
+}
+
+.form-check-inline {
+    display: inline-flex;
+    align-items: center;
+    padding-left: 0;
+    margin-right: 0.75rem;
+}
+.switch-label.switch-lg {
+    width: 56px;
+    height: 30px;
+}
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+.switch-input {
+    display: none;
+}
+.switch-slider {
+    position: relative;
+    display: block;
+    height: inherit;
+    cursor: pointer;
+    background-color: var(--my-account-switch-slider-color);
+    border: 1px solid #c8ced3;
+    transition: 0.15s ease-out;
+    border-radius: 0.25rem;
+}
+.switch-label.switch-lg .switch-slider {
+    font-size: 12px;
+}
+.switch-slider::before {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    content: "";
+    background-color: #fff;
+    border: 1px solid #c8ced3;
+    transition: 0.15s ease-out;
+    border-radius: 0.125rem;
+}
+.switch-label.switch-lg .switch-slider::before {
+    width: 24px;
+    height: 24px;
+}
+.switch-label .switch-slider::before {
+    z-index: 2;
+}
+.switch-label.switch-lg .switch-slider {
+    font-size: 12px;
+}
+.switch-label .switch-slider::after {
+    position: absolute;
+    top: 50%;
+    right: 1px;
+    z-index: 1;
+    width: 50%;
+    margin-top: -0.5em;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    color: #c8ced3;
+    text-align: center;
+    text-transform: uppercase;
+    content: attr(data-unchecked);
+    transition: inherit;
+}
+.switch-label.switch-lg .switch-slider::after {
+    font-size: 12px;
+}
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle,
+.switch-primary .switch-input:checked + .switch-slider {
+    background: var(--my-account-success-btn-bg);
+    border-color: var(--my-account-success-btn-bg);
+}
+.switch-primary .switch-input:checked + .switch-slider::before {
+    border-color: #fff;
+}
+.switch-label.switch-lg .switch-input:checked ~ .switch-slider::before {
+    -webkit-transform: translateX(26px);
+    transform: translateX(26px);
+}
+.switch-label .switch-input:checked ~ .switch-slider::after {
+    left: 1px;
+    color: white;
+    content: attr(data-checked);
+}
+@media screen and (max-width: 400px) {
+    .chips_summary {
+        font-size: 12px;
+    }
+}
+
+/* ======================================================= */
+
+tbody tr td strong {
+    font-weight: 400;
+}
+
+tbody tr td a strong {
+    color: #000;
+}
+
+.bg-success {
+    color: var(--my-account-switch-slider-bg) !important;
+}
+
+.btn-brand .btn-primary {
+    background-color: #4fa5f0 !important;
+}
+
+.bt-withdraw {
+    background-color: var(--user-banking-clear-all-btn-bg);
+    border-color: var(--user-banking-clear-all-btn-bg) !important;
+}
+
+.bt-deposit {
+    background-color: var(--user-banking-submit-btn-bg);
+    border: 1px solid var(--user-banking-submit-btn-bg) !important;
+}
+
+.back-success {
+    background-color: var(--user-banking-submit-btn-bg);
+    border: 1px solid var(--user-banking-submit-btn-bg);
+    color: var(--user-banking-btn-txt-color);
+}
+
+.back-success:hover {
+    background-color: var(--user-banking-submit-btn-hover-bg) !important;
+    border-color: var(--user-banking-submit-btn-hover-bg) !important;
+    color: var(--user-banking-btn-txt-color);
+}
+
+.back-danger {
+    color: var(--user-banking-btn-txt-color);
+    background-color: var(--user-banking-clear-all-btn-bg);
+    border-color: var(--user-banking-clear-all-btn-bg);
+}
+
+.back-danger:hover {
+    color: var(--user-banking-btn-txt-color);
+    background-color: var(--user-banking-clear-all-btn-hover-bg);
+    border-color: var(--user-banking-clear-all-btn-hover-bg);
+}
+.no-data-available {
+    padding: 16px !important;
+    background-color: rgb(0, 0, 0, 0.05);
+    text-align: center;
+}
+::ng-deep table tbody tr td.dt-empty {
+    display: none !important;
+}
+.modal-header .close {
+    padding: 1rem;
+    margin: -1rem -1rem -1rem auto;
+}
+.close {
+    float: right;
+    font-size: 1.21875rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 0.5;
+}
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+@media screen and (max-width: 768px) {
+    .page-title-box{
+        padding: 10px 0px 12px !important;
+    }
+}

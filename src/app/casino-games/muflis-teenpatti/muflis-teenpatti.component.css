@@ -1,0 +1,90 @@
+.videoPlayer {
+    height: 345px;
+  }
+.casino-detail{
+    padding: 10px 10px 40px;
+    background-color: #f8f8fb;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 6px #e2e2e2;
+}
+.muf-teen-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+.muf-teen-left, .muf-teen-right{
+    width: 49%;
+}
+.player-title-row, .casino-box-row{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px 0;
+    align-items: center;
+    position: relative;
+}
+.player-name{
+    background-color: transparent;
+    padding: 0;
+    width: 100%;
+}
+.player-a-text{
+    color: #fc4242 !important;
+    font-size: 14px;
+    font-family: 'Noto Sans';
+}
+.player-b-text{
+    color: #ef910f !important;
+    font-size: 14px;
+    font-family: 'Noto Sans';
+}
+.casino-status{
+    width: 100%;
+    background-color: transparent;
+    padding: 4px;
+    font-size: 14px;
+    color: black;
+    font-family: 'Noto Sans';
+}
+.casino-bet-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.casino-box-item{
+    width: 100%;
+    height: 40px;
+    margin-right: 4px;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    text-align: center;
+}
+.casino-box-item.back{
+    background-color: #72bbef17;
+    border: 2px solid #72bbef;
+}
+.casino-odd-value{
+    font-weight: 700;
+    font-size: 12px;
+    height: 16px;
+    line-height: 16px;
+    margin-bottom: 2px;
+    width: 100%;
+    color: #333;
+}
+.bet-size-value{
+    font-size: 12px;
+    line-height: 1;
+}
+.muf-teen-center{
+    width: 2px;
+    background-color: grey;
+}

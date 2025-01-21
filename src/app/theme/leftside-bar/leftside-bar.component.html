@@ -1,0 +1,351 @@
+<div class="vertical-menu" *ngIf="showLeftSidebar">
+    <div class="h-100">
+        <div class="simplebar-wrapper" style="margin: 0px;">
+            <div class="simplebar-height-auto-observer-wrapper">
+                <div class="simplebar-height-auto-observer"></div>
+            </div>
+            <div class="simplebar-mask">
+                <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                    <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content"
+                        style="height: 100%; overflow: hidden scroll;">
+                        <div class="simplebar-content" style="padding: 0px;" *ngIf="!showProfilePages">
+                            <div id="sidebar-menu">
+                                <ul id="side-menu" class="metismenu list-unstyled">
+                                    <li class="mm-active">
+                                        <a aria-current="page" routerLink="" class="side-nav-link-ref ">
+                                            <i class="bx bx-home-circle"></i>
+                                            <span>Dashboard</span></a>
+                                    </li>
+                                    <li routerLink="market-analysis">
+                                        <a class="side-nav-link-ref">
+                                            <i class="bx bxs-bar-chart-alt-2"></i>
+                                            <span>Market Analysis</span>
+                                        </a>
+                                    </li>
+                                    <li routerLink="restore-user">
+                                        <a class="side-nav-link-ref">
+                                            <i class="fas fa-user-tie"></i>
+                                            <span>Restore User</span>
+                                        </a>
+                                    </li>
+                                    <li routerLink="my-account">
+                                        <a class="side-nav-link-ref">
+                                            <i class="far fa-user-circle"
+                                                style="font-size: 17px; padding-left: 2px;"></i>
+                                            <span>My Account</span>
+                                        </a>
+                                    </li>
+                                    <div class="accordion" id="accordionExample">
+                                        <!-- Accounts Module -->
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <a class="has-arrow accordion-button" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapseOne" aria-expanded="false"
+                                                    aria-controls="collapseOne">
+                                                    <i class="far fa-folder-open"></i>
+                                                    <span style="font-size: 13px !important;">Accounts</span>
+                                                </a>
+                                            </h2>
+                                            <div id="collapseOne" class="accordion-collapse collapse "
+                                                data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <ul aria-expanded="false" class="sub-menu mm-collapse">
+                                                        <li routerLink="user-downlinelist">
+                                                            <a class="side-nav-link-ref">User Downline List</a>
+                                                        </li>
+                                                        <li routerLink="master-downlinelist">
+                                                            <a class="side-nav-link-ref">Master Downline List</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- bank  -->
+                                        <!-- <li routerLink="banking">
+                                            <a class="side-nav-link-ref"><i class="bx bxs-bank"></i>
+                                                <span>Bank</span>
+                                            </a>
+                                        </li> -->
+                                        <!-- Banking Module -->
+                                        <div class="accordion-item" id="accordionExample">
+                                            <h2 class="accordion-header">
+                                                <a class="has-arrow accordion-button" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapsetwo" aria-expanded="false"
+                                                    aria-controls="collapsetwo">
+                                                    <i class="bx bxs-bank"></i>
+                                                    <span style="font-size: 13px !important;">Banking</span>
+                                                </a>
+                                            </h2>
+                                            <div id="collapsetwo" class="accordion-collapse collapse "
+                                                data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <ul aria-expanded="false" class="sub-menu mm-collapse">
+                                                        <li routerLink="user-banking">
+                                                            <a class="side-nav-link-ref">User Banking</a>
+                                                        </li>
+                                                        <li routerLink="master-banking">
+                                                            <a class="side-nav-link-ref">Master Banking</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Reports module  -->
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <a class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                                    aria-expanded="false" aria-controls="collapseThree">
+                                                    <i class="bx bx-file"></i>
+                                                    <span style="font-size: 13px !important;"> Reports</span>
+                                                </a>
+                                            </h2>
+                                            <div id="collapseThree" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <ul aria-expanded="false" class="sub-menu mm-collapse">
+                                                        <li routerLink="password-history">
+                                                            <a class="side-nav-link-ref">Password History</a>
+                                                        </li>
+                                                        <li routerLink="event-profit-loss">
+                                                            <a class="side-nav-link-ref">Event Profit & Loss</a>
+                                                        </li>
+                                                        <li routerLink="downline-profit-loss">
+                                                            <a class="side-nav-link-ref">Downline Profit & Loss</a>
+                                                        </li>
+                                                        <li routerLink="bet-history">
+                                                            <a class="side-nav-link-ref"> Bet List</a>
+                                                        </li>
+                                                        <li routerLink="commission">
+                                                            <a class="side-nav-link-ref">Agent Commision</a>
+                                                        </li>
+                                                        <!-- <li routerLink="turn-over-report">
+                                                            <a class="side-nav-link-ref">Turn
+                                                                Over</a>
+                                                        </li> -->
+                                                        <!-- <li routerLink="win-loss"><a class="side-nav-link-ref">Party Win
+                                                                Loss</a>
+                                                        </li>
+                                                        <li routerLink="current-bets">
+                                                            <a class="side-nav-link-ref">Current
+                                                                Bets</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="side-nav-link-ref">User
+                                                                History</a>
+                                                        </li>
+                                                        <li routerLink="general-lock"><a
+                                                                class="side-nav-link-ref">General
+                                                                Lock</a>
+                                                        </li>
+                                                        <li routerLink="our-casino-result" >
+                                                            <a class="side-nav-link-ref">Our
+                                                                Casino Result</a>
+                                                        </li>
+                                                        <li routerLink="live-casino-result">
+                                                            <a class="side-nav-link-ref">Live
+                                                                Casino Result</a>
+                                                        </li>
+                                                      
+                                                        <li>
+                                                            <a class="side-nav-link-ref">User
+                                                                Authentication</a>
+                                                        </li> -->
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Extras Tab  -->
+                                        <div class="accordion-item" id="accordionExample">
+                                            <h2 class="accordion-header">
+                                                <a class="has-arrow accordion-button" data-bs-toggle="collapse"
+                                                    data-bs-target="#extras" aria-expanded="false"
+                                                    aria-controls="extras">
+                                                    <i class="fas fa-ad"></i>
+                                                    <span style="font-size: 13px !important;">Extra</span>
+                                                </a>
+                                            </h2>
+                                            <div id="extras" class="accordion-collapse collapse "
+                                                data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <ul aria-expanded="false" class="sub-menu mm-collapse">
+                                                        <li routerLink="banner-update">
+                                                            <a class="side-nav-link-ref">Banner Update</a>
+                                                        </li>
+                                                        <li routerLink="news">
+                                                            <a class="side-nav-link-ref">News Updates</a>
+                                                        </li>
+                                                        <li routerLink="client-notification">
+                                                            <a class="side-nav-link-ref">Client Notification</a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <li>
+                                            <a class="side-nav-link-ref" routerLink="casino">
+                                                <i class="mdi mdi-cards-playing-outline"></i>
+                                                <span>Our Casino</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="side-nav-link-ref" routerLink="virtual-games">
+                                                <span class="badge badge-pill badge-success float-end">New</span>
+                                                <i class="mdi mdi-cards-playing-outline"></i>
+                                                <span>Virtual Casino</span>
+                                            </a>
+                                        </li>
+                                        <!-- SPORTS accordion  -->
+                                        <!-- First Level Accordion -->
+                                        <div class="accordion accordion-flush" id="levelOneAccordion">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="levelOneHeading1"
+                                                    (click)="onEventBtnClick()">
+                                                    <a class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#levelOneCollapse1"
+                                                        aria-expanded="false" aria-controls="levelOneCollapse1">
+                                                        <i class="bx bxs-calendar-event"></i>
+                                                        <span style="font-size: 13px ;">Events</span>
+                                                    </a>
+                                                </h2>
+
+                                                <div id="levelOneCollapse1" class="accordion-collapse collapse"
+                                                    aria-labelledby="levelOneHeading1"
+                                                    data-bs-parent="#levelOneAccordion">
+                                                    <div class="accordion-body">
+                                                        <!-- Second Level Accordion -->
+                                                        <div class="accordion accordion-flush" id="levelTwoAccordion1">
+                                                            <div class="accordion-item"
+                                                                *ngFor="let item of SportsList; let i = index">
+                                                                <h2 class="accordion-header"
+                                                                    [attr.id]="'levelTwoHeading' + i">
+                                                                    <button
+                                                                        class="accordion-button collapsed sportsName"
+                                                                        type="button"
+                                                                        [ngClass]="sportbackgrndClass[item.sportId]"
+                                                                        (click)="onClickSport(item.sportId,i)"
+                                                                        data-bs-toggle="collapse"
+                                                                        [attr.data-bs-target]="'#levelTwoCollapse' + i"
+                                                                        aria-expanded="false"
+                                                                        [attr.aria-controls]="'levelTwoCollapse' + i">
+                                                                        {{item.sportName}}
+                                                                        @if (sportEventCounts && sportEventCounts.length
+                                                                        > i && sportEventCounts[i]?.eventCount != null)
+                                                                        {
+                                                                        ({{ sportEventCounts[i].eventCount }})
+                                                                        }
+                                                                    </button>
+                                                                </h2>
+
+                                                                <div [attr.id]="'levelTwoCollapse' + i"
+                                                                    class="accordion-collapse collapse"
+                                                                    [attr.aria-labelledby]="'levelTwoHeading' + i"
+                                                                    [attr.data-bs-parent]="'#levelTwoAccordion1'">
+                                                                    <div class="accordion-body">
+                                                                        <!-- Third Level Accordion -->
+                                                                        <div class="accordion accordion-flush"
+                                                                            [attr.id]="'levelThreeAccordion' + i">
+                                                                            <div class="accordion-item"
+                                                                                *ngFor="let tournament of sortedTournamentList; let j = index">
+                                                                                <h2 class="accordion-header"
+                                                                                    [attr.id]="'levelThreeHeading' + i + j">
+                                                                                    <button
+                                                                                        class="accordion-button collapsed tournamentName"
+                                                                                        type="button"
+                                                                                        (click)="onClickTournament(tournament.tournamentId)"
+                                                                                        data-bs-toggle="collapse"
+                                                                                        [attr.data-bs-target]="'#levelThreeCollapse' + i + j"
+                                                                                        aria-expanded="false"
+                                                                                        [attr.aria-controls]="'levelThreeCollapse' + i + j">
+                                                                                        {{tournament.tournamentName }}
+                                                                                        ({{ tournament.count }})
+                                                                                    </button>
+                                                                                </h2>
+                                                                                <div [attr.id]="'levelThreeCollapse' + i + j"
+                                                                                    class="accordion-collapse collapse"
+                                                                                    [attr.aria-labelledby]="'levelThreeHeading' + i + j"
+                                                                                    [attr.data-bs-parent]="'#levelThreeAccordion' + i">
+                                                                                    <div class="accordion-body"
+                                                                                        *ngFor="let event of eventListData">
+                                                                                        <div class="eventName"
+                                                                                            [routerLink]="'/marketdetails/' + event.exEventId+ '/' + event.sportId ">
+                                                                                            {{event.eventName}}
+
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End Third Level Accordion -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Second Level Accordion -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ul>
+
+                            </div>
+
+
+                        </div>
+                        <div class="simplebar-content" style="padding: 0px;" *ngIf="showProfilePages">
+                            <div id="sidebar-menu">
+                                <ul id="side-menu" class="metismenu list-unstyled">
+
+                                    <li>
+                                        <a class="side-nav-link-ref account-pge" routerLink="profile">
+                                            <i class="mdi mdi-cards-playing-outline"></i>
+                                            <span>My Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="side-nav-link-ref account-pge" *ngIf="role =='USER'"
+                                            routerLink="bet-history">
+                                            <i class="mdi mdi-cards-playing-outline"></i>
+                                            <span>Bet List</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="side-nav-link-ref account-pge" *ngIf="role =='USER'"
+                                            routerLink="profit-loss">
+                                            <i class="mdi mdi-cards-playing-outline"></i>
+                                            <span>Profit & Loss</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="side-nav-link-ref account-pge" routerLink="account-statement">
+                                            <i class="mdi mdi-cards-playing-outline"></i>
+                                            <span>Account Statement</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="side-nav-link-ref account-pge" routerLink="activity-log">
+                                            <i class="mdi mdi-cards-playing-outline"></i>
+                                            <span>Activity log</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+            <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+        </div>
+        <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+            <div class="simplebar-scrollbar"
+                style="height: 418px; display: block; transform: translate3d(0px, 0px, 0px);"></div>
+        </div>
+    </div>
+</div>

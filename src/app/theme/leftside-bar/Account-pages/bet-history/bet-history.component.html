@@ -1,0 +1,148 @@
+<div class="animated fadeIn divider-top">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box d-flex align-items-center justify-content-between">
+        <h4 class="mb-0 ">
+          Bet List
+        </h4>
+      </div>
+    </div>
+    <div class="bet-table">
+      <div class="col-sm-12 col-md-12">
+        <div class="card card-report table-main">
+          <div class="card-body row p-0">
+            <div class="col-12 col-lg-2 col-md-6 margin-end" *ngIf="selectedType!='unsettle'">
+              <div class="form-group">
+                <label for="dataSource" class="mb-2 marginLabel">Data Source</label>
+                <select class="form-control form-select" id="dataSource" [(ngModel)]="dataSource"
+                  (ngModelChange)="onDataSourceChange($event)">
+                  <option disabled="" value="">Data Source</option>
+                  <option value="LIVE">LIVE DATA</option>
+                  <option value="BACKUP">BACKUP DATA</option>
+                  <option value="OLD">OLD DATA</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-lg-2 col-md-6 margin-end">
+              <div class="form-group mb-0">
+                <label for="typechoose" class="mb-2 marginLabel">Choose Type</label>
+                <div class="input-group">
+                  <select name="type" id="typechoose" [(ngModel)]="selectedType" class="form-control form-select">
+                    <option value="settle">Settle</option>
+                    <option value="unsettle">UnSettle</option>
+                    <option value="void">Void</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-2 col-md-6 margin-end">
+              <div class="form-group mb-0">
+                <label for="choosesport" class="mb-2 marginLabel">Choose Sport</label>
+                <div class="input-group">
+                  <select name="type" id="choosesport" [(ngModel)]="selectedSport" class="sel form-control form-select">
+                    <option value="" disabled>Select Sport</option>
+                    <option [value]="item.sportId" *ngFor="let item of sports; let i = index">
+                      {{ item.sportName }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6" [ngClass]="{'mt-1 ms-lg-3':selectedType==='unsettle'}">
+              @if (showDatePicker) {
+              <app-customized-datepicker [filterDateVal]="filterDate"
+                (rangeDate)="receiveRangeDate($event)"></app-customized-datepicker>
+              }
+            </div>
+            <div class="col-12 col-lg-1 col-md-6 " [ngClass]="{'getBtnMargin':selectedType!=='unsettle'}">
+              <div class="form-group">
+                <div for="type" class="mobile-d-none" style="width: 100%;">&nbsp;</div>
+                <button class="btn bg-success btnMrgn" type="button" (click)="rerender()">
+                  <strong>Get History</strong>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <div class="card card-accent-primary table-main">
+          <div class="card-header account-detail-head"> Bet History
+            <a ngbPopover="Betting History is available online for the past 30 days.">
+              <i class="fas fa-question"></i>
+            </a>
+          </div>
+          <div class="card-body account-stat-body">
+            <div class="table-responsive table table-striped">
+              <table datatable [dtOptions]="dtOptions" role="table" aria-busy="false" aria-colcount="6"
+                class="table table-bordered table-striped ">
+                <thead role="rowgroup">
+                  <tr role="row">
+                    <th>User Name</th>
+                    <th>SportName</th>
+                    <th>Event</th>
+                    <th>Market</th>
+                    <th>Selection</th>
+                    <th>Type</th>
+                    <th>Odds Req.</th>
+                    <th>Stack</th>
+                    <!-- <th>P&L</th> -->
+                    <th>Place Time</th>
+                    <th>Settle Time</th>
+                  </tr>
+                </thead>
+                <!--                <tfoot *ngIf="rows?.length == 0">-->
+                <tr *ngFor="let row of rows;let i=index">
+                  <!-- <td colspan="6" style="text-align:center;">No data available in table</td> -->
+                  <td class="border-right-black btnbg" (mouseenter)="getGetParentOfUser(row.userName)"
+                    data-bs-toggle="modal" data-bs-target="#modalparentList">
+                    {{row.userName}}
+                  </td>
+                  <td> {{row.sportName}}</td>
+                  <td> {{row.eventName}}</td>
+                  <td> {{row.marketName}}</td>
+                  <td>{{row.selectionName}}</td>
+                  <td [ngClass]="row.type=='B'?'back-text':'lay-text'"> {{row.type=='B'?'BACK':'LAY'}}</td>
+                  <td> {{row.oddsPrice}}</td>
+                  <td> {{row.stake}}</td>
+                  <!-- <td> {{row.betPl}}</td> -->
+                  <td>{{ getLocalDateTime(row.createdAt) }}</td>
+                  <td>{{ getLocalDateTime(row.matchedTime)}}</td>
+                </tr>
+                <tr class="odd" *ngIf="rows?.length==0">
+                  <td class="no-data-available" colspan="10">No data available in the table</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Parent List modal -->
+  <div class="modal fade" #modalparentList id="modalparentList" tabindex="-1" aria-labelledby="yourModalLabel"
+    aria-hidden="true" (click)="closeModal()">
+    <div class="modal-dialog modal-sm modal-custom-animation" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h4 id="modal-basic-title" class="modal-title">Parent List</h4>
+          <button type="button" aria-label="Close" data-bs-dismiss="modal" class="close" (click)="closeModal()">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <ul class="list-group">
+            <!---->
+            <li class="list-group-item" *ngFor="let item of userParentList">
+              <b> {{item}} </b>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>

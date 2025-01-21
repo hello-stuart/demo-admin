@@ -1,0 +1,48 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="casino-detail">
+    <div class="w-100 d-flex justify-content-center">
+        <ng-container *ngFor="let markets of marketArray;let i = index">
+            <ng-container *ngIf="i===0">
+                <ng-container *ngFor="let runner of markets?.runners;let b =index">
+                    <div [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                        class="low-odds-box" *ngIf="b===0">
+                        <div class="casino-odd-value">{{runner.price.back[0].price}}</div>
+                        <div class="text-center casino-btns">
+                            <span> {{(marketArray[0]?.runnersName[runner?.selectionId])}}</span>
+                        </div>
+                        <div class="casino-book-value">0</div>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngFor="let markets of marketArray;let i = index">
+            <div class=" lucky-7-card-box" *ngIf="i===1">
+                <div class="position-relative">
+                    <div class=" text-center"
+                        [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                        <img src="/assets/casino-cards/card-seven.png" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngFor="let markets of marketArray;let i = index">
+            <ng-container *ngIf="i===0">
+                <ng-container *ngFor="let runner of markets?.runners;let b =index">
+                    <div [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''"
+                        class="high-odds-box" *ngIf="b===1">
+                        <div class="casino-odd-value">{{runner.price.back[0].price}}</div>
+                        <div class="text-center casino-btns">
+                            <span>{{(marketArray[0]?.runnersName[runner?.selectionId])}}</span>
+                        </div>
+                        <div class="casino-book-value">0</div>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

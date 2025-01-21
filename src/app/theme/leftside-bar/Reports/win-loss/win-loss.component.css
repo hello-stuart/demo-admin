@@ -1,0 +1,224 @@
+.page-container{
+    
+    min-height: 100vh;
+}
+.bredcrumb-container{
+    padding: 12px 5px 10px;
+}
+.breadcrumb-nav{
+    font-size: 10px;
+}
+.breadcrumb-main-title{
+    font-size: 14px !important;
+     text-transform: uppercase;
+      font-weight: 600;
+      color: #495057;
+}
+
+.multi-select-div{
+    box-sizing: content-box;
+    display: block;
+    position: relative;
+    width: 100%;
+    min-height: 40px;
+    text-align: left;
+    color: #35495e;
+}
+.side-icon-select{
+    position: absolute;
+    width: 40px;
+    height: 38px;
+    right: 1px;
+    top: 1px;
+    padding: 4px 8px;
+    text-align: center;
+    transition: transform .2s ease;
+}
+label{
+    font-size: 12px;
+    margin-bottom: 4px;
+    color: #495057;
+}
+.multi-select-container{
+    position: relative;
+    width: 100%;
+    min-height: calc(1.5em + .94rem + 2px) !important;
+    padding: .47rem .75rem !important;
+    font-family: Poppins, sans-serif !important;
+    font-size: .8125rem;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    color: #495057 !important;
+    background-color: #fff !important;
+    background-clip: padding-box;
+    border: 1px solid #ced4da !important;
+    border-radius: 5px;
+
+}
+.client-search-input{
+    width: 100%;
+    height: 32px;
+    border: none;
+    outline: none;
+}
+.options-div{
+    
+    max-height: 300px;
+    border: 1px solid #ced4da !important;
+    width: 100%;
+    position: absolute;
+    bottom: -26px;
+    left: 0;
+    background-color: white;
+}
+ul{
+    padding: 0;
+    margin: 6px 0;
+    list-style: none;
+}
+.option-headings{
+    color: #495057 !important;
+    padding: 12px;
+    min-height: 40px;
+    white-space: nowrap;
+}
+select{
+    width: 100%;
+    min-height: calc(1.5em + .94rem + 2px) !important;
+    padding: .47rem .75rem !important;
+    font-family: Poppins, sans-serif !important;
+    font-size: .8125rem;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    color: #495057 !important;
+    background-color: #fff !important;
+    background-clip: padding-box;
+    border: 1px solid #ced4da !important;
+    position: relative;
+    border-radius: 8px;
+}
+option{
+    max-height: 300px;
+    border: 1px solid #ced4da !important;
+    position: absolute;
+    display: block;
+    background: #fff;
+    width: 100%;
+    max-height: 240px;
+    overflow: auto;
+    border: 1px solid #e8e8e8;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 50;
+}
+::ng-deep .form-control{
+    font-size: 14px !important;
+    color: rgba(0, 0, 0, .5) !important;
+}
+.calender-icon{
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    
+}
+
+.load-btn{
+    background-color: #23292e !important;
+    border-color: #23292e !important;
+    color: white !important;
+    padding: .47rem .75rem;
+    font-size: .8125rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    border: none;
+}
+.reset-btn{
+    color: var(--reports-reset-btn-color);
+    background-color: var(--reports-reset-btn-bg);
+    border-color: var(--reports-reset-btn-bg);
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: .47rem .75rem;
+    font-size: .8125rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.excel-file-btn{
+    color: #fff;
+    background-color: #34c38f;
+    border-color: #34c38f;
+    border: 1px solid transparent;
+    padding: .47rem .75rem;
+    font-size: .8125rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.pdf-file-icon{
+    color: #fff;
+    background-color: #f46a6a;
+    border-color: #f46a6a;
+    border: 1px solid transparent;
+    padding: .47rem .75rem;
+    font-size: .8125rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+
+::ng-deep .dt-container .dt-layout-row{
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+::ng-deep .dt-length label{
+    display: block !important;
+}
+::ng-deep .dt-column-title{
+    font-size: 12px !important;
+    color: #495057 !important;
+    margin: 4px 16px !important;
+    text-wrap: nowrap !important;
+    font-weight: 600 !important;
+    
+}
+th{
+    border: 1px solid #eff2f7 !important;
+    
+    text-align: center !important;
+    padding: 6px 0 !important;
+}
+
+::ng-deep .dt-container .dt-search input{
+    height: calc(1.5em + .5rem + 2px) !important;
+    padding: .25rem .5rem !important;
+    font-size: .7109375rem !important;
+    line-height: 1.5;
+    border-radius: .2rem !important;
+    color: #495057 !important;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da !important;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    outline: none;
+}
+::ng-deep tbody tr .dt-empty{
+    padding: 16px !important;
+}
+::ng-deep #DataTables_Table_0_info{
+    display: none !important;
+}
+@media(max-width:1279px){
+    .page-container{
+        margin-top: 130px;
+    }
+}
+@media(max-width:768px){
+    ::ng-deep .dt-container div.dt-layout-row{
+        overflow-x: scroll !important;
+    }
+}

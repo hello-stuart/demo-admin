@@ -1,0 +1,110 @@
+
+
+<!-- <ng-template #cricektTemplate> -->
+  <div id="scoreboard-box">
+    <div class="scorecard scorecard-mobile">
+      <!-- for test matches -->
+      <div class="container-forTest p-1" >
+        <div class="d-flex justify-content-between pt-1">
+          <div class="w-50">
+            <!-- empty for first -->
+          </div>
+          <div class="d-flex w-50 headingInnings pe-1" *ngIf="totalSets?.length==3">
+            <div class="w-20 text-center">SETS</div>
+            <div class="w-20 text-center">1</div>
+            <div class="w-20 text-center">2</div>
+            <div class="w-20 text-center">3</div>
+            <div class="w-20 text-center">PTS</div>
+          </div>
+          <div class="d-flex w-50 headingInnings pe-1" *ngIf="totalSets?.length!=3">
+            <div class="w-14 text-center">SETS</div>
+            <div class="w-14 text-center">1</div>
+            <div class="w-14 text-center">2</div>
+            <div class="w-14 text-center">3</div>
+            <div class="w-14 text-center">4</div>
+            <div class="w-14 text-center">5</div>
+            <div class="w-14 text-center">PTS</div>
+          </div>
+        </div>
+        <!-- first runner -->
+        <div class="d-flex justify-content-between align-items-center mt-2" >
+          <div class="w-50 d-flex align-items-center">
+            <!-- ball/bat img -->
+            <div class="ps-1 sportIcon">
+              <span *ngIf="slider[0]?.score?.scoreItems[0]?.scoreData[totalSets?.length+2]?.value=='*'" >
+                <!-- <img class="sportIcon"
+                  [src]="'assets/sportsIcons/'+'tennisBall'+'.svg'"> -->
+                  <app-score-card-svgs [isDesktop]="isDesktop" [isTabDesk]="isTabDesk"
+                  [sportId]="slider[0]?.score?.scoreItems[0]?.scoreData[totalSets?.length+2]?.value"></app-score-card-svgs>
+              </span>
+            </div>
+            <!-- jersy/flag img -->
+            <div class="ms-1 flag">
+              <!-- <img src="assets/flags/IN.png"> -->
+              <img
+                [src]="'https://spxstatic.com/sports/assets/media/flags/'+slider[0]?.score?.teamInfo?.team1Flag"
+                alt="">
+            </div>
+            <!-- Team Name -->
+            <div class="d-flex flex-column align-items-center ps-1">
+              <div class="text-start w-100 TestTeamName">
+               {{slider[0]?.score?.teamInfo?.team1Name}}
+              </div>
+
+            </div>
+          </div>
+          <div class="d-flex w-50 score-section pe-1" >
+            <div class="w-20 text-center">{{slider[0]?.score?.scoreItems[0]?.scoreData[0]?.value}}</div>
+            <div class="w-20 text-center" *ngFor="let item of FetchSets(slider[0]?.score?.scoreItems[0]?.scoreData)">{{item.value}}</div>
+            <!-- <div class="w-20 text-center">5</div>
+            <div class="w-20 text-center"></div> -->
+            <div class="w-20 text-center">{{slider[0]?.score?.scoreItems[0]?.scoreData[totalSets?.length+1]?.value}}</div>
+          </div>
+
+        </div>
+         <!-- second runner -->
+         <div class="d-flex justify-content-between mt-2 align-items-center" >
+          <div class="w-50 d-flex align-items-center">
+            <!-- ball/bat img -->
+            <div class="ps-1 sportIcon">
+              <span *ngIf="slider[0]?.score?.scoreItems[1]?.scoreData[totalSets?.length+2]?.value=='*'" >
+                <!-- <img class="sportIcon"
+                [src]="'assets/sportsIcons/'+'tennisBall'+'.svg'"> -->
+                <app-score-card-svgs [isDesktop]="isDesktop" [isTabDesk]="isTabDesk"
+                [sportId]="slider[0]?.score?.scoreItems[1]?.scoreData[totalSets?.length+2]?.value"></app-score-card-svgs>
+              </span>
+            </div>
+            <!-- jersy/flag img -->
+            <div class="ms-1 flag">
+              <!-- <img src="assets/flags/IN.png"> -->
+              <img
+              [src]="'https://spxstatic.com/sports/assets/media/flags/'+slider[0]?.score?.teamInfo?.team2Flag"
+              alt="">
+            </div>
+            <!-- Team Name -->
+            <div class="d-flex flex-column align-items-center ps-1">
+              <div class="text-start w-100 TestTeamName">
+                {{slider[0]?.score?.teamInfo?.team2Name}}
+              </div>
+
+            </div>
+          </div>
+          <div class="d-flex w-50 score-section pe-1" >
+            <div class="w-20 text-center">{{slider[0]?.score?.scoreItems[1]?.scoreData[0]?.value}}</div>
+            <div class="w-20 text-center" *ngFor="let item of FetchSets(slider[0]?.score?.scoreItems[1]?.scoreData)">{{item.value}}</div>
+
+            <!-- <div class="w-20 text-center">5</div>
+            <div class="w-20 text-center"></div> -->
+            <div class="w-20 text-center">{{slider[0]?.score?.scoreItems[1]?.scoreData[totalSets?.length+1]?.value}}</div>
+          </div>
+
+        </div>
+        <marquee class="d-flex justify-content-center align-items-center  newsforTest">
+          {{commentry}}
+        </marquee>
+      </div>
+    </div>
+    <!---->
+  </div>
+
+  <!-- </ng-template> -->

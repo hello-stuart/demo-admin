@@ -1,0 +1,395 @@
+.casino-detail {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px 5px 40px;
+    background-color: #f8f8fb;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 6px #e2e2e2;
+}
+@media(max-width:767px){
+    .casino-detail{
+        padding: 10px 10px 40px;
+    }
+}
+.fa-info-circle:before{
+    width: 14px !important;
+    height: 14px !important;
+}
+.baccarat-odds-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 50px;
+}
+.baccarat-odds-card {
+    flex: 1 1 auto;
+    margin-right: 16px;
+    position: relative;
+}
+.baccarat-odds-name {
+    position: relative;
+    padding: 6px 2px;
+    text-align: center;
+    color: white;
+    background-color: #434343;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.baccarat-odd-value {
+    text-align: center;
+    line-height: 18px;
+    font-size: 18px;
+    position: relative;
+}
+.min-max-info {
+    position: absolute;
+    right: 0;
+    top: -18px;
+    width: 100%;
+    font-size: 12px;
+    color: black;
+    font-weight: normal;
+    display: flex;
+    justify-content: flex-end;
+}
+.bet-info-card {
+    position: absolute;
+    top: 100%;
+    background-color: #16191c;
+    padding: 4px;
+    max-width: 100%;
+    word-wrap: break-word;
+    font-size: 12px;
+    z-index: 10;
+    transition: 0.1s;
+    text-transform: capitalize;
+    color: #aaafb5;
+    z-index: 150;
+}
+.baccarat-bets-container {
+    display: flex;
+    width: 100%;
+    margin-top: 0;
+    position: relative;
+}
+.player-pair-container {
+    margin-right: 2px;
+    width: 15%;
+    height: 90px;
+    margin-top: 15px;
+    position: relative;
+}
+@media(max-width:767px){
+    .player-pair-container{
+        height: 60px;
+    }
+}
+.bet-player-name {
+    border-radius: 16px 0 0 16px;
+    background-color: #509bff;
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    padding-left: 0;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+@media(max-width:767px){
+    .bet-player-name{
+        font-size: 10px !important;
+        text-wrap: wrap;
+    }
+}
+.bet-player-name:hover {
+    background-color: #509bffc9;
+}
+.suspended {
+    position: relative;
+}
+.bet-player-name.suspended::before {
+    background-position: left 10px top 10px;
+    cursor: not-allowed;
+}
+.bet-player-name.suspended::after {
+    border-radius: 16px 0 0 16px;
+}
+.player-container {
+    width: 35%;
+    height: 120px;
+    position: relative;
+}
+@media(max-width:767px){
+    .player-container{
+        height: 90px;
+    }
+}
+.player-bets-name {
+    background-color: #509bff;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    align-items: flex-start;
+    padding-left: 20px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    padding-left: 0;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.player-bets-name:hover {
+    background-color: #509bffc9;
+}
+.player-bets-name.suspended::before {
+    background-position: left 10px top 10px;
+    cursor: not-allowed;
+}
+.player-bets-name.suspended::after {
+    border-radius: 16px 0 0 16px;
+}
+.l-rotate-card {
+    width: 40px;
+    transform: rotate(270deg);
+    margin-right: 10px;
+    position: relative;
+    z-index: 10;
+    cursor: not-allowed;
+}
+.r-rotate-card {
+    width: 40px;
+    transform: rotate(90deg);
+    margin-left: 10px;
+    position: relative;
+    z-index: 10;
+    cursor: not-allowed;
+}
+.casino-card {
+    width: 40px;
+    position: relative;
+    z-index: 10;
+    cursor: not-allowed;
+}
+.player-bet-value {
+    text-align: center;
+    line-height: 18px;
+    font-size: 18px;
+}
+@media(max-width:767px){
+    .player-bet-value{
+        font-size: 7px;
+    }
+}
+.tie-container {
+    position: absolute;
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 2px;
+    border: 2px solid #000;
+    z-index: 10;
+}
+@media(max-width:767px){
+    .tie-container{
+        width: 90px;
+        height: 90px;
+    }
+}
+.tie-bet-name {
+    background-color: #11b24b;
+    border-radius: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    padding-left: 0;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.tie-bet-name:hover {
+    background-color: #0c9a1d;
+}
+.tie-bet-name.suspended::after {
+    border-radius: 50%;
+}
+.tie-bet-value {
+    text-align: center;
+    line-height: 18px;
+    margin-top: 3px;
+    font-size: 18px;
+}
+@media(max-width:767px){
+    .tie-bet-value{
+        font-size: 7px;
+    }
+}
+.banker-container {
+    width: 35%;
+    height: 120px;
+    position: relative;
+}
+@media(max-width:767px){
+    .banker-container{
+        height: 90px;
+    }
+    .padding-align{
+        padding-left: 0px !important;
+    }
+}
+.padding-align{
+    padding-left: 16px;
+}
+.banker-bets-name {
+    background-color: #d3393d;
+    align-items: flex-end;
+    padding-right: 20px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    padding-left: 0;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.banker-bets-name:hover {
+    background-color: #d3393ddb;
+}
+.banker-bets-name.suspended::before {
+    background-position: right 10px top 10px;
+    cursor: not-allowed;
+}
+.banker-bets-name.suspended::after {
+    border-radius: 0 16px 16px 0;
+}
+.banker-bet-value {
+    text-align: center;
+    line-height: 18px;
+    font-size: 18px;
+}
+
+.banker-pair-container {
+    width: 15%;
+    margin-left: 2px;
+    height: 90px;
+    margin-top: 15px;
+    position: relative;
+}
+@media(max-width:767px){
+    .banker-pair-container{
+        height: 60px;
+    }
+    .banker-pair-name{
+        font-size: 10px;
+        text-wrap: wrap;
+    }
+    .banker-bet-value{
+        font-size: 7px;
+    }
+    .banker-pair-bet-value{
+        font-size: 7px !important;
+    }
+}
+.banker-pair-name {
+    border-radius: 0 16px 16px 0;
+    background-color: #d3393d;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    padding-left: 0;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.banker-pair-name:hover {
+    background-color: #d3393ddb;
+}
+.banker-pair-name.suspended::before {
+    background-position: right 10px top 10px;
+    cursor: not-allowed;
+}
+.banker-pair-name.suspended::after {
+    border-radius: 0 16px 16px 0;
+}
+.banker-pair-bet-value {
+    text-align: center;
+    line-height: 18px;
+    font-size: 18px;
+}
+.player-min-max {
+    justify-content: flex-start !important;
+}
+.tie-min-max {
+    justify-content: center !important;
+}
+
+@media (max-width: 767px) {
+    .l-rotate-card,
+    .r-rotate-card,
+    .casino-card {
+        width: 14.28px;
+        height: 20px;
+    }
+    .banker-bets-name {
+        padding-right: 5px;
+    }
+    .player-container , .banker-container{
+        height: 90px !important;
+    }
+    .player-pair-container , .banker-pair-container{
+        height: 60px !important;
+    }
+    .tie-container{
+        height: 86px !important;
+        width: 86px !important;
+    }
+    .banker-bets-name , .player-bets-name , .bet-player-name , .banker-pair-name{
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    .banker-bets-name , .player-bets-name , .bet-player-name , .banker-pair-name{
+        font-size: 8px !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .casino-card , .r-rotate-card , .l-rotate-card{
+        width: auto;
+        height: 20px;
+    }
+}
+
+.flipCard {
+    transform: rotateY(360deg);
+    position: relative;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+i {
+    cursor: pointer;
+}

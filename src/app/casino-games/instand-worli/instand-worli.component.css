@@ -1,0 +1,120 @@
+
+.casino-detail{
+    padding: 10px 10px 40px;
+    background-color: #f8f8fb;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 6px #bcbaba;
+}
+
+.worlibox{
+    display: flex;
+    margin-top: 5px;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+}
+
+.worli-left{
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.worli-right{
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.worli-box-title{
+    width: 100%;
+    text-align: center;
+    margin: 5px 0;
+    min-height: 18px;
+}
+
+.worli-box-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2px;
+    font-family: "CasinoFont";
+}
+
+.worli-odd-box {
+    width: calc(20% - 2px);
+    margin-right: 2px;
+    text-align: center;
+    height: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.noto{
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 12px;
+}
+
+.back{
+    background-color: #72bbef17;
+    border: 2px solid #72bbef;
+}
+
+.mt{
+    margin-top: 2px;
+}
+
+.casino-min-max {
+    font-size: 14px;
+    color: #000000;
+    font-weight: normal;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.worli-odd{
+    font-size: 20px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.worli-right .worli-odd-box {
+    width: calc(50% - 2px);
+    margin-right: 2px;
+}
+
+.suspended{
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 350px) {
+    .worli-odd{
+        font-size: 18px;
+        white-space: nowrap;
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .worli-box-title{
+        min-height: 24px;
+    }
+
+    .worli-odd{
+        font-size: 40px;
+    }
+
+    .noto{
+        font-size: 16px;
+    }
+}

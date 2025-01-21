@@ -1,0 +1,174 @@
+
+
+<!-- <ng-template #cricektTemplate> -->
+  <div id="scoreboard-box">
+    <div class="scorecard scorecard-mobile">
+      <!-- for other cricket 2020 and 50 odi -->
+      <div class="container-main" *ngIf="sportObj?.sportId==4 && !isTestMatch">
+        <div class="row-ctm" *ngIf="slider.length!=0">
+          <div class="team">
+            <div class="team_name">
+              <img
+                [src]="'https://spxstatic.com/sports/others/media/spTeamKits/'+slider[0]?.score?.teamInfo?.team1KitFileName"
+                [alt]="slider[0]?.score?.teamInfo?.team1Abbreviation">
+              <br>
+              <span class="text-center">{{(slider[0]?.score?.teamInfo?.team1Name)?.length>10 ||
+                (slider[0]?.score?.teamInfo?.team2Name)?.length>10 ?
+                slider[0]?.score?.teamInfo?.team1Abbreviation:slider[0]?.score?.teamInfo?.team1Name }}
+                <span *ngIf="slider[0]?.score?.scoreItems[0]?.scoreData[6]?.value">
+                  <app-score-card-svgs [isDesktop]="isDesktop" [isTabDesk]="isTabDesk"
+                  [sportId]="slider[0]?.score?.scoreItems[0]?.scoreData[6]?.value"></app-score-card-svgs>
+                  <!-- <img class="sportIcon"
+                    [src]="'assets/sportsIcons/'+slider[0]?.score?.scoreItems[0]?.scoreData[6]?.value+'.svg'"> -->
+                </span>
+              </span>
+            </div>
+            <div class="curr_inn">
+              <span class="run">{{slider[0]?.score?.scoreItems[0]?.scoreData[0]?.value}}</span>
+              <span class="over">({{slider[0]?.score?.scoreItems[0]?.scoreData[1]?.value}})</span>
+              <br>
+              <span class="over">CRR : {{slider[0]?.score?.scoreItems[0]?.scoreData[2]?.value}}</span><br>
+              <!-- <span class="over">RRR : 0.00</span> -->
+              <!-- <span class="over">                <img class="sportIcon" [src]="'assets/sportsIcons/'+slider[0]?.score?.scoreItems[0]?.scoreData[6]?.value+'.svg'">
+              </span> -->
+            </div>
+          </div>
+          <div class="match_status">
+            <span class="commantry">{{commentry}}</span>
+            <p class="target">{{news}}</p>
+            <span class="day">
+              <div class="score-over">
+                <ul>
+                  <li class="six-balls " *ngFor="let item of last6balls"> {{item}} </li>
+                </ul>
+              </div>
+            </span>
+          </div>
+          <div class="team">
+            <div class="team_name">
+              <img
+                [src]="'https://spxstatic.com/sports/others/media/spTeamKits/'+slider[0]?.score?.teamInfo?.team2KitFileName"
+                [alt]="slider[0]?.score?.teamInfo?.team2Abbreviation">
+              <br>
+              <span class="text-center">{{(slider[0]?.score?.teamInfo?.team1Name)?.length>10 ||
+                (slider[0]?.score?.teamInfo?.team2Name)?.length>10 ?
+                slider[0]?.score?.teamInfo?.team2Abbreviation:slider[0]?.score?.teamInfo?.team2Name }}
+                <span *ngIf="slider[0]?.score?.scoreItems[1]?.scoreData[6]?.value">
+                  <!-- <img class="sportIcon"
+                    [src]="'assets/sportsIcons/'+slider[0]?.score?.scoreItems[1]?.scoreData[6]?.value+'.svg'"> -->
+                    <app-score-card-svgs [isDesktop]="isDesktop" [isTabDesk]="isTabDesk"
+                                        [sportId]="slider[0]?.score?.scoreItems[1]?.scoreData[6]?.value"></app-score-card-svgs>
+                </span>
+              </span>
+
+            </div>
+            <div class="curr_inn">
+              <span class="run">{{slider[0]?.score?.scoreItems[1]?.scoreData[0]?.value}}</span>
+              <span class="over">({{slider[0]?.score?.scoreItems[1]?.scoreData[1]?.value}})</span>
+              <br>
+              <span class="over">CRR : {{slider[0]?.score?.scoreItems[1]?.scoreData[2]?.value}}</span><br>
+              <!-- <span class="over">                <img class="sportIcon" [src]="'assets/sportsIcons/'+slider[0]?.score?.scoreItems[1]?.scoreData[6]?.value+'.svg'">
+              </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- for test matches -->
+      <div class="container-forTest p-2" *ngIf="sportObj?.sportId==4 && isTestMatch">
+        <div class="d-flex justify-content-between" *ngIf="slider.length!=0">
+          <div class="w-50">
+            <!-- empty for first -->
+             Powered by Universal.
+          </div>
+          <div class="d-flex w-50">
+            <div class="w-50 text-center headingInnings">
+              1st INNINGS
+            </div>
+            <div class="w-50 text-center headingInnings">
+              2nd INNINGS
+            </div>
+          </div>
+        </div>
+        <!-- first team -->
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="w-50 d-flex align-items-center">
+            <!-- ball/bat img -->
+            <div>
+              <span *ngIf="slider[0]?.score?.scoreItems[0]?.scoreData[2]?.value">
+                <!-- <img class="sportIcon"
+                  [src]="'assets/sportsIcons/'++'.svg'"> -->
+                  <app-score-card-svgs [isDesktop]="isDesktop" [isTabDesk]="isTabDesk"
+                  [sportId]="slider[0]?.score?.scoreItems[0]?.scoreData[2]?.value"></app-score-card-svgs>
+              </span>
+            </div>
+            <!-- jersy/flag img -->
+            <div>
+              <img
+                [src]="'https://spxstatic.com/sports/others/media/spTeamKits/'+slider[0]?.score?.teamInfo?.team2KitFileName"
+                [alt]="slider[0]?.score?.teamInfo?.team1Abbreviation">
+            </div>
+            <!-- Team Name -->
+            <div class="d-flex flex-column align-items-center">
+              <div class="text-start w-100 TestTeamName">
+                {{slider[0]?.score?.teamInfo?.team1Name}}
+              </div>
+              <div class="currentTestBatsMan w-100">
+               {{slider[0]?.score?.scoreItems[0]?.scoreData[3]?.value}}
+              </div>
+            </div>
+          </div>
+          <div class="d-flex w-50 align-items-center">
+            <div class="w-50 text-center headingInnings InnignsScore">
+              {{slider[0]?.score?.scoreItems[0]?.scoreData[0]?.value}}
+            </div>
+            <div class="w-50 text-center headingInnings InnignsScore" [ngClass]="slider[0]?.score?.scoreItems[0]?.scoreData[2]?.value=='bat'?'activeInnings':''">
+              {{slider[0]?.score?.scoreItems[0]?.scoreData[1]?.value}}
+            </div>
+          </div>
+        </div>
+         <!-- second team -->
+         <div class="d-flex justify-content-between align-items-center mt-1">
+          <div class="w-50 d-flex align-items-center">
+            <!-- ball/bat img -->
+            <div>
+              <span *ngIf="slider[0]?.score?.scoreItems[1]?.scoreData[2]?.value">
+                <!-- <img class="sportIcon"
+                  [src]="'assets/sportsIcons/'+slider[0]?.score?.scoreItems[1]?.scoreData[2]?.value+'.svg'"> -->
+                  <app-score-card-svgs [isDesktop]="isDesktop" [isTabDesk]="isTabDesk"
+                  [sportId]="slider[0]?.score?.scoreItems[1]?.scoreData[2]?.value"></app-score-card-svgs>
+              </span>
+            </div>
+            <!-- jersy/flag img -->
+            <div>
+              <img
+                [src]="'https://spxstatic.com/sports/others/media/spTeamKits/'+slider[0]?.score?.teamInfo?.team2KitFileName"
+                [alt]="slider[0]?.score?.teamInfo?.team2Abbreviation">
+            </div>
+            <!-- Team Name -->
+            <div class="d-flex flex-column align-items-center">
+              <div class="text-start w-100 TestTeamName">
+                {{slider[0]?.score?.teamInfo?.team2Name}}
+              </div>
+              <div class="currentTestBatsMan w-100">
+               {{slider[0]?.score?.scoreItems[1]?.scoreData[3]?.value}}
+              </div>
+            </div>
+          </div>
+          <div class="d-flex w-50 align-items-center">
+            <div class="w-50 text-center headingInnings InnignsScore">
+              {{slider[0]?.score?.scoreItems[1]?.scoreData[0]?.value}}
+            </div>
+            <div class="w-50 text-center headingInnings InnignsScore" [ngClass]="slider[0]?.score?.scoreItems[1]?.scoreData[2]?.value=='bat'?'activeInnings':''">
+              {{slider[0]?.score?.scoreItems[1]?.scoreData[1]?.value}}
+            </div>
+          </div>
+        </div>
+        <marquee class="d-flex justify-content-center align-items-center newsforTest">
+          {{news}}
+        </marquee>
+      </div>
+    </div>
+    <!---->
+  </div>
+
+  <!-- </ng-template> -->

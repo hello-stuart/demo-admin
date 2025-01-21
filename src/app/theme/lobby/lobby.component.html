@@ -1,0 +1,88 @@
+<div *ngIf=" currentRoute !='virtual-games'">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+                <h4 class="mb-0 ">Our Casino</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item" routerLink="">
+                            <a>Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <span aria-current="location">Our Casino</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="casino-tabs-admin p-2">
+            <div class="casino-tabs-menu w-100">
+                <a class="arrow-tabs arrow-left" (click)="scrollSportsLeft()">
+                    <i class="mdi mdi-chevron-left"></i>
+                </a>
+                <ul class="nav nav-tabs nav-tabs-custom" id="casino-scroll-tab" #menuListCasino>
+                    <li class="nav-item">
+                        <a class="nav-link " [ngClass]="{'activeTabClass': 'Popular' == selectedTabCasino}"
+                            (click)="onClickCasinoMenu('Popular','')">
+                            Our Casino
+                        </a>
+                    </li>
+                    <li class="nav-item" *ngFor="let tab of menuName;let i=index">
+                        <a class="nav-link " [ngClass]="{'activeTabClass': tab == selectedTabCasino}"
+                            (click)="onClickCasinoMenu(tab,i)">
+                            {{tab}}
+                        </a>
+                    </li>
+                </ul>
+                <a class="arrow-tabs arrow-right" (click)="scrollSportsRight()">
+                    <i class="mdi mdi-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="casino-banners">
+            <div class="casino-banner-item" *ngFor="let tab of casinoGamesDataFilter">
+                <a class="" (click)="goTOMarket(tab.eventId)">
+                    <app-all-svgs [eventName]="tab?.eventName"></app-all-svgs>
+                    <div class="casino-bottom">{{tab?.eventName}}</div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- virtual games UI  -->
+
+<div *ngIf=" currentRoute =='virtual-games'">
+    <div>
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 ">Virtual Casino</h4>
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item" routerLink="">
+                                <a  class="" target="_self">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <span >Virtual Casino</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card virtualgames">
+            <div class="casino-banners">
+                <div class="casino-banner-item" *ngFor="let virtualGame of virtualGames;let i=index">
+                    <a  class="" >
+                        <app-all-svgs [eventName]="virtualGame?.eventName"></app-all-svgs>
+                            <div class="casino-bottom">{{virtualGame?.eventName}}</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

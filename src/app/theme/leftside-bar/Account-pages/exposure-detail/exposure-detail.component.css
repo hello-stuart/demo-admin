@@ -1,0 +1,102 @@
+table tr:nth-child(even) {
+  background-color: #ccc;
+}
+
+.border-right-black {
+  border-right: 1px solid #bbb;
+}
+thead {
+  border-width: 1px !important;
+  height: 40px;
+  vertical-align: middle;
+}
+td , tr ,th{
+  text-align: center !important;
+}
+td {
+  height: 40px;
+  padding: 0 4px !important;
+  vertical-align: middle;
+}
+thead {
+  border-width: 1px !important;
+  height: 40px;
+  vertical-align: middle;
+}
+.border-left{
+  border-left: 1px solid #bbb;
+}
+
+.custom-modal-overlay {
+  /* Position the overlay */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1500;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: none; /* Hidden by default */
+}
+.custom-modal-overlay .modal-header{
+  padding: 1rem !important;
+}
+.custom-modal {
+  /* Position the modal container */
+  position: relative;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* padding: 20px; */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.custom-modal-body{
+  background: var(--modal-bg);
+  overflow-x: scroll;
+  touch-action: manipulation;
+}
+
+/* ========================================================================== */
+
+.modal-header .modal-title{
+  margin-bottom: 0 !important;
+  line-height: 1.5 !important;
+  font-size: 1.015625rem !important;
+  color: #495057;
+  font-weight: 500 !important;
+  text-transform: uppercase;
+} 
+
+.custom-modal .modal-header .close{
+  border: none;
+  background: none;
+  font-size: 1.21875rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
+}
+
+.plLink{
+  color: #315195;
+  cursor: pointer;
+}
+
+.custom-modal-body table{
+  margin: 0;
+}
+
+.back{
+  background-color: #72bbef !important;
+}
+.lay{
+  background-color: #f994ba !important;
+}
+
+tr.back td, tr.lay td {
+  background-color: transparent !important;
+  border: none;
+}

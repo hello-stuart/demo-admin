@@ -1,0 +1,877 @@
+.euBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, #006cd1, #2c3e50);
+    color: #ffffff;
+}
+
+.lucky7card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.euBox.firstbox {
+    border-radius: 24px 0px 0px 24px;
+    font-size: 14px;
+}
+
+.euBox.secondBox {
+    border-radius: 0px 24px 24px 0px;
+    font-size: 14px;
+}
+
+.euBox.firstbox.suspended::after {
+    border-radius: 24px 0px 0px 24px;
+}
+
+.euBox.secondBox.suspended::after {
+    border-radius: 0px 24px 24px 0px;
+}
+
+.btn-theme {
+    height: 40px;
+    background-color: transparent;
+    background: transparent;
+    border: 0px;
+    font-size: 15px;
+}
+
+.img-fluid {
+    height: 60px;
+}
+
+.round-id {
+    /* position: absolute; */
+    top: 0;
+    z-index: 2;
+    font-weight: 700;
+
+    font-size: 12px;
+    color: #fff;
+    padding: 3px;
+}
+
+@media screen and (min-width: 768px) {
+    .chips li.now {
+        height: 23px !important;
+        top: -61px !important;
+        transition: all 0.15s linear;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .timer-overlay {
+        right: 35px !important;
+        height: auto !important;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .btn-theme {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    .btn-theme {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 321px) {
+    .btn-theme {
+        font-size: 10px;
+    }
+}
+
+.container-fluid {
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+}
+
+@media only screen and (max-width: 992px) {
+    .chips li:hover {
+        transition: all 0.15s linear;
+    }
+
+    .chips {
+        left: 0;
+        height: 56px;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.function_zone,
+.function_zone_many {
+    position: unset;
+}
+
+.bet_zone {
+    position: unset;
+}
+
+.down_set div.no_win {
+    display: flex;
+    padding: 0;
+}
+
+.recent-res {
+    background: #000000;
+    color: #ffffff;
+}
+
+.down_set div.no_win h2 {
+    color: #ffffff;
+}
+
+.round-id {
+    color: #ffffff;
+}
+
+.total_bet {
+    margin-top: 20px;
+}
+
+.finalresultdiv {
+    position: relative;
+}
+
+.down_set div.no_win {
+    height: 100%;
+    background: unset;
+    border: unset;
+}
+
+.down_set {
+    height: 88px;
+}
+
+.coin {
+    height: 350px;
+    width: 350px;
+    position: relative;
+    margin: 32px auto;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.coin img {
+    width: 345px;
+}
+
+.heads,
+.tails {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.tails {
+    transform: rotateX(180deg);
+}
+
+.headAnimation {
+    animation: spin-heads 2s forwards;
+}
+
+.tailAnimation {
+    animation: spin-tails 2s forwards;
+}
+
+.down_set {
+    display: flex;
+    width: 100%;
+    padding: 0 6px;
+    height: 96px;
+    /* float: left; */
+    margin: 0 0 10px 0;
+}
+
+@keyframes spin-tails {
+    0% {
+        transform: rotateX(0);
+    }
+
+    100% {
+        transform: rotateX(1980deg);
+    }
+}
+
+@keyframes spin-heads {
+    0% {
+        transform: rotateX(0);
+    }
+
+    100% {
+        transform: rotateX(2160deg);
+    }
+}
+
+.casino-video-title {
+    background-color: #00000099;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    position: absolute;
+    max-width: 244px;
+    width: 100%;
+    z-index: 10;
+}
+
+.casino-name {
+    color: #ef910f;
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.casino-id {
+    color: #ddd;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.arrow-up {
+    color: white;
+    margin-right: 5px;
+    border-radius: 50%;
+    font-size: 24px;
+    border: 2px solid #999;
+    background-color: #00000080;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.arrow-icon {
+    transform: translateY(1px);
+}
+
+.arrow-up[data-bs-toggle="collapse"][aria-expanded="true"] .arrow-icon,
+.match-bets[data-bs-toggle="collapse"][aria-expanded="true"] .arrow-icon {
+    transform: rotate(180deg);
+    transition: none;
+}
+
+[data-bs-toggle="collapse"][aria-expanded="true"] + .arrow .arrow-icon {
+    transform: rotate(180deg);
+    transition: none;
+}
+
+.collapse {
+    /* max-height: 0; */
+    overflow: hidden;
+    opacity: 0;
+    transition: transform 0.2s ease-in-out, opacity 0.3s ease-in-out !important;
+}
+
+.collapse.show {
+    /* max-height: auto; */
+    opacity: 1;
+}
+
+.video-left {
+    background-color: #2e343a;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    min-width: 255px;
+    height: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+    .right-arrows-main {
+        flex-direction: column;
+        row-gap: 3px;
+    }
+
+    .arrow-up {
+        height: 25px;
+        width: 25px;
+    }
+    .arrow-up i {
+        font-size: 16px;
+    }
+    .casino-video-title {
+        max-width: 200px;
+        width: auto;
+    }
+    .casino-name {
+        font-size: 12px;
+        line-height: 12px;
+    }
+    .casino-id {
+        font-size: 10px;
+        line-height: 16px;
+    }
+    .chips li {
+        width: 72px !important;
+        height: 59px !important;
+        margin-right: 8px;
+    }
+
+    .chips li p,
+    .chips li img {
+        width: 71px;
+        height: 62px;
+        font-size: 14px;
+    }
+
+    .round-id {
+        font-size: 11px;
+        padding-bottom: 0;
+    }
+
+    .timer-overlay {
+        top: unset !important;
+    }
+
+    .coin img {
+        width: 100%;
+    }
+
+    .bet_zone {
+        height: unset;
+        left: 0;
+        background: unset;
+        overflow: unset;
+    }
+
+    .down_set {
+        height: auto;
+    }
+
+    .down_set div.no_win {
+        height: 60px;
+    }
+
+    .timer-overlay {
+        top: 10px !important;
+    }
+
+    .chips li {
+        width: 72px !important;
+        height: 59px !important;
+        margin-right: 8px;
+    }
+
+    .chips li p,
+    .chips li img {
+        width: 71px;
+        height: 62px;
+        font-size: 14px;
+    }
+
+    /* .function_zone .chips {
+        top: 20px !important;
+    } */
+
+    .chips {
+        padding: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    .chips li.now {
+        height: 23px;
+        top: -46px;
+        transition: all 0.15s linear;
+    }
+}
+
+.betImage {
+    height: 100%;
+    width: 100%;
+}
+
+.disabledbikibet {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.bet_zone .down_set div.disabledbikibet {
+    background: rgba(0, 0, 0, 0.8) !important;
+    pointer-events: none;
+}
+
+.down_set div.no_win {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #ffffff;
+    margin-right: 6px;
+    height: 82px;
+    flex: 1;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+}
+
+.plsec {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.timer-overlay {
+    position: absolute;
+    right: 35px;
+    height: auto;
+    top: 0;
+    right: 66px;
+    height: auto;
+    top: 27px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timer-group {
+    height: 50px;
+    margin: 0 auto;
+    position: relative;
+    width: 50px;
+    margin-top: 5px;
+}
+
+.timer {
+    border-radius: 50%;
+    height: 50px;
+    overflow: hidden;
+    position: absolute;
+    width: 50px;
+}
+
+.timer:after {
+    background: rgb(17, 17, 17);
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 80px;
+    left: 10px;
+    position: absolute;
+    width: 80px;
+    top: 10px;
+}
+
+.timer .hand {
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 50%;
+}
+
+.timer .hand span {
+    border: 50px solid rgba(0, 255, 255, 0.4);
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: 50%;
+    display: block;
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: rotate(225deg);
+    width: 0;
+}
+
+.timer .hand:first-child {
+    transform: rotate(180deg);
+}
+
+.timer .hand span {
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.timer .hand:first-child span {
+    animation-name: spin1;
+}
+
+.timer .hand:last-child span {
+    animation-name: spin2;
+}
+
+.timer.minute {
+    background: rgba(0, 0, 0, 0.2);
+    height: 50px;
+    right: 0px;
+    width: 50px;
+    bottom: 0px;
+}
+
+.timer.minute .hand span {
+    animation-duration: var(--timerValue);
+    border-top-color: green;
+    border-right-color: green;
+    border-width: 25px;
+}
+
+.spanColorRed {
+    border-top-color: red !important;
+    border-right-color: red !important;
+}
+
+.timer.minute:after {
+    height: 40px;
+    left: 5px;
+    width: 40px;
+    top: 5px;
+}
+
+.textColor {
+    color: red !important;
+}
+
+.heart {
+    font-size: 185px;
+    color: #e00 !important;
+    animation: beat 0.5s infinite alternate;
+    transform-origin: center;
+}
+
+/* Heart beat animation */
+@keyframes beat {
+    to {
+        transform: scale(1.3);
+    }
+}
+
+.face {
+    border-radius: 50%;
+    height: 40px;
+    left: -2px;
+    position: absolute;
+    width: 40px;
+    text-align: center;
+    top: 2px;
+}
+
+.face h2 {
+    font-weight: 300;
+}
+
+.face p {
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 8px;
+    text-align: center;
+    right: 2px;
+    color: white;
+}
+
+@keyframes spin1 {
+    0% {
+        transform: rotate(225deg);
+    }
+
+    50% {
+        transform: rotate(225deg);
+    }
+
+    100% {
+        transform: rotate(405deg);
+    }
+}
+
+@keyframes spin2 {
+    0% {
+        transform: rotate(225deg);
+    }
+
+    50% {
+        transform: rotate(405deg);
+    }
+
+    100% {
+        transform: rotate(405deg);
+    }
+}
+
+.singleDigit {
+    top: 9px !important;
+    right: 8px !important;
+    color: white !important;
+}
+
+.finalresultdiv img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 130px;
+    top: 40px;
+    height: 130px;
+}
+
+.finalresultdiv img {
+    width: 100px;
+    height: 100px;
+}
+
+.box_player,
+.box_banker,
+.box_tie {
+    position: relative;
+}
+
+.bet_zone .down_set div.box_tie {
+    border: 2px #1a8c1a solid;
+}
+
+.bet_zone .down_set div.box_tie h2 {
+    color: #1a8c1a;
+}
+
+.bet_zone .down_set div.box_banker {
+    border: 2px #fddf34 solid;
+}
+
+.bet_zone .down_set div.box_banker h2 {
+    color: #fddf34;
+}
+
+.bet_zone .down_set div.box_playerA {
+    border: 2px #f78cc9 solid;
+    background: #785b5b;
+    color: #f78cc9;
+}
+
+.bet_zone .down_set div.box_playerA h2 {
+    color: #f78cc9;
+}
+
+.bet_zone .down_set div.box_playerB {
+    border: 2px #c5a0ff solid;
+    background: #785b5b;
+    color: #c5a0ff;
+}
+
+.bet_zone .down_set div.box_playerB h2 {
+    color: #c5a0ff;
+}
+
+.down_set .greenodd.no_win {
+    background: linear-gradient(-180deg, #105d24 1%, #196631 99%);
+}
+
+.down_set .redodd.no_win {
+    background: linear-gradient(-180deg, #e1282a 1%, #e1272c 99%);
+}
+
+.down_set .blackodd.no_win {
+    background: linear-gradient(-180deg, #211e1e 1%, #000000 99%);
+}
+
+.lucky-footer .down_set div.no_win h2 {
+    color: #ffffff !important;
+}
+
+.down_set.top div.no_win,
+.down_set.top div.win {
+    height: 70px;
+}
+
+.down_set.bottom {
+    height: 60px;
+}
+
+.down_set div.no_win {
+    padding: 20px 0;
+    background: rgba(0, 0, 0, 0.8);
+    border-color: transparent;
+    border: 2px #ff433f solid;
+    margin-right: 6px;
+    height: 82px;
+    flex: 1;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: linear-gradient(-180deg, #b0d4bc 1%, #82b594 99%);
+}
+
+.tebleid {
+    position: absolute;
+    color: yellow;
+    left: 0;
+    z-index: 99;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.tebleid span {
+    display: block;
+}
+
+.down_set div.no_win p {
+    width: 100%;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+.down_set div.no_win h2 {
+    color: #ff433f;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+}
+
+.down_set div.no_win h3 {
+    color: #75af92;
+}
+
+.pl_lucky {
+    bottom: 5px;
+    position: absolute;
+    border-radius: 5px;
+    padding: 1px 5px;
+    background: #ccc;
+}
+
+.function_zone,
+.function_zone_many {
+    width: 100%;
+    height: 25px;
+    line-height: 43px;
+    z-index: 1;
+    text-align: center;
+    margin-top: 19.5rem !important;
+}
+
+.function_zone .chips {
+    position: relative;
+    left: 0;
+    float: unset;
+}
+
+.chips {
+    height: 56px;
+    width: 35px;
+    position: relative;
+    padding: 5px;
+    margin-left: 14px;
+    display: inline;
+}
+
+.chips li {
+    width: 72px;
+    height: 66px;
+    position: relative;
+    top: 0;
+    list-style: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.chips li p,
+.chips li img {
+    top: 20px;
+}
+
+.chips li p,
+.chips li img {
+    width: 67px;
+    height: 66px;
+    text-align: center;
+    line-height: 57px;
+    font-size: 14px;
+    color: #272727;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    background-size: 100% 100%;
+}
+
+.chips li img {
+    filter: drop-shadow(0 0 0.25rem #2c3e50);
+}
+
+@media screen and (min-width: 767px) {
+    .chips li.now {
+        height: 23px;
+        top: -61px !important;
+        transition: all 0.15s linear;
+    }
+}
+
+.chips li.now {
+    height: 23px;
+    top: -5px;
+    transition: all 0.15s linear;
+}
+
+.chips li.now .ring {
+    border: 4px solid #f4b40d;
+    transition: all 0.15s linear;
+    display: revert;
+    top: 20px;
+}
+
+.chips li.now .ring {
+    top: 25px;
+}
+
+.chips li .ring {
+    position: absolute;
+    width: 64px;
+    height: 52px;
+    border: 0 solid #fd8f3b;
+    border-radius: 100px/76px;
+    bottom: 0;
+    left: calc(50% - 34px);
+    font-size: 0;
+    text-indent: -99999px;
+}
+
+.margin-bottom {
+    margin-bottom: 80px;
+}
+
+.right-arrows-main {
+    position: absolute;
+    z-index: 999;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+    .video-left {
+        min-width: 0;
+    }
+
+    .casino-video-title {
+        max-width: 200px;
+        width: auto;
+    }
+
+    .casino-name {
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    .casino-id {
+        font-size: 10px;
+        line-height: 16px;
+    }
+}

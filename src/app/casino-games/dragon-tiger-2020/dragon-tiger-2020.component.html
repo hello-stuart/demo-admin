@@ -1,0 +1,46 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="main-container">
+    <div class=" tool-parent">
+        <i data-bs-toggle="collapse" data-bs-target="#demo-l-1" class="fas fa-info-circle"></i>
+        <div id="demo-l-1" class="icon-range collapse bet-info-card">
+            R:<span class="small-txt">{{(winnerMarketArray?.min) |
+                shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span></div>
+    </div>
+    <!-- 111111111 -->
+    <div class="dtobx">
+        <div class="dragon-side position-relative" *ngIf="winnerMarketArray?.runners?.[0]" [ngClass]="winnerMarketArray?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                        (selectedCell === winnerMarketArray?.runners?.[0]?.selectionId) ? 'selected' : ''">
+            <div class="dragon-text">
+                <p>{{capitalize(marketArray?.[0]?.runnersName[marketArray?.[0]?.runners?.[0]?.selectionId])}}</p>
+            </div>
+            <div>
+                <p class="dragon-zero font-noto-sans fw-bold">{{marketArray?.[0]?.runners?.[0]?.price?.back?.[0]?.price}}</p>
+                <p class="abosolute-zero font-noto-sans">0</p>
+            </div>
+        </div>
+        <div class="middle-tie-div " *ngIf="winnerMarketArray?.runners?.[0]" [ngClass]="winnerMarketArray?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspend' : 
+               (selectedCell === winnerMarketArray?.runners?.[1]?.selectionId) ? 'selected' : ''">
+            <div>
+                <p>{{capitalize(marketArray?.[0]?.runnersName[marketArray?.[0]?.runners?.[1]?.selectionId])}}</p>
+            </div>
+            <div>
+                <p>{{marketArray?.[0]?.runners?.[1]?.price?.back?.[0]?.price}}</p>
+            </div>
+        </div>
+        <div class="tiger-side position-relative" *ngIf="winnerMarketArray?.runners?.[0]" [ngClass]="winnerMarketArray?.runners?.[0]?.status === 'SUSPEND' || game?.status === 'SUSPEND' ? 'suspended' : 
+                        (selectedCell === winnerMarketArray?.runners?.[0]?.selectionId) ? 'selected' : ''">
+            <div class="dragon-text">
+                <p>{{capitalize(marketArray?.[0]?.runnersName[marketArray?.[0]?.runners?.[2]?.selectionId])}}</p>
+            </div>
+            <div>
+                <p class="dragon-zero font-noto-sans fw-bold">{{marketArray?.[0]?.runners?.[2]?.price?.back?.[0]?.price}}</p>
+                <p class="abosolute-right-zero font-noto-sans">0</p>
+            </div>
+        </div>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

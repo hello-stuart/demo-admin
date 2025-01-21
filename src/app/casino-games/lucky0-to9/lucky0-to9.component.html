@@ -1,0 +1,139 @@
+<!-- <div class="videoPlayer">
+    <app-video-player></app-video-player>
+</div> -->
+<div>
+    <div class="vitual-content position-relative">
+        <div class="right-arrows-main">
+            <div class="arrow-up" (click)="logoClickHandler()">
+                <i class="fas fa-home"></i>
+            </div>
+            <div class="arrow-up" data-bs-toggle="modal" data-bs-target="#resultModal" data-bs-backdrop="false"
+                (click)="loadRules()" [ngClass]="{'d-none' : eventid == '99.0058'}">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="arrow-up showInDesktop" style="margin-right: 0;" data-bs-toggle="collapse"
+                data-bs-target="#balanceDetails" aria-expanded="false" aria-controls="balanceDetails">
+                <div class="arrow ">
+                    <i class="fas fa-chevron-circle-up arrow-icon"></i>
+                </div>
+            </div>
+        </div>
+        <app-casino-result-modal></app-casino-result-modal>
+        <div class="showInDesktop ">
+            <app-resultbar></app-resultbar>
+        </div>
+        <!-- card show and name -->
+        <div class="video-left mb-6">
+            <div class="casino-video-title"><span class="casino-name">{{eventName}}</span>
+                <div class="casino-id">Round ID: {{roundID}}</div>
+            </div>
+        </div>
+        <div class="casinoStream pt-2"
+            style="background:url('../../../assets/wheelmainbg.gif');background-size: cover; position: relative;">
+            <div class="finalresultdiv" *ngIf="isResultDeclare">
+                <img src="../../../assets/luckyresult.gif" alt="">
+            </div>
+            <div align="center">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="400" height="400" class="the_wheel" align="center" valign="center">
+                            <universe-wheel id="wheelCanvas" #wheel width='400' height='400' spinDuration='10'
+                                [items]='items' [innerRadius]='48' [spinAmount]='100'
+                                [textOrientation]='textOrientation' [textAlignment]='textAlignment'
+                                pointerStrokeColor='black' pointerFillColor='gold' [idToLandOn]='idToLandOn'
+                                (onSpinStart)='before()' (onSpinComplete)='after()'></universe-wheel>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- timer -->
+        <app-timer [minutes]="TIME_LIMIT"></app-timer>
+    </div>
+    <div class="lucky-footer" style="background-color: black; padding-top: 10px; padding-bottom: 10px;"
+        *ngIf="marketArray">
+        <section id="betZone" class="bet_zone stop_bet">
+            <div name="betZoneBac" class="down_set">
+                <!-- Winner Runner 0 -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player 0 greenodd no_win"
+                    [ngClass]="marketArray[0]?.runners[0].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>0</h2>
+                </div>
+
+                <!-- Winner Runner 1 -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player 1 redodd no_win"
+                    [ngClass]="marketArray[0]?.runners[1].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>1</h2>
+                </div>
+                <!-- Winner Runner 2 -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player 2 blackodd no_win"
+                    [ngClass]="marketArray[0]?.runners[2].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>2</h2>
+                </div>
+                <!-- Winner Runner 3 -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player 3 redodd no_win"
+                    [ngClass]="marketArray[0]?.runners[3].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>3</h2>
+                </div>
+                <!-- Winner Runner 4 -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player 4 blackodd no_win"
+                    [ngClass]="marketArray[0]?.runners[4].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>4</h2>
+                </div>
+            </div>
+            <div name="betZoneBac" class="down_set">
+                <!-- Winner Runner 5 -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player 5 redodd no_win"
+                    [ngClass]="marketArray[0]?.runners[5].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>5</h2>
+                </div>
+                <!-- Winner Runner 6 -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player 6 blackodd no_win"
+                    [ngClass]="marketArray[0]?.runners[6].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>6</h2>
+                </div>
+                <!-- Winner Runner 7 -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player 7 redodd no_win"
+                    [ngClass]="marketArray[0]?.runners[7].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>7</h2>
+                </div>
+                <!-- Winner Runner 8 -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player 8 blackodd no_win"
+                    [ngClass]="marketArray[0]?.runners[8].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>8</h2>
+                </div>
+                <!-- Winner Runner 9 -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player 9 redodd no_win"
+                    [ngClass]="marketArray[0]?.runners[9].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>9</h2>
+                </div>
+            </div>
+            <div name="betZoneBac" class="down_set">
+                <!-- EVEN MARKET -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player EVEN blackodd no_win"
+                    [ngClass]="marketArray[1]?.runners[0].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>EVEN</h2>
+                </div>
+                <!-- RED MARKET -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player RED redodd no_win"
+                    [ngClass]="marketArray[2]?.runners[0].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>RED</h2>
+                </div>
+                <!-- BLACK MARKET -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player BLACK blackodd  no_win"
+                    [ngClass]="marketArray[2]?.runners[1].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>BLACK</h2>
+                </div>
+                <!-- ODD MARKET -->
+                <div name="betZoneBac" id="betBoxPlayer" class="box_player ODD redodd no_win"
+                    [ngClass]="marketArray[1]?.runners[1].status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':''">
+                    <h2>ODD</h2>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

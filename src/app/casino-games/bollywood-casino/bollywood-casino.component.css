@@ -1,0 +1,237 @@
+.mr {
+    margin-right: 0 !important;
+}
+
+.px {
+    padding: 0 5px;
+}
+
+.is-mobile {
+    display: flex;
+}
+
+.casino-detail {
+    padding: 5px;
+    box-shadow: none;
+    border-radius: 0;
+    background-color: #f8f8fb;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: #000000;
+    font-family: "Noto Sans";
+    font-size: 14px;
+}
+
+.row {
+    margin-left: -5px !important;
+    margin-right: -5px !important;
+}
+
+.casino-bl-box {
+    width: 100% !important;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.casino-bl-box-item.casino-odds-name {
+    width: calc(50% - 2px);
+    font-size: 8px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 0;
+}
+
+.casino-odds-name {
+    color: #000000;
+    text-transform: uppercase;
+    font-weight: 700;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #ddd;
+    padding: 0 4px;
+    border-radius: 0;
+    margin-right: 0;
+    height: 36px !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.casino-bl-box-item {
+    width: calc(25% - 2px);
+    height: 40px;
+    margin-right: 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #000000;
+    text-align: center;
+}
+
+.casino-bl-box-item:last-child {
+    margin-right: 0;
+}
+
+.back {
+    background-color: #72bbef17 !important ;
+    border: 2px solid #72bbef;
+}
+
+.lay {
+    background-color: #f994ba17 !important;
+    border: 2px solid #f994ba;
+}
+
+.casino-box-odd {
+    font-size: 13px;
+    height: 16px;
+    line-height: 16px;
+    margin-bottom: 2px;
+    width: 100%;
+    color: #333;
+    font-weight: bold;
+}
+
+.casino-min-max {
+    font-size: 9px;
+    color: #000000;
+    font-weight: normal;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.is-desktop {
+    display: none;
+}
+
+.casino-box-row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px 0;
+    align-items: center;
+    position: relative;
+}
+
+.casino-nation-name {
+    width: 100%;
+    background-color: transparent;
+    text-align: center;
+    padding: 4px;
+}
+
+.bc-fancy .casino-bl-box-item {
+    width: calc(100% - 2px);
+}
+
+.card-odds .casino-bl-box {
+    width: 50%;
+}
+
+.casino-card-img img {
+    width: 30px;
+    height: auto;
+    margin-left: 5px;
+}
+
+.card-odds .casino-bl-box-item {
+    width: calc(100% - 4px);
+    height: 56px;
+}
+
+.casino-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.casino-card-item {
+    margin-bottom: 0;
+    min-width: 80px;
+    margin-right: 5px;
+    margin-left: 5px;
+    width: auto;
+}
+
+.casino-card-item .card-image {
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+.casino-card-item .card-image img {
+    width: 35px;
+}
+
+.card-title {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.h-26 {
+    height: 26px !important;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 374px) {
+    .book-black {
+        font-size: 9px;
+    }
+}
+
+@media only screen and (min-width: 374px) and (max-width: 767px) {
+    .book-black {
+        font-size: 11px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .is-mobile {
+        display: none;
+    }
+
+    .is-desktop {
+        display: flex;
+    }
+
+    .is-desktop .casino-bl-box-item {
+        width: calc(50% - 2px);
+        height: 40px;
+    }
+
+    .casino-book {
+        font-size: 18px;
+        line-height: 18px;
+    }
+
+    .casino-card-item {
+        margin-bottom: 10px;
+    }
+
+    .casino-card-item .card-image img {
+        width: 48px;
+    }
+
+    .casino-min-max {
+        font-size: 12px;
+        color: var(--text-black);
+        font-weight: normal;
+    }
+
+    .casino-detail {
+        padding: 10px 10px 40px;
+        background-color: #f8f8fb;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 2px 6px #e2e2e2;
+    }
+}

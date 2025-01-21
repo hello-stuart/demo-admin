@@ -1,0 +1,50 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="casino-detail">
+    <div class="casino-box mb-2 tab-content d-flex justify-content-between flex-column flex-lg-row" id="myTabContent">
+        <!-- Pattern Content -->
+        <ng-container *ngFor="let runner of winnerMarketArray?.runners; let i = index; ">
+            <div class="tab-pan" id="pattern" role="tabpanel" aria-labelledby="pattern-tab">
+                <h4 class="" [ngClass]="{
+                    'title-player-1' : i === 0,
+                    'title-player-2' : i === 1,
+                }">{{capitalize(winnerMarketArray.runnersName[runner.selectionId])}}</h4>
+                <div class="casino-row-container pattern-content">
+                    <div class="casino-col-container pattern-col"
+                        *ngFor="let market of marketArray; let marketIndex = index">
+                        <div class="casino-box-row pattern">
+                            <div class="casino-box-id w-100 mb-1">
+                                <div class="nation-text" style="position: relative;">
+                                    <b style="text-wrap: nowrap;">{{market.marketName}}</b>
+                                </div>
+                                <div class="position-relative">
+                                    <i data-bs-toggle="collapse" [attr.data-bs-target]="'#hands-' + marketIndex"
+                                        class="fas fa-info-circle collapsed" aria-expanded="false"></i>
+                                    <div [id]="'hands-' + marketIndex" class="icon-range collapse">
+                                        <!-- Display the min and max values for each market -->
+                                        R:<span class="small-txt">{{market?.min | shortNumber}}-{{market?.max |
+                                            shortNumber}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="poker6box">
+                                <div class="casino-nation-name"
+                                    [ngClass]=" game?.status=='SUSPEND' || game.length==0 ?'suspended':''">
+                                    <span class="text-end me-1 flex-odds">
+                                        <b>{{market.runners[0].price.back[0].price}}</b>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="casino-book text-center w-100 book-black">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="poker20center d-none d-lg-flex " *ngIf="i===0"></div>
+        </ng-container>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="detail-row">
+  <div class="listing-grid">
+
+    <div class="card card-accent-primary">
+      <div class="game-heading"  >
+        <span class="card-header-title">Profit Loss User</span>
+      </div>
+      <div class="card-body account-detail-body">
+
+
+
+      <div class="table-responsive table ">
+        <table datatable [dtOptions]="dtOptions" role="table" aria-busy="false" aria-colcount="6"
+          class="table table-bordered  ">
+
+          <thead role="rowgroup">
+
+            <tr role="row">
+              <th role="columnheader" scope="col" aria-colindex="1" class="text-center">User Name</th>
+              <th role="columnheader" scope="col" aria-colindex="2" class="text-center">Sport Name</th>
+              <th role="columnheader" scope="col" aria-colindex="3" class="text-center">Event Name </th>
+              <th role="columnheader" scope="col" aria-colindex="4" class="text-center">Market Name </th>
+              <th role="columnheader" scope="col" aria-colindex="5" class="text-center">Result</th>
+              <th role="columnheader" scope="col" aria-colindex="6" class="text-center">Profit Loss</th>
+              <th role="columnheader" scope="col" aria-colindex="7" class="text-center">Commission</th>
+              <th role="columnheader" scope="col" aria-colindex="8" class="text-center">Settle Time</th>
+            </tr>
+
+          </thead>
+
+
+
+          <!--                <tfoot *ngIf="rows?.length == 0">-->
+          <tr *ngFor="let item of rows;let i=index">
+            <!-- <td colspan="6" style="text-align:center;">No data available in table</td> -->
+            <td class="text-center " style="text-transform: uppercase;">
+              <a class="plLink" (click)="goto(item.userId)">{{item?.userName}}</a>
+            </td>
+            <td class="text-center">{{item?.sportName}}</td>
+            <td class="text-center">{{item?.eventName}}</td>
+            <td class="text-center">{{item.marketName}}</td>
+            <td class="text-center">{{item?.result}}</td>
+
+            <td class="text-center" [ngClass]="{'text-success':item.pl>0,'text-danger':0>item.pl}">{{item?.pl | number : '1.0-2'}}</td>
+            <td class="text-center" [ngClass]="{'text-success':item.commission>0,'text-danger':0>item.commission}">{{item?.commission | number : '1.0-2'}}</td>
+
+            <td class="text-center">{{item.createdAt | date : 'medium'}}</td>
+          </tr>
+          <tr class="odd" *ngIf="rows?.length==0">
+            <td valign="top" colspan="11" class="nofound">No matching records found</td>
+          </tr>
+
+          <!--                </tfoot>-->
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>

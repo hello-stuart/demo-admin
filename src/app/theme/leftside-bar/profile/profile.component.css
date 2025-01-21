@@ -1,0 +1,60 @@
+.account-detail-head {
+  font-weight: 700;
+  font-size: 15px;
+  background: var(--reports-title-bg);
+  padding: 5px 10px;
+  color: var(--reports-title-text);
+}
+.account-detail-body .bd-example dd, .account-detail-body .bd-example dt {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+}
+.card-header:first-child {
+  border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+a:not([href]):not([tabindex]), a:not([href]):not([tabindex]):hover {
+  color: var(--account-pages-not-hover-bg);
+  cursor: pointer;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.col-form-label {
+  padding-top: calc(.375rem + 1px);
+  padding-bottom: calc(.375rem + 1px);
+  margin-bottom: 0;
+  font-size: inherit;
+  line-height: 1.5;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: #5c6873;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #e4e7ea;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.asterisk_input:before {
+  content: "*";
+  font-size: 15px;
+  color: var(--my-account-asterisk-input-color);
+}
+.view-rolling {
+  margin-bottom: 4px;
+  border: 1px solid #000;
+  font-weight: 700;
+}
+.view-rolling.row {
+  margin-right: calc(.5 * 1rem) !important;
+  margin-left: calc(.5 * 0rem) !important;
+}
+
+i.fa-pencil-square-o {
+  font-size: 14px;
+}

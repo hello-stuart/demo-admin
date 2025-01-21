@@ -1,0 +1,54 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="casino-detail" *ngIf="marketArray?.length > 0">
+    <div class="casino-container">
+        <div class="casino-left">
+            <div class="text-center">
+                <b
+                    class="player">{{capitalize(marketArray[0]?.runnersName[marketArray[0]?.runners[0]?.selectionId])}}</b>
+                <span class="text-success">{{marketArray[0]?.runners[0]?.price?.back[0]?.price}}</span>
+            </div>
+            <div class="w-100">
+                <div class="casino-cards text-center mt-1">
+                    <div class="casino-card-item">
+                        <div class="card-image" *ngFor="let slide of LOW; let index = index">
+                            <img class="" [src]="['../../../assets/cards/'+slide+'.png']">
+                        </div>
+                    </div>
+                </div>
+                <div class="casino-min-max">
+                    <span class="book-black">0</span>
+                    <span>
+                        {{(winnerMarketArray?.min) | shortNumber}} - {{(winnerMarketArray?.max) | shortNumber}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="casino-center"></div>
+        <div class="casino-right">
+            <div class="text-center">
+                <b class="player">{{capitalize(marketArray[0]?.runnersName[marketArray[0]?.runners[1]?.selectionId])}}</b>
+                <span class="text-success">{{marketArray[0]?.runners[1]?.price?.back[0]?.price}}</span>
+            </div>
+            <div class="w-100">
+                <div class="casino-cards text-center mt-1">
+                    <div class="casino-card-item">
+                        <div class="card-image" *ngFor="let slide of HIGH; let index = index">
+                            <img [src]="['../../../assets/cards/'+slide+'.png']">
+                        </div>
+                    </div>
+                </div>
+                <div class="casino-min-max">
+                    <span class="book-black">0</span>
+                    <span>
+                        {{(winnerMarketArray?.min) | shortNumber}} - {{(winnerMarketArray?.max) | shortNumber}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

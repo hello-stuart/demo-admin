@@ -1,0 +1,138 @@
+.form-group {
+  margin-bottom: 6px;
+  text-align: right;
+}
+.asterisk_input:before, label {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0;
+  line-height: 20px;
+  margin-top: 5px;
+
+}
+div.col-md-5{
+  font-weight: 700;
+  font-size: 12px;
+  margin-top: 5px;
+  padding-right: 12px;
+}
+.asterisk_input:before {
+  content: "*";
+  font-size: 15px;
+  color: var(--my-account-asterisk-input-color);
+}
+
+ .form-control {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+.switch {
+  display: inline-block;
+  width: 40px;
+  height: 26px;
+}
+.switch-label {
+  width: 48px;
+}
+.switch-input {
+  display: none;
+}
+input[type=checkbox], input[type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+.switch-slider {
+  position: relative;
+  display: block;
+  height: inherit;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #c8ced3;
+  transition: .15s ease-out;
+  border-radius: .25rem;
+}
+.switch-slider::before {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  content: "";
+  background-color: #fff;
+  border: 1px solid #c8ced3;
+  transition: .15s ease-out;
+  border-radius: .125rem;
+}
+.switch-label .switch-slider::before {
+  z-index: 2;
+}
+.switch-label .switch-slider::after {
+  position: absolute;
+  top: 50%;
+  right: 1px;
+  z-index: 1;
+  width: 50%;
+  margin-top: -.5em;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  content: attr(data-unchecked);
+  transition: inherit;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle, .switch-primary .switch-input:checked+.switch-slider {
+  background: var( --modal-header-bg);
+  border-color: var(--primary);
+}
+.switch-primary .switch-input:checked+.switch-slider::before {
+  border-color: var( --modal-header-bg);
+}
+.switch-label .switch-input:checked~.switch-slider::before {
+  -webkit-transform: translateX(22px);
+  transform: translateX(22px);
+}
+.switch-label .switch-input:checked~.switch-slider::after {
+  left: 1px;
+  color: #fff;
+  content: attr(data-checked);
+}
+.adduserbtn{
+    justify-content: center;
+    width: 140px;
+    font-size: 12px;
+    background-color: var(--reports-btn-dark-bg) !important;
+    border: 1px solid var(--reports-btn-dark-bg) !important;
+    color: white;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(150, 146, 146, 0.917);
+}
+@media (max-width: 992px){
+
+  .form-group {
+    text-align: center;
+  }
+}
+
+/* =================================================== */
+.eyebtn{
+  position: absolute;
+  right: 7px;
+  color: var(--reports-btn-dark-bg);
+}
+
+@media screen and (max-width: 768px) {
+  div.col-md-5 {
+      text-align: left;
+  }
+  
+}

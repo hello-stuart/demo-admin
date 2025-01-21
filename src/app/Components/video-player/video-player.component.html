@@ -1,0 +1,470 @@
+<div class="d-flex windowSize position-relative main-video-con" [ngClass]="{
+    'color-c' : eventid == '99.0056'  || eventid == '99.0060' || eventid == '99.0014',
+    'rounded-none':currentRoute.includes('/marketdetails')
+  }">
+    <div class="right-arrows-main" [class.d-none]="currentRoute.includes('/marketdetails')">
+        <div class="arrow-up" (click)="logoClickHandler()">
+            <i class="fas fa-home"></i>
+        </div>
+        <div class="arrow-up" data-bs-toggle="modal" data-bs-target="#resultModal" data-bs-backdrop="false"
+            (click)="loadRules()" [ngClass]="{'d-none' : eventid == '99.0058'}">
+            <i class="fas fa-info-circle"></i>
+        </div>
+        <div class="arrow-up showInDesktop" style="margin-right: 0;" data-bs-toggle="collapse"
+            data-bs-target="#balanceDetails" aria-expanded="false" aria-controls="balanceDetails"
+            [ngClass]="{'d-none' : eventid == '99.0058'}">
+            <div class="arrow ">
+                <i class="fas fa-chevron-circle-up arrow-icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <app-casino-result-modal></app-casino-result-modal>
+    <div class="showInDesktop " [ngClass]="{'d-none' : eventid == '99.0058'}">
+        <app-resultbar></app-resultbar>
+    </div>
+
+    <!-- market volume -->
+    <div class="volume-position" (click)="volumeMuteUnmute()" [ngClass]="{
+        'd-none' : !currentRoute.includes('/marketdetails'),
+    }">
+        <img *ngIf="volume" src="/assets/volume-off-solid.png" alt="volume">
+        <img *ngIf="!volume" src="/assets/volume-mute-solid.png" alt="mute">
+    </div>
+
+    <!-- 'card-32-height' : eventid == '99.0022' ,
+    'height-45' : DEALER,
+    'height-275' : eventid == '99.0025',
+    'height-200' : eventid == '99.0004',
+    'height-138' : eventid == '99.0059' || eventid == '99.0041',
+    'height-115' : eventid == '99.0030' || eventid == '99.0031',
+    'height-80' : eventid == '99.0060', -->
+
+    <!-- show cards left -->
+    <div class="main-left-cards" [class.d-none]="currentRoute.includes('/marketdetails')">
+        <div class="show-cards-main collapse" id="extraCards" style="display: flex; align-items: center;" [ngClass]="{
+     
+            'height-75' : eventid == '99.0051' || eventid == '99.0040' || eventid == '99.0019' || eventid == '99.0018' || eventid == '99.0020' || eventid == '99.0021',
+            'd-none' : eventid == '99.0001' || eventid == '99.0002' ||  eventid == '99.0036' || eventid == '99.0055',
+            'showInDesktop' : eventid == '99.0025', 'w-120':eventid=='99.0023' || eventid=='99.0034' , 'w-110' : eventid=='99.0004' || eventid=='99.0040' || eventid == '99.0016',
+            'top-60' : eventid=='99.0059' || eventid=='99.0004' || eventid=='99.0040' || eventid =='99.0023' || eventid=='99.0059' || eventid=='99.0034'
+        }">
+            <!-- 20-20 -->
+            <div class="slide-left" *ngIf=" !boardCards &&(playerACards || playerBCards) ">
+                <!-- First row of images -->
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                    <img [src]="['assets/cards/'+playerACards?.card_1+'.png']" class="card-img">
+
+                    <img [src]="['assets/cards/'+playerACards?.card_2+'.png']" class="card-img">
+
+                    <img *ngIf="playerACards?.card_3" [src]="['assets/cards/'+playerACards?.card_3+'.png']"
+                        class="card-img">
+                </div>
+                <!-- Second row of images -->
+                <div style="display: flex; flex-wrap: nowrap; margin-right: 5px;" *ngIf="playerBCards">
+                    <img [src]="['assets/cards/'+playerBCards?.card_1+'.png']" class="card-img">
+
+                    <img [src]="['assets/cards/'+playerBCards?.card_2+'.png']" class="card-img">
+
+                    <img *ngIf="playerBCards?.card_3" [src]="['assets/cards/'+playerBCards?.card_3+'.png']"
+                        class="card-img">
+                </div>
+            </div>
+            <!-- lucky 7 -->
+            <div class="slide-left" *ngIf="Card">
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                    <img [src]="['assets/cards/'+game?.cardsArr?.card+'.png']" class="card-img">
+                </div>
+            </div>
+            <!-- baccarat video overlay cards -->
+            <div class="slide-left"
+                *ngIf="(BANKER || PLAYER || DEALER) && (eventid == '99.0001' || eventid == '99.0002')">
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;" *ngIf="PLAYER">
+                    <img [src]="['assets/cards/'+PLAYER?.card_1+'.png']" class="card-img">
+                    <img *ngIf="PLAYER?.card_2" [src]="['assets/cards/'+PLAYER?.card_2+'.png']" class="card-img">
+                    <ng-container *ngIf="PLAYER?.card_3 !== '0'">
+                        <img *ngIf="PLAYER?.card_3" [src]="['assets/cards/'+PLAYER?.card_3+'.png']" class="card-img">
+                    </ng-container>
+                </div>
+                <div style="display: flex; flex-wrap: nowrap; margin-right: 5px;" *ngIf="BANKER">
+                    <img [src]="['assets/cards/'+BANKER?.card_1+'.png']" class="card-img">
+                    <img [src]="['assets/cards/'+BANKER?.card_2+'.png']" class="card-img">
+                    <ng-container *ngIf="BANKER?.card_3 != '0'">
+                        <img *ngIf="BANKER?.card_3" [src]="['assets/cards/'+BANKER?.card_3+'.png']" class="card-img">
+                    </ng-container>
+                </div>
+                <div style="display: flex; flex-wrap: nowrap; margin-right: 5px;" *ngIf="DEALER">
+                    <img [src]="['assets/cards/'+DEALER?.card_1+'.png']" class="card-img">
+                </div>
+            </div>
+            <!-- CASINO WAR VIDEO OVER LAY CARDS -->
+            <div class="slide-left" *ngIf="(  DEALER) && (  eventid !== '99.0057')">
+                <!-- First row of images -->
+                <span *ngIf="DEALER.length==0">
+                    <img src="../../../assets/cards/0.png" style="width: 42px;" alt="">
+                </span>
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                    <img [src]="['assets/cards/'+DEALER?.card_1+'.png']" class="card-img">
+                </div>
+            </div>
+            <!-- 32 cards video overlay cards -->
+            <div class="slide-left" *ngIf="PLAYER8 || PLAYER9 || PLAYER10 || PLAYER11">
+                <div class="d-flex flex-md-column justify-content-between">
+                    <div class="wholeBox">
+                        <h3 class="text-warning sm-player-text-32-cards"><span [ngClass]="{'activeCard':ActiveCardCountPlayer=='PLAYER_8'}"
+                                style="color: white;">PLAYER
+                                8:</span>{{cardCount.PLAYER_8}}</h3>
+                        <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                            <span *ngIf="PLAYER8.length==0">
+                                <img src="../../../assets/cards/0.png" style="width: 28px; " alt="" class="sm-player-img-32-cards">
+                            </span>
+                            <ng-container *ngIf="game?.cardsArr['PLAYER_8']?.length!=0">
+                                <span *ngFor="let pl8 of game?.cardsArr['PLAYER_8']">
+                                    <img [src]="['assets/cards/'+pl8+'.png']" class="card-img" style="width: 28px;" class="sm-player-img-32-cards">
+                                </span>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="wholeBox">
+                        <h3 class="text-warning sm-player-text-32-cards"><span [ngClass]="{'activeCard':ActiveCardCountPlayer=='PLAYER_9'}"
+                                style="color: white;">PLAYER
+                                9:</span>{{cardCount.PLAYER_9}}</h3>
+                        <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                            <span *ngIf="PLAYER9.length==0">
+                                <img src="../../../assets/cards/0.png" style="width: 28px;" alt="" class="sm-player-img-32-cards">
+                            </span>
+                            <ng-container *ngIf="game?.cardsArr['PLAYER_9']?.length!=0">
+                                <span *ngFor="let pl9 of game?.cardsArr['PLAYER_9']">
+                                    <img [src]="['assets/cards/'+pl9+'.png']" class="card-img" style="width: 28px;" class="sm-player-img-32-cards">
+                                </span>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-md-column justify-content-between">
+                    <div class="wholeBox">
+                        <h3 class="text-warning sm-player-text-32-cards"><span [ngClass]="{'activeCard':ActiveCardCountPlayer=='PLAYER_10'}"
+                                style="color: white;">PLAYER
+                                10:</span>{{cardCount.PLAYER_10}}</h3>
+                        <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                            <span *ngIf="PLAYER10.length==0">
+                                <img src="../../../assets/cards/0.png" style="width: 28px;" alt="" class="sm-player-img-32-cards">
+                            </span>
+                            <ng-container *ngIf="game?.cardsArr['PLAYER_10']?.length!=0">
+                                <span *ngFor="let pl10 of game?.cardsArr['PLAYER_10']">
+                                    <img [src]="['assets/cards/'+pl10+'.png']" class="card-img" style="width: 28px;" class="sm-player-img-32-cards">
+                                </span>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="wholeBox">
+                        <h3 class="text-warning sm-player-text-32-cards"><span [ngClass]="{'activeCard':ActiveCardCountPlayer=='PLAYER_11'}"
+                                style="color: white;">PLAYER
+                                11:</span>{{cardCount.PLAYER_11}}</h3>
+                        <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                            <span *ngIf="PLAYER11.length==0">
+                                <img src="../../../assets/cards/0.png" style="width: 28px;" alt="" class="sm-player-img-32-cards">
+                            </span>
+                            <ng-container *ngIf="game?.cardsArr['PLAYER_11']?.length!=0">
+                                <span *ngFor="let pl11 of game?.cardsArr['PLAYER_11']">
+                                    <img [src]="['assets/cards/'+pl11+'.png']" class="card-img" style="width: 28px;" class="sm-player-img-32-cards">
+                                </span>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 3 cards judgment video overlay cards -->
+            <div class="slide-left" *ngIf="Card_1">
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                    <img [src]="['assets/cards/'+Card_1+'.png']" class="card-img">
+                    <img [src]="['assets/cards/'+Card_2+'.png']" class="card-img">
+                    <img [src]="['assets/cards/'+Card_3+'.png']" class="card-img">
+                </div>
+            </div>
+            <!-- 1 card metter video overlay cards -->
+            <div class="slide-left" *ngIf="FighterCard1 || FighterCard2">
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                    <img [src]="['assets/cards/'+FighterCard1+'.png']" class="card-img">
+                    <img [src]="['assets/cards/'+FighterCard2+'.png']" class="card-img">
+                </div>
+            </div>
+            <!--Player Cards with board video overlay cards poker -->
+            <div class="slide-left" *ngIf="boardCards && (playerACards || playerBCards) ">
+                <div class="d-flex align-content-around justify-content-between">
+                    <div>
+                        <h3
+                            style="margin-bottom: 4px !important; text-align: end; color: white !important; font-size: 12px; margin-right: 5px;">
+                            PLAYER A</h3>
+                        <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                            <img [src]="['assets/cards/'+playerACards?.card_1+'.png']" class="card-img"
+                                style="width: 27px;">
+                            <img [src]="['assets/cards/'+playerACards?.card_2+'.png']" class="card-img"
+                                style="width: 27px; ">
+                        </div>
+                    </div>
+                    <div>
+                        <h3
+                            style="margin-bottom: 4px !important; text-align: end; color: white !important; font-size: 12px; margin-right: 4px;">
+                            PLAYER B</h3>
+                        <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;"
+                            *ngIf="playerBCards">
+                            <img [src]="['assets/cards/'+playerBCards?.card_1+'.png']" class="card-img"
+                                style="width: 27px;">
+                            <img [src]="['assets/cards/'+playerBCards?.card_2+'.png']" class="card-img"
+                                style="width: 27px; margin-right: 0 !important;">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3
+                        style="margin-bottom: 4px !important; text-align: center; color: white !important; font-size: 12px; margin-right: 4px;">
+                        BOARD</h3>
+                    <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                        <img [src]="['assets/cards/'+boardCards?.card_1+'.png']" class="card-img" style="width: 27px;">
+                        <img [src]="['assets/cards/'+boardCards?.card_2+'.png']" class="card-img" style="width: 27px;">
+                        <img [src]="['assets/cards/'+boardCards?.card_3+'.png']" class="card-img" style="width: 27px;">
+                        <img [src]="['assets/cards/'+boardCards?.card_4+'.png']" class="card-img" style="width: 27px;">
+                        <img [src]="['assets/cards/'+boardCards?.card_5+'.png']" class="card-img" style="width: 27px;">
+                    </div>
+                </div>
+            </div>
+            <!-- DTL Teenpatti -->
+            <div class="slide-left" *ngIf="(TigerCards || DragonCards || LoinCards) && eventid == '99.0004'">
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                    <img *ngIf="DragonCards?.card_1" [src]="['assets/cards/'+DragonCards?.card_1+'.png']"
+                        class="card-img">
+                    <img *ngIf="DragonCards?.card_2" [src]="['assets/cards/'+DragonCards?.card_2+'.png']"
+                        class="card-img">
+                    <img *ngIf="DragonCards?.card_3" [src]="['assets/cards/'+DragonCards?.card_3+'.png']"
+                        class="card-img">
+                </div>
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                    <img *ngIf="TigerCards?.card_1" [src]="['assets/cards/'+TigerCards?.card_1+'.png']"
+                        class="card-img">
+                    <img *ngIf="TigerCards?.card_2" [src]="['assets/cards/'+TigerCards?.card_2+'.png']"
+                        class="card-img">
+                    <img *ngIf="TigerCards?.card_3" [src]="['assets/cards/'+TigerCards?.card_3+'.png']"
+                        class="card-img">
+                </div>
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;" *ngIf="LoinCards">
+                    <img *ngIf="LoinCards?.card_1" [src]="['assets/cards/'+LoinCards?.card_1+'.png']" class="card-img">
+                    <img *ngIf="LoinCards?.card_2" [src]="['assets/cards/'+LoinCards?.card_2+'.png']" class="card-img">
+                    <img *ngIf="LoinCards?.card_3" [src]="['assets/cards/'+LoinCards?.card_3+'.png']" class="card-img">
+                </div>
+            </div>
+            <!-- Tiger Dragon video overlay cards 2nd Sequence  -->
+            <div class="slide-left" [ngClass]="{
+                'd-flex' : eventid == '99.0018' || eventid == '99.0020' || eventid == '99.0021' || eventid == '99.0041',
+            }" *ngIf="(TigerCards || DragonCards || LoinCards)  && eventid !== '99.0004'">
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                    <img *ngIf="DragonCards?.card_1" [src]="['assets/cards/'+DragonCards?.card_1+'.png']"
+                        class="card-img">
+                    <img *ngIf="DragonCards?.card_2" [src]="['assets/cards/'+DragonCards?.card_2+'.png']"
+                        class="card-img">
+                    <img *ngIf="DragonCards?.card_3" [src]="['assets/cards/'+DragonCards?.card_3+'.png']"
+                        class="card-img">
+                </div>
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                    <img *ngIf="TigerCards?.card_1" [src]="['assets/cards/'+TigerCards?.card_1+'.png']"
+                        class="card-img">
+                    <img *ngIf="TigerCards?.card_2" [src]="['assets/cards/'+TigerCards?.card_2+'.png']"
+                        class="card-img">
+                    <img *ngIf="TigerCards?.card_3" [src]="['assets/cards/'+TigerCards?.card_3+'.png']"
+                        class="card-img">
+                </div>
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;" *ngIf="LoinCards">
+                    <img *ngIf="LoinCards?.card_1" [src]="['assets/cards/'+LoinCards?.card_1+'.png']" class="card-img">
+                    <img *ngIf="LoinCards?.card_2" [src]="['assets/cards/'+LoinCards?.card_2+'.png']" class="card-img">
+                    <img *ngIf="LoinCards?.card_3" [src]="['assets/cards/'+LoinCards?.card_3+'.png']" class="card-img">
+                </div>
+            </div>
+            <!-- 1card 20-20 -->
+            <div class="slide-left" *ngIf="eventid == '99.0057'">
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;" *ngIf="PLAYER">
+                    <img [src]="['assets/cards/'+PLAYER?.card_1+'.png']" class="card-img">
+                </div>
+                <div style="display: flex; flex-wrap: nowrap; margin-right: 5px;" *ngIf="DEALER">
+                    <img [src]="['assets/cards/'+DEALER?.card_1+'.png']" class="card-img">
+                </div>
+            </div>
+            <!-- kbc -->
+            <div class="slide-left" *ngIf="(Q1 || Q2 || Q3 || Q4 || Q5) ">
+                <div class="kbcCards">
+                    <img [src]="['assets/cards/'+Q1+'.png']" class="card-img kbc-card-img">
+                    <img [src]="['assets/cards/'+Q2+'.png']" class="card-img kbc-card-img">
+                    <img [src]="['assets/cards/'+Q3+'.png']" class="card-img kbc-card-img">
+                    <img [src]="['assets/cards/'+Q4+'.png']" class="card-img kbc-card-img">
+                    <img [src]="['assets/cards/'+Q5+'.png']" class="card-img kbc-card-img">
+                </div>
+            </div>
+            <!-- instandWorli -->
+            <div class="slide-left" style="display: flex; flex-wrap: nowrap; margin-right: 5px;" *ngIf="CardsWorli">
+                <img [src]="['assets/cards/'+CardsWorli?.card_1+'.png']" class="card-img">
+                <img [src]="['assets/cards/'+CardsWorli?.card_2+'.png']" class="card-img">
+                <img [src]="['assets/cards/'+CardsWorli?.card_3+'.png']" class="card-img">
+            </div>
+
+            <div class="slide-left" *ngIf="eventid == '99.0046'">
+                <div style="display: flex; flex-wrap: nowrap; margin-bottom: 5px; margin-right: 5px;">
+                    <span *ngIf="raceCards?.length == 0">
+                        <img src="../../../assets/cards/0.png" alt="" style="width: 25px !important;">
+                    </span>
+                    <ng-container>
+                        <span *ngFor="let card of raceCards; let index = index">
+                            <img [src]="['assets/cards/'+card+'.png']" class="card-img" style="width: 25px !important;">
+                        </span>
+                    </ng-container>
+                </div>
+
+            </div>
+            <!-- andar bahar cards -->
+            <ng-container *ngIf="AndarBahirResult == '0' || AndarBahirResult">
+                <div class="andar-bahir-container slide-left">
+                    <div class="video-overlay" [ngClass]="{'video-overlay-wd': hasAndarBahirRoute}">
+                        <div class="row align-items-center" style="padding-left: 12px;"
+                            [ngClass]="(BAHAR_CARDS?.length == 0 || ANDAR_CARDS?.length ==0) ? 'mt-3': 'h-83'">
+                            <div class="col-1">
+                                <div class="">
+                                    <div class="">
+                                        <p class="mb-0 text-white">
+                                            <b class="text-a">
+                                                A
+                                            </b>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="">
+                                        <p class="mb-0 text-white">
+                                            <b class="text-b">
+                                                B
+                                            </b>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <img class="card-right" [src]="['assets/cards/'+AndarBahirResult+'.png']"
+                                    style="width: 23px !important;;height: auto !important;">
+                            </div>
+                            <div class="col-7 custom-css-x">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="crousel">
+                                            <owl-carousel-o [options]="customOptions2">
+                                                <ng-container *ngFor="let slide of ANDAR_CARDS; let index = index">
+                                                    <ng-template carouselSlide>
+                                                        <img class="img img-responsive andrimg"
+                                                            [src]="['assets/cards/'+slide+'.png']">
+                                                    </ng-template>
+                                                </ng-container>
+                                            </owl-carousel-o>
+                                        </div>
+                                        <div class="crousel mt-2">
+                                            <owl-carousel-o [options]="customOptions2">
+                                                <ng-container *ngFor="let slide of BAHAR_CARDS; let index = index">
+                                                    <ng-template carouselSlide>
+                                                        <img class="img img-responsive andrimg"
+                                                            [src]="['assets/cards/'+slide+'.png']">
+                                                    </ng-template>
+                                                </ng-container>
+                                            </owl-carousel-o>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="show-cards" data-bs-toggle="collapse" data-bs-target="#extraCards" aria-expanded="false"
+                aria-controls="extraCards" id="toggleIcon">
+                <i class="fas fa-grip-lines-vertical"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- timer -->
+    <app-timer [minutes]="timer" [class.d-none]="currentRoute.includes('/marketdetails')"></app-timer>
+    <!-- card show and name -->
+    <div class="video-left" [class.d-none]="currentRoute.includes('/marketdetails')" [ngClass]="{
+        'w-211' : eventid == '99.0059',
+        'w-190 color-c' : eventid == '99.0056'  || eventid == '99.0060' || eventid == '99.0014'
+    }">
+        <div class="casino-video-title" [ngClass]="{
+            'title-w-180' : eventid == '99.0056'  || eventid == '99.0060'  || eventid == '99.0014'
+        }"><span class="casino-name" [ngClass]="{
+            'f-14' : eventid == '99.0056' || eventid == '99.0060'  || eventid == '99.0014'
+        }">{{eventName}}</span>
+            <div class="casino-id">Round ID: {{roundID}}</div>
+        </div>
+    </div>
+    <video [ngClass]="{
+        'calc-w-211' : eventid == '99.0059',
+        'calc-w-190' : eventid == '99.0056'  || eventid == '99.0060' || eventid == '99.0014',
+        'w-full' : currentRoute.includes('/marketdetails'), 
+    }" #videoElement [style]="loaderStyle" style="background-color:black; border-radius: 8px 8px 0 0;" id="remoteVideo"
+        width="100%" height="100%" autoplay playsinline muted></video>
+</div>
+
+<!-- mbl view  -->
+
+<ng-container *ngIf="AndarBahirResult == '0' || AndarBahirResult">
+    <div class="andar-bahir-container-mbl" [class.d-none]="currentRoute.includes('/marketdetails')">
+        <div class=" video-overlay" [ngClass]="{'video-overlay-wd': hasAndarBahirRoute}">
+            <div class="d-flex align-items-center "
+                [ngClass]="(BAHAR_CARDS?.length == 0 || ANDAR_CARDS?.length ==0) ? '': 'h-83'">
+                <div class="col-1">
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="mb-0 text-white">
+                                <b class="text-a">
+                                    A
+                                </b>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="mb-0 text-white">
+                                <b class="text-b">
+                                    B
+                                </b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 0 5px;">
+                    <img class="card-right" [src]="['assets/cards/'+AndarBahirResult+'.png']"
+                        style="width: 30px !important;height: auto !important; margin-right: 5px;">
+                </div>
+                <div class="custom-css-x">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-show-AB">
+                                <span *ngIf="BAHAR_CARDS?.length == 0">
+                                    <img src="../../../assets/cards/0.png" alt="" style="width: 30px !important;">
+                                </span>
+                                <ng-container *ngFor="let slide of BAHAR_CARDS; let index = index">
+                                    <img class="img img-responsive andrimg" [src]="['assets/cards/'+slide+'.png']"
+                                        style="margin-right: 
+                                        5px; width: 30px !important;">
+                                </ng-container>
+                            </div>
+                            <div class="card-show-AB  mt-2">
+                                <span *ngIf="ANDAR_CARDS?.length == 0">
+                                    <img src="../../../assets/cards/0.png" alt="" style="width: 30px !important;">
+                                </span>
+                                <ng-container *ngFor="let slide of ANDAR_CARDS; let index = index">
+                                    <img class="img img-responsive andrimg" [src]="['assets/cards/'+slide+'.png']"
+                                        style="margin-right: 5px; width: 30px !important;">
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

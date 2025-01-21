@@ -1,0 +1,89 @@
+<div class="animated fadeIn divider-top">
+  <div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 ">
+                Profit and Loss
+            </h4>
+        </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="card card-report">
+        <div class="card-body row p-0 top-card-items">
+            <div class="col-lg-2 col-md-4 col-sm-8 margin-end" >
+              <div class="form-group ">
+                <label for="dataSource">Data Source</label>
+                <select class="form-control form-select" id="dataSource" [(ngModel)]="dataSource" (ngModelChange)="onDataSourceChange($event)">
+                  <option disabled="" value="">Data Source</option>
+                  <option value="LIVE">LIVE DATA</option>
+                  <option value="BACKUP">BACKUP DATA</option>
+                  <option value="OLD">OLD DATA</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              @if (showDatePicker) {
+                <app-customized-datepicker [filterDateVal]="filterDate" (rangeDate)="receiveRangeDate($event)"></app-customized-datepicker>
+              }
+            </div>
+            <div class="col-lg-2 col-md-4 col-6 ">
+              <div class="form-group">
+                <div for="type" class="mobile-d-none" style="width: 100%;">&nbsp;</div>
+                <button class="btn bg-success btsmargin" type="button"   (click)="rerender()">
+                  <strong>Get P&L</strong>
+                </button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="card card-accent-primary">
+        <div class="card-header account-detail-head"> Profit/Loss
+
+        </div>
+        <div class="card-body account-stat-body">
+          <div class="table-responsive table table-striped">
+            <table datatable [dtOptions]="dtOptions" role="table" aria-busy="false" aria-colcount="6" class="table table-bordered table-striped ">
+              <thead role="rowgroup">
+                <tr role="row">
+                  <th>Sport Name</th>
+                  <th>Profit & Loss</th>
+                  <th>Commission</th>
+                  <th>Total P&L</th>
+                </tr>
+              </thead>
+              <!--                <tfoot *ngIf="rows?.length == 0">-->
+              <tr *ngFor="let row of rows;let i=index">
+                <!-- <td colspan="6" style="text-align:center;">No data available in table</td> -->
+                <td class="border-right-black">
+                  <a class="plLink" (click)="goto(row.sportId)">{{row.sportName}}</a>
+                </td>
+                <td>
+                  <span [ngClass]="{'cl-green':row.pl>0,'cl-red':0>row.pl}"><b>{{row.pl | number : '1.0-2'}}</b></span>
+                </td>
+                <td> {{row.commission | number : '1.0-2'}}</td>
+                <td>
+                  <span [ngClass]="{'cl-green':total?.totalPl>0,'cl-red':0>total?.totalPl}"><b>{{total?.totalPl | number : '1.0-2'}}</b></span>
+                </td>
+              </tr>
+              <!-- <tr class="totalRow" *ngIf="rows?.length>0">
+                <td>Total</td>
+                <td [ngClass]="{'plus-book':total?.totalPl>0,'cl-red':0>total?.totalPl}">{{total?.totalPl}}</td>
+                <td [ngClass]="{'plus-book':total?.totalCommission>0,'cl-red':0>total?.totalCommission}">{{total?.totalCommission}}</td>
+                <td>0</td>
+              </tr> -->
+              <tr class="odd" *ngIf="rows?.length==0">
+                <td  class="no-data-available" colspan="10">No Matching Records found</td>
+              </tr>
+              <!--                </tfoot>-->
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

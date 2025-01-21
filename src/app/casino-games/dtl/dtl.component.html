@@ -1,0 +1,522 @@
+<div class="videoPlayer">
+    <app-video-player></app-video-player>
+</div>
+
+<div class="casino-detail">
+    <div class="casino-table">
+
+        <div class="casino-table-box is-desktop">
+            <div class="casino-table-left-box">
+                <div class="casino-table-header">
+                    <div class="casino-nation-detail"></div>
+                    <div class="casino-odds-box back">Dragon</div>
+                    <div class="casino-odds-box back">Tiger</div>
+                    <div class="casino-odds-box back">Lion</div>
+                </div>
+                <div class="casino-table-body">
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name">{{marketArray[0]?.marketName}}</div>
+                        </div>
+                        <ng-container *ngFor="let runner of marketArray[0]?.runners">
+                            <div class="casino-odds-box back "
+                                [ngClass]="runner?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == runner.selectionId) ? 'blue-shedow' : ''">
+                                <span class="casino-odds">{{runner?.price.back[0].price}}</span>
+                            </div>
+
+                        </ng-container>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name">Black<span class="card-icon ms-1">
+                                    <span class="card-black "><img src="/assets/lucky7/SPADES.png" alt=""></span></span>
+                                <span class="card-icon ms-1">
+                                    <span class="card-black "><img src="/assets/lucky7/CLUBS.png" alt=""></span></span>
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[1]?.runners[1]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[1]?.runners[1].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[1]?.runners[1]?.price?.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[2]?.runners[1]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[2]?.runners[1].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[2]?.runners[1]?.price?.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[3]?.runners[1]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[3]?.runners[1].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[3]?.runners[1]?.price?.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name">Red<span class="card-icon ms-1"><span class="card-red "><img
+                                            src="/assets/lucky7/HEARTS.png" alt=""></span></span><span
+                                    class="card-icon ms-1"><span class="card-red "><img
+                                            src="/assets/lucky7/DIAMONDS.png" alt=""></span></span></div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[1]?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[1]?.runners[0].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[1]?.runners[0]?.price?.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[2]?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[2]?.runners[0].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[2]?.runners[0]?.price?.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[3]?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[3]?.runners[0].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[3]?.runners[0]?.price?.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name">Odd</div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[4]?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[4]?.runners[0].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[4]?.runners[0]?.price?.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[5]?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[5]?.runners[0].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[5]?.runners[0]?.price?.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[6]?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[6]?.runners[0].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[6]?.runners[0]?.price?.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name">Even</div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[4]?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[4]?.runners[0].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[4]?.runners[1]?.price?.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[5]?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[5]?.runners[0].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[5]?.runners[1]?.price?.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[6]?.runners[1]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[6]?.runners[0].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[6]?.runners[1]?.price?.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name casino-cards">
+                                <img src="./../../../assets/lucky7/A.png">
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[7]?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[7]?.runners[0].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[7]?.runners[0]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[8]?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[8]?.runners[0].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[8]?.runners[0]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[9]?.runners[0]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[9]?.runners[0].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[9]?.runners[0]?.price.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name casino-cards">
+                                <img src="./../../../assets/lucky7/2.png">
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[7]?.runners[1]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[7]?.runners[1].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[7]?.runners[1]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[8]?.runners[1]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[8]?.runners[1].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[8]?.runners[1]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[9]?.runners[1]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[9]?.runners[1].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[9]?.runners[1]?.price.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name casino-cards">
+                                <img src="./../../../assets/lucky7/3.png">
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[7]?.runners[2]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[7]?.runners[2].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[7]?.runners[2]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[8]?.runners[2]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[8]?.runners[2].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[8]?.runners[2]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[9]?.runners[2]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[9]?.runners[2].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[9]?.runners[2]?.price.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name casino-cards">
+                                <img src="./../../../assets/lucky7/4.png">
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[7]?.runners[3]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[7]?.runners[3].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[7]?.runners[3]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[8]?.runners[3]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[8]?.runners[3].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[8]?.runners[3]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[9]?.runners[3]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[9]?.runners[3].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[9]?.runners[3]?.price.back[0].price}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="casino-table-right-box">
+                <div class="casino-table-header">
+                    <div class="casino-nation-detail"></div>
+                    <div class="casino-odds-box back">Dragon</div>
+                    <div class="casino-odds-box back">Tiger</div>
+                    <div class="casino-odds-box back">Lion</div>
+                </div>
+                <div class="casino-table-body">
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name casino-cards">
+                                <img src="./../../../assets/lucky7/5.png">
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[7]?.runners[4]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[7]?.runners[4].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[7]?.runners[4]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[8]?.runners[4]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[8]?.runners[4].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[8]?.runners[4]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[9]?.runners[4]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[9]?.runners[4].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[9]?.runners[4]?.price.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name casino-cards">
+                                <img src="./../../../assets/lucky7/6.png">
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[7]?.runners[5]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[7]?.runners[5].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[7]?.runners[5]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[8]?.runners[5]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[8]?.runners[5].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[8]?.runners[5]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[9]?.runners[5]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[9]?.runners[5].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[9]?.runners[5]?.price.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name casino-cards">
+                                <img src="./../../../assets/lucky7/7.png">
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[7]?.runners[6]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[7]?.runners[6].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[7]?.runners[6]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[8]?.runners[6]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[8]?.runners[6].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[8]?.runners[6]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[9]?.runners[6]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[9]?.runners[6].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[9]?.runners[6]?.price.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name casino-cards">
+                                <img src="./../../../assets/lucky7/8.png">
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[7]?.runners[7]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[7]?.runners[7].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[7]?.runners[7]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[8]?.runners[7]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[8]?.runners[7].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[8]?.runners[7]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[9]?.runners[7]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[9]?.runners[7].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[9]?.runners[7]?.price.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name casino-cards">
+                                <img src="./../../../assets/lucky7/9.png">
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[7]?.runners[8]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[7]?.runners[8].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[7]?.runners[8]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back">
+                            <span class="casino-odds">{{marketArray[8]?.runners[8]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[9]?.runners[8]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[9]?.runners[8].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[9]?.runners[8]?.price.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name casino-cards">
+                                <img src="./../../../assets/lucky7/10.png">
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[7]?.runners[9]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[7]?.runners[9].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[7]?.runners[9]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[8]?.runners[9]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[8]?.runners[9].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[8]?.runners[9]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[9]?.runners[9]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[9]?.runners[9].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[9]?.runners[9]?.price.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name casino-cards">
+                                <img src="./../../../assets/lucky7/J.png">
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[7]?.runners[10]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[7]?.runners[10].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[7]?.runners[10]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[8]?.runners[10]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[8]?.runners[10].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[8]?.runners[10]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[9]?.runners[10]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[9]?.runners[10].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[9]?.runners[10]?.price.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name casino-cards">
+                                <img src="./../../../assets/lucky7/Q.png">
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[7]?.runners[11]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[7]?.runners[11].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[7]?.runners[11]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[8]?.runners[11]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[8]?.runners[11].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[8]?.runners[11]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[9]?.runners[11]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[9]?.runners[11].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[9]?.runners[11]?.price.back[0].price}}</span>
+                        </div>
+                    </div>
+                    <div class="casino-table-row">
+                        <div class="casino-nation-detail">
+                            <div class="casino-nation-name casino-cards">
+                                <img src="./../../../assets/lucky7/K.png">
+                            </div>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[7]?.runners[12]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[7]?.runners[12].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[7]?.runners[12]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[8]?.runners[12]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[8]?.runners[12].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[8]?.runners[12]?.price.back[0].price}}</span>
+                        </div>
+                        <div class="casino-odds-box back "
+                            [ngClass]="marketArray[9]?.runners[12]?.status=='SUSPEND' || game?.status=='SUSPEND' || game?.length==0 ?'suspended':(selectedCell == marketArray[9]?.runners[12].selectionId) ? 'blue-shedow' : ''">
+                            <span class="casino-odds">{{marketArray[9]?.runners[12]?.price.back[0].price}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ng-container *ngIf="!isDesktop">
+            <ul class="is-mobile nav nav-pills" role="tablist">
+                <li class="nav-item" [ngClass]="currentTab == 'DRAGON' ? 'activeTab' : ''"
+                    (click)="currentTab = 'DRAGON' ">
+                    <a data-toggle="tab" class="nav-link game">Dragon</a>
+                </li>
+                <li class="nav-item" [ngClass]="currentTab === 'TIGER' ? 'activeTab' :'' "
+                    (click)="currentTab = 'TIGER' ">
+                    <a data-toggle="tab" class="nav-link match">Tiger</a>
+                </li>
+                <li class="nav-item" [ngClass]=" currentTab === 'LION' ? 'activeTab' :'' "
+                    (click)="currentTab = 'LION' ">
+                    <a data-toggle="tab" class="nav-link loin">Lion</a>
+                </li>
+            </ul>
+            <div class="is-mobile-tab tab-content">
+                <div role="tabpanel" id="uncontrolled-tab-example-tabpane-0"
+                    aria-labelledby="uncontrolled-tab-example-tab-0" class="fade  tab-pane active show">
+                    <div class="casino-table-box">
+                        <div class="casino-table-left-box">
+                            <div class="casino-table-body">
+                                <ng-container *ngFor="let markets of marketArray; let i=index ; trackBy: trackByFn">
+                                    <ng-container
+                                        *ngFor="let runner of markets.runners; let i=index; trackBy: trackByFn">
+                                        <ng-container
+                                            *ngIf="markets.runnersName[runner.selectionId].includes(currentTab) ">
+                                            <div class="casino-table-row" *ngIf=" markets.marketName !== 'DRAGON CARD'
+                                                && markets.marketName !== 'TIGER CARD' 
+                                                && markets.marketName !== 'LION CARD' ">
+                                                <div class="casino-nation-detail"
+                                                    *ngIf="markets.marketName == 'WINNER'">
+                                                    <div class="casino-nation-name">Winner</div>
+                                                </div>
+                                                <div class="casino-nation-detail"
+                                                    *ngIf=" markets.runnersName[runner.selectionId].includes('BLACK')">
+                                                    <div class="casino-nation-name">Black
+                                                        <span class="card-icon ms-1">
+                                                            <span class="card-black "><img
+                                                                    src="/assets/lucky7/SPADES.png" alt=""></span>
+                                                        </span>
+                                                        <span class="card-icon ms-1">
+                                                            <span class="card-black "><img
+                                                                    src="/assets/lucky7/CLUBS.png" alt=""></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <!-- RED -->
+                                                <div class="casino-nation-detail"
+                                                    *ngIf=" markets.runnersName[runner.selectionId].includes('RED')">
+                                                    <div class="casino-nation-name">Red
+                                                        <span class="card-icon ms-1">
+                                                            <span class="card-red "><img src="/assets/lucky7/HEARTS.png"
+                                                                    alt=""></span>
+                                                        </span>
+                                                        <span class="card-icon ms-1">
+                                                            <span class="card-red "><img
+                                                                    src="/assets/lucky7/DIAMONDS.png" alt=""></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <!-- ODD EVEN -->
+                                                <ng-container
+                                                    *ngIf="markets.marketName !== 'WINNER' && !markets.runnersName[runner.selectionId].includes('BLACK') && !markets.runnersName[runner.selectionId].includes('RED')">
+                                                    <div class="casino-nation-detail">
+                                                        <div class="casino-nation-name">
+                                                            {{markets.runnersName[runner.selectionId].includes('EVEN') ?
+                                                            'Even' :'Odd'}}
+                                                        </div>
+                                                    </div>
+                                                </ng-container>
+                                                <div class="casino-odds-box back "
+                                                    [attr.data-bs-toggle]=" !isDesktop && game.status!=='SUSPEND' && runner.status!=='SUSPEND' ? 'modal' : null"
+                                                    [attr.data-bs-target]=" !isDesktop && game.status!=='SUSPEND' && runner.status!=='SUSPEND'? '#mobilebetslip' : null"
+                                                    [ngClass]="runner.status=='SUSPEND' || game.status=='SUSPEND' || game.length==0 ?'suspended':(selectedCell == runner.selectionId) ? 'blue-shedow' : ''">
+                                                    <span
+                                                        class="casino-odds">{{markets?.runners[0]?.price?.back[0]?.price}}</span>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                    </ng-container>
+                                    <ng-container
+                                        *ngFor="let runner of markets.runners; let i=index; trackBy: trackByFn">
+                                        <ng-container *ngIf="i <= 3">
+                                            <ng-container
+                                                *ngIf="markets.runnersName[runner.selectionId].includes(currentTab) ">
+                                                <div class="casino-table-row"
+                                                    *ngIf=" markets.marketName == 'DRAGON CARD' || markets.marketName == 'TIGER CARD' || markets.marketName == 'LION CARD' ">
+                                                    <div class="casino-nation-detail">
+                                                        <div class="casino-nation-name">
+                                                            <img class="casino-cards"
+                                                                [src]="['assets/lucky7/'+((markets?.runnersName[runner.selectionId]) | slice:-1 )+'.png']">
+                                                        </div>
+                                                    </div>
+                                                    <div class="casino-odds-box back "
+                                                        [attr.data-bs-toggle]=" !isDesktop && game.status!=='SUSPEND' && runner.status!=='SUSPEND' ? 'modal' : null"
+                                                        [attr.data-bs-target]=" !isDesktop && game.status!=='SUSPEND' && runner.status!=='SUSPEND'? '#mobilebetslip' : null"
+                                                        [ngClass]="runner.status=='SUSPEND' || game.status=='SUSPEND' || game.length==0 ?'suspended':(selectedCell == runner.selectionId) ? 'blue-shedow' : ''">
+                                                        <span class="casino-odds">{{runner.price.back[0].price | number
+                                                            :
+                                                            '1.0-2'}}</span>
+                                                    </div>
+
+                                                </div>
+                                            </ng-container>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <ng-container *ngFor="let markets of marketArray; let i=index ; trackBy: trackByFn">
+                            <ng-container
+                                *ngIf="markets.marketName == 'DRAGON CARD' || markets.marketName == 'TIGER CARD' || markets.marketName == 'LION CARD' ">
+                                <ng-container *ngIf="markets.marketName.includes(currentTab)">
+                                    <div class="casino-table-right-box">
+                                        <div class="casino-table-body">
+                                            <ng-container
+                                                *ngFor="let runner of markets.runners; let i=index; trackBy: trackByFn">
+                                                <div class="casino-table-row" *ngIf="i>3">
+                                                    <div class="casino-nation-detail">
+                                                        <div class="casino-nation-name">
+                                                            <!-- <img
+                                                src="https://g1ver.sprintstaticdata.com/v26/static/front/img/cards/5.png"> -->
+                                                            <ng-container
+                                                                *ngIf="((markets?.runnersName[runner.selectionId]?.toString() || '').slice(-1)) !== '0';else LION10">
+                                                                <img class="casino-cards"
+                                                                    [src]="['assets/lucky7/'+((markets?.runnersName[runner.selectionId]) | slice:-1 )+'.png']">
+                                                            </ng-container>
+                                                            <ng-template #LION10>
+                                                                <img class="casino-cards"
+                                                                    [src]="['assets/lucky7/'+((markets?.runnersName[runner.selectionId]) | slice:-2 )+'.png']">
+                                                            </ng-template>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="casino-odds-box back "
+                                                        [attr.data-bs-toggle]=" !isDesktop && game.status!=='SUSPEND' && runner.status!=='SUSPEND' ? 'modal' : null"
+                                                        [attr.data-bs-target]=" !isDesktop && game.status!=='SUSPEND' && runner.status!=='SUSPEND' ? '#mobilebetslip' : null"
+                                                        [ngClass]="runner.status=='SUSPEND' || game.status=='SUSPEND' || game.length==0 ?'suspended':(selectedCell == runner.selectionId) ? 'blue-shedow' : ''">
+                                                        <span class="casino-odds">{{runner.price.back[0].price | number
+                                                            :
+                                                            '1.0-2'}}</span>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </ng-container>
+
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

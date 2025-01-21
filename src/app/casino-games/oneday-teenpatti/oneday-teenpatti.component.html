@@ -1,0 +1,47 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="oneday-wrapper">
+    <div class="oneday-casino-container">
+        <div class="teen1day-left d-flex" *ngFor="let runner of winnerMarketArray?.runners; let i = index; ">
+            <div class="w-100">
+                <div class="casino-box-row">
+                    <div class="bl-box">
+                        <div class="back">
+                            <b>Back</b>
+                        </div>
+                        <div class="back">
+                            <b>Lay</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="casino-box-row" *ngFor="let market of marketArray;let marketIndex = index">
+                    <div class="casino-player-name">
+                        <b>{{winnerMarketArray.runnersName[runner.selectionId]}}</b>
+                        <div class="bl-content d-flex align-items-center">
+                            <span class="mr-2">0</span>
+                            <i data-bs-toggle="collapse" [attr.data-bs-target]="'#range' + i + marketIndex"
+                                class="fas fa-info-circle float-end"></i>
+                            <div [id]="'range' + i + marketIndex" class="collapse icon-range">
+                                R:<span class="small-txt">{{market.min | shortNumber}}-{{market.max |
+                                    shortNumber}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="casino-bl-box">
+                        <div class="casino-back box-item"
+                            [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length ?'suspended':''">
+                            {{runner.price.back[0].price}}</div>
+                        <div class="casino-lay box-item"
+                            [ngClass]="runner.status=='SUSPEND' || game?.status=='SUSPEND' || game.length ?'suspended':''">
+                            {{runner.price.lay[0].price}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="teen1day-center" *ngIf="i===0"></div>
+        </div>
+    </div>
+    <div class="showInMobile">
+        <app-resultbar></app-resultbar>
+    </div>
+</div>

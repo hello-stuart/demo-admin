@@ -1,0 +1,318 @@
+
+ <form [formGroup]="personalForm" >
+ <div  class="col-md-10">
+    <div  class="form-group row">
+      <div  class="col-md-5">Username <span  class="asterisk_input"></span>
+      </div>
+      <div  class="col-md-7">
+        <input  class="form-control" autocomplete="off" formControlName="userName" name="username" placeholder="Username.." required="" type="text">
+        <small class="text-danger" *ngIf="personalForm.get('userName')?.errors && personalForm.get('userName')?.touched">
+          <div *ngIf="personalForm.get('userName')?.hasError('required')">Username is required.</div>
+        </small>
+      </div>
+    </div>
+  </div>
+  <div  class="col-md-10">
+    <div  class="form-group row">
+      <div  class="col-md-5" >Name</div>
+      <div  class="col-md-7">
+        <input  class="form-control   " autocomplete="off" formControlName="name" name="name" placeholder="Name.." type="text">
+      </div>
+    </div>
+  </div>
+  <div  class="col-md-10" *ngIf="role=='MASTER'">
+    <div  class="form-group row">
+      <div  class="col-md-5" for="account_type">Acount Type:</div>
+      <div  class="col-md-7">
+        <select  class="form-control   " formControlName="level" (change)="levelchanged()" name="accounttype" required="">
+          <option >Select Your A/c. Type</option>
+          <option *ngFor="let item of accountTypes" [value]="item?.value">{{item?.AccountName}}</option>
+        </select>
+        <small class="text-danger" *ngIf="personalForm.get('level')?.errors && personalForm.get('level')?.touched">
+          <div *ngIf="personalForm.get('level')?.hasError('required')">Account Type is required.</div>
+        </small>
+      </div>
+    </div>
+  </div>
+  <div  class="col-md-10">
+    <div  class="form-group row">
+      <div  class="col-md-5">Commission(%) <span  class="asterisk_input"></span>
+      </div>
+      <div  class="col-md-7">
+        <input  class="form-control   " formControlName="commission" name="commission" placeholder="Commission.." required="" type="text">
+        <small class="text-danger" *ngIf="personalForm.get('commission')?.errors && personalForm.get('commission')?.touched">
+          <div *ngIf="personalForm.get('commission')?.hasError('required')">Commission is required.</div>
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div  class="col-md-10">
+    <div  class="form-group row">
+      <div  class="col-md-5">Opening Balance <span  class="asterisk_input"></span>
+      </div>
+      <div  class="col-md-7">
+        <input  class="form-control   " formControlName="bankBalance" name="balance" placeholder="Opening Balance.." required="" type="text">
+        <small class="text-danger" *ngIf="personalForm.get('bankBalance')?.errors && personalForm.get('bankBalance')?.touched">
+          <div *ngIf="personalForm.get('bankBalance')?.hasError('required')">Opening Balance is required.</div>
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div  class="col-md-10" *ngIf="role=='USER'">
+    <div  class="form-group row">
+      <div  class="col-md-5">Exposure Limit:<span  class="asterisk_input"></span>
+      </div>
+      <div  class="col-md-7">
+        <input placeholder="Exposure Limit" formControlName="exposureLimit" name="exposelimit"  type="number" oninput="validity.valid||(value='');" required="" class="form-control ">
+
+        <small class="text-danger" *ngIf="personalForm.get('exposureLimit')?.errors && personalForm.get('exposureLimit')?.touched">
+          <div *ngIf="personalForm.get('exposureLimit')?.hasError('required')">Opening Balance is required.</div>
+        </small>
+      </div>
+    </div>
+  </div>
+  <div  class="col-md-10">
+    <div  class="form-group row">
+      <div  class="col-md-5">Credit Reference <span  class="asterisk_input"></span>
+      </div>
+      <div  class="col-md-7">
+        <input  class="form-control   " formControlName="creditReference" name="creditRef" placeholder="Credit Reference.." required="" type="text">
+        <small class="text-danger" *ngIf="personalForm.get('creditReference')?.errors && personalForm.get('creditReference')?.touched">
+          <div *ngIf="personalForm.get('creditReference')?.hasError('required')">Credit Reference is required.</div>
+        </small>
+      </div>
+    </div>
+  </div>
+  <div  class="col-md-10">
+    <div  class="form-group row">
+      <div  class="col-md-5">Mobile Number <span  class="asterisk_input"></span>
+      </div>
+      <div  class="col-md-7">
+        <input  class="form-control   " formControlName="mobileNo" name="mobile" placeholder="Mobile Number.." required="" type="text">
+        <small class="text-danger" *ngIf="personalForm.get('mobileNo')?.errors && personalForm.get('mobileNo')?.touched">
+          <div *ngIf="personalForm.get('mobileNo')?.hasError('required')">MobileNo is required.</div>
+        </small>
+      </div>
+    </div>
+  </div>
+  <div  class="col-md-10" *ngIf="role=='MASTER'">
+    <div  class="form-group row">
+      <div  class="col-md-5">Partnership <span  class="asterisk_input"></span>
+      </div>
+      <div  class="col-md-7">
+        <input  class="form-control   " formControlName="partnership" name="rate" placeholder="Partnership.." required="" type="text">
+        <small class="text-danger" *ngIf="personalForm.get('partnership')?.errors && personalForm.get('partnership')?.touched">
+          <div *ngIf="personalForm.get('partnership')?.hasError('required')">Partnership is required.</div>
+          <div *ngIf="personalForm.get('partnership')?.hasError('pattern')">Please enter valid Partnership.</div>
+        </small>
+      </div>
+    </div>
+  </div>
+  <div  class="col-md-10">
+    <div  class="form-group row">
+      <div  class="col-md-5">Password <span  class="asterisk_input"></span>
+      </div>
+      <div  class="col-md-7">
+        <div class="d-flex align-items-center position-relative">
+        <input [type]="eyeIcon.newPassword?'text':'password'" autocomplete="new-password"  formControlName="password" class="form-control   " name="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&amp;]{8,}$" placeholder="Password.." required="" >
+        <a class="eyebtn" (click)="eyeIcon.newPassword=!eyeIcon.newPassword">
+          <i class="far fa-eye" [ngClass]="eyeIcon.newPassword?'fa-eye-slash':'fa-eye'"></i>
+        </a>
+      </div>
+        <small class="text-danger" *ngIf="personalForm.get('password')?.errors && personalForm.get('password')?.touched">
+          <div *ngIf="personalForm.get('password')?.hasError('required')">User Password is required.</div>
+          <div *ngIf="personalForm.get('password')?.hasError('pattern')">Password should be min 8 characters with number combination.</div>
+        </small>
+      </div>
+    </div>
+  </div>
+  <div  class="col-md-10">
+    <div  class="form-group row">
+      <div  class="col-md-5">Confirm Password <span  class="asterisk_input"></span>
+      </div>
+      <div  class="col-md-7">
+        <div class="d-flex align-items-center position-relative">
+        <input [type]="eyeIcon.confirmNewPassword?'text':'password'"  formControlName="confirmPassword"  autocomplete="new-password"  class="form-control   " name="confirm_pass" placeholder="Confirm Password.." required="" >
+        <a class="eyebtn" (click)="eyeIcon.confirmNewPassword=!eyeIcon.confirmNewPassword">
+          <i class="far fa-eye" [ngClass]="eyeIcon.confirmNewPassword?'fa-eye-slash':'fa-eye'"></i>
+        </a>
+      </div>
+      <small class="text-danger text-end"
+      *ngIf="personalForm.get('confirmPassword')?.touched && personalForm.hasError('passwordMismatch')">
+      Passwords is not matched. </small>
+      </div>
+    </div>
+  </div>
+  <div  class="col-md-10">
+    <div  class="form-group row">
+      <div  class="col-md-5">Rolling Commission</div>
+      <div   class="col-md-7 text-start">
+        <label for="RollingCommissionbtn" class="switch switch-label switch-primary pull-left">
+          <input [checked]="RollingCommission"  class="switch-input   " name="isCommission" type="checkbox">
+          <span  class="switch-slider bg-success" data-checked="✓" data-unchecked="✕"></span>
+        </label>
+        <button type="button" class="d-none" id="RollingCommissionbtn" (click)="RollingCommission=!RollingCommission"></button>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="RollingCommission" >
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div for="toggle12445" class="col-md-5">Fancy</div>
+        <div id="toggle12445" class="col-md-7">
+          <input class="form-control " formControlName="rollingFancyCommission" name="fancy" placeholder="Fancy Commission.." type="text">
+        </div>
+      </div>
+    </div>
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div class="col-md-5">Matka</div>
+        <div class="col-md-7">
+          <input class="form-control " formControlName="rollingMatkaCommission" name="Matka" placeholder="Matka Commission.." type="text">
+        </div>
+      </div>
+    </div>
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div class="col-md-5">Casino</div>
+        <div class="col-md-7">
+          <input class="form-control " name="Casino" formControlName="rollingCasinoCommission" placeholder="Casino Commission.." type="text">
+        </div>
+      </div>
+    </div>
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div class="col-md-5">Binary</div>
+        <div class="col-md-7">
+          <input class="form-control " name="Binary" formControlName="rollingBinaryCommission" placeholder="Binary Commission.." type="text">
+        </div>
+      </div>
+    </div>
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div class="col-md-5">Sportbook</div>
+        <div class="col-md-7">
+          <input class="form-control " name="Sportbook" formControlName="rollingSportsbookCommission" placeholder="Sportbook Commission.." type="text">
+        </div>
+      </div>
+    </div>
+    <!-- rollingLotteryCommission -->
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div class="col-md-5">Bookmaker</div>
+        <div class="col-md-7">
+          <input class="form-control " name="Bookmaker" formControlName="rollingBookmakerCommission" placeholder="Bookmaker Commission.." type="text">
+        </div>
+      </div>
+    </div>
+
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div class="col-md-5">Virtual Sports</div>
+        <div class="col-md-7">
+          <input class="form-control " name="Bookmaker" formControlName="rollingVirtualSportsCommission" placeholder="Virtual Sports Commission.." type="text">
+        </div>
+      </div>
+    </div>
+</ng-container>
+ 
+  <ng-container *ngIf="role=='MASTER'">
+  <div  class="col-md-10" >
+    <div  class="form-group row">
+      <div class="col-md-5">Agent Rolling Commission</div>
+      <div  class="col-md-7 text-start">
+        <label  for="agentRollingCommissionbtn"   class="switch switch-label switch-primary pull-left">
+          <input  [checked]="agentRollingCommission" class="switch-input   " name="isAgentCommission" type="checkbox">
+          <span  class="switch-slider bg-success" data-checked="✓" data-unchecked="✕"></span>
+        </label>
+        <button type="button" class="d-none" id="agentRollingCommissionbtn" (click)="agentRollingCommission=!agentRollingCommission"></button>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="agentRollingCommission" >
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div class="col-md-5">Fancy</div>
+        <div class="col-md-7">
+          <input class="form-control " formControlName="masterFancyCommission" name="fancy" placeholder="Fancy Commission.." type="text">
+        </div>
+      </div>
+    </div>
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div class="col-md-5">Matka</div>
+        <div class="col-md-7">
+          <input class="form-control " formControlName="masterMatkaCommission" name="Matka" placeholder="Matka Commission.." type="text">
+        </div>
+      </div>
+    </div>
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div class="col-md-5">Casino</div>
+        <div class="col-md-7">
+          <input class="form-control " name="Casino" formControlName="masterCasinoCommission" placeholder="Casino Commission.." type="text">
+        </div>
+      </div>
+    </div>
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div class="col-md-5">Binary</div>
+        <div class="col-md-7">
+          <input class="form-control " name="Binary" formControlName="masterBinaryCommission" placeholder="Binary Commission.." type="text">
+        </div>
+      </div>
+    </div>
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div class="col-md-5">Sportbook</div>
+        <div class="col-md-7">
+          <input class="form-control " name="Sportbook" formControlName="masterSportbookCommission" placeholder="Sportbook Commission.." type="text">
+        </div>
+      </div>
+    </div>
+    <!-- rollingLotteryCommission
+     -->
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div class="col-md-5">Bookmaker</div>
+        <div class="col-md-7">
+          <input class="form-control " name="Bookmaker" formControlName="masterBookmakerCommission" placeholder="Bookmaker Commission.." type="text">
+        </div>
+      </div>
+    </div>
+    <div  class="col-md-10 ">
+      <div class="form-group row">
+        <div class="col-md-5">Virtual Sports</div>
+        <div class="col-md-7">
+          <input class="form-control " name="Bookmaker" formControlName="masterVirtualSportsCommission" placeholder="Virtual Sports Commission.." type="text">
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+  <div  class="col-md-10">
+    <hr>
+    <div  class="form-group row">
+      <div  class="col-md-5">Master Password <span  class="asterisk_input"></span>
+      </div>
+      <div  class="col-md-7">
+        <div class="d-flex align-items-center position-relative">
+        <input  autocomplete="new-password" class="form-control   " formControlName="masterPassword" name="masterPass" placeholder="Master Password.." required="" [type]="eyeIcon.masterPassword?'text':'password'">
+        <a class="eyebtn" (click)="eyeIcon.masterPassword=!eyeIcon.masterPassword">
+          <i class="far fa-eye" [ngClass]="eyeIcon.masterPassword?'fa-eye-slash':'fa-eye'"></i>
+        </a>
+      </div>
+        <small class="text-danger" *ngIf="personalForm.get('masterPassword')?.errors && personalForm.get('masterPassword')?.touched">
+          <div *ngIf="personalForm.get('masterPassword')?.hasError('required')">Master Password is required.</div>
+        </small>
+
+      </div>
+    </div>
+  </div>
+<div class="text-center mt-3">
+  <button class="adduserbtn btn" [disabled]="personalForm.invalid" type="button" (click)="createUser()">Create</button>
+</div>
+
+</form>

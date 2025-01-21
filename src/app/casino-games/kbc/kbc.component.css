@@ -1,0 +1,128 @@
+.kbc-table {
+    padding: 10px 10px 40px;
+    background-color: #f8f8fb;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 6px #e2e2e2;
+}
+
+.kbc-btns {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.casino-box-row {
+    padding: 5px !important;
+    display: -webkit-flex;
+}
+
+.pair1 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.casino-nation-name {
+    border-radius: 0;
+    line-height: 22px;
+    padding: 6px;
+    font-size: 14px !important;
+    border-bottom: 3px solid #72bbef;
+}
+
+.casino-nation-name b {
+    line-height: 18.67px;
+}
+
+.btn-group {
+    width: 85%;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+.btn {
+    border: 3px solid #72bbef;
+    flex: 0 0 auto;
+    height: 50px;
+    margin-left: 1px;
+    border-top: 0;
+    border-radius: 0 !important;
+    font-size: 18px !important;
+}
+
+.btn1 {
+    width: calc(50% - 4px);
+    font-family: "noto sans" !important;
+    font-weight: 400 !important;
+}
+
+.btn2 {
+    width: calc(25% - 4px);
+    font-family: "noto sans" !important;
+    font-weight: 400 !important;
+    letter-spacing: 2px;
+}
+
+.btn-group-toggle > .btn input[type="radio"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.btn-img {
+    width: 30px;
+    vertical-align: middle;
+}
+
+.tracking {
+    letter-spacing: -0.09rem;
+}
+
+b {
+    font-family: "Noto Sans" !important;
+}
+
+@media only screen and (max-width: 320px) {
+.btn{
+    font-size: 15px !important;
+}
+}
+
+@media only screen and (min-width: 380px) {
+.btn2{
+    letter-spacing: 4px;
+}
+}
+
+
+@media only screen and (max-width: 1279px) {
+    .kbc-table {
+        padding: 5px;
+        box-shadow: none;
+        border-radius: 0;
+    }
+}
+
+@media only screen and (min-width: 767px) {
+    .tracking {
+        letter-spacing: 0;
+    }
+}
+
+.irfan {
+    background-color: transparent;
+    color: #000;
+    border: 3px solid var(--back);
+    width: calc(50% - 4px);
+    flex: 0 0 auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-left: 1px;
+    border-top: 0;
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 18px;
+}

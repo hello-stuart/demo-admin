@@ -1,0 +1,163 @@
+<div>
+    <app-video-player></app-video-player>
+</div>
+<div class="parent-container">
+    <!-- header-row -->
+    <div class="table-row">
+        <div class="empty bg-transparent mobile-hide"></div>
+
+        <div class="table-box position-relative">
+            <img [src]="'/assets/cards/'+playerACards?.card_1+'.png'" alt="player1" class="card-img"
+                [ngClass]="playerACards?.card_1 !== '0'  ? 'flipCard': '' ">
+            <p class="bottom-zero">1</p>
+        </div>
+        <div class="table-box position-relative">
+            <img [src]="'/assets/cards/'+playerACards?.card_2+'.png'" alt="player2" class="card-img"
+                [ngClass]="playerACards?.card_2 !== '0'  ? 'flipCard': '' ">
+            <p class="bottom-zero">2</p>
+        </div>
+        <div class="table-box position-relative">
+            <img [src]="'/assets/cards/'+playerACards?.card_3+'.png'" alt="player3" class="card-img"
+                [ngClass]="playerACards?.card_3 !== '0'  ? 'flipCard': '' ">
+            <p class="bottom-zero">3</p>
+        </div>
+        <div class="table-box position-relative">
+            <img [src]="'/assets/cards/'+playerACards?.card_4+'.png'" alt="player4" class="card-img"
+                [ngClass]="playerACards?.card_4 !== '0'  ? 'flipCard': '' ">
+            <p class="bottom-zero">4</p>
+        </div>
+        <div class="table-box position-relative">
+            <img [src]="'/assets/cards/'+playerACards?.card_5+'.png'" alt="player5" class="card-img"
+                [ngClass]="playerACards?.card_5 !== '0'  ? 'flipCard': '' ">
+            <p class="bottom-zero">5</p>
+        </div>
+        <div class="table-box position-relative">
+            <img [src]="'/assets/cards/'+playerACards?.card_6+'.png'" alt="player6" class="card-img"
+                [ngClass]="playerACards?.card_6 !== '0'  ? 'flipCard': '' ">
+            <p class="bottom-zero">6</p>
+        </div>
+    </div>
+    <div class="casino-tabs ">
+        <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link custom-tab active" [ngClass]="{'active': activeTab === 1}" (click)="activeTab = 1"
+                    id="ex1-tab-1" role="tab" aria-controls="ex1-tabs-1" [attr.aria-selected]="activeTab === 1">1</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link custom-tab" [ngClass]="{'active': activeTab === 2}" (click)="activeTab = 2"
+                    id="ex1-tab-2" role="tab" aria-controls="ex2-tabs-2" [attr.aria-selected]="activeTab === 2">2</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link custom-tab" [ngClass]="{'active': activeTab === 3}" (click)="activeTab = 3"
+                    id="ex1-tab-3" role="tab" aria-controls="ex3-tabs-3" [attr.aria-selected]="activeTab === 3">3</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link custom-tab" [ngClass]="{'active': activeTab === 4}" (click)="activeTab = 4"
+                    id="ex1-tab-4" role="tab" aria-controls="ex4-tabs-4" [attr.aria-selected]="activeTab === 4">4</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link custom-tab" [ngClass]="{'active': activeTab === 5}" (click)="activeTab = 5"
+                    id="ex1-tab-5" role="tab" aria-controls="ex5-tabs-5" [attr.aria-selected]="activeTab === 5">5</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link custom-tab" [ngClass]="{'active': activeTab === 6}" (click)="activeTab = 6"
+                    id="ex1-tab-6" role="tab" aria-controls="ex6-tabs-6" [attr.aria-selected]="activeTab === 6">6</a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-container">
+        <!-- left-table-btns -->
+        <div class="d-flex table-size m-right">
+            <ng-container *ngFor="let markets of marketArray;let i =index">
+                <ng-container *ngIf="i===0">
+                    <div class="market-heading">
+                        <div class="empty " *ngFor="let runner of markets?.runners;let b = index">
+                            <p class="text">
+                                <span>
+                                    {{capitalize(splitMarketName(marketArray[0]?.runnersName[runner?.selectionId]))}}
+                                </span>
+                                <img *ngIf="b===1 || b===5" src="/assets/casino-war/spade.png" alt="spade"
+                                    class="cards-img">
+                                <img *ngIf="b===1 || b===6" src="/assets/casino-war/club.png" alt="club"
+                                    class="cards-img">
+                                <img *ngIf="b===2 || b===7" src="/assets/casino-war/heart.png" alt="heart"
+                                    class="cards-img">
+                                <img *ngIf="b===2 || b===8" src="/assets/casino-war/diamond.png" alt="diamond"
+                                    class="cards-img">
+                            </p>
+                            <div class="min-max-info player-min-max">
+                                <i data-bs-toggle="collapse" data-bs-target="#range1" class="fas fa-info-circle"></i>
+                                <div id="range1" class="icon-range collapse bet-info-card">
+                                    R:<span>{{markets.min | shortNumber}}-{{markets.max | shortNumber}}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-container *ngFor="let runner of markets?.runners;let b = index">
+                        <div class="table-row-1" *ngIf="b===0 || b=== 1 || b=== 2 || b=== 3 || b=== 4 || b=== 5"
+                            [ngClass]="{
+                            'd-none d-md-flex' : b===1 || b=== 2 || b=== 3 || b=== 4 || b=== 5
+                        }">
+                            <button class="btn position-relative">
+                                <p class="btn-text"
+                                    [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                                    {{markets.runners[0].price.back[0].price}}</p>
+                                <span class="bottom-zero">0</span>
+                            </button>
+                            <button class="btn position-relative">
+                                <p class="btn-text"
+                                    [ngClass]="winnerMarketArray.runners[1].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[1].selectionId) ? 'selected' : ''">
+                                    {{markets.runners[1].price.back[0].price}}</p>
+                                <span class="bottom-zero">0</span>
+                            </button>
+                            <button class="btn position-relative  ">
+                                <p class="btn-text"
+                                    [ngClass]="winnerMarketArray.runners[2].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[2].selectionId) ? 'selected' : ''">
+                                    {{markets.runners[2].price.back[0].price}}</p>
+                                <span class="bottom-zero">0</span>
+                            </button>
+                            <button class="btn position-relative  ">
+                                <p class="btn-text"
+                                    [ngClass]="winnerMarketArray.runners[3].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[3].selectionId) ? 'selected' : ''">
+                                    {{markets.runners[3].price.back[0].price}}</p>
+                                <span class="bottom-zero">0</span>
+                            </button>
+                            <button class="btn position-relative  ">
+                                <p class="btn-text"
+                                    [ngClass]="winnerMarketArray.runners[4].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[4].selectionId) ? 'selected' : ''">
+                                    {{markets.runners[4].price.back[0].price}}</p>
+                                <span class="bottom-zero">0</span>
+                            </button>
+                            <button class="btn position-relative  ">
+                                <p class="btn-text"
+                                    [ngClass]="winnerMarketArray.runners[5].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[5].selectionId) ? 'selected' : ''">
+                                    {{markets.runners[5].price.back[0].price}}</p>
+                                <span class="bottom-zero">0</span>
+                            </button>
+                            <button class="btn position-relative  ">
+                                <p class="btn-text"
+                                    [ngClass]="winnerMarketArray.runners[6].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[6].selectionId) ? 'selected' : ''">
+                                    {{markets.runners[6].price.back[0].price}}</p>
+                                <span class="bottom-zero">0</span>
+                            </button>
+                            <button class="btn position-relative  ">
+                                <p class="btn-text"
+                                    [ngClass]="winnerMarketArray.runners[7].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[7].selectionId) ? 'selected' : ''">
+                                    {{markets.runners[7].price.back[0].price}}</p>
+                                <span class="bottom-zero">0</span>
+                            </button>
+                            <button class="btn position-relative  ">
+                                <p class="btn-text"
+                                    [ngClass]="winnerMarketArray.runners[8].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[8].selectionId) ? 'selected' : ''">
+                                    {{markets.runners[8].price.back[0].price}}</p>
+                                <span class="bottom-zero">0</span>
+                            </button>
+
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="showInMobile">
+            <app-resultbar></app-resultbar>
+        </div>
+    </div>

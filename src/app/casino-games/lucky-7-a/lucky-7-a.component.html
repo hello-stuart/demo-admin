@@ -1,0 +1,145 @@
+<div class="videoPlayer">
+   <app-video-player></app-video-player>
+</div>
+<div class="casino-details" *ngIf="marketArray?.length > 0">
+   <!-- market-1 -->
+   <div class="casino-box low-high-box">
+      <div class="low-odds"
+         [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+         <div class="casino-odds">{{marketArray[0]?.runners[0]?.price?.back[0]?.price}}</div>
+         <div class="text-center casino-buttons">
+            <span>{{capitalize(marketArray[0]?.runnersName[marketArray[0]?.runners[0]?.selectionId])}}</span>
+         </div>
+         <div class="casino-book">0</div>
+      </div>
+      <div class="text-center lucky7-cards">
+         <img src="/assets/lucky7/7.png" alt="">
+      </div>
+      <div class="high-odds"
+         [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+         <div class="casino-odds">{{marketArray[0]?.runners[1]?.price?.back[0]?.price}}</div>
+         <div class="text-center casino-buttons">
+            <span>{{capitalize(marketArray[0]?.runnersName[marketArray[0]?.runners[1]?.selectionId])}}</span>
+         </div>
+         <div class="casino-book">0</div>
+      </div>
+      <div class="casino-min-max text-end">
+         R:<span class="small-txt">{{(winnerMarketArray?.min) |
+            shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span>
+      </div>
+   </div>
+   <!-- market-2 -->
+   <div class="casino-box sidebets-box">
+      <div class="lucky7-extra-bets">
+         <div class="lucky7-extra-bets-item-container">
+            <div class="lucky7-extra-bets-item"
+               [ngClass]="winnerMarketArray.runners[1].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[1].selectionId) ? 'selected' : ''">
+               <div class="casino-odds">{{marketArray[1]?.runners[1]?.price.back[0].price}}</div>
+               <div class="casino-buttons">
+                  {{capitalize(marketArray[1]?.runnersName[marketArray[1]?.runners[1]?.selectionId])}}
+               </div>
+               <div class="casino-book book-black">0</div>
+            </div>
+            <div class="casino-min-max text-end">
+               R:<span class="small-txt">{{(winnerMarketArray?.min) |
+                  shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span>
+            </div>
+         </div>
+         <div class="lucky7-extra-bets-item-container">
+            <div class="lucky7-extra-bets-item"
+               [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+               <div class="casino-odds">{{marketArray[1]?.runners[0]?.price.back[0].price}}</div>
+               <div class="casino-buttons">
+                  {{capitalize(marketArray[1]?.runnersName[marketArray[1]?.runners[0]?.selectionId])}}
+               </div>
+               <div class="casino-book book-black">0</div>
+            </div>
+            <div class="casino-min-max text-end">
+               R:<span class="small-txt">{{(winnerMarketArray?.min) |
+                  shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span>
+            </div>
+         </div>
+         <div class="lucky7-extra-bets-item-container">
+            <div class="lucky7-extra-bets-item"
+               [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+               <div class="casino-odds">{{marketArray[2]?.runners[0]?.price.back[0].price}}</div>
+               <div class="casino-buttons">
+                  <img src="/assets/lucky7/spade.png" class="sm-card" alt="">
+                  <img src="/assets/lucky7/club.png" class="sm-card" alt="">
+               </div>
+               <div class="casino-book book-black">0</div>
+            </div>
+            <div class="casino-min-max text-end">
+               R:<span class="small-txt">{{(winnerMarketArray?.min) |
+                  shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span>
+            </div>
+         </div>
+         <div class="lucky7-extra-bets-item-container">
+            <div class="lucky7-extra-bets-item"
+               [ngClass]="winnerMarketArray.runners[1].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[1].selectionId) ? 'selected' : ''">
+               <div class="casino-odds">{{marketArray[2]?.runners[1]?.price.back[0].price}}</div>
+               <div class="casino-buttons">
+                  <img src="/assets/lucky7/heart.png" class="sm-card" alt="">
+                  <img src="/assets/lucky7/diamond.png" class="sm-card" alt="">
+               </div>
+               <div class="casino-book book-black">0</div>
+            </div>
+            <div class="casino-min-max text-end">
+               R:<span class="small-txt">{{(winnerMarketArray?.min) |
+                  shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- market-3 -->
+   <div class="casino-box cards-top">
+      <div class="container-fluid">
+         <div class="row row5 col-gap">
+            <div class="col-6 col-md-3 width" *ngFor="let runner of marketArray[3]?.runners">
+               <div class="low-cards">
+                  <div class="casino-odds"></div>
+                  <div class="casino-cards text-center mt-1">
+                     <div class="casino-odds">{{marketArray[3]?.runners[0]?.price.back[0].price}}</div>
+                     <div class="casino-box cards-top-box" style="position: relative;"
+                        [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                        <div class="casino-card-item">
+                           <img class="luckyImg"
+                              [src]="['/assets/lucky7/'+marketArray[3]?.runnersName[runner?.selectionId]+'.png']">
+                        </div>
+                     </div>
+                     <div class="w-100 casino-book">0</div>
+                     <div class="casino-min-max text-center">
+                        R:<span class="small-txt">{{(winnerMarketArray?.min) |
+                           shortNumber}}-{{(winnerMarketArray?.max) | shortNumber}}</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- 4rth market -->
+      <div class="casino-box cards-box">
+         <div class="w-100 high-cards">
+            <div class="casino-odds">{{marketArray[4]?.runners[0].price.back[0].price}}</div>
+            <div class="casino-cards text-center mt-1">
+               <div class="casino-card-item " *ngFor="let runner of marketArray[4]?.runners">
+                  <div class="card-img d-flex justify-content-center" style="position: relative;">
+                     <div class="position-relative " style="max-width: fit-content;"
+                        [ngClass]="winnerMarketArray.runners[0].status=='SUSPEND' || game.status=='SUSPEND' ?'suspended': (selectedCell == winnerMarketArray.runners[0].selectionId) ? 'selected' : ''">
+                        <img [src]="['/assets/lucky7/'+marketArray[4]?.runnersName[runner?.selectionId]+'.png']" alt=""
+                           style="position: relative;">
+                     </div>
+                  </div>
+                  <div class="casino-book">0</div>
+               </div>
+            </div>
+            <div class="casino-min-max text-end">
+               R:<span class="small-txt">R:{{(marketArray[4]?.min) | shortNumber}}-{{(marketArray[4]?.max)
+                  | shortNumber}}</span>
+            </div>
+         </div>
+      </div>
+      <div class="showInMobile">
+         <app-resultbar></app-resultbar>
+      </div>
+   </div>

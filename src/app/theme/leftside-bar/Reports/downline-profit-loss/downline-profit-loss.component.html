@@ -1,0 +1,103 @@
+<div  class="animated fadeIn">
+  <div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 ">
+                DownLine Profit Loss
+            </h4>
+        </div>
+  </div>
+  <div  class="row">
+    <div  class="col-sm-12 col-md-12">
+      <div  class="card card-report table-main">
+        <div  class="card-body row p-0">
+
+            <div  class="col-lg-2 col-md-4 col-12 me-2">
+              <div class="form-group">
+                <div for="dataSource">Data Source</div>
+                <select id="dataSource" class="form-control form-select" [(ngModel)]="dataSource" (ngModelChange)="onDataSourceChange($event)">
+                  <option disabled="" value="">Data Source</option>
+                  <option value="LIVE">LIVE DATA</option>
+                  <option value="BACKUP">BACKUP DATA</option>
+                  <option value="OLD">OLD DATA</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-7 col-md-8 col-12">
+              @if (showDatePicker) {
+                <app-customized-datepicker [filterDateVal]="filterDate" [resetDate]="resetDate" (rangeDate)="receiveRangeDate($event)"></app-customized-datepicker>
+              }
+            </div>
+            <div  class="col-lg-2 col-md-4 col-6 d-flex justify-content-start">
+              <div  class="form-group me-2">
+                <div class="mobile-d-none" for="type" style="width: 100%;">&nbsp;</div>
+                <button  class="btn btn-dark" type="button" (click)="rerender(this.userid)" [disabled]="dataSource==''">
+                  <strong >Get P&amp;L</strong>
+                </button>
+              </div>
+              <div  class="form-group">
+                <div class="mobile-d-none" for="type" style="width: 100%;">&nbsp;</div>
+                <button  class="btn reset-btn" type="button" (click)="reset()" >
+                  <strong >Reset</strong>
+                </button>
+              </div>
+            </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div  class="row">
+    <div  class="col-sm-12 col-md-12">
+      <div  class="card card-accent-primary table-main">
+        <div  class="card-header account-detail-head"> Profit Loss</div>
+        <div  class="card-body account-stat-body">
+          <div  class="row">
+            <div  class="col-md-12">
+              <div  class="table-responsive">
+                <table datatable [dtOptions]="dtOptions" role="table" aria-busy="false" aria-colcount="6"
+                class="table table-bordered table-striped">
+                <thead role="rowgroup">
+                  <tr role="row">
+                    <th class="text-center">User Name</th>
+                    <th class="text-center">Profit/Loss</th>
+                    <th class="text-center">Downline Profit/Loss</th>
+                    <th class="text-center">Commission</th>
+                  </tr>
+                </thead>
+
+                <tr *ngFor="let row of rows;let i=index">
+                  <!-- <td colspan="6" style="text-align:center;">No data available in table</td> -->
+
+                  <td class="text-center"  ><a class="plLink" style="text-transform: uppercase;" (click)="gotoUrl(row)">{{row.userName}}</a> </td>
+                  <td class="text-center" [ngClass]="{'cl-red':row.pl>0,'cl-green':0>=row.pl}"><b class="text-success">{{ absValue((row?.pl)-(row.commission)) | number : '1.0-2'}}
+                   </b></td>
+                  <td class="text-center" [ngClass]="{'cl-green':row.pl>0,'cl-red':0>=row.pl}"><b class="text-danger"> {{ absValue(row.pl) | number :
+                    '1.0-2'}}</b></td>
+                  <td class="text-center"> {{row.commission | number : '1.0-2'}}</td>
+                </tr>
+
+                <tr class="totalRow" *ngIf="rows?.length>0">
+                  <td class="text-center">Total</td>
+                  <td class="text-center text-success" [ngClass]="{'cl-red':total?.totalPl>0,'cl-green':0>total?.totalPl}">{{absValue(total?.totalPl-total?.totalCommission)
+                    | number : '1.0-2'}}</td>
+                  <td class="text-center text-danger" [ngClass]="{'cl-green':total?.totalPl>0,'cl-red':0>total?.totalPl}">{{
+                    absValue(total?.totalPl) | number : '1.0-2'}}</td>
+                  <td class="text-center" [ngClass]="{'cl-green':total?.totalCommission>0,'cl-red':0>total?.totalCommission}">
+                    {{total?.totalCommission | number : '1.0-2'}}</td>
+
+                </tr>
+                <tr class="odd" *ngIf="rows?.length==0">
+                  <td  class="no-data-available" colspan="10">No data!</td>
+                </tr>
+
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

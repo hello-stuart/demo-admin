@@ -1,0 +1,198 @@
+i {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.casino-detail {
+    padding: 5px;
+    box-shadow: none;
+    border-radius: 0;
+    line-height: 22px;
+    letter-spacing: 0;
+    font-family: "Noto Sans";
+    font-size: 14px;
+    box-shadow: 0 2px 6px #e2e2e2;
+}
+
+.casino-detail:hover {
+    box-shadow: 0 2px 7px #bbb;
+}
+
+.title-player-1 {
+    color: #ef910f !important;
+}
+.title-player-2 {
+    color: #fc4242 !important;
+}
+
+.casino-row-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.casino-col-container {
+    width: 49%;
+    margin-right: 1%;
+    margin-bottom: 10px;
+}
+
+.casino-box-row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px 0;
+    align-items: center;
+    position: relative;
+}
+
+.casino-box-id {
+    font-size: 11px;
+    padding-left: 5px;
+    height: 22px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon-range {
+    position: absolute;
+    min-width: 71.17px;
+    left: 0;
+    top: 100%;
+    background-color: #16191c;
+    padding: 4px;
+    max-width: 100%;
+    word-wrap: break-word;
+    font-size: 12px;
+    right: 0;
+    transition: 0.1s;
+    text-transform: capitalize;
+    color: #aaafb5;
+    z-index: 150;
+}
+
+.poker6box {
+    border: 2px solid #73bbef;
+    border-radius: 4px;
+    padding: 2px;
+    width: 100%;
+    color: #333;
+    cursor: pointer;
+    height: 40px;
+    position: relative;
+}
+
+.poker6box .casino-nation-name {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    background-color: #72bbef17;
+}
+
+.poker6box .casino-nation-name > div {
+    line-height: 1;
+}
+
+.flex-odds {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.flex-odds b {
+    font-size: 16px;
+    padding-left: 5px;
+    font-weight: 400;
+    height: 22px;
+    width: 100%;
+    display: block;
+}
+
+.flex-odds span {
+    font-size: 11px;
+    padding-left: 5px;
+    height: 22px;
+    width: 100%;
+}
+
+.player-card {
+    position: relative;
+    z-index: 1;
+    width: auto;
+    margin-left: 2px;
+    text-align: center;
+    display: inline-block;
+}
+
+.player-card span {
+    width: auto;
+    display: inline-block;
+}
+
+.player-card span img {
+    width: 24px;
+}
+
+.player-card:last-child {
+    margin-left: 6px;
+}
+
+/* pattern tab content ======================== */
+
+.pattern .casino-box-id {
+    justify-content: center;
+    column-gap: 5px;
+}
+
+.nation-text  {
+    font-size: 12px;
+    font-weight: normal !important;
+}
+
+.pattern-col {
+    width: 27.66%;
+    margin-right: 1% !important;
+    flex: auto;
+}
+
+.casino-book {
+    height: 22px;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    font-weight: 400;
+    width: 100%;
+}
+
+.poker20center {
+    width: 2px;
+    background-color: grey;
+}
+
+.tab-pan {
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .tab-pan {
+        width: 49%;
+    }
+}
+
+@media (max-width: 500px) {
+    .pattern-col {
+        width: 48.66%;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .pattern-col,
+    .casino-col-container {
+        width: 27.66%;
+        margin-right: 1% !important;
+        flex: auto;
+    }
+}
