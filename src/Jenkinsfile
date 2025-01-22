@@ -6,7 +6,7 @@ pipeline {
                 nvm(nvmInstallURL: 'https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh',
                 nvmIoJsOrgMirror: 'https://iojs.org/dist',
                 nvmNodeJsOrgMirror: 'https://nodejs.org/dist',
-                version: '22.13.0')
+                version: '20.18.1')
                 // Get some code from a GitHub repository
                 {
                     sh "npm install -g @angular/cli@19.1.3"

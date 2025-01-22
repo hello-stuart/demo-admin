@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { CONFIG } from '../../../config';
 import { IndexDbService } from './index-db.service';
+
 var $: any;
 
 @Injectable({
@@ -35,7 +36,6 @@ export class BackendService {
   private casinoResults = new Subject<any>();
   private headerNavSett = new Subject<any>();
 
-  indexdbservice: any;
   private AllEventlist: BehaviorSubject<any | null> = new BehaviorSubject<any | null>(null);
   private AllRacingEventlist: BehaviorSubject<any | null> = new BehaviorSubject<any | null>(null);
 
@@ -55,7 +55,7 @@ export class BackendService {
 
   themeConfig: any;
 
-  constructor(private http: HttpClient, private toaster: ToastrService, privateindexdbservice: IndexDbService, private router: Router,) {
+  constructor(private http: HttpClient, private toaster: ToastrService, private indexdb : IndexDbService, private router: Router,) {
     this.loggedUserData = JSON.parse(localStorage.getItem('userDetail') as string);
     this.themeConfig = JSON.parse(localStorage.getItem('getThemeConfig') as string);
   }
@@ -245,7 +245,7 @@ export class BackendService {
 
     const path = key.split('/').filter(Boolean).pop();
 
-    this.indexdbservice?.getRecord(path + 'Time').subscribe(
+    this.indexdb?.getRecord(path + 'Time').subscribe(
       (data: any) => {
         if (data) {
           const date1 = new Date(data);
@@ -322,7 +322,7 @@ export class BackendService {
   private getRecordsFromDB(key: any, payload?: any): Observable<any> {
     return new Observable<any>((observer) => {
       const path = key.split('/').filter(Boolean).pop();
-      this.indexdbservice.getRecord(path).subscribe(
+      this.indexdb.getRecord(path).subscribe(
         (data: any) => {
           if (data) {
             observer.next(data);
@@ -346,7 +346,7 @@ export class BackendService {
   }
   // Returns an observable indicating the success of the operation
   private createtimestamp(key: any): Observable<Boolean> {
-    return this.indexdbservice.createRecord(key, Date());
+    return this.indexdb.createRecord(key, Date());
   }
   // expo modal
   seteposureMdalvalue(value: any) {
